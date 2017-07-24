@@ -37,7 +37,7 @@ public class PermisosGrucas implements Permisos {
                 return "COMPRAS";
             }
             case "4": {
-                return "INVENTARIOS";
+                return "ALMACEN";
             }
             case "5": {
                 return "RECURSOS HUMANOS";
