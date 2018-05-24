@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UnidadNegocio">
+
+    <resultMap id="ResultUnidadNegocioID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultUnidadNegocio" type="UnidadNegocio">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="nombre" column="nombre"/>
+        <result property="domicilio" column="domicilio"/>
+        <result property="pais" column="pais"/>
+        <result property="estado" column="estado"/>
+        <result property="ciudad" column="ciudad"/>
+        <result property="codigo_postal" column="codigo_postal"/>
+        <result property="telefono" column="telefono"/>
+        <result property="prefijo" column="prefijo"/>
+    </resultMap>
+
+    <select id="UnidadNegocioMaxID" resultMap="ResultUnidadNegocioID">
+        SELECT max(id)+1 as id
+        FROM unidad_negocio 
+    </select>
+
+    <insert id="UnidadNegocioInsert" parameterType="UnidadNegocio" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO unidad_negocio 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,telefono,prefijo)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},#{estado},#{ciudad},#{codigo_postal},#{telefono},#{prefijo})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM unidad_negocio 
+        </selectKey>
+
+    </insert>
+
+    <update id="UnidadNegocioUpdate" parameterType="UnidadNegocio">
+        UPDATE unidad_negocio 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},domicilio = #{domicilio},pais = #{pais},estado = #{estado},ciudad = #{ciudad},codigo_postal = #{codigo_postal},telefono = #{telefono},prefijo = #{prefijo}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="UnidadNegocioDelete" parameterType="map">
+        DELETE FROM unidad_negocio 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="UnidadNegocioWhere" parameterType="map" resultMap="ResultUnidadNegocio">
+        SELECT *
+        FROM unidad_negocio 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+</mapper>

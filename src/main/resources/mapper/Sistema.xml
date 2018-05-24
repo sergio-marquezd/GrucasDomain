@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Sistema">
+
+    <resultMap id="ResultSistemaID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultSistema" type="Sistema">
+        <result property="id" column="id"/>
+        <result property="clave_sistema" column="clave_sistema"/>
+        <result property="nombre_sistema" column="nombre_sistema"/>
+        <result property="ruta_sistema" column="ruta_sistema"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="rol_id" column="rol_id"/>
+        <result property="rol" column="rol"/>
+    </resultMap>
+
+    <select id="SistemaMaxID" resultMap="ResultSistemaID">
+        SELECT max(id)+1 as id
+        FROM sistema 
+    </select>
+
+    <insert id="SistemaInsert" parameterType="Sistema" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO sistema 
+        (clave_sistema,nombre_sistema,ruta_sistema,descripcion)
+        VALUES
+        (#{clave_sistema},#{nombre_sistema},#{ruta_sistema},#{descripcion})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM sistema 
+        </selectKey>
+
+    </insert>
+
+    <update id="SistemaUpdate" parameterType="Sistema">
+        UPDATE sistema 
+        SET clave_sistema = #{clave_sistema},nombre_sistema = #{nombre_sistema},ruta_sistema = #{ruta_sistema},descripcion = #{descripcion}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="SistemaDelete" parameterType="map">
+        DELETE FROM sistema 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="SistemaWhere" parameterType="map" resultMap="ResultSistema">
+        SELECT *
+        FROM sistema 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+    <select id="SistemaByUser" parameterType="map" resultMap="ResultSistema">
+        SELECT t1.*, t3.id AS rol_id, t3.nombre AS rol
+        FROM sistema t1
+        INNER JOIN usuario_sistema t2 ON t1.clave_sistema = t2.clave_sistema
+        INNER JOIN rol t3 ON t2.rol_id = t3.id
+        WHERE t2.usuario_id = #{id}
+    </select>
+
+</mapper>

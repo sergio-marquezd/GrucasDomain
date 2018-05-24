@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Usuario">
+
+    <resultMap id="ResultUsuarioID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultUsuario" type="Usuario">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="nombre" column="nombre"/>
+        <result property="apellido_paterno" column="apellido_paterno"/>
+        <result property="apellido_materno" column="apellido_materno"/>
+        <result property="password" column="password"/>
+        <result property="username" column="username"/>
+        <result property="email" column="email"/>
+        <result property="tipo" column="tipo"/>
+        <result property="empleado_id" column="empleado_id"/>
+        <result property="permisos" column="permisos"/>
+        <result property="rol" column="rol"/>
+        <result property="todas_unidades" column="todas_unidades"/>
+    </resultMap>
+
+    <select id="UsuarioMaxID" resultMap="ResultUsuarioID">
+        SELECT max(id)+1 as id
+        FROM usuario 
+    </select>
+
+    <insert id="UsuarioInsert" parameterType="Usuario" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO usuario 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,apellido_paterno,apellido_materno,password,username,email,tipo,empleado_id,permisos,rol,todas_unidades)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{apellido_paterno},#{apellido_materno},#{password},#{username},#{email},#{tipo},#{empleado_id},#{permisos},#{rol},#{todas_unidades})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM usuario 
+        </selectKey>
+
+    </insert>
+
+    <update id="UsuarioUpdate" parameterType="Usuario">
+        UPDATE usuario 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},password = #{password},username = #{username},email = #{email},tipo = #{tipo},empleado_id = #{empleado_id},permisos = #{permisos},rol = #{rol},todas_unidades = #{todas_unidades}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="UsuarioDelete" parameterType="map">
+        DELETE FROM usuario 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="UsuarioWhere" parameterType="map" resultMap="ResultUsuario">
+        SELECT *
+        FROM usuario 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+</mapper>

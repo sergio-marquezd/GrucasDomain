@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+        
+<configuration>
+    
+    <typeAliases>
+        <typeAlias alias="Usuario" type="com.grucas.domain.model.Usuario"/>
+        <typeAlias alias="Rol" type="com.grucas.domain.model.Rol"/>
+        <typeAlias alias="Sistema" type="com.grucas.domain.model.Sistema"/>
+        <typeAlias alias="UnidadNegocio" type="com.grucas.domain.model.UnidadNegocio"/>
+        <typeAlias alias="Empresa" type="com.rubik.model.Empresa"/>
+
+    </typeAliases>
+    
+    <environments default="catalogos">  
+        
+        <environment id="catalogos">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/grucas"/>
+                <property name="username" value="root"/>
+                <property name="password" value="dac2001"/>
+                <property name="poolTimeToWait" value="20000"/>
+                <property name="poolPingEnabled" value="true"/>
+                <property name="poolPingQuery" value="select 1"/>
+                <property name="poolMaximumActiveConnections" value="1"/>
+                <property name="poolMaximumIdleConnections" value="1"/>
+            </dataSource>
+        </environment>
+        
+        <environment id="home">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/grucas"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+                <property name="poolTimeToWait" value="20000"/>
+                <property name="poolPingEnabled" value="true"/>
+                <property name="poolPingQuery" value="select 1"/>
+                <property name="poolMaximumActiveConnections" value="1"/>
+                <property name="poolMaximumIdleConnections" value="1"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+    
+    <mappers>
+        <mapper resource="mapper/Usuario.xml"/>
+        <mapper resource="mapper/Rol.xml"/>
+        <mapper resource="mapper/Sistema.xml"/>
+        <mapper resource="mapper/UnidadNegocio.xml"/>
+<!--        <mapper resource="mapper/Empresa.xml"/>-->
+    </mappers>
+  
+</configuration>

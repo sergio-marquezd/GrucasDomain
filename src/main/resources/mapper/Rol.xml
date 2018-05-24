@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Rol">
+
+    <resultMap id="ResultRolID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultRol" type="Rol">
+        <result property="id" column="id"/>
+        <result property="nombre" column="nombre"/>
+    </resultMap>
+
+    <select id="RolMaxID" resultMap="ResultRolID">
+        SELECT max(id)+1 as id
+        FROM rol 
+    </select>
+
+    <insert id="RolInsert" parameterType="Rol" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO rol 
+        (nombre)
+        VALUES
+        (#{nombre})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM rol 
+        </selectKey>
+
+    </insert>
+
+    <update id="RolUpdate" parameterType="Rol">
+        UPDATE rol 
+        SET nombre = #{nombre}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="RolDelete" parameterType="map">
+        DELETE FROM rol 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="RolWhere" parameterType="map" resultMap="ResultRol">
+        SELECT *
+        FROM rol 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+</mapper>
