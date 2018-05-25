@@ -31,7 +31,7 @@ public class UsuarioService {
     private Integer total_result;
 
     public UsuarioService() {
-        dao = new UsuarioDAO(DomainConfig.getEnvironment());
+        dao = new UsuarioDAO(DomainConfig.getEnvironmentGrucas());
     }
 
     public Usuario getObject() {
@@ -143,7 +143,7 @@ public class UsuarioService {
     
     public void login(String username, String password, Integer code){
         
-        UsuarioDAO dao = new UsuarioDAO(DomainConfig.getEnvironment());
+        UsuarioDAO dao = new UsuarioDAO(DomainConfig.getEnvironmentGrucas());
         
         dao.getUsuario("username = '" + username + "' and password = '" + password + "'", "", "");
         if(dao.getObjects().size()>0){

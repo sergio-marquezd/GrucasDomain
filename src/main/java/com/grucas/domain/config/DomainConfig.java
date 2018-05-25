@@ -11,11 +11,11 @@ package com.grucas.domain.config;
  */
 public class DomainConfig {
 
-    private static final String ENV = "catalogos";
-    public static final Boolean DEBUG = true;
+    private static final String ENV_GRUCAS = "catalogos";
+    public static final Boolean DEBUG_GRUCAS = true;
 
-    public static String getEnvironment() {
-        return ENV;
+    public static String getEnvironmentGrucas() {
+        return ENV_GRUCAS;
     }
 
 }

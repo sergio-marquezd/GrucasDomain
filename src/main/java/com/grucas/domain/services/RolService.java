@@ -28,7 +28,7 @@ public class RolService {
     private Integer total_result;
 
     public RolService() {
-        dao = new RolDAO(DomainConfig.getEnvironment());
+        dao = new RolDAO(DomainConfig.getEnvironmentGrucas());
     }
 
     public Rol getObject() {

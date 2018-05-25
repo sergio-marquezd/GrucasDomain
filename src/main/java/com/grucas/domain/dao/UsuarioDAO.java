@@ -33,7 +33,7 @@ public class UsuarioDAO {
     private final SqlSessionFactory sqlSessionFactory;
 
     public UsuarioDAO(String env) {
-        sqlSessionFactory = FactorySession.getSqlSessionFactory(env);
+        sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
 
     public Integer getId() {
@@ -88,13 +88,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -127,13 +127,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -161,13 +161,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -196,13 +196,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -231,13 +231,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 

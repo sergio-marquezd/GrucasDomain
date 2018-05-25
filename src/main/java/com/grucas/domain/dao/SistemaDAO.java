@@ -33,7 +33,7 @@ public class SistemaDAO {
     private final SqlSessionFactory sqlSessionFactory;
 
     public SistemaDAO(String env) {
-        sqlSessionFactory = FactorySession.getSqlSessionFactory(env);
+        sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
 
     public Integer getId() {
@@ -88,13 +88,13 @@ public class SistemaDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -125,13 +125,13 @@ public class SistemaDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -164,13 +164,13 @@ public class SistemaDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -198,13 +198,13 @@ public class SistemaDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -233,13 +233,13 @@ public class SistemaDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -268,13 +268,13 @@ public class SistemaDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG){
+            if(DomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 

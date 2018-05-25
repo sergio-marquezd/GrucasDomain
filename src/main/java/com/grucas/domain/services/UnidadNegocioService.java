@@ -28,7 +28,7 @@ public class UnidadNegocioService {
     private Integer total_result;
 
     public UnidadNegocioService() {
-        dao = new UnidadNegocioDAO(DomainConfig.getEnvironment());
+        dao = new UnidadNegocioDAO(DomainConfig.getEnvironmentGrucas());
     }
 
     public UnidadNegocio getObject() {

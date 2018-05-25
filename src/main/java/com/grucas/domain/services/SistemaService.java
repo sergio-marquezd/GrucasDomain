@@ -28,7 +28,7 @@ public class SistemaService {
     private Integer total_result;
 
     public SistemaService() {
-        dao = new SistemaDAO(DomainConfig.getEnvironment());
+        dao = new SistemaDAO(DomainConfig.getEnvironmentGrucas());
     }
 
     public Sistema getObject() {
