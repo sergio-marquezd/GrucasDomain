@@ -150,32 +150,40 @@ public class UsuarioService {
             
             object = dao.getObjects().get(0);
             
-            List<Sistema> accesoSistemas = getSystemByUser(object.getId());
-            if(accesoSistemas.size()>0){
+            if ("FULLACCESS".equals(object.getTipo())) {
                 
-                Boolean accesoSistema = false;
-                
-                for (Sistema sistemaTem : accesoSistemas) {
-                    if(Objects.equals(sistemaTem.getClave_sistema(), code)){
-                        accesoSistema = true;
-                        object.setRol(sistemaTem.getRol());
+                ok = true;
+                total_result = 1;
+                notification = "Bienvenido al sistema " + object.getNombre() + "!";
+
+            } else {
+                List<Sistema> accesoSistemas = getSystemByUser(object.getId());
+                if (accesoSistemas.size() > 0) {
+
+                    Boolean accesoSistema = false;
+
+                    for (Sistema sistemaTem : accesoSistemas) {
+                        if (Objects.equals(sistemaTem.getClave_sistema(), code)) {
+                            accesoSistema = true;
+                            object.setRol(sistemaTem.getRol());
+                        }
                     }
-                }
-                
-                if(accesoSistema){
-                    ok = true;
-                    total_result = 1;
-                    notification ="Bienvenido al sistema " + object.getNombre() + "!";
-                }else{
+
+                    if (accesoSistema) {
+                        ok = true;
+                        total_result = 1;
+                        notification = "Bienvenido al sistema " + object.getNombre() + "!";
+                    } else {
+                        ok = false;
+                        total_result = 0;
+                        notification = "El usuario no tiene acceso a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
+                    }
+
+                } else {
                     ok = false;
                     total_result = 0;
                     notification = "El usuario no tiene acceso a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
                 }
-                
-            }else{
-                ok = false;
-                total_result = 0;
-                notification = "El usuario no tiene acceso a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
             }
             
         }else{

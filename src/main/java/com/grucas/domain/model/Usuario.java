@@ -116,4 +116,13 @@ public class Usuario extends ObjectBase{
         this.todas_unidades = todas_unidades;
     }
     
+    public String getFullName() {
+        return getNombre() + " " + getApellido_paterno() + " " + getApellido_materno();
+    }
+
+    @Override
+    public String toString() {
+        return nombre + " " + apellido_paterno + " " + apellido_materno;
+    }
+    
 }

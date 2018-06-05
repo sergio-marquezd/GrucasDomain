@@ -20,8 +20,14 @@ public class Test {
     public static void main(String[] args) {
         
         UsuarioService service = new UsuarioService();
-        service.login("a", "a", 1001);
+        service.login("cdeantes", "cdeantes12", 1001);
         Usuario user = service.getObject();
+        
+        System.out.println(" ROL " + user.getRol());
+        System.out.println(" PERMISOS " + user.getPermisos());
+        System.out.println(" TIPO " + user.getTipo());
+        System.out.println(" PERMISOS " + user.getUnidad());
+        System.out.println(" EMPRESA " + user.getEmpresa());
         
         System.out.println("RESPUESTA:   " + service.getNotification());
         
