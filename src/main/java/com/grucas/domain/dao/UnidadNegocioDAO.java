@@ -9,7 +9,7 @@ package com.grucas.domain.dao;
  *
  * @author GrucasDev
  */
-import com.grucas.domain.config.DomainConfig;
+import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.model.UnidadNegocio;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
@@ -28,6 +28,7 @@ public class UnidadNegocioDAO {
 
     private Integer id = 0;
     private List<UnidadNegocio> objects = null;
+    private UnidadNegocio object = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
@@ -50,6 +51,14 @@ public class UnidadNegocioDAO {
 
     public void setObjects(List<UnidadNegocio> objects) {
         this.objects = objects;
+    }
+
+    public UnidadNegocio getObject() {
+        return object;
+    }
+
+    public void setObject(UnidadNegocio object) {
+        this.object = object;
     }
 
     public Boolean getOk() {
@@ -88,13 +97,13 @@ public class UnidadNegocioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -107,6 +116,44 @@ public class UnidadNegocioDAO {
         }
     }
 
+
+    public void getOneUnidadNegocio(String strWhere){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+
+            session = sqlSessionFactory.openSession();
+            object = session.selectOne("UnidadNegocioWhere",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
     public void getUnidadNegocio(String strWhere, String strGroup, String strOrder){
 
         SqlSession session = null;
@@ -127,13 +174,13 @@ public class UnidadNegocioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -161,13 +208,13 @@ public class UnidadNegocioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -196,13 +243,13 @@ public class UnidadNegocioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -231,13 +278,13 @@ public class UnidadNegocioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 

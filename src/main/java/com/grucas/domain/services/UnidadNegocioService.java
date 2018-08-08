@@ -9,7 +9,7 @@ package com.grucas.domain.services;
  *
  * @author GrucasDev
  */
-import com.grucas.domain.config.DomainConfig;
+import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.UnidadNegocioDAO;
 import com.grucas.domain.model.UnidadNegocio;
 import java.util.List;
@@ -28,7 +28,7 @@ public class UnidadNegocioService {
     private Integer total_result;
 
     public UnidadNegocioService() {
-        dao = new UnidadNegocioDAO(DomainConfig.getEnvironmentGrucas());
+        dao = new UnidadNegocioDAO(GrucasDomainConfig.getEnvironmentGrucas());
     }
 
     public UnidadNegocio getObject() {
@@ -137,7 +137,30 @@ public class UnidadNegocioService {
         }
 
     }
+    
+    public void getOneUnidadNegocio(String where){
 
+        dao.getOneUnidadNegocio(where);
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            object = dao.getObject();
+            total_result = 1;
+
+            if(object != null){
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+
+    }
+    
     public Integer getMaxID(){
         dao.getUnidadNegocioID();
         return dao.getId();

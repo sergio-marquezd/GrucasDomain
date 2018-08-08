@@ -9,7 +9,7 @@ package com.grucas.domain.dao;
  *
  * @author GrucasDev
  */
-import com.grucas.domain.config.DomainConfig;
+import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.model.Rol;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
@@ -88,13 +88,13 @@ public class RolDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -127,13 +127,13 @@ public class RolDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -161,13 +161,13 @@ public class RolDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -196,13 +196,13 @@ public class RolDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 
@@ -231,13 +231,13 @@ public class RolDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(DomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
                 exception.printStackTrace();
             }
 

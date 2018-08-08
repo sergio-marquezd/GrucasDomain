@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Empleado">
+
+    <resultMap id="ResultEmpleadoID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultEmpleado" type="Empleado">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="clave_empleado" column="clave_empleado"/>
+        <result property="nombre" column="nombre"/>
+        <result property="apellido_paterno" column="apellido_paterno"/>
+        <result property="apellido_materno" column="apellido_materno"/>
+        <result property="email" column="email"/>
+        <result property="autorizador" column="autorizador"/>
+    </resultMap>
+
+    <select id="EmpleadoMaxID" resultMap="ResultEmpleadoID">
+        SELECT max(id)+1 as id
+        FROM empleado 
+    </select>
+
+    <insert id="EmpleadoInsert" parameterType="Empleado" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO empleado 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,clave_empleado,nombre,apellido_paterno,apellido_materno,email,autorizador)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{clave_empleado},#{nombre},#{apellido_paterno},#{apellido_materno},#{email},#{autorizador})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM empleado 
+        </selectKey>
+
+    </insert>
+
+    <update id="EmpleadoUpdate" parameterType="Empleado">
+        UPDATE empleado 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},clave_empleado = #{clave_empleado},nombre = #{nombre},apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},email = #{email},autorizador = #{autorizador}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="EmpleadoDelete" parameterType="map">
+        DELETE FROM empleado 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="EmpleadoWhere" parameterType="map" resultMap="ResultEmpleado">
+        SELECT *
+        FROM empleado 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="EmpleadoOne" parameterType="map" resultMap="ResultEmpleado">
+        SELECT *
+        FROM empleado 
+        ${where} 
+    </select>
+
+</mapper>

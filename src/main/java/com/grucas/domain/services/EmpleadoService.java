@@ -10,40 +10,40 @@ package com.grucas.domain.services;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.dao.SistemaDAO;
-import com.grucas.domain.model.Sistema;
+import com.grucas.domain.dao.EmpleadoDAO;
+import com.grucas.domain.model.Empleado;
 import java.util.List;
 
 /**
  *
  * @author PabloBenavides
  */
-public class SistemaService {
+public class EmpleadoService {
     
-    private Sistema object;
-    private List<Sistema> objects;
-    private SistemaDAO dao;
+    private Empleado object;
+    private List<Empleado> objects;
+    private EmpleadoDAO dao;
     private String notification;
     private Boolean ok;
     private Integer total_result;
 
-    public SistemaService() {
-        dao = new SistemaDAO(GrucasDomainConfig.getEnvironmentGrucas());
+    public EmpleadoService() {
+        dao = new EmpleadoDAO(GrucasDomainConfig.getEnvironmentGrucas());
     }
 
-    public Sistema getObject() {
+    public Empleado getObject() {
         return object;
     }
 
-    public void setObject(Sistema object) {
+    public void setObject(Empleado object) {
         this.object = object;
     }
 
-    public List<Sistema> getObjects() {
+    public List<Empleado> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Sistema> objects) {
+    public void setObjects(List<Empleado> objects) {
         this.objects = objects;
     }
 
@@ -71,76 +71,48 @@ public class SistemaService {
         this.total_result = total_result;
     }
 
-    public void SistemaInsert(Sistema sistema) {
-        object = sistema;
-        dao.SistemaInsert(object);
+    public void EmpleadoInsert(Empleado empleado) {
+        object = empleado;
+        dao.EmpleadoInsert(object);
 
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "Sistema " + sistema.getId()+ " dado de alta correctamente.";
+            notification = "Empleado " + empleado.getId()+ " dado de alta correctamente.";
         } else {
-            notification = "Ha ocurrido un error al guardar. Sistema " +sistema.getId()+" no almacenado(a) en la base de datos.";
+            notification = "Ha ocurrido un error al guardar. Empleado " +empleado.getId()+" no almacenado(a) en la base de datos.";
         }
     }
 
-    public void SistemaUpdate(Sistema sistema){
-        object = sistema;
-        dao.SistemaUpdate(object);
+    public void EmpleadoUpdate(Empleado empleado){
+        object = empleado;
+        dao.EmpleadoUpdate(object);
 
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Sistema " + sistema.getId()+ " modificado(a) correctamente.";
+            notification = "Empleado " + empleado.getId()+ " modificado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al modificar. Sistema " + sistema.getId();
+            notification = "Ha ocurrido un error al modificar. Empleado " + empleado.getId();
         }
     }
 
-    public void SistemaDelete(Sistema sistema){
-        object = sistema;
-        dao.SistemaDelete(object.getId());
+    public void EmpleadoDelete(Empleado empleado){
+        object = empleado;
+        dao.EmpleadoDelete(object.getId());
 
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Sistema "+ sistema.getId()+ " fue eliminado(a) correctamente.";
+            notification = "Empleado "+ empleado.getId()+ " fue eliminado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al eliminar Sistema " + sistema.getId();
+            notification = "Ha ocurrido un error al eliminar Empleado " + empleado.getId();
         }
     }
 
-    public void getSistema(String where, String group, String order){
+    public void getEmpleado(String where, String group, String order){
 
-        dao.getSistema(where, group, order);
-
-        setOk(dao.getOk());
-
-        if(getOk()){
-
-            objects = dao.getObjects();
-            total_result = objects.size();
-
-            if(!objects.isEmpty()){
-
-                if(objects.size()==1){
-                    object = objects.get(0);
-                }
-
-                notification = "Informacion cargada correctamente.";
-            } else {
-                notification = "No se encontraron registros dados de alta.";
-            }
-
-        }else{
-            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
-        }
-
-    }
-    
-    public void getSistemaByUser(Integer usuario_id){
-
-        dao.getSistemaByUser(usuario_id);
+        dao.getEmpleado(where, group, order);
 
         setOk(dao.getOk());
 
@@ -167,8 +139,31 @@ public class SistemaService {
     }
 
     public Integer getMaxID(){
-        dao.getSistemaID();
+        dao.getEmpleadoID();
         return dao.getId();
+    }
+
+    public void getOneEmpleado(String where){
+
+        dao.getOneEmpleado(where);
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            object = dao.getObject();
+            total_result = 1;
+
+            if(object != null){
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+
     }
 
 }

@@ -10,7 +10,7 @@ package com.grucas.domain.dao;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.model.Usuario;
+import com.grucas.domain.model.Empleado;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
 import java.util.List;
@@ -24,16 +24,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
  *
  * @author PabloBenavides
  */
-public class UsuarioDAO {
+public class EmpleadoDAO {
 
-    private Usuario object;
     private Integer id = 0;
-    private List<Usuario> objects = null;
+    private List<Empleado> objects = null;
+    private Empleado object = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
 
-    public UsuarioDAO(String env) {
+    public EmpleadoDAO(String env) {
         sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
 
@@ -45,19 +45,19 @@ public class UsuarioDAO {
         this.id = id;
     }
 
-    public List<Usuario> getObjects() {
+    public List<Empleado> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Usuario> objects) {
+    public void setObjects(List<Empleado> objects) {
         this.objects = objects;
     }
 
-    public Usuario getObject() {
+    public Empleado getObject() {
         return object;
     }
 
-    public void setObject(Usuario object) {
+    public void setObject(Empleado object) {
         this.object = object;
     }
 
@@ -77,14 +77,14 @@ public class UsuarioDAO {
         this.err_code = err_code;
     }
 
-    public void getUsuarioID(){
+    public void getEmpleadoID(){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            id = session.selectOne("UsuarioMaxID");
+            id = session.selectOne("EmpleadoMaxID");
 
             if(id==null)
             {
@@ -97,13 +97,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -116,7 +116,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void getUsuario(String strWhere, String strGroup, String strOrder){
+    public void getEmpleado(String strWhere, String strGroup, String strOrder){
 
         SqlSession session = null;
 
@@ -128,7 +128,7 @@ public class UsuarioDAO {
             map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
 
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("UsuarioWhere",map);
+            objects = session.selectList("EmpleadoWhere",map);
 
             ok = true;
             
@@ -136,13 +136,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -154,20 +154,18 @@ public class UsuarioDAO {
 
         }
     }
-    
-    public void getUsuario(Integer id){
+
+    public void getOneEmpleado(String strWhere){
 
         SqlSession session = null;
 
         try {
 
             Map map = new HashMap();
-            map.put("where", " WHERE id  = " + id);
-            map.put("group", "");
-            map.put("order", "");
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("UsuarioWhere",map);
+            object = session.selectOne("EmpleadoWhere",map);
 
             ok = true;
             
@@ -175,13 +173,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -194,14 +192,14 @@ public class UsuarioDAO {
         }
     }
 
-    public void UsuarioInsert(Usuario object) {
+    public void EmpleadoInsert(Empleado object) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.insert("UsuarioInsert", object);
+            session.insert("EmpleadoInsert", object);
             session.commit();
             ok = true;
 
@@ -209,13 +207,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -228,14 +226,14 @@ public class UsuarioDAO {
         }
     }
 
-    public void UsuarioUpdate(Usuario object){
+    public void EmpleadoUpdate(Empleado object){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.update("UsuarioUpdate",object);
+            session.update("EmpleadoUpdate",object);
             session.commit();
 
             ok = true;
@@ -244,13 +242,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -263,14 +261,14 @@ public class UsuarioDAO {
         }
     }
 
-    public void UsuarioDelete(Integer id){
+    public void EmpleadoDelete(Integer id){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.delete("UsuarioDelete",id);
+            session.delete("EmpleadoDelete",id);
             session.commit();
 
             ok = true;
@@ -279,13 +277,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 

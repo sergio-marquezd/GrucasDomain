@@ -9,7 +9,7 @@ package com.grucas.domain.services;
  *
  * @author GrucasDev
  */
-import com.grucas.domain.config.DomainConfig;
+import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.RolDAO;
 import com.grucas.domain.model.Rol;
 import java.util.List;
@@ -28,7 +28,7 @@ public class RolService {
     private Integer total_result;
 
     public RolService() {
-        dao = new RolDAO(DomainConfig.getEnvironmentGrucas());
+        dao = new RolDAO(GrucasDomainConfig.getEnvironmentGrucas());
     }
 
     public Rol getObject() {
