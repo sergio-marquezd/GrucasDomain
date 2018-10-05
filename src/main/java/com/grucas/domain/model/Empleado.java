@@ -19,7 +19,16 @@ public class Empleado extends ObjectBase{
     String apellido_materno;
     
     String email;
+    
+    String departamento_id;
+    String departamento;
+    String puesto_id;
+    String puesto;
+    
     Boolean autorizador;
+    Boolean activo;
+    
+    Boolean fecha_ingreso;
 
     public Empleado() {
     }
