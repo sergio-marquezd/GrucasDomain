@@ -10,7 +10,7 @@
         <typeAlias alias="Rol" type="com.grucas.domain.model.Rol"/>
         <typeAlias alias="Sistema" type="com.grucas.domain.model.Sistema"/>
         <typeAlias alias="UnidadNegocio" type="com.grucas.domain.model.UnidadNegocio"/>
-        <typeAlias alias="Empresa" type="com.rubik.model.Empresa"/>
+        <typeAlias alias="Empresa" type="com.grucas.domain.model.Empresa"/>
 
     </typeAliases>
     
@@ -33,11 +33,11 @@
     </environments>
     
     <mappers>
-        <mapper resource="mapper/UsuarioMapper.xml"/>
-        <mapper resource="mapper/RolMapper.xml"/>
-        <mapper resource="mapper/SistemaMapper.xml"/>
-        <mapper resource="mapper/UnidadNegocioMapper.xml"/>
-<!--        <mapper resource="mapper/Empresa.xml"/>-->
+        <mapper resource="mapper/Usuario.xml"/>
+        <mapper resource="mapper/Rol.xml"/>
+        <mapper resource="mapper/Sistema.xml"/>
+        <mapper resource="mapper/UnidadNegocio.xml"/>
+        <mapper resource="mapper/Empresa.xml"/>
     </mappers>
   
 </configuration>
