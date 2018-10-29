@@ -21,6 +21,8 @@ public class UnidadNegocio extends ObjectBase{
     String codigo_postal;
     String telefono;
     String prefijo;
+    String folio_requisicion;
+    String folio_orden_compra;
 
     public UnidadNegocio() {
     }
@@ -87,6 +89,22 @@ public class UnidadNegocio extends ObjectBase{
 
     public void setPrefijo(String prefijo) {
         this.prefijo = prefijo;
+    }
+
+    public String getFolio_requisicion() {
+        return folio_requisicion;
+    }
+
+    public void setFolio_requisicion(String folio_requisicion) {
+        this.folio_requisicion = folio_requisicion;
+    }
+
+    public String getFolio_orden_compra() {
+        return folio_orden_compra;
+    }
+
+    public void setFolio_orden_compra(String folio_orden_compra) {
+        this.folio_orden_compra = folio_orden_compra;
     }
 
 }

@@ -10,7 +10,7 @@ package com.grucas.domain.services;
  *
  * @author GrucasDev
  */
-import com.grucas.domain.config.DomainConfig;
+import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.UsuarioDAO;
 import com.grucas.domain.model.Sistema;
 import com.grucas.domain.model.Usuario;
@@ -31,7 +31,7 @@ public class UsuarioService {
     private Integer total_result;
 
     public UsuarioService() {
-        dao = new UsuarioDAO(DomainConfig.getEnvironmentGrucas());
+        dao = new UsuarioDAO(GrucasDomainConfig.getEnvironmentGrucas());
     }
 
     public Usuario getObject() {
@@ -141,9 +141,26 @@ public class UsuarioService {
 
     }
     
+    public void getUsuario(Integer id){
+
+        dao.getUsuario(id);
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            object = dao.getObject();
+            total_result = 1;
+            notification = "Usuario cargado correctamente.";
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+
+    }
+    
     public void login(String username, String password, Integer code){
         
-        UsuarioDAO dao = new UsuarioDAO(DomainConfig.getEnvironmentGrucas());
+        UsuarioDAO dao = new UsuarioDAO(GrucasDomainConfig.getEnvironmentGrucas());
         
         dao.getUsuario("username = '" + username + "' and password = '" + password + "'", "", "");
         if(dao.getObjects().size()>0){

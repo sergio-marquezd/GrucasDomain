@@ -1,16 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grucas.domain.dao;
 
-/**
- *
- * @author GrucasDev
- */
-import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.model.Usuario;
+import com.grucas.domain.model.Empresa;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
 import java.util.List;
@@ -24,16 +14,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
  *
  * @author PabloBenavides
  */
-public class UsuarioDAO {
+public class EmpresaDAO {
 
-    private Usuario object;
     private Integer id = 0;
-    private List<Usuario> objects = null;
+    private List<Empresa> objects = null;
+    private Empresa object = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
 
-    public UsuarioDAO(String env) {
+    public EmpresaDAO(String env) {
         sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
 
@@ -45,19 +35,19 @@ public class UsuarioDAO {
         this.id = id;
     }
 
-    public List<Usuario> getObjects() {
+    public List<Empresa> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Usuario> objects) {
+    public void setObjects(List<Empresa> objects) {
         this.objects = objects;
     }
 
-    public Usuario getObject() {
+    public Empresa getObject() {
         return object;
     }
 
-    public void setObject(Usuario object) {
+    public void setObject(Empresa object) {
         this.object = object;
     }
 
@@ -77,165 +67,156 @@ public class UsuarioDAO {
         this.err_code = err_code;
     }
 
-    public void getUsuarioID(){
+    public void getEmpresaID() {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            id = session.selectOne("UsuarioMaxID");
+            id = session.selectOne("EmpresaMaxID");
 
-            if(id==null)
-            {
+            if (id == null) {
                 id = 1;
             }
 
             ok = true;
 
         } catch (SqlSessionException ex) {
-
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
-
+            ex.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         } finally {
 
-            if(session != null){
+            if (session != null) {
                 session.close();
             }
 
         }
     }
 
-    public void getUsuario(String strWhere, String strGroup, String strOrder){
+    public void getEmpresa(String strWhere, String strGroup, String strOrder) {
 
         SqlSession session = null;
 
         try {
 
             Map map = new HashMap();
-            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
-            map.put("group", strGroup.length()==0?"":" GROUP BY " + strGroup);
-            map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
+            map.put("where", strWhere.length() == 0 ? "" : " WHERE " + strWhere);
+            map.put("group", strGroup.length() == 0 ? "" : " GROUP BY " + strGroup);
+            map.put("order", strOrder.length() == 0 ? "" : " ORDER BY " + strOrder);
 
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("UsuarioWhere",map);
+            objects = session.selectList("EmpresaWhere", map);
 
             ok = true;
-            
+
         } catch (SqlSessionException ex) {
-
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
-
+            ex.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         } finally {
 
-            if(session != null){
+            if (session != null) {
                 session.close();
             }
 
         }
     }
-    
-    public void getUsuario(Integer id){
+
+    public void getOneEmpresa(String strWhere) {
 
         SqlSession session = null;
 
         try {
 
             Map map = new HashMap();
-            map.put("where", " WHERE id  = " + id);
-            map.put("group", "");
-            map.put("order", "");
+            map.put("where", strWhere.length() == 0 ? "" : " WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("UsuarioWhere",map);
+            object = session.selectOne("EmpresaWhere", map);
 
             ok = true;
-            
+
         } catch (SqlSessionException ex) {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
-
+            ex.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
         } finally {
 
-            if(session != null){
+            if (session != null) {
                 session.close();
             }
 
         }
     }
 
-    public void UsuarioInsert(Usuario object) {
+    public void EmpresaInsert(Empresa object) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.insert("UsuarioInsert", object);
+            session.insert("EmpresaInsert", object);
             session.commit();
             ok = true;
 
         } catch (PersistenceException ex) {
-
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
+            ex.printStackTrace();
+        } catch (Exception exception) {
+            exception.printStackTrace();
 
         } finally {
 
-            if(session != null){
+            if (session != null) {
                 session.close();
             }
 
         }
     }
 
-    public void UsuarioUpdate(Usuario object){
+    public void EmpresaUpdate(Empresa object) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.update("UsuarioUpdate",object);
+            session.update("EmpresaUpdate", object);
+            session.commit();
+
+            ok = true;
+
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+            ex.printStackTrace();
+        } catch (Exception exception) {
+
+            exception.printStackTrace();
+        } finally {
+
+            if (session != null) {
+                session.close();
+            }
+
+        }
+    }
+
+    public void EmpresaDelete(Integer id) {
+
+        SqlSession session = null;
+
+        try {
+
+            session = sqlSessionFactory.openSession();
+            session.delete("EmpresaDelete", id);
             session.commit();
 
             ok = true;
@@ -244,54 +225,14 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
+            ex.printStackTrace();
 
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
+        } catch (Exception exception) {
+            exception.printStackTrace();
 
         } finally {
 
-            if(session != null){
-                session.close();
-            }
-
-        }
-    }
-
-    public void UsuarioDelete(Integer id){
-
-        SqlSession session = null;
-
-        try {
-
-            session = sqlSessionFactory.openSession();
-            session.delete("UsuarioDelete",id);
-            session.commit();
-
-            ok = true;
-
-        } catch (SqlSessionException ex) {
-
-            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
-
-        } finally {
-
-            if(session != null){
+            if (session != null) {
                 session.close();
             }
 

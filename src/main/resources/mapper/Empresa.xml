@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Empresa">
+
+    <resultMap id="ResultEmpresaID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultEmpresa" type="Empresa">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="razon_social" column="razon_social"/>
+        <result property="abreviacion" column="abreviacion"/>
+        <result property="contacto_email" column="contacto_email"/>
+        <result property="contacto_nombre" column="contacto_nombre"/>
+        <result property="contacto_tel" column="contacto_tel"/>
+        <result property="rfc" column="rfc"/>
+        <result property="domicilio" column="domicilio"/>
+        <result property="ciudad" column="ciudad"/>
+        <result property="estado" column="estado"/>
+        <result property="cp" column="cp"/>
+        <result property="telefono" column="telefono"/>
+        <result property="pais" column="pais"/>
+    </resultMap>
+
+    <select id="EmpresaMaxID" resultMap="ResultEmpresaID">
+        SELECT max(id)+1 as id
+        FROM empresa 
+    </select>
+
+    <insert id="EmpresaInsert" parameterType="Empresa" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO empresa 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,razon_social,abreviacion,contacto_email,contacto_nombre,contacto_tel,rfc,domicilio,ciudad,estado,cp,telefono,pais)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{razon_social},#{abreviacion},#{contacto_email},#{contacto_nombre},#{contacto_tel},#{rfc},#{domicilio},#{ciudad},#{estado},#{cp},#{telefono},#{pais})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+                SELECT MAX(id) FROM empresa 
+        </selectKey>
+
+    </insert>
+
+    <update id="EmpresaUpdate" parameterType="Empresa">
+        UPDATE empresa 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},razon_social = #{razon_social},abreviacion = #{abreviacion},contacto_email = #{contacto_email},contacto_nombre = #{contacto_nombre},contacto_tel = #{contacto_tel},rfc = #{rfc},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},cp = #{cp},telefono = #{telefono},pais = #{pais}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="EmpresaDelete" parameterType="map">
+        DELETE FROM empresa 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="EmpresaWhere" parameterType="map" resultMap="ResultEmpresa">
+        SELECT *
+        FROM empresa 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="EmpresaOne" parameterType="map" resultMap="ResultEmpresa">
+        SELECT *
+        FROM empresa 
+        ${where} 
+    </select>
+
+</mapper>

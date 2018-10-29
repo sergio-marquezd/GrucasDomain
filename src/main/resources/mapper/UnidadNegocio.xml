@@ -25,6 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="codigo_postal" column="codigo_postal"/>
         <result property="telefono" column="telefono"/>
         <result property="prefijo" column="prefijo"/>
+        <result property="folio_requisicion" column="folio_requisicion"/>
+        <result property="folio_orden_compra" column="folio_orden_compra"/>
     </resultMap>
 
     <select id="UnidadNegocioMaxID" resultMap="ResultUnidadNegocioID">
@@ -35,9 +37,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="UnidadNegocioInsert" parameterType="UnidadNegocio" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO unidad_negocio 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,telefono,prefijo)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,telefono,prefijo,folio_requisicion,folio_orden_compra)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},#{estado},#{ciudad},#{codigo_postal},#{telefono},#{prefijo})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},#{estado},#{ciudad},#{codigo_postal},#{telefono},#{prefijo},#{folio_requisicion},#{folio_orden_compra})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM unidad_negocio 
@@ -47,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="UnidadNegocioUpdate" parameterType="UnidadNegocio">
         UPDATE unidad_negocio 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},domicilio = #{domicilio},pais = #{pais},estado = #{estado},ciudad = #{ciudad},codigo_postal = #{codigo_postal},telefono = #{telefono},prefijo = #{prefijo}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},domicilio = #{domicilio},pais = #{pais},estado = #{estado},ciudad = #{ciudad},codigo_postal = #{codigo_postal},telefono = #{telefono},prefijo = #{prefijo},folio_requisicion = #{folio_requisicion},folio_orden_compra = #{folio_orden_compra}
         WHERE id = #{id}
     </update>
 
@@ -62,6 +64,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         ${where} 
         ${group} 
         ${order}
+    </select>
+
+    <select id="UnidadNegocioOne" parameterType="map" resultMap="ResultUnidadNegocio">
+        SELECT *
+        FROM unidad_negocio 
+        ${where} 
     </select>
 
 </mapper>
