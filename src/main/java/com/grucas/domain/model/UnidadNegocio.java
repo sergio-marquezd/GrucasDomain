@@ -20,9 +20,10 @@ public class UnidadNegocio extends ObjectBase{
     String ciudad;
     String codigo_postal;
     String telefono;
-    String prefijo;
-    String folio_requisicion;
-    String folio_orden_compra;
+    String serie;
+    Integer folio_requisicion;
+    Integer folio_orden_compra;
+    Integer folio_responsiva;
 
     public UnidadNegocio() {
     }
@@ -83,28 +84,36 @@ public class UnidadNegocio extends ObjectBase{
         this.telefono = telefono;
     }
 
-    public String getPrefijo() {
-        return prefijo;
+    public String getSerie() {
+        return serie;
     }
 
-    public void setPrefijo(String prefijo) {
-        this.prefijo = prefijo;
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
 
-    public String getFolio_requisicion() {
+    public Integer getFolio_requisicion() {
         return folio_requisicion;
     }
 
-    public void setFolio_requisicion(String folio_requisicion) {
+    public void setFolio_requisicion(Integer folio_requisicion) {
         this.folio_requisicion = folio_requisicion;
     }
 
-    public String getFolio_orden_compra() {
+    public Integer getFolio_orden_compra() {
         return folio_orden_compra;
     }
 
-    public void setFolio_orden_compra(String folio_orden_compra) {
+    public void setFolio_orden_compra(Integer folio_orden_compra) {
         this.folio_orden_compra = folio_orden_compra;
+    }
+
+    public Integer getFolio_responsiva() {
+        return folio_responsiva;
+    }
+
+    public void setFolio_responsiva(Integer folio_responsiva) {
+        this.folio_responsiva = folio_responsiva;
     }
 
 }

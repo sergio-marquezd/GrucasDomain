@@ -22,6 +22,7 @@ public class Usuario extends ObjectBase{
     String tipo;
     Integer empleado_id;
     String permisos;
+    Integer rol_id;
     String rol;
     Boolean todas_unidades;
 
@@ -90,6 +91,14 @@ public class Usuario extends ObjectBase{
 
     public void setPermisos(String permisos) {
         this.permisos = permisos;
+    }
+
+    public Integer getRol_id() {
+        return rol_id;
+    }
+
+    public void setRol_id(Integer rol_id) {
+        this.rol_id = rol_id;
     }
 
     public String getRol() {

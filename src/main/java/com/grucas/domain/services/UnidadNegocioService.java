@@ -12,7 +12,9 @@ package com.grucas.domain.services;
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.UnidadNegocioDAO;
 import com.grucas.domain.model.UnidadNegocio;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -159,6 +161,64 @@ public class UnidadNegocioService {
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
 
+    }
+    
+    public void incrementarFolio(String field, Integer unidad_id){
+        
+    }
+    
+    public Integer getNextFolio(String field, Integer unidad_id){
+        Integer folio = 0;
+        
+//        Map map = new HashMap();
+//        map.put("field", field);
+//        map.put("unidad_id", unidad_id);
+//        
+//        dao.getFolio(map);
+//
+//        setOk(dao.getOk());
+//
+//        if(getOk()){
+//
+//            object = dao.getObject();
+//            total_result = 1;
+//
+//            if(object != null){
+//                notification = "Informacion cargada correctamente.";
+//            } else {
+//                notification = "No se encontraron registros dados de alta.";
+//            }
+//
+//        }else{
+//            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+//        }
+        return folio;
+    }
+    
+    public String getSerie(Integer unidad_id){
+        dao.getOneUnidadNegocio("unidad_id = " + unidad_id);
+        String serie = "";
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            object = dao.getObject();
+            total_result = 1;
+
+            if(object != null){
+                serie = object.getSerie();
+                notification = "Informacion cargada correctamente.";
+            } else {
+                serie = "GRUCAS";
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            serie = "GRUCAS";
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+        
+        return serie;
     }
     
     public Integer getMaxID(){

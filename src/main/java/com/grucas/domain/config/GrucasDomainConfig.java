@@ -22,6 +22,10 @@ public class GrucasDomainConfig {
     public static String getEnvironmentGrucas() {
         return ENV_GRUCAS;
     }
+
+    public static final String PERFIL_ADMINISTRADOR = "ADMINISTRADOR";
+    public static final String PERFIL_COMPRAS = "COMPRAS";
+    public static final String PERFIL_REQUISICIONES = "REQUISICIONES";
     
     public static final String ESTADO_TODOS = "TODOS";
     public static final String ESTADO_DOCUMENTO_PRE_ELABORADO = "PRE ELABORADO";
@@ -48,7 +52,6 @@ public class GrucasDomainConfig {
     public static final String MEDIDA_ROLLO= "ROLLO";
     public static final String MEDIDA_SACO = "SACO";    
     public static final String MEDIDA_TANQUE = "TANQUE";
-   
 
     public static final List<String> UNIDAD_MEDIDA = Arrays.asList(MEDIDA_BOLSA,MEDIDA_BOTE,MEDIDA_BULTO,MEDIDA_CAJA,MEDIDA_CARTON,MEDIDA_CONTENEDOR,MEDIDA_COSTAL,MEDIDA_CUBETA,MEDIDA_LATA,MEDIDA_PALLETA,MEDIDA_PAQUETE,MEDIDA_PIEZA,MEDIDA_ROLLO,MEDIDA_SACO,MEDIDA_TANQUE);
 
