@@ -26,6 +26,9 @@ public class UnidadNegocio extends ObjectBase{
     Integer folio_responsiva;
 
     public UnidadNegocio() {
+        folio_requisicion=0;
+        folio_orden_compra=0;
+        folio_responsiva=0;
     }
 
     public String getNombre() {

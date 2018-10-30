@@ -12,9 +12,8 @@ package com.grucas.domain.services;
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.UnidadNegocioDAO;
 import com.grucas.domain.model.UnidadNegocio;
-import java.util.HashMap;
+import com.rubik.manage.ManageString;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -80,9 +79,9 @@ public class UnidadNegocioService {
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "UnidadNegocio " + unidadnegocio.getId()+ " dado de alta correctamente.";
+            notification = "UnidadNegocio " + unidadnegocio.getNombre()+ " dado de alta correctamente.";
         } else {
-            notification = "Ha ocurrido un error al guardar. UnidadNegocio " +unidadnegocio.getId()+" no almacenado(a) en la base de datos.";
+            notification = "Ha ocurrido un error al guardar. UnidadNegocio " +unidadnegocio.getNombre()+" no almacenado(a) en la base de datos.";
         }
     }
 
@@ -93,9 +92,9 @@ public class UnidadNegocioService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "UnidadNegocio " + unidadnegocio.getId()+ " modificado(a) correctamente.";
+            notification = "UnidadNegocio " + unidadnegocio.getNombre()+ " modificado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al modificar. UnidadNegocio " + unidadnegocio.getId();
+            notification = "Ha ocurrido un error al modificar. UnidadNegocio " + unidadnegocio.getNombre();
         }
     }
 
@@ -106,9 +105,9 @@ public class UnidadNegocioService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "UnidadNegocio "+ unidadnegocio.getId()+ " fue eliminado(a) correctamente.";
+            notification = "UnidadNegocio "+ unidadnegocio.getNombre()+ " fue eliminado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al eliminar UnidadNegocio " + unidadnegocio.getId();
+            notification = "Ha ocurrido un error al eliminar UnidadNegocio " + unidadnegocio.getNombre();
         }
     }
 
@@ -165,33 +164,53 @@ public class UnidadNegocioService {
     
     public void incrementarFolio(String field, Integer unidad_id){
         
+        dao.FolioUpdate(field, unidad_id);
+        
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            total_result = 1;
+            notification = "Folio incrementado correctamente.";
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
     }
     
-    public Integer getNextFolio(String field, Integer unidad_id){
+    public String getFolio(String field, Integer unidad_id, Boolean fillzero){
+       String folio = "";
+        
+       Integer intFolio = getFolio(field, unidad_id);
+       String strSerie = getSerie(unidad_id);
+       
+       if(fillzero){
+           folio = strSerie + ManageString.fillWithZero(intFolio, 5);
+       }else{
+           folio = strSerie + intFolio;
+       }
+       
+        
+        return folio;
+    }
+    
+    public Integer getFolio(String field, Integer unidad_id){
         Integer folio = 0;
         
-//        Map map = new HashMap();
-//        map.put("field", field);
-//        map.put("unidad_id", unidad_id);
-//        
-//        dao.getFolio(map);
-//
-//        setOk(dao.getOk());
-//
-//        if(getOk()){
-//
-//            object = dao.getObject();
-//            total_result = 1;
-//
-//            if(object != null){
-//                notification = "Informacion cargada correctamente.";
-//            } else {
-//                notification = "No se encontraron registros dados de alta.";
-//            }
-//
-//        }else{
-//            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
-//        }
+        folio = dao.getFolio(field,unidad_id);
+
+        if(folio != null){
+            ok = true;
+            total_result = 1;
+            notification = "Informacion cargada correctamente.";
+
+        }else{            
+            folio = 1;
+            ok = false;
+            total_result = 0;
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+        
         return folio;
     }
     

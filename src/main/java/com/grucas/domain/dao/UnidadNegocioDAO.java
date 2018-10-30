@@ -116,7 +116,6 @@ public class UnidadNegocioDAO {
         }
     }
 
-
     public void getOneUnidadNegocio(String strWhere){
 
         SqlSession session = null;
@@ -297,4 +296,84 @@ public class UnidadNegocioDAO {
         }
     }
 
+    public void FolioUpdate(String field, Integer id){
+
+        SqlSession session = null;
+        
+        Map map = new HashMap();
+        map.put("field", field);
+        map.put("id", id);
+        
+        try {
+            
+            session = sqlSessionFactory.openSession();
+            session.update("FolioUpdate",map);
+            session.commit();
+
+            ok = true;
+
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+
+    public Integer getFolio(String field, Integer id){
+        SqlSession session = null;
+        Integer folio = 0;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("field", field);
+            map.put("id", id);
+            
+            session = sqlSessionFactory.openSession();
+            folio = session.selectOne("getFolio",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+            folio = 0;
+            
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+            folio = 0;
+            
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+        
+        return folio;
+    }
+    
 }
