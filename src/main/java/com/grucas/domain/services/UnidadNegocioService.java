@@ -215,7 +215,7 @@ public class UnidadNegocioService {
     }
     
     public String getSerie(Integer unidad_id){
-        dao.getOneUnidadNegocio("unidad_id = " + unidad_id);
+        dao.getOneUnidadNegocio("id = " + unidad_id);
         String serie = "";
         setOk(dao.getOk());
 
