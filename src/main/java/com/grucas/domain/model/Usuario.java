@@ -28,7 +28,7 @@ public class Usuario extends ObjectBase{
 
     public Usuario() {
     }
-
+    
     public String getNombre() {
         return nombre;
     }

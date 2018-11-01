@@ -228,12 +228,12 @@ public class UnidadNegocioService {
                 serie = object.getSerie();
                 notification = "Informacion cargada correctamente.";
             } else {
-                serie = "GRUCAS";
+                serie = "GRUCAS888";
                 notification = "No se encontraron registros dados de alta.";
             }
 
         }else{
-            serie = "GRUCAS";
+            serie = "GRUCAS555";
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
         
