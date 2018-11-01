@@ -178,17 +178,17 @@ public class UnidadNegocioService {
         }
     }
     
-    public String getFolio(String field, Integer unidad_id, Boolean fillzero){
-       String folio = "";
-        
-       Integer intFolio = getFolio(field, unidad_id);
-       String strSerie = getSerie(unidad_id);
-       
-       if(fillzero){
-           folio = strSerie + ManageString.fillWithZero(intFolio, 5);
-       }else{
-           folio = strSerie + intFolio;
-       }
+    public String getFolio(String field, Integer unidad_id, Boolean fillzero) {
+        String folio = "";
+
+        Integer intFolio = getFolio(field, unidad_id);
+        String strSerie = getSerie(unidad_id);
+
+        if (fillzero) {
+            folio = strSerie + ManageString.fillWithZero(intFolio, 5);
+        } else {
+            folio = strSerie + intFolio;
+        }
        
         
         return folio;
