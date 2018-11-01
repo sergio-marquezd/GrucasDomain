@@ -118,5 +118,10 @@ public class UnidadNegocio extends ObjectBase{
     public void setFolio_responsiva(Integer folio_responsiva) {
         this.folio_responsiva = folio_responsiva;
     }
+    
+    @Override
+    public String toString() {
+        return unidad;
+    }
 
 }

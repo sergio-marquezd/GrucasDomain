@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     </resultMap>
 
     <resultMap id="ResultFolio" type="Integer">
-        <result property="value" column="id"/>
+        <result property="value" column="folio"/>
     </resultMap>
 
     <resultMap id="ResultUnidadNegocio" type="UnidadNegocio">
@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         FROM unidad_negocio 
     </select>
 
-    <select id="getFolio" parameterType="map" resultMap="ResultUnidadNegocioID">
+    <select id="getFolio" parameterType="map" resultMap="ResultFolio">
         SELECT (${field} + 1) AS folio FROM unidad_negocio WHERE id = #{id}
     </select>
 
