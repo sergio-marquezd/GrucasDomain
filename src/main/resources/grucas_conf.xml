@@ -11,6 +11,7 @@
         <typeAlias alias="Sistema" type="com.grucas.domain.model.Sistema"/>
         <typeAlias alias="UnidadNegocio" type="com.grucas.domain.model.UnidadNegocio"/>
         <typeAlias alias="Empresa" type="com.grucas.domain.model.Empresa"/>
+        <typeAlias alias="Empleado" type="com.grucas.domain.model.Empleado"/>
 
     </typeAliases>
     
@@ -38,6 +39,7 @@
         <mapper resource="mapper/Sistema.xml"/>
         <mapper resource="mapper/UnidadNegocio.xml"/>
         <mapper resource="mapper/Empresa.xml"/>
+        <mapper resource="mapper/Empleado.xml"/>
     </mappers>
   
 </configuration>
