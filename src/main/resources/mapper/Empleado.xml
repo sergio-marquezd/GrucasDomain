@@ -16,13 +16,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="unidad" column="unidad"/>
         <result property="usuario_id" column="usuario_id"/>
         <result property="usuario" column="usuario"/>
-        <result property="activo" column="activo"/>
         <result property="clave_empleado" column="clave_empleado"/>
         <result property="nombre" column="nombre"/>
         <result property="apellido_paterno" column="apellido_paterno"/>
         <result property="apellido_materno" column="apellido_materno"/>
-        <result property="email" column="email"/>
+        <result property="nss" column="nss"/>
+        <result property="domicilio" column="domicilio"/>
+        <result property="colonia" column="colonia"/>
+        <result property="cp" column="cp"/>
+        <result property="ciudad" column="ciudad"/>
+        <result property="estado" column="estado"/>
+        <result property="pais" column="pais"/>
+        <result property="telefono_empresa" column="telefono_empresa"/>
+        <result property="telefono_personal" column="telefono_personal"/>
+        <result property="email_empresa" column="email_empresa"/>
+        <result property="email_personal" column="email_personal"/>
+        <result property="fecha_ingreso" column="fecha_ingreso"/>
         <result property="autorizador" column="autorizador"/>
+        <result property="activo" column="activo"/>
     </resultMap>
 
     <select id="EmpleadoMaxID" resultMap="ResultEmpleadoID">
@@ -33,9 +44,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="EmpleadoInsert" parameterType="Empleado" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO empleado 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,clave_empleado,nombre,apellido_paterno,apellido_materno,email,autorizador)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,clave_empleado,nombre,apellido_paterno,apellido_materno,nss,domicilio,colonia,cp,ciudad,estado,pais,telefono_empresa,telefono_personal,email_empresa,email_personal,fecha_ingreso,autorizador,activo)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{clave_empleado},#{nombre},#{apellido_paterno},#{apellido_materno},#{email},#{autorizador})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{clave_empleado},#{nombre},#{apellido_paterno},#{apellido_materno},#{nss},#{domicilio},#{colonia},#{cp},#{ciudad},#{estado},#{pais},#{telefono_empresa},#{telefono_personal},#{email_empresa},#{email_personal},#{fecha_ingreso},#{autorizador},#{activo})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM empleado 
@@ -45,7 +56,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="EmpleadoUpdate" parameterType="Empleado">
         UPDATE empleado 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},clave_empleado = #{clave_empleado},nombre = #{nombre},apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},email = #{email},autorizador = #{autorizador}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},clave_empleado = #{clave_empleado},nombre = #{nombre},apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},nss = #{nss},domicilio = #{domicilio},colonia = #{colonia},cp = #{cp},ciudad = #{ciudad},estado = #{estado},pais = #{pais},telefono_empresa = #{telefono_empresa},telefono_personal = #{telefono_personal},email_empresa = #{email_empresa},email_personal = #{email_personal},fecha_ingreso = #{fecha_ingreso},autorizador = #{autorizador},activo = #{activo}
         WHERE id = #{id}
     </update>
 

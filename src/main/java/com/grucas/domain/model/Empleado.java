@@ -6,6 +6,7 @@
 package com.grucas.domain.model;
 
 import com.rubik.Base.ObjectBase;
+import java.util.Date;
 
 /**
  *
@@ -13,33 +14,61 @@ import com.rubik.Base.ObjectBase;
  */
 public class Empleado extends ObjectBase{
     
+    // Datos del Empleado
     String clave_empleado;
+    
     String nombre;
     String apellido_paterno;
     String apellido_materno;
+    String nss;
     
-    String email;
+    String domicilio;
+    String colonia;
+    String cp;
+    String ciudad;
+    String estado;
+    String pais;
     
-    String departamento_id;
-    String departamento;
-    String puesto_id;
-    String puesto;
+    // Datos Generales
+    String telefono_empresa;
+    String telefono_personal;
+    String email_empresa;
+    String email_personal;
+
+    // Recursos humanos
+    Date fecha_ingreso;
     
+    // Configuracion de Sistemas
     Boolean autorizador;
-    Boolean activo;
-    
-    Boolean fecha_ingreso;
 
     public Empleado() {
-    }
-
-    public Empleado(String clave_empleado, String nombre, String apellido_paterno, String apellido_materno, String email, Boolean autorizador) {
-        this.clave_empleado = clave_empleado;
-        this.nombre = nombre;
-        this.apellido_paterno = apellido_paterno;
-        this.apellido_materno = apellido_materno;
-        this.email = email;
-        this.autorizador = autorizador;
+        id = 0;
+        fecha_elaboracion = null;
+        fecha_modificacion = null;
+        empresa_id = 0;
+        empresa = "";
+        unidad_id = 0;
+        unidad = "";
+        usuario_id = 0;
+        usuario = "";
+        clave_empleado = "";
+        nombre = "";
+        apellido_paterno = "";
+        apellido_materno = "";
+        nss = "";
+        domicilio = "";
+        colonia = "";
+        cp = "";
+        ciudad = "";
+        estado = "";
+        pais = "";
+        telefono_empresa = "";
+        telefono_personal = "";
+        email_empresa = "";
+        email_personal = "";
+        fecha_ingreso = null;
+        autorizador = false;
+        activo = false;
     }
 
     public String getClave_empleado() {
@@ -74,12 +103,100 @@ public class Empleado extends ObjectBase{
         this.apellido_materno = apellido_materno;
     }
 
-    public String getEmail() {
-        return email;
+    public String getNss() {
+        return nss;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNss(String nss) {
+        this.nss = nss;
+    }
+
+    public String getDomicilio() {
+        return domicilio;
+    }
+
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
+    }
+
+    public String getColonia() {
+        return colonia;
+    }
+
+    public void setColonia(String colonia) {
+        this.colonia = colonia;
+    }
+
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public String getTelefono_empresa() {
+        return telefono_empresa;
+    }
+
+    public void setTelefono_empresa(String telefono_empresa) {
+        this.telefono_empresa = telefono_empresa;
+    }
+
+    public String getTelefono_personal() {
+        return telefono_personal;
+    }
+
+    public void setTelefono_personal(String telefono_personal) {
+        this.telefono_personal = telefono_personal;
+    }
+
+    public String getEmail_empresa() {
+        return email_empresa;
+    }
+
+    public void setEmail_empresa(String email_empresa) {
+        this.email_empresa = email_empresa;
+    }
+
+    public String getEmail_personal() {
+        return email_personal;
+    }
+
+    public void setEmail_personal(String email_personal) {
+        this.email_personal = email_personal;
+    }
+
+    public Date getFecha_ingreso() {
+        return fecha_ingreso;
+    }
+
+    public void setFecha_ingreso(Date fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
     }
 
     public Boolean getAutorizador() {
