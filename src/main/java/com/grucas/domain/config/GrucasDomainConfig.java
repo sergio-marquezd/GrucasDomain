@@ -72,6 +72,11 @@ public class GrucasDomainConfig {
     public static final String PAIS_USA = "USA";
     
     public static final List<String> PAISES = Arrays.asList(PAIS_MEXICO,PAIS_USA);
+
+    // ------------------------------------------------------------------------- 
+    // Configuraciones y usuarios
+    // ------------------------------------------------------------------------- 
+    public static final String SUPER_USUARIO = "FULLACCESS";
     
     
     public static final List<String> UNIDAD = Arrays.asList("CONSORCIO MALLORCA","DAC AEROPUERTO","DAC ALTAMIRA","DAC HIDALGO","DAC LAZARO","DAC MANZANILLO","DAC MATAMOROS","DAC MEXICO","DAC NUEVO LAREDO","DAC TAMPICO","DAC VERACRUZ","DAC GUADALAJARA");

@@ -167,7 +167,7 @@ public class UsuarioService {
             
             object = dao.getObjects().get(0);
             
-            if ("FULLACCESS".equals(object.getTipo())) {
+            if (GrucasDomainConfig.SUPER_USUARIO.equals(object.getTipo())) {
                 
                 ok = true;
                 total_result = 1;

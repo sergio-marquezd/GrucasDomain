@@ -78,7 +78,7 @@ public class EmpleadoService {
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "Empleado " + empleado.getId()+ " dado de alta correctamente.";
+            notification = "Empleado " + empleado.getNombre_completo()+ " dado de alta correctamente.";
         } else {
             notification = "Ha ocurrido un error al guardar. Empleado " +empleado.getId()+" no almacenado(a) en la base de datos.";
         }
@@ -87,11 +87,13 @@ public class EmpleadoService {
     public void EmpleadoUpdate(Empleado empleado){
         object = empleado;
         dao.EmpleadoUpdate(object);
+        
+        // modificar usuario
 
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Empleado " + empleado.getId()+ " modificado(a) correctamente.";
+            notification = "Empleado " + empleado.getNombre_completo()+ " modificado(a) correctamente.";
         }else{
             notification = "Ha ocurrido un error al modificar. Empleado " + empleado.getId();
         }
@@ -104,7 +106,7 @@ public class EmpleadoService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Empleado "+ empleado.getId()+ " fue eliminado(a) correctamente.";
+            notification = "Empleado "+ empleado.getNombre_completo()+ " fue eliminado(a) correctamente.";
         }else{
             notification = "Ha ocurrido un error al eliminar Empleado " + empleado.getId();
         }
@@ -165,5 +167,57 @@ public class EmpleadoService {
         }
 
     }
+    
+    public void getRequisitores(){
+        dao.getEmpleado(" requisitor = 1 ", "", " nombre ASC ");
 
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            objects = dao.getObjects();
+            total_result = objects.size();
+
+            if(!objects.isEmpty()){
+
+                if(objects.size()==1){
+                    object = objects.get(0);
+                }
+
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+    }
+
+    public void getAutorizadores(){
+        dao.getEmpleado(" autorizador = 1 ", "", " nombre ASC ");
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            objects = dao.getObjects();
+            total_result = objects.size();
+
+            if(!objects.isEmpty()){
+
+                if(objects.size()==1){
+                    object = objects.get(0);
+                }
+
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+    }
+    
 }

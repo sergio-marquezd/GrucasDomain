@@ -24,7 +24,7 @@ public class Empleado extends ObjectBase{
     
     String domicilio;
     String colonia;
-    String cp;
+    Integer cp;
     String ciudad;
     String estado;
     String pais;
@@ -40,8 +40,12 @@ public class Empleado extends ObjectBase{
     
     // Configuracion de Sistemas
     Boolean autorizador;
+    Boolean requisitor;
+    
+    String nombre_completo;
 
     public Empleado() {
+        super();
         id = 0;
         fecha_elaboracion = null;
         fecha_modificacion = null;
@@ -58,7 +62,7 @@ public class Empleado extends ObjectBase{
         nss = "";
         domicilio = "";
         colonia = "";
-        cp = "";
+        cp = 0;
         ciudad = "";
         estado = "";
         pais = "";
@@ -68,6 +72,7 @@ public class Empleado extends ObjectBase{
         email_personal = "";
         fecha_ingreso = null;
         autorizador = false;
+        requisitor = false;
         activo = false;
     }
 
@@ -127,11 +132,11 @@ public class Empleado extends ObjectBase{
         this.colonia = colonia;
     }
 
-    public String getCp() {
+    public Integer getCp() {
         return cp;
     }
 
-    public void setCp(String cp) {
+    public void setCp(Integer cp) {
         this.cp = cp;
     }
 
@@ -205,6 +210,22 @@ public class Empleado extends ObjectBase{
 
     public void setAutorizador(Boolean autorizador) {
         this.autorizador = autorizador;
+    }
+
+    public Boolean getRequisitor() {
+        return requisitor;
+    }
+
+    public void setRequisitor(Boolean requisitor) {
+        this.requisitor = requisitor;
+    }
+
+    public String getNombre_completo() {
+        return nombre + " " + apellido_paterno + " " + apellido_materno;
+    }
+
+    public void setNombre_completo(String nombre_completo) {
+        this.nombre_completo = nombre_completo;
     }
 
     @Override
