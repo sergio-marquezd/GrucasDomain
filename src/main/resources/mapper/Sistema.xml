@@ -60,5 +60,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         INNER JOIN rol t3 ON t2.rol_id = t3.id
         WHERE t2.usuario_id = #{id}
     </select>
+    
+    <select id="SistemasFaltantesPorElUsuario" parameterType="map" resultMap="ResultSistema">
+        SELECT * FROM sistema 
+        WHERE clave_sistema NOT IN (SELECT clave_sistema FROM usuario_sistema WHERE usuario_id = #{id} )
+        ORDER BY nombre_sistema ASC
+    </select>
 
 </mapper>

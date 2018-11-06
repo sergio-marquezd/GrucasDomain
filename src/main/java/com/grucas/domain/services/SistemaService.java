@@ -166,6 +166,34 @@ public class SistemaService {
 
     }
 
+    public void getSistemasFaltantesPorElUsuario(Integer usuario_id){
+
+        dao.getSistemasFaltantesPorElUsuario(usuario_id);
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            objects = dao.getObjects();
+            total_result = objects.size();
+
+            if(!objects.isEmpty()){
+
+                if(objects.size()==1){
+                    object = objects.get(0);
+                }
+
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+
+    }
+
     public Integer getMaxID(){
         dao.getSistemaID();
         return dao.getId();

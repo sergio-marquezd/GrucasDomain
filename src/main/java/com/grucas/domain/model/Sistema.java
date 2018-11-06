@@ -81,7 +81,7 @@ public class Sistema {
 
     @Override
     public String toString() {
-        return "Sistema{" + "id=" + id + ", clave_sistema=" + clave_sistema + ", nombre_sistema=" + nombre_sistema + ", ruta_sistema=" + ruta_sistema + ", descripcion=" + descripcion + '}';
+        return nombre_sistema;
     }
     
 }
