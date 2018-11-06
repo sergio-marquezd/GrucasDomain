@@ -28,6 +28,11 @@ public class Usuario extends ObjectBase{
 
     public Usuario() {
     }
+        
+      public Usuario(UnidadNegocio UnidadNegocio) {
+        setUnidad(UnidadNegocio.getUnidad());
+        setUnidad_id(UnidadNegocio.getUnidad_id());
+    }
     
     public String getNombre() {
         return nombre;
