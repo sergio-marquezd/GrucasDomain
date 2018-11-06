@@ -10,6 +10,7 @@ package com.grucas.domain.services;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
+import com.grucas.domain.model.Usuario;
 import com.grucas.domain.dao.UnidadNegocioDAO;
 import com.grucas.domain.model.UnidadNegocio;
 import com.rubik.manage.ManageString;
@@ -228,16 +229,43 @@ public class UnidadNegocioService {
                 serie = object.getSerie();
                 notification = "Informacion cargada correctamente.";
             } else {
-                serie = "GRUCAS888";
+                serie = "GRUCAS";
                 notification = "No se encontraron registros dados de alta.";
             }
 
         }else{
-            serie = "GRUCAS555";
+            serie = "GRUCAS";
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
         
         return serie;
+    }
+    
+    public void getUnidadNegocioSinAccesoAUsuario(Usuario user){
+
+        dao.getUnidadNegocioSinAccesoAUsuario(user.getId());
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            objects = dao.getObjects();
+            total_result = objects.size();
+
+            if(!objects.isEmpty()){
+
+                if(objects.size()==1){
+                    object = objects.get(0);
+                }
+
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
     }
     
     public Integer getMaxID(){

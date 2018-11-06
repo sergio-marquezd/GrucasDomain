@@ -81,8 +81,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <select id="UnidadNegocioWhere" parameterType="map" resultMap="ResultUnidadNegocio">
         SELECT *
         FROM unidad_negocio 
-        ${where} 
-        ${group} 
+        ${where}
+        ${group}
         ${order}
     </select>
 
@@ -90,6 +90,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         SELECT *
         FROM unidad_negocio 
         ${where} 
+    </select>
+    
+    <select id="UnidadNegocioSinAccesoAUsuario" parameterType="map" resultMap="ResultUnidadNegocio">
+        SELECT * FROM unidad_negocio WHERE id NOT IN 
+        (SELECT unidad_negocio_id FROM usuario_unidad_negocio WHERE usuario_id = #{id})
     </select>
 
 </mapper>

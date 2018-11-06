@@ -335,6 +335,43 @@ public class UnidadNegocioDAO {
         }
     }
 
+    public void getUnidadNegocioSinAccesoAUsuario(Integer usuario_id){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("id", id);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("UnidadNegocioSinAccesoAUsuario",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
     public Integer getFolio(String field, Integer id){
         SqlSession session = null;
         Integer folio = 0;
