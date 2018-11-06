@@ -76,7 +76,10 @@ public class GrucasDomainConfig {
     // ------------------------------------------------------------------------- 
     // Configuraciones y usuarios
     // ------------------------------------------------------------------------- 
-    public static final String SUPER_USUARIO = "FULLACCESS";
+    public static final String USUARIO_SUPER = "FULLACCESS";
+    public static final String USUARIO_EMPLEADO = "COLABORADOR";
+    public static final String USUARIO_CLIENTE = "CLIENTE";
+    public static final List<String> USUARIO_TIPOS = Arrays.asList(USUARIO_EMPLEADO,USUARIO_CLIENTE,USUARIO_SUPER);
     
     
     public static final List<String> UNIDAD = Arrays.asList("CONSORCIO MALLORCA","DAC AEROPUERTO","DAC ALTAMIRA","DAC HIDALGO","DAC LAZARO","DAC MANZANILLO","DAC MATAMOROS","DAC MEXICO","DAC NUEVO LAREDO","DAC TAMPICO","DAC VERACRUZ","DAC GUADALAJARA");

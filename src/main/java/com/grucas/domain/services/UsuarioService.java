@@ -81,9 +81,9 @@ public class UsuarioService {
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "Usuario " + usuario.getId()+ " dado de alta correctamente.";
+            notification = "Usuario " + usuario.getFullName()+ " dado de alta correctamente.";
         } else {
-            notification = "Ha ocurrido un error al guardar. Usuario " +usuario.getId()+" no almacenado(a) en la base de datos.";
+            notification = "Ha ocurrido un error al guardar. El usuario de " + usuario.getFullName() + ". Revise que no sea un username repetido.";
         }
     }
 
@@ -94,9 +94,9 @@ public class UsuarioService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Usuario " + usuario.getId()+ " modificado(a) correctamente.";
+            notification = "Usuario " + usuario.getFullName()+ " modificado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al modificar. Usuario " + usuario.getId();
+            notification = "Ha ocurrido un error al modificar. El usuario de " + usuario.getFullName() + ". Revise que no sea un username repetido.";
         }
     }
 
@@ -107,9 +107,9 @@ public class UsuarioService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Usuario "+ usuario.getId()+ " fue eliminado(a) correctamente.";
+            notification = "Usuario "+ usuario.getFullName()+ " fue eliminado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al eliminar Usuario " + usuario.getId();
+            notification = "Ha ocurrido un error al eliminar Usuario " + usuario.getFullName();
         }
     }
 
@@ -167,7 +167,7 @@ public class UsuarioService {
             
             object = dao.getObjects().get(0);
             
-            if (GrucasDomainConfig.SUPER_USUARIO.equals(object.getTipo())) {
+            if (GrucasDomainConfig.USUARIO_SUPER.equals(object.getTipo())) {
                 
                 ok = true;
                 total_result = 1;

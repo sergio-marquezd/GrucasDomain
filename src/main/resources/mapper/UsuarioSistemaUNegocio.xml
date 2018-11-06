@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="UsuarioSistemaUNegocio">
+
+    <resultMap id="ResultUsuarioSistemaUNegocioID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultUsuarioSistemaUNegocio" type="UsuarioSistemaUNegocio">
+        <result property="id" column="id"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="clave_sistema" column="clave_sistema"/>
+        <result property="sistema" column="sistema"/>
+        <result property="unidad_negocio_id" column="unidad_negocio_id"/>
+        <result property="unidad_negocio" column="unidad_negocio"/>
+    </resultMap>
+
+    <select id="UsuarioSistemaUNegocioMaxID" resultMap="ResultUsuarioSistemaUNegocioID">
+        SELECT max(id)+1 as id
+        FROM usuario_unidad_negocio 
+    </select>
+
+    <insert id="UsuarioSistemaUNegocioInsert" parameterType="UsuarioSistemaUNegocio" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO usuario_unidad_negocio 
+        (usuario_id,clave_sistema,sistema,unidad_negocio_id,unidad_negocio)
+        VALUES
+        (#{usuario_id},#{clave_sistema},#{sistema},#{unidad_negocio_id},#{unidad_negocio})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM usuario_unidad_negocio 
+        </selectKey>
+
+    </insert>
+
+    <update id="UsuarioSistemaUNegocioUpdate" parameterType="UsuarioSistemaUNegocio">
+        UPDATE usuario_unidad_negocio 
+        SET usuario_id = #{usuario_id},clave_sistema = #{clave_sistema},sistema = #{sistema},unidad_negocio_id = #{unidad_negocio_id},unidad_negocio = #{unidad_negocio}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="UsuarioSistemaUNegocioDelete" parameterType="map">
+        DELETE FROM usuario_unidad_negocio 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="UsuarioSistemaUNegocioWhere" parameterType="map" resultMap="ResultUsuarioSistemaUNegocio">
+        SELECT *
+        FROM usuario_unidad_negocio 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="UsuarioSistemaUNegocioOne" parameterType="map" resultMap="ResultUsuarioSistemaUNegocio">
+        SELECT *
+        FROM usuario_unidad_negocio 
+        ${where} 
+    </select>
+
+</mapper>
