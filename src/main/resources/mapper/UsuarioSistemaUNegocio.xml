@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <resultMap id="ResultUsuarioSistemaUNegocio" type="UsuarioSistemaUNegocio">
         <result property="id" column="id"/>
         <result property="usuario_id" column="usuario_id"/>
-        <result property="clave_sistema" column="clave_sistema"/>
+        <result property="clave_sistema" column="sistema_id"/>
         <result property="sistema" column="sistema"/>
         <result property="unidad_negocio_id" column="unidad_negocio_id"/>
         <result property="unidad_negocio" column="unidad_negocio"/>
@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="UsuarioSistemaUNegocioInsert" parameterType="UsuarioSistemaUNegocio" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO usuario_unidad_negocio 
-        (usuario_id,clave_sistema,sistema,unidad_negocio_id,unidad_negocio)
+        (usuario_id,sistema_id,unidad_negocio_id)
         VALUES
-        (#{usuario_id},#{clave_sistema},#{sistema},#{unidad_negocio_id},#{unidad_negocio})
+        (#{usuario_id},#{clave_sistema},#{unidad_negocio_id})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM usuario_unidad_negocio 
@@ -35,13 +35,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="UsuarioSistemaUNegocioUpdate" parameterType="UsuarioSistemaUNegocio">
         UPDATE usuario_unidad_negocio 
-        SET usuario_id = #{usuario_id},clave_sistema = #{clave_sistema},sistema = #{sistema},unidad_negocio_id = #{unidad_negocio_id},unidad_negocio = #{unidad_negocio}
+        SET usuario_id = #{usuario_id},sistema_id = #{clave_sistema},unidad_negocio_id = #{unidad_negocio_id}
         WHERE id = #{id}
     </update>
 
     <delete id="UsuarioSistemaUNegocioDelete" parameterType="map">
         DELETE FROM usuario_unidad_negocio 
         WHERE id = #{id}
+    </delete>
+    
+    <delete id="ElimninarTodosPorSistema" parameterType="map">
+        DELETE FROM usuario_unidad_negocio 
+        WHERE usuario_id = #{usuario_id} AND sistema_id = #{clave_sistema}
     </delete>
 
     <select id="UsuarioSistemaUNegocioWhere" parameterType="map" resultMap="ResultUsuarioSistemaUNegocio">
@@ -55,7 +60,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <select id="UsuarioSistemaUNegocioOne" parameterType="map" resultMap="ResultUsuarioSistemaUNegocio">
         SELECT *
         FROM usuario_unidad_negocio 
-        ${where} 
+        ${where}
+    </select>
+    
+    <select id="UsuarioSistemaUNegocioByUsuarioID" parameterType="map" resultMap="ResultUsuarioSistemaUNegocio">
+        SELECT t1.id, t1.usuario_id, t1.sistema_id, t2.nombre_sistema AS sistema, t1.unidad_negocio_id, t3.nombre AS unidad_negocio
+        FROM usuario_unidad_negocio t1
+        INNER JOIN sistema t2 ON t1.sistema_id = t2.clave_sistema
+        INNER JOIN unidad_negocio t3 ON t1.unidad_negocio_id = t3.id
+        WHERE t1.usuario_id = #{user_id} AND t1.sistema_id = #{clave_sistema}
     </select>
 
 </mapper>

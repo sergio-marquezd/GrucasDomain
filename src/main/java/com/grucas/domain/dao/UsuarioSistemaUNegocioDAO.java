@@ -291,5 +291,82 @@ public class UsuarioSistemaUNegocioDAO {
 
         }
     }
+    
+    public void UsuarioSistemaUNegocioDeleteBySystem(Integer usuario_id, Integer codigo_sistema){
+
+        SqlSession session = null;
+        
+        Map map = new HashMap();
+        map.put("usuario_id", usuario_id);
+        map.put("clave_sistema", codigo_sistema);
+        
+        try {
+
+            session = sqlSessionFactory.openSession();
+            session.delete("ElimninarTodosPorSistema",map);
+            session.commit();
+
+            ok = true;
+
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
+    public void getUsuarioSistemaUNegocioByUsuarioID(Integer user_id, Integer clave_sistema){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("user_id", user_id);
+            map.put("clave_sistema", clave_sistema);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("UsuarioSistemaUNegocioByUsuarioID",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
 
 }

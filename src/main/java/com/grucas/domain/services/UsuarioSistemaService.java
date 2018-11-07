@@ -7,6 +7,7 @@ package com.grucas.domain.services;
 
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.UsuarioSistemaDAO;
+import com.grucas.domain.model.Usuario;
 import com.grucas.domain.relations.UsuarioSistema;
 import java.util.List;
 
@@ -74,9 +75,9 @@ public class UsuarioSistemaService {
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "UsuarioSistema " + usuariosistema.getId()+ " dado de alta correctamente.";
+            notification = "Acceso dado de alta correctamente.";
         } else {
-            notification = "Ha ocurrido un error al guardar. UsuarioSistema " +usuariosistema.getId()+" no almacenado(a) en la base de datos.";
+            notification = "Ha ocurrido un error al guardar. Acceso no almacenado(a) en la base de datos.";
         }
     }
 
@@ -87,22 +88,25 @@ public class UsuarioSistemaService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "UsuarioSistema " + usuariosistema.getId()+ " modificado(a) correctamente.";
+            notification = "Acceso modificado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al modificar. UsuarioSistema " + usuariosistema.getId();
+            notification = "Ha ocurrido un error al modificar. ";
         }
     }
 
     public void UsuarioSistemaDelete(UsuarioSistema usuariosistema){
         object = usuariosistema;
         dao.UsuarioSistemaDelete(object.getId());
+        
+        UsuarioSistemaUNegocioService service = new UsuarioSistemaUNegocioService();
+        service.UsuarioSistemaUNegocioDeleteBySystem(usuariosistema.getUsuario_id(), usuariosistema.getClave_sistema());
 
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "UsuarioSistema "+ usuariosistema.getId()+ " fue eliminado(a) correctamente.";
+            notification = "El Acceso fue eliminado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al eliminar UsuarioSistema " + usuariosistema.getId();
+            notification = "Ha ocurrido un error al eliminar Acceso ";
         }
     }
 
@@ -162,4 +166,31 @@ public class UsuarioSistemaService {
 
     }
 
+    public void getUsuarioSistemaByUsuarioID(Usuario user){
+
+        dao.getUsuarioSistemaByUsuarioID(user);
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+
+            objects = dao.getObjects();
+            total_result = objects.size();
+
+            if(!objects.isEmpty()){
+
+                if(objects.size()==1){
+                    object = objects.get(0);
+                }
+
+                notification = "Informacion cargada correctamente.";
+            } else {
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+    }
+    
 }

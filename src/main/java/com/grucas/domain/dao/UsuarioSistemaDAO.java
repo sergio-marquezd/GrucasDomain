@@ -10,6 +10,7 @@ package com.grucas.domain.dao;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
+import com.grucas.domain.model.Usuario;
 import com.grucas.domain.relations.UsuarioSistema;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
@@ -296,4 +297,41 @@ public class UsuarioSistemaDAO {
         }
     }
 
+    public void getUsuarioSistemaByUsuarioID(Usuario user){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("id", user.getId());
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("UsuarioSistemaByUsuarioID",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
 }

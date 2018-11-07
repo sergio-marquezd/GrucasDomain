@@ -23,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="UsuarioSistemaInsert" parameterType="UsuarioSistema" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO usuario_sistema 
-        (usuario_id,clave_sistema,sistema,rol_id,rol)
+        (usuario_id,clave_sistema,rol_id)
         VALUES
-        (#{usuario_id},#{clave_sistema},#{sistema},#{rol_id},#{rol})
+        (#{usuario_id},#{clave_sistema},#{rol_id})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM usuario_sistema 
@@ -35,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="UsuarioSistemaUpdate" parameterType="UsuarioSistema">
         UPDATE usuario_sistema 
-        SET usuario_id = #{usuario_id},clave_sistema = #{clave_sistema},sistema = #{sistema},rol_id = #{rol_id},rol = #{rol}
+        SET usuario_id = #{usuario_id},clave_sistema = #{clave_sistema},rol_id = #{rol_id}
         WHERE id = #{id}
     </update>
 
@@ -56,6 +56,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         SELECT *
         FROM usuario_sistema 
         ${where} 
+    </select>
+    
+    <select id="UsuarioSistemaByUsuarioID" parameterType="map" resultMap="ResultUsuarioSistema">
+        SELECT t1.id, t1.usuario_id, t1.clave_sistema, t2.nombre_sistema AS sistema, t1.rol_id, t3.nombre AS rol
+        FROM usuario_sistema t1
+        INNER JOIN sistema t2 ON t1.clave_sistema = t2.clave_sistema
+        INNER JOIN rol t3 ON t1.rol_id = t3.id
+        WHERE t1.usuario_id = #{id}
     </select>
 
 </mapper>

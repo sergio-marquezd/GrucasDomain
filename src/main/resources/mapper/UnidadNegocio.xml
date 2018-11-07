@@ -69,7 +69,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="FolioUpdate" parameterType="map">
         UPDATE unidad_negocio 
-        ${field} = ${field} + 1
+        SET ${field} = ${field} + 1
         WHERE id = #{id}
     </update>
 
@@ -95,6 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <select id="UnidadNegocioSinAccesoAUsuario" parameterType="map" resultMap="ResultUnidadNegocio">
         SELECT * FROM unidad_negocio WHERE id NOT IN 
         (SELECT unidad_negocio_id FROM usuario_unidad_negocio WHERE usuario_id = #{id})
+        ORDER BY nombre ASC 
     </select>
 
 </mapper>
