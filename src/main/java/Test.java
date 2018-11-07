@@ -32,9 +32,13 @@ public class Test {
 //        
 //        System.out.println("RESPUESTA:   " + service.getNotification())
 
+        Usuario user = new Usuario();
+        user.setId(28);
+        user.setTodas_unidades(true);
+
         UnidadNegocioService service = new UnidadNegocioService();
-        service.getSerie(1);
-        System.out.println("FOLIO: " + service.getFolio("folio_requisicion", 1, true));
+        service.getUnidadesPorUsuarioSistema(user, 1001);
+        System.out.println("Unidades:" + service.getObjects().toString());
 
     }
     

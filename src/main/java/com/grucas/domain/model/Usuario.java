@@ -27,6 +27,19 @@ public class Usuario extends ObjectBase{
     Boolean todas_unidades;
 
     public Usuario() {
+        super();
+        nombre = "";
+        apellido_paterno = "";
+        apellido_materno = "";
+        password = "";
+        username = "";
+        email = "";
+        tipo = "";
+        empleado_id = 0;
+        permisos = "";
+        rol_id = 0;
+        rol = "";
+        todas_unidades = false;
     }
         
       public Usuario(UnidadNegocio UnidadNegocio) {

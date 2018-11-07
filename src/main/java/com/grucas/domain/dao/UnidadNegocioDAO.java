@@ -413,4 +413,43 @@ public class UnidadNegocioDAO {
         return folio;
     }
     
+    
+    public void getUnidadNegocioPorUsuarioSistema(Integer usuario_id, Integer clave_sistema){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("usuario_id", usuario_id);
+            map.put("clave_sistema", clave_sistema);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("UnidadNegocioPorUsuarioSistema",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
 }

@@ -92,6 +92,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         ${where} 
     </select>
     
+    <select id="UnidadNegocioPorUsuarioSistema" parameterType="map" resultMap="ResultUnidadNegocio">
+        SELECT * FROM unidad_negocio
+        WHERE id IN (
+        SELECT t1.unidad_negocio_id FROM usuario_unidad_negocio t1 
+        WHERE t1.usuario_id = #{usuario_id} AND t1.sistema_id =  #{clave_sistema})
+    </select>
+    
     <select id="UnidadNegocioSinAccesoAUsuario" parameterType="map" resultMap="ResultUnidadNegocio">
         SELECT * FROM unidad_negocio WHERE id NOT IN 
         (SELECT unidad_negocio_id FROM usuario_unidad_negocio WHERE usuario_id = #{id})
