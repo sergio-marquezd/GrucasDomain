@@ -82,7 +82,16 @@ public class GrucasDomainConfig {
     public static final String USUARIO_CLIENTE = "CLIENTE";
     public static final List<String> USUARIO_TIPOS = Arrays.asList(USUARIO_EMPLEADO,USUARIO_CLIENTE,USUARIO_SUPER);
     
+    // -------------------------------------------------------------------------
+    // Metodo de Pago
+    // -------------------------------------------------------------------------
     
-    public static final List<String> UNIDAD = Arrays.asList("CONSORCIO MALLORCA","DAC AEROPUERTO","DAC ALTAMIRA","DAC HIDALGO","DAC LAZARO","DAC MANZANILLO","DAC MATAMOROS","DAC MEXICO","DAC NUEVO LAREDO","DAC TAMPICO","DAC VERACRUZ","DAC GUADALAJARA");
+    public static final String PAGO_CONTADO = "CONTADO";
+    public static final String PAGO_CRED_15DIAS = "CREDITO 15 DIAS";
+    public static final String PAGO_CRED_30DIAS = "CREDITO 30 DIAS";
+    public static final String PAGO_CRED_60DIAS = "CREDITO 60 DIAS";
+    
+    public static final List<String>METODO_PAGO =Arrays.asList(PAGO_CONTADO,PAGO_CRED_15DIAS,PAGO_CRED_30DIAS,PAGO_CRED_60DIAS);
+  
     
 }
