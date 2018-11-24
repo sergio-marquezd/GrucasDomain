@@ -81,17 +81,27 @@ public class GrucasDomainConfig {
     public static final String USUARIO_EMPLEADO = "COLABORADOR";
     public static final String USUARIO_CLIENTE = "CLIENTE";
     public static final List<String> USUARIO_TIPOS = Arrays.asList(USUARIO_EMPLEADO,USUARIO_CLIENTE,USUARIO_SUPER);
+
+    // ------------------------------------------------------------------------- 
+    // ROLES DE USUARIO DEFINIDOS EN LA BASE DE DATOS ** ES DE SUMA IMPORTANCIA ESTAR ACTUALIZADO CONFORME A LA BASE DE DATOS**
+    // ------------------------------------------------------------------------- 
+    public static final String ROL_ADMINISTRADOR = "ADMINISTRADOR";
+    
+    public static final String ROL_INVENTARIOS = "INVENTARIOS";
+    
+    //ROLES DE USUARIO DEFINIDOS PARA SISTEMA DE KARGO - CHEMOURS [CODE APP: 1001]
+    public static final String ROL_EMBARQUES = "EMBARQUES";
+    public static final String ROL_DOCUMENTADOR = "DOCUMENTADOR";
+    public static final String ROL_SUPERVISOR = "SUPERVISOR";
     
     // -------------------------------------------------------------------------
     // Metodo de Pago
     // -------------------------------------------------------------------------
-    
     public static final String PAGO_CONTADO = "CONTADO";
     public static final String PAGO_CRED_15DIAS = "CREDITO 15 DIAS";
     public static final String PAGO_CRED_30DIAS = "CREDITO 30 DIAS";
     public static final String PAGO_CRED_60DIAS = "CREDITO 60 DIAS";
     
     public static final List<String>METODO_PAGO =Arrays.asList(PAGO_CONTADO,PAGO_CRED_15DIAS,PAGO_CRED_30DIAS,PAGO_CRED_60DIAS);
-  
-    
+     
 }
