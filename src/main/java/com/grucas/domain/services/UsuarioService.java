@@ -193,13 +193,13 @@ public class UsuarioService {
                     } else {
                         ok = false;
                         total_result = 0;
-                        notification = "El usuario no tiene acceso a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
+                        notification = "El usuario no tiene permiso para accesar a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
                     }
 
                 } else {
                     ok = false;
                     total_result = 0;
-                    notification = "El usuario no tiene acceso a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
+                    notification = "El usuario no tiene permiso para accesar a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
                 }
             }
             
