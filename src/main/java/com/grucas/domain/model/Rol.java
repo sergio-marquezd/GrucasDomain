@@ -12,6 +12,7 @@ package com.grucas.domain.model;
 public class Rol {
     
     Integer id;
+    Integer sistema_id;
     String nombre;
 
     public Rol() {
@@ -31,6 +32,14 @@ public class Rol {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Integer getSistema_id() {
+        return sistema_id;
+    }
+
+    public void setSistema_id(Integer sistema_id) {
+        this.sistema_id = sistema_id;
     }
 
     @Override

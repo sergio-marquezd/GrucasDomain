@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <resultMap id="ResultRol" type="Rol">
         <result property="id" column="id"/>
+        <result property="sistema_id" column="sistema_id"/>
         <result property="nombre" column="nombre"/>
     </resultMap>
 
@@ -19,9 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="RolInsert" parameterType="Rol" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO rol 
-        (nombre)
+        (sistema_id,nombre)
         VALUES
-        (#{nombre})
+        (#{sistema_id},#{nombre})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM rol 
