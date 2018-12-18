@@ -20,25 +20,25 @@ public class Test {
      */
     public static void main(String[] args) {
         
-//        UsuarioService service = new UsuarioService();
-//        service.login("cdeantes", "cdeantes12", 1001);
-//        Usuario user = service.getObject();
-//        
-//        System.out.println(" ROL " + user.getRol());
-//        System.out.println(" PERMISOS " + user.getPermisos());
-//        System.out.println(" TIPO " + user.getTipo());
-//        System.out.println(" PERMISOS " + user.getUnidad());
-//        System.out.println(" EMPRESA " + user.getEmpresa());
+        UsuarioService service = new UsuarioService();
+        service.login("a", "a", 1001);
+        Usuario user = service.getObject();
+        
+        System.out.println(" ROL " + user.getRol());
+        System.out.println(" PERMISOS " + user.getPermisos());
+        System.out.println(" TIPO " + user.getTipo());
+        System.out.println(" PERMISOS " + user.getUnidad());
+        System.out.println(" EMPRESA " + user.getEmpresa());
 //        
 //        System.out.println("RESPUESTA:   " + service.getNotification())
-
-        Usuario user = new Usuario();
-        user.setId(28);
-        user.setTodas_unidades(true);
-
-        UnidadNegocioService service = new UnidadNegocioService();
-        service.getUnidadesPorUsuarioSistema(user, 1001);
-        System.out.println("Unidades:" + service.getObjects().toString());
+//
+//        Usuario user = new Usuario();
+//        user.setId(28);
+//        user.setTodas_unidades(true);
+//
+//        UnidadNegocioService service = new UnidadNegocioService();
+//        service.getUnidadesPorUsuarioSistema(user, 1001);
+//        System.out.println("Unidades:" + service.getObjects().toString());
 
     }
     

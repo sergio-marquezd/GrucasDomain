@@ -20,13 +20,19 @@
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
-            <version>3.4.5</version>
+            <version>3.4.6</version>
             <type>jar</type>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>6.0.4</version>
+            <version>8.0.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.grucas</groupId>
+            <artifactId>KairosDomain</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
         </dependency>
     </dependencies>
 </project>
