@@ -183,7 +183,7 @@ public class UsuarioService {
                         if (Objects.equals(sistemaTem.getClave_sistema(), code)) {
 
                             if(code == 1001 ){
-                                // Especificamente para el proyecto Chemours, se ligó (malamente) el proyecto a ID de empresas. 
+                                // Especificamente para el proyecto Chemours, se ligó (malamente) el proyecto por ID de empresas. 
                                 // Las unidades de Negocio para Chemours son los almacenes.
                                 // Por eso se hace la reasignacion de valores SOLO para el SISTEMA con CLAVE = 1001
                                 if (object.getUnidad_id()==6) {
