@@ -24,12 +24,30 @@ public class GrucasDomainConfig {
     }
 
     // ------------------------------------------------------------------------- 
-    // Roles del sistema 
-    // -------------------------------------------------------------------------
-    public static final String PERFIL_ADMINISTRADOR = "ADMINISTRADOR";
-    public static final String PERFIL_COMPRAS = "COMPRAS";
-    public static final String PERFIL_REQUISICIONES = "REQUISICIONES";
+    // Configuraciones y usuarios
+    // ------------------------------------------------------------------------- 
+    public static final String USUARIO_SUPER = "FULLACCESS";
+    public static final String USUARIO_EMPLEADO = "COLABORADOR";
+    public static final String USUARIO_CLIENTE = "CLIENTE";
+    public static final List<String> USUARIO_TIPOS = Arrays.asList(USUARIO_EMPLEADO,USUARIO_CLIENTE,USUARIO_SUPER);
 
+    // ------------------------------------------------------------------------- 
+    // ROLES DE USUARIO DEFINIDOS EN LA BASE DE DATOS ** ES DE SUMA IMPORTANCIA ESTAR ACTUALIZADO CONFORME A LA BASE DE DATOS**
+    // ------------------------------------------------------------------------- 
+    
+    //ROLES DE USUARIO PARA VARIOS SISTEMAS
+    public static final String ROL_ADMINISTRADOR = "ADMINISTRADOR";
+    public static final String ROL_INVENTARIOS = "INVENTARIOS";
+    
+    //ROLES DE USUARIO DEFINIDOS PARA SISTEMA DE KARGO - CHEMOURS [CODE APP: 1001]
+    public static final String ROL_EMBARQUES = "EMBARQUES";
+    public static final String ROL_DOCUMENTADOR = "DOCUMENTADOR";
+    public static final String ROL_SUPERVISOR = "SUPERVISOR";
+
+    //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS INTRANET [CODE APP: 1006]
+    public static final String ROL_COMPRAS = "COMPRAS";
+    public static final String ROL_REQUISITOR = "REQUISITOR";
+    
     // ------------------------------------------------------------------------- 
     // Estado de documentos
     // -------------------------------------------------------------------------    
@@ -73,26 +91,6 @@ public class GrucasDomainConfig {
     public static final String PAIS_USA = "USA";
     
     public static final List<String> PAISES = Arrays.asList(PAIS_MEXICO,PAIS_USA);
-
-    // ------------------------------------------------------------------------- 
-    // Configuraciones y usuarios
-    // ------------------------------------------------------------------------- 
-    public static final String USUARIO_SUPER = "FULLACCESS";
-    public static final String USUARIO_EMPLEADO = "COLABORADOR";
-    public static final String USUARIO_CLIENTE = "CLIENTE";
-    public static final List<String> USUARIO_TIPOS = Arrays.asList(USUARIO_EMPLEADO,USUARIO_CLIENTE,USUARIO_SUPER);
-
-    // ------------------------------------------------------------------------- 
-    // ROLES DE USUARIO DEFINIDOS EN LA BASE DE DATOS ** ES DE SUMA IMPORTANCIA ESTAR ACTUALIZADO CONFORME A LA BASE DE DATOS**
-    // ------------------------------------------------------------------------- 
-    public static final String ROL_ADMINISTRADOR = "ADMINISTRADOR";
-    
-    public static final String ROL_INVENTARIOS = "INVENTARIOS";
-    
-    //ROLES DE USUARIO DEFINIDOS PARA SISTEMA DE KARGO - CHEMOURS [CODE APP: 1001]
-    public static final String ROL_EMBARQUES = "EMBARQUES";
-    public static final String ROL_DOCUMENTADOR = "DOCUMENTADOR";
-    public static final String ROL_SUPERVISOR = "SUPERVISOR";
     
     // -------------------------------------------------------------------------
     // Metodo de Pago
