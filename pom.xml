@@ -28,11 +28,11 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.47</version>
         </dependency>
-        <dependency>
+    <!--      <dependency>
             <groupId>com.grucas</groupId>
             <artifactId>KairosDomain</artifactId>
             <version>1.0</version>
             <type>jar</type>
-        </dependency>
+        </dependency> -->
     </dependencies>
 </project>
