@@ -101,6 +101,23 @@ public class LoginService {
 
                         for (Sistema sistemaTem : accesoSistemas) {
                             if (Objects.equals(sistemaTem.getClave_sistema(), code)) {
+                                
+                                if (code == 1001) {
+                                    // Especificamente para el proyecto Chemours, se ligó (malamente) el proyecto por ID de empresas. 
+                                    // Las unidades de Negocio para Chemours son los almacenes.
+                                    // Por eso se hace la reasignacion de valores SOLO para el SISTEMA con CLAVE = 1001
+                                    if (object.getUnidad_id() == 6) {
+                                        object.setEmpresa_id(1);
+                                        object.setEmpresa("KARGO CHEMOURS");
+                                    } else {
+                                        object.setEmpresa_id(2);
+                                        object.setEmpresa("KARGO VALLE VERDE");
+                                    }
+
+                                    object.setUnidad_id(0);
+                                    object.setUnidad("");
+                                }
+                                
                                 accesoSistema = true;
                                 object.setRol(sistemaTem.getRol());
                             }
