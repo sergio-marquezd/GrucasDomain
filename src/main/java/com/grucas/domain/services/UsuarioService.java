@@ -168,7 +168,8 @@ public class UsuarioService {
             object = dao.getObjects().get(0);
             
             if (GrucasDomainConfig.USUARIO_SUPER.equals(object.getTipo())) {
-                
+
+                object.setRol(GrucasDomainConfig.ROL_ADMINISTRADOR);                
                 ok = true;
                 total_result = 1;
                 notification = "Bienvenido al sistema " + object.getNombre() + "!";
