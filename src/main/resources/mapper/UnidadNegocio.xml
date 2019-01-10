@@ -32,6 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="folio_requisicion" column="folio_requisicion"/>
         <result property="folio_orden_compra" column="folio_orden_compra"/>
         <result property="folio_responsiva" column="folio_responsiva"/>
+        <result property="empresa_rfc" column="empresa_rfc"/>
     </resultMap>
 
     <select id="UnidadNegocioMaxID" resultMap="ResultUnidadNegocioID">
@@ -47,10 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
         INSERT INTO unidad_negocio 
         (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,
-        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva)
+        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc)
         VALUES
         (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},
-        #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva})
+        #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva},#{empresa_rfc})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM unidad_negocio 

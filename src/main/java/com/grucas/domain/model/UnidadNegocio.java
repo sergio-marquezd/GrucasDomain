@@ -21,6 +21,7 @@ public class UnidadNegocio extends ObjectBase{
     String codigo_postal;
     String telefono;
     String serie;
+    String empresa_rfc;
     Integer folio_requisicion;
     Integer folio_orden_compra;
     Integer folio_responsiva;
@@ -123,5 +124,15 @@ public class UnidadNegocio extends ObjectBase{
     public String toString() {
         return unidad;
     }
+
+    public String getEmpresa_rfc() {
+        return empresa_rfc;
+    }
+
+    public void setEmpresa_rfc(String empresa_rfc) {
+        this.empresa_rfc = empresa_rfc;
+    }
+
+  
 
 }
