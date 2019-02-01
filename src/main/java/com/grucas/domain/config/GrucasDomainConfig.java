@@ -47,6 +47,7 @@ public class GrucasDomainConfig {
     //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS INTRANET [CODE APP: 1006]
     public static final String ROL_COMPRAS = "COMPRAS";
     public static final String ROL_REQUISITOR = "REQUISITOR";
+    public static final String ROL_AUTORIZADOR = "AUTORIZADOR";
     
     // ------------------------------------------------------------------------- 
     // Estado de documentos
@@ -60,9 +61,11 @@ public class GrucasDomainConfig {
     public static final String ESTADO_OC_TERMINADO = "OC";
     public static final String DOCUMENTO_REQUISICION = "REQUISICION";
     public static final String DOCUMENTO_ORDEN_DE_COMPRA = "ORDEN DE COMPRA";
+    public static final String ESTADO_AUTORIZADO = "AUTORIZADO";
     
     public static final List<String> ESTADOS_REQUISICION = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_CANCELADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_OC_TERMINADO);
     public static final List<String> ESTADOS_OC = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_CANCELADO);
+    public static final List<String> ESTADO_MONITOREO = Arrays.asList(ESTADO_TODOS, ESTADO_OC_TERMINADO, ESTADO_AUTORIZADO);
     // ------------------------------------------------------------------------- 
     // Unidades de medida
     // -------------------------------------------------------------------------
