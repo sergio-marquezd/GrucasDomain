@@ -102,8 +102,12 @@ public class GrucasDomainConfig {
     public static final String PAGO_CRED_15DIAS = "CREDITO 15 DIAS";
     public static final String PAGO_CRED_30DIAS = "CREDITO 30 DIAS";
     public static final String PAGO_CRED_60DIAS = "CREDITO 60 DIAS";
+    public static final String CHEQUE = "CHEQUE";
+    public static final String TARJETA_CREDITO = "TARJETA CREDITO";
+    public static final String TRANSFERENCIA = "TRANSFERENCIA";
     
     public static final List<String>METODO_PAGO =Arrays.asList(PAGO_CONTADO,PAGO_CRED_15DIAS,PAGO_CRED_30DIAS,PAGO_CRED_60DIAS);
+    public static final List <String>FORMA_PAGO =Arrays.asList(CHEQUE,TARJETA_CREDITO,TRANSFERENCIA);
     
     // -------------------------------------------------------------------------
     // Prioridad
