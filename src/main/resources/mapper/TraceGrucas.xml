@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TraceGrucas">
+
+    <resultMap id="ResultTraceGrucasID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultTraceGrucas" type="TraceGrucas">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="document_id" column="document_id"/>
+        <result property="folio" column="folio"/>
+        <result property="usario_id" column="usario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="tipo_documento" column="tipo_documento"/>
+        <result property="estado" column="estado"/>
+        <result property="observaciones" column="observaciones"/>
+    </resultMap>
+
+    <select id="TraceGrucasMaxID" resultMap="ResultTraceGrucasID">
+        SELECT max(id)+1 as id
+        FROM trace 
+    </select>
+
+    <insert id="TraceGrucasInsert" parameterType="TraceGrucas" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO trace 
+        (document_id,folio,usario_id,usuario,tipo_documento,estado,observaciones)
+        VALUES
+        (#{document_id},#{folio},#{usario_id},#{usuario},#{tipo_documento},#{estado},#{observaciones})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM trace 
+        </selectKey>
+
+    </insert>
+
+    <update id="TraceGrucasUpdate" parameterType="TraceGrucas">
+        UPDATE trace 
+        SET document_id = #{document_id},folio = #{folio},usario_id = #{usario_id},usuario = #{usuario},tipo_documento = #{tipo_documento},estado = #{estado},observaciones = #{observaciones}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="TraceGrucasDelete" parameterType="map">
+        DELETE FROM trace 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="TraceGrucasWhere" parameterType="map" resultMap="ResultTraceGrucas">
+        SELECT *
+        FROM trace 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="TraceGrucasOne" parameterType="map" resultMap="ResultTraceGrucas">
+        SELECT *
+        FROM trace 
+        ${where} 
+    </select>
+
+</mapper>

@@ -14,7 +14,7 @@
         <typeAlias alias="UnidadNegocio" type="com.grucas.domain.model.UnidadNegocio"/>
         <typeAlias alias="Empresa" type="com.grucas.domain.model.Empresa"/>
         <typeAlias alias="Empleado" type="com.grucas.domain.model.Empleado"/>
-
+        <typeAlias alias="TraceGrucas" type="com.grucas.domain.model.TraceGrucas"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -36,6 +36,7 @@
     </environments>
     
     <mappers>
+        <mapper resource="mapper/TraceGrucas.xml"/>
         <mapper resource="mapper/Usuario.xml"/>
         <mapper resource="mapper/Rol.xml"/>
         <mapper resource="mapper/Sistema.xml"/>
