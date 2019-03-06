@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EncuestaPreguntaBase">
+
+    <resultMap id="ResultEncuestaPreguntaBaseID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultEncuestaPreguntaBase" type="EncuestaPreguntaBase">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="consecutivo" column="consecutivo"/>
+        <result property="documento_id" column="documento_id"/>
+        <result property="pregunta" column="pregunta"/>
+        <result property="comentarios" column="comentarios"/>
+        <result property="respuesta" column="respuesta"/>
+        <result property="opcion_multiple" column="opcion_multiple"/>
+        <result property="valor" column="valor"/>
+    </resultMap>
+
+    <select id="EncuestaPreguntaBaseMaxID" resultMap="ResultEncuestaPreguntaBaseID">
+        SELECT max(id)+1 as id
+        FROM encuesta_pregunta 
+    </select>
+
+    <insert id="EncuestaPreguntaBaseInsert" parameterType="EncuestaPreguntaBase" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO encuesta_pregunta 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,consecutivo,documento_id,pregunta,comentarios,respuesta,opcion_multiple,valor)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{consecutivo},#{documento_id},#{pregunta},#{comentarios},#{respuesta},#{opcion_multiple},#{valor})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM encuesta_pregunta 
+        </selectKey>
+
+    </insert>
+
+    <update id="EncuestaPreguntaBaseUpdate" parameterType="EncuestaPreguntaBase">
+        UPDATE encuesta_pregunta 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},consecutivo = #{consecutivo},documento_id = #{documento_id},pregunta = #{pregunta},comentarios = #{comentarios},respuesta = #{respuesta},opcion_multiple = #{opcion_multiple},valor = #{valor}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="EncuestaPreguntaBaseDelete" parameterType="map">
+        DELETE FROM encuesta_pregunta 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="EncuestaPreguntaBaseWhere" parameterType="map" resultMap="ResultEncuestaPreguntaBase">
+        SELECT *
+        FROM encuesta_pregunta 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="EncuestaPreguntaBaseOne" parameterType="map" resultMap="ResultEncuestaPreguntaBase">
+        SELECT *
+        FROM encuesta_pregunta 
+        ${where} 
+    </select>
+
+</mapper>

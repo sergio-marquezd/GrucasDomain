@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="EncuestaBase">
+
+    <resultMap id="ResultEncuestaBaseID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultEncuestaBase" type="EncuestaBase">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="cliente_id" column="cliente_id"/>
+        <result property="cliente" column="cliente"/>
+        <result property="documento_id" column="documento_id"/>
+        <result property="documento" column="documento"/>
+        <result property="nombre_encuesta" column="nombre_encuesta"/>
+        <result property="estado_doc" column="estado_doc"/>
+        <result property="persona_contesta" column="persona_contesta"/>
+        <result property="puesto_persona_contesta" column="puesto_persona_contesta"/>
+        <result property="servicio_brindado" column="servicio_brindado"/>
+        <result property="nombre_entrevistador" column="nombre_entrevistador"/>
+        <result property="firma_electronica_cliente" column="firma_electronica_cliente"/>
+        <result property="firma_electronica_entrevistador" column="firma_electronica_entrevistador"/>
+        <result property="observaciones" column="observaciones"/>
+        <result property="calificacion" column="calificacion"/>
+    </resultMap>
+
+    <select id="EncuestaBaseMaxID" resultMap="ResultEncuestaBaseID">
+        SELECT max(id)+1 as id
+        FROM encuesta 
+    </select>
+
+    <insert id="EncuestaBaseInsert" parameterType="EncuestaBase" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO encuesta 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,cliente_id,cliente,documento_id,documento,nombre_encuesta,estado_doc,persona_contesta,puesto_persona_contesta,servicio_brindado,nombre_entrevistador,firma_electronica_cliente,firma_electronica_entrevistador,observaciones,calificacion)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{cliente_id},#{cliente},#{documento_id},#{documento},#{nombre_encuesta},#{estado_doc},#{persona_contesta},#{puesto_persona_contesta},#{servicio_brindado},#{nombre_entrevistador},#{firma_electronica_cliente},#{firma_electronica_entrevistador},#{observaciones},#{calificacion})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM encuesta 
+        </selectKey>
+
+    </insert>
+
+    <update id="EncuestaBaseUpdate" parameterType="EncuestaBase">
+        UPDATE encuesta 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},cliente_id = #{cliente_id},cliente = #{cliente},documento_id = #{documento_id},documento = #{documento},nombre_encuesta = #{nombre_encuesta},estado_doc = #{estado_doc},persona_contesta = #{persona_contesta},puesto_persona_contesta = #{puesto_persona_contesta},servicio_brindado = #{servicio_brindado},nombre_entrevistador = #{nombre_entrevistador},firma_electronica_cliente = #{firma_electronica_cliente},firma_electronica_entrevistador = #{firma_electronica_entrevistador},observaciones = #{observaciones},calificacion = #{calificacion}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="EncuestaBaseDelete" parameterType="map">
+        DELETE FROM encuesta 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="EncuestaBaseWhere" parameterType="map" resultMap="ResultEncuestaBase">
+        SELECT *
+        FROM encuesta 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="EncuestaBaseOne" parameterType="map" resultMap="ResultEncuestaBase">
+        SELECT *
+        FROM encuesta 
+        ${where} 
+    </select>
+
+</mapper>
