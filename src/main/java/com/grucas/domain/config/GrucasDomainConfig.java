@@ -164,4 +164,19 @@ public class GrucasDomainConfig {
     
     public static final String SATISFACCIÓN_DEL_CLIENTE = "ENCUESTA DE SATISFACCIÓN DEL CLIENTE";
     
+    // ------------------------------------------------------------------------- 
+    // CIUDADES FRONTERIZAS
+    // ------------------------------------------------------------------------- 
+    public static final List<String> CIUDADES_FRONTERIZAS = Arrays.asList("MATAMOROS","NUEVO LAREDO","BROWNSVILLE","LAREDO");
+    
+    // ------------------------------------------------------------------------- 
+    // IVAS
+    // -------------------------------------------------------------------------     
+    public static final String IVA_GENERAL = "16";
+    public static final String IVA_FRONTERA = "08";
+    public static final String IVA_TASA_0 = "0";
+    
+    public static final List<String> LISTA_IVA_FRONTERA = Arrays.asList(IVA_FRONTERA,IVA_TASA_0);
+    public static final List<String> LISTA_IVA_GENERAL = Arrays.asList(IVA_GENERAL,IVA_TASA_0);
+    
 }
