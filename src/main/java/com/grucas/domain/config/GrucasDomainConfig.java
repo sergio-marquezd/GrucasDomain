@@ -123,5 +123,45 @@ public class GrucasDomainConfig {
     
     public static final List<String>PRIORIDAD = Arrays.asList(PRIORIDAD_BAJA,PRIORIDAD_MEDIA,PRIORIDAD_ALTA);
   
+ 
+    // ------------------------------------------------------------------------
+    //Tipos ACREDOR 
+    // -------------------------------------------------------------------------
+    
+    public static final String PROVEEDOR_NACIONAL = "PROVEEDOR NACIONAL";
+    public static final String PROVEEDOR_EXTRANJERO = "PROVEEDOR EXTRANJERO";
+    
+    public static final List<String> ACREDOR = Arrays.asList(PROVEEDOR_NACIONAL,PROVEEDOR_EXTRANJERO);
+    
+    // ------------------------------------------------------------------------
+    //Tipo OPERACIONES 
+    // -------------------------------------------------------------------------
+    
+    public static final String PREST_SERVICIOS = "PREST. DE SERVICIOS";
+    public static final String ARRENDAMIENTO_INMUEBLES = "ARRENDAMIENTO DE INMUEBLES";
+    public static final String TRANSPORTISTAS_MODULOS = "TRANSPORTISTAS-MODULOS";
+    public static final String OTROS = "OTROS";
+    
+    public static final List<String> OPERACIONES = Arrays.asList(PREST_SERVICIOS,ARRENDAMIENTO_INMUEBLES,TRANSPORTISTAS_MODULOS,OTROS);
+              
+    
+    // ------------------------------------------------------------------------
+    // EMPRESAS
+    // -------------------------------------------------------------------------
+    
+     public static final String DESPACHOS = "Despachos Aduanales Castañeda S.C";
+     public static final String GRUPO = "Grupo Castañeda S.A de C.V.";
+     public static final String SERVICIOS = "Servicios Profesionales Camla S.C.";
+     public static final String UNITRANS = "Unitrans S.A de C.V.";
+     public static final String KARGO = "Kargo Servicio Integrado S.A de C.V.";
+     public static final String GRUCAS = "Grucas Logistic Empresa Integrador S.A de C.V.";
+    
+    public static final List<String> EMPRESAS = Arrays.asList(DESPACHOS,GRUPO,SERVICIOS,UNITRANS,KARGO,GRUCAS);
+   
+    // ------------------------------------------------------------------------
+    // ENCUESTAS
+    // -------------------------------------------------------------------------
+    
+    public static final String SATISFACCIÓN_DEL_CLIENTE = "ENCUESTA DE SATISFACCIÓN DEL CLIENTE";
     
 }

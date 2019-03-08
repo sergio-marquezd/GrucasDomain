@@ -15,6 +15,8 @@
         <typeAlias alias="Empresa" type="com.grucas.domain.model.Empresa"/>
         <typeAlias alias="Empleado" type="com.grucas.domain.model.Empleado"/>
         <typeAlias alias="TraceGrucas" type="com.grucas.domain.model.TraceGrucas"/>
+        <typeAlias alias="EncuestaBase" type="com.rubik.Base.EncuestaBase"/>
+        <typeAlias alias="EncuestaPreguntaBase" type="com.rubik.Base.EncuestaPreguntaBase"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -45,6 +47,8 @@
         <mapper resource="mapper/Empleado.xml"/>
         <mapper resource="mapper/UsuarioSistema.xml"/>
         <mapper resource="mapper/UsuarioSistemaUNegocio.xml"/>
+        <mapper resource="mapper/EncuestaBase.xml"/>
+        <mapper resource="mapper/EncuestaPregunta.xml"/>
     </mappers>
   
 </configuration>
