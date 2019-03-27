@@ -144,6 +144,12 @@ public class GrucasDomainConfig {
     
     public static final List<String> OPERACIONES = Arrays.asList(PREST_SERVICIOS,ARRENDAMIENTO_INMUEBLES,TRANSPORTISTAS_MODULOS,OTROS);
               
+     // ------------------------------------------------------------------------
+    // CLASIFICACION PROVEEDORES
+    // -------------------------------------------------------------------------
+    
+    public static final List<String> CLASIFICACION_PROVEEDORES = Arrays.asList("Contrato","Cliente impone","Unico en zona","Cumple con los Requisitos legales y reglamentarios","Casos especiales","Afecta la operación");
+ 
     
     // ------------------------------------------------------------------------
     // EMPRESAS
@@ -164,10 +170,17 @@ public class GrucasDomainConfig {
     
     public static final String SATISFACCIÓN_DEL_CLIENTE = "ENCUESTA DE SATISFACCIÓN DEL CLIENTE";
     
+    // ------------------------------------------------------------------------
+    // SERVICIO BRINDADO
+    // -------------------------------------------------------------------------
+    
+    
+    public static final List<String> SERVICIOS_BRINDADOS = Arrays.asList("Exportación","Importación");
+    
     // ------------------------------------------------------------------------- 
     // CIUDADES FRONTERIZAS
     // ------------------------------------------------------------------------- 
-    public static final List<String> CIUDADES_FRONTERIZAS = Arrays.asList("MATAMOROS","NUEVO LAREDO","BROWNSVILLE","LAREDO");
+    public static final List<String> CIUDADES_FRONTERIZAS = Arrays.asList("MATAMOROS","NUEVO LAREDO");
     
     // ------------------------------------------------------------------------- 
     // IVAS
