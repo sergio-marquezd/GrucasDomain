@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SolicitudServicioDet">
+
+    <resultMap id="ResultSolicitudServicioDetID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultSolicitudServicioDet" type="SolicitudServicioDet">
+        <result property="id" column="id"/>
+        <result property="documento_id" column="documento_id"/>   
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="fecha_alta" column="fecha_alta"/>
+        <result property="fecha_primer_pesaje" column="fecha_primer_pesaje"/>
+        <result property="primer_pesaje" column="primer_pesaje"/>
+        <result property="fecha_segundo_pesaje" column="fecha_segundo_pesaje"/>
+        <result property="segundo_pesaje" column="segundo_pesaje"/>
+        <result property="masa_bruta_mba_vgm" column="masa_bruta_mba_vgm"/>
+        <result property="intrumento_referencia" column="intrumento_referencia"/>
+        <result property="verificacion_instrumento" column="verificacion_instrumento"/>
+        
+        
+        
+
+    </resultMap>
+
+    <select id="SolicitudServicioDetMaxID" resultMap="ResultSolicitudServicioDetID">
+        SELECT max(id)+1 as id
+        FROM solicitud_servicio_det 
+    </select>
+
+    <insert id="SolicitudServicioDetInsert" parameterType="SolicitudServicioDet" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO solicitud_servicio_det 
+        (fecha_alta,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,documento_id,fecha_primer_pesaje,primer_pesaje,fecha_segundo_pesaje,segundo_pesaje,masa_bruta_mba_vgm,intrumento_referencia,verificacion_instrumento)
+        VALUES
+        (#{fecha_alta},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{documento_id},#{fecha_primer_pesaje},#{primer_pesaje},#{fecha_segundo_pesaje},#{segundo_pesaje},#{masa_bruta_mba_vgm},#{intrumento_referencia},#{verificacion_instrumento})
+       
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM solicitud_servicio_det 
+        </selectKey>
+
+    </insert>
+
+    <update id="SolicitudServicioDetUpdate" parameterType="SolicitudServicioDet">
+        UPDATE solicitud_servicio_det 
+         SET fecha_alta = #{fecha_alta},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad= #{unidad},
+        usuario_id = #{usuario_id},usuario = #{usuario},documento_id = #{documento_id},fecha_primer_pesaje= #{fecha_primer_pesaje},primer_pesaje = #{primer_pesaje},
+        fecha_segundo_pesaje = #{fecha_segundo_pesaje},segundo_pesaje = #{segundo_pesaje},masa_bruta_mba_vgm = #{masa_bruta_mba_vgm},intrumento_referencia = #{intrumento_referencia},verificacion_instrumento = #{verificacion_instrumento}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="SolicitudServicioDetDelete" parameterType="map">
+        DELETE FROM solicitud_servicio_det 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="SolicitudServicioDetWhere" parameterType="map" resultMap="ResultSolicitudServicioDet">
+        SELECT *
+        FROM solicitud_servicio_det 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="SolicitudServicioDetOne" parameterType="map" resultMap="ResultSolicitudServicioDet">
+        SELECT *
+        FROM solicitud_servicio_det 
+        ${where} 
+    </select>
+
+</mapper>

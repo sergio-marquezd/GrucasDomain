@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SolicitudServicio">
+
+    <resultMap id="ResultSolicitudServicioID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultSolicitudServicio" type="SolicitudServicio">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>         
+        <result property="folio" column="folio"/>
+        <result property="cliente" column="cliente"/>
+        <result property="cliente_id" column="cliente_id"/>
+        <result property="placas" column="placas"/>
+        <result property="contenedor" column="contenedor"/>
+        <result property="tara_de_contenedor" column="tara_de_contenedor"/>
+        <result property="booking" column="booking"/>
+        <result property="operador" column="operador"/>
+        <result property="cliente_factura_id" column="cliente_factura_id"/>
+        <result property="cliente_factura" column="cliente_factura"/>
+        <result property="domicilio" column="domicilio"/>
+        <result property="ciudad" column="ciudad"/>
+        <result property="estado" column="estado"/>
+        <result property="rfc" column="rfc"/>
+        <result property="cp" column="cp"/>
+        <result property="linea_transportista" column="linea_transportista"/>
+        <result property="aplico_top" column="aplico_top"/>
+ 
+
+    </resultMap>
+
+    <select id="SolicitudServicioMaxID" resultMap="ResultSolicitudServicioID">
+        SELECT max(id)+1 as id
+        FROM solicitud_servicio 
+    </select>
+
+    <insert id="SolicitudServicioInsert" parameterType="SolicitudServicio" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO solicitud_servicio 
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,folio,cliente,cliente_id,placas,contenedor,tara_de_contenedor,booking,operador,cliente_factura_id,cliente_factura,domicilio,ciudad,estado,rfc,cp,linea_transportista,aplico_top)
+        VALUES
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{folio},#{cliente},#{cliente_id},#{placas},#{contenedor},#{tara_de_contenedor},#{booking},#{operador},#{cliente_factura_id},#{cliente_factura},#{domicilio},#{ciudad},#{estado},#{rfc},#{cp},#{linea_transportista},#{aplico_top})
+       
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM solicitud_servicio 
+        </selectKey>
+
+    </insert>
+
+    <update id="SolicitudServicioUpdate" parameterType="SolicitudServicio">
+        UPDATE solicitud_servicio 
+         SET fecha_elaboracion = #{fecha_elaboracion},fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad= #{unidad},
+        usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},folio = #{folio},cliente= #{cliente},cliente_id = #{cliente_id},placas = #{placas},contenedor = #{contenedor},tara_de_contenedor = #{tara_de_contenedor},booking = #{booking},operador = #{operador},cliente_factura_id = #{cliente_factura_id},
+        cliente_factura = #{cliente_factura},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},rfc = #{rfc},cp = #{cp},linea_transportista = #{linea_transportista},aplico_top = #{aplico_top}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="SolicitudServicioDelete" parameterType="map">
+        DELETE FROM solicitud_servicio 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="SolicitudServicioWhere" parameterType="map" resultMap="ResultSolicitudServicio">
+        SELECT *
+        FROM solicitud_servicio 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="SolicitudServicioOne" parameterType="map" resultMap="ResultSolicitudServicio">
+        SELECT *
+        FROM solicitud_servicio 
+        ${where} 
+    </select>
+
+</mapper>

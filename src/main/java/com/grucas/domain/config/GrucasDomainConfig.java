@@ -66,6 +66,7 @@ public class GrucasDomainConfig {
     public static final String DOCUMENTO_REQUISICION = "REQUISICION";
     public static final String DOCUMENTO_ORDEN_DE_COMPRA = "ORDEN DE COMPRA";
     public static final String ESTADO_AUTORIZADO = "AUTORIZADO";
+    public static final String ESTADO_COTIZACION_COMPRA = "COTIZACION COMPRA";
     
     public static final List<String> ESTADOS_REQUISICION = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_CANCELADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_OC_TERMINADO);
     public static final List<String> ESTADOS_OC = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_CANCELADO);
