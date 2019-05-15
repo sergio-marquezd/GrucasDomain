@@ -19,7 +19,8 @@
         <typeAlias alias="EncuestaPreguntaBase" type="com.rubik.Base.EncuestaPreguntaBase"/>
         <typeAlias alias="ClientesKVV" type="com.grucas.domain.model.ClientesKVV"/>
         <typeAlias alias="SolicitudServicio" type="com.grucas.domain.model.SolicitudServicio"/>
-        
+        <typeAlias alias="SolicitudServicioDet" type="com.grucas.domain.model.SolicitudServicioDet"/>
+                
     </typeAliases>
     
     <environments default="catalogos">  
@@ -54,6 +55,7 @@
         <mapper resource="mapper/EncuestaPregunta.xml"/>
         <mapper resource="mapper/ClientesKVV.xml"/>
         <mapper resource="mapper/SolicitudServicio.xml"/>
+        <mapper resource="mapper/SolicitudServicioDet.xml"/>
     </mappers>
   
 </configuration>

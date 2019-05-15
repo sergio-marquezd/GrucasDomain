@@ -6,43 +6,34 @@
 package com.grucas.domain.model;
 
 import com.rubik.Base.PartidaObjectBase;
-import java.util.Date;
 
 /**
  *
  * @author User
  */
 public class SolicitudServicioDet extends PartidaObjectBase {
-    Date fecha_primer_pesaje;
     Double primer_pesaje;
-    Date fecha_segundo_pesaje;
     Double segundo_pesaje;
-    Double masa_bruta_mba_vgm;
-    String intrumento_referencia;
+    String masa_bruta_mba_vgm;
+    String instrumento_referencia;
     String verificacion_instrumento;
-
-    public Date getFecha_primer_pesaje() {
-        return fecha_primer_pesaje;
+    String placas;
+    String contenedor;
+    String tara_de_contenedor;
+    String booking;
+    String linea_transportista;
+    
+    public SolicitudServicioDet(){
+    masa_bruta_mba_vgm = "";
+    
     }
-
-    public void setFecha_primer_pesaje(Date fecha_primer_pesaje) {
-        this.fecha_primer_pesaje = fecha_primer_pesaje;
-    }
-
+    
     public Double getPrimer_pesaje() {
         return primer_pesaje;
     }
 
     public void setPrimer_pesaje(Double primer_pesaje) {
         this.primer_pesaje = primer_pesaje;
-    }
-
-    public Date getFecha_segundo_pesaje() {
-        return fecha_segundo_pesaje;
-    }
-
-    public void setFecha_segundo_pesaje(Date fecha_segundo_pesaje) {
-        this.fecha_segundo_pesaje = fecha_segundo_pesaje;
     }
 
     public Double getSegundo_pesaje() {
@@ -53,20 +44,20 @@ public class SolicitudServicioDet extends PartidaObjectBase {
         this.segundo_pesaje = segundo_pesaje;
     }
 
-    public Double getMasa_bruta_mba_vgm() {
+    public String getMasa_bruta_mba_vgm() {
         return masa_bruta_mba_vgm;
     }
 
-    public void setMasa_bruta_mba_vgm(Double masa_bruta_mba_vgm) {
+    public void setMasa_bruta_mba_vgm(String masa_bruta_mba_vgm) {
         this.masa_bruta_mba_vgm = masa_bruta_mba_vgm;
     }
 
-    public String getIntrumento_referencia() {
-        return intrumento_referencia;
+    public String getinstrumento_referencia() {
+        return instrumento_referencia;
     }
 
-    public void setIntrumento_referencia(String intrumento_referencia) {
-        this.intrumento_referencia = intrumento_referencia;
+    public void setinstrumento_referencia(String intrumento_referencia) {
+        this.instrumento_referencia = intrumento_referencia;
     }
 
     public String getVerificacion_instrumento() {
@@ -75,6 +66,46 @@ public class SolicitudServicioDet extends PartidaObjectBase {
 
     public void setVerificacion_instrumento(String verificacion_instrumento) {
         this.verificacion_instrumento = verificacion_instrumento;
+    }
+
+    public String getPlacas() {
+        return placas;
+    }
+
+    public void setPlacas(String placas) {
+        this.placas = placas;
+    }
+
+    public String getContenedor() {
+        return contenedor;
+    }
+
+    public void setContenedor(String contenedor) {
+        this.contenedor = contenedor;
+    }
+
+    public String getTara_de_contenedor() {
+        return tara_de_contenedor;
+    }
+
+    public void setTara_de_contenedor(String tara_de_contenedor) {
+        this.tara_de_contenedor = tara_de_contenedor;
+    }
+
+    public String getBooking() {
+        return booking;
+    }
+
+    public void setBooking(String booking) {
+        this.booking = booking;
+    }
+
+    public String getLinea_transportista() {
+        return linea_transportista;
+    }
+
+    public void setLinea_transportista(String linea_transportista) {
+        this.linea_transportista = linea_transportista;
     }
     
     

@@ -160,5 +160,36 @@ public class SolicitudServicioService {
         }
 
     }
+
+//    public void estadoTerminado(Integer id, Date fecha_modificacion, Boolean activo) {
+//
+//        getSolicitudServicio(" id = " + id, "", "");
+//
+//        if (object != null) {
+//
+//            object.setEstado_doc(GrucasDomainConfig.ESTADO_DOCUMENTO_TERMINADO);
+//            object.setFecha_modificacion(new Date());
+//            object.setActivo(activo);
+//
+//            SolicitudServicioUpdate(object);
+//
+//            SolicitudServicioService solicitudService = new SolicitudServicioService();
+//            solicitudService.getSolicitudServicio("id = '" + object.getId() + "'", "", "");
+//            SolicitudServicio solicitud = solicitudService.getObject();
+//
+//            solicitud.setEstado_doc(GrucasDomainConfig.ESTADO_CANCELADO);
+//            solicitud.setFecha_modificacion(new Date());
+//            solicitud.setActivo(activo);
+//
+//            solicitudService.SolicitudServicioUpdate(solicitud);
+//
+//        } else {
+//            notification = "El documento no existe en la base de datos.";
+//        }
+//    }
+    
+    
+    
+    
     
 }

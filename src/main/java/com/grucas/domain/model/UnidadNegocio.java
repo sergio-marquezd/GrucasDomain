@@ -11,8 +11,8 @@ import com.rubik.Base.ObjectBase;
  *
  * @author GrucasDev
  */
-public class UnidadNegocio extends ObjectBase{
-    
+public class UnidadNegocio extends ObjectBase {
+
     String nombre;
     String domicilio;
     String pais;
@@ -25,11 +25,13 @@ public class UnidadNegocio extends ObjectBase{
     Integer folio_requisicion;
     Integer folio_orden_compra;
     Integer folio_responsiva;
+    Integer folio_vgm;
 
     public UnidadNegocio() {
-        folio_requisicion=0;
-        folio_orden_compra=0;
-        folio_responsiva=0;
+        folio_requisicion = 0;
+        folio_orden_compra = 0;
+        folio_responsiva = 0;
+        folio_vgm = 0;
     }
 
     public String getNombre() {
@@ -119,7 +121,15 @@ public class UnidadNegocio extends ObjectBase{
     public void setFolio_responsiva(Integer folio_responsiva) {
         this.folio_responsiva = folio_responsiva;
     }
-    
+
+    public Integer getFolio_vgm() {
+        return folio_vgm;
+    }
+
+    public void setFolio_vgm(Integer folio_vgm) {
+        this.folio_vgm = folio_vgm;
+    }
+
     @Override
     public String toString() {
         return unidad;
@@ -132,7 +142,5 @@ public class UnidadNegocio extends ObjectBase{
     public void setEmpresa_rfc(String empresa_rfc) {
         this.empresa_rfc = empresa_rfc;
     }
-
-  
 
 }

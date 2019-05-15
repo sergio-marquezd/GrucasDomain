@@ -7,7 +7,9 @@ package com.grucas.domain.services;
 
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.SolicitudServicioDetDAO;
+import com.grucas.domain.model.SolicitudServicio;
 import com.grucas.domain.model.SolicitudServicioDet;
+import java.util.Date;
 import java.util.List;
 
 /**

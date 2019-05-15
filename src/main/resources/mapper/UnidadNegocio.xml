@@ -33,6 +33,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="folio_orden_compra" column="folio_orden_compra"/>
         <result property="folio_responsiva" column="folio_responsiva"/>
         <result property="empresa_rfc" column="empresa_rfc"/>
+        <result property="folio_vgm" column="folio_vgm"/>
     </resultMap>
 
     <select id="UnidadNegocioMaxID" resultMap="ResultUnidadNegocioID">
@@ -48,10 +49,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
         INSERT INTO unidad_negocio 
         (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,
-        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc)
+        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc,folio_vgm)
         VALUES
         (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},
-        #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva},#{empresa_rfc})
+        #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva},#{empresa_rfc},#{folio_vgm})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM unidad_negocio 
@@ -64,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},
         usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},domicilio = #{domicilio},
         pais = #{pais},estado = #{estado},ciudad = #{ciudad},codigo_postal = #{codigo_postal},telefono = #{telefono},
-        serie = #{serie}
+        serie = #{serie},folio_vgm = #{folio_vgm}
         WHERE id = #{id}
     </update>
 

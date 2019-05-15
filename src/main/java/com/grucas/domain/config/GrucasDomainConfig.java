@@ -52,6 +52,8 @@ public class GrucasDomainConfig {
      //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS EXTRANET [CODE APP: 1007]
     public static final String ROL_EJECUTIVO_ARCELOR = "EJECUTIVO ARCELOR";
     public static final String ROL_CLIETE_ARCELOR = "CLIENTE ARCELOR";
+    public static final String ROL_CLIENTE_KARGO = "CLIENTE KARGO";
+    public static final String ROL_EJECUTIVO_KARGO = "EJECUTIVO KARGO";
     
     // ------------------------------------------------------------------------- 
     // Estado de documentos
@@ -67,6 +69,7 @@ public class GrucasDomainConfig {
     public static final String DOCUMENTO_ORDEN_DE_COMPRA = "ORDEN DE COMPRA";
     public static final String ESTADO_AUTORIZADO = "AUTORIZADO";
     public static final String ESTADO_COTIZACION_COMPRA = "COTIZACION COMPRA";
+    public static final String DOCUMENTO_SOLICITUD_VGM = "SOLICITUD VGM";
     
     public static final List<String> ESTADOS_REQUISICION = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_CANCELADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_OC_TERMINADO);
     public static final List<String> ESTADOS_OC = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_CANCELADO);

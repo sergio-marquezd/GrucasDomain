@@ -34,6 +34,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="cp" column="cp"/>
         <result property="linea_transportista" column="linea_transportista"/>
         <result property="aplico_top" column="aplico_top"/>
+        <result property="estado_doc" column="estado_doc"/>
+        <result property="tipo_documento" column="tipo_documento"/>
+        <result property="serie" column="serie"/>
  
 
     </resultMap>
@@ -46,9 +49,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="SolicitudServicioInsert" parameterType="SolicitudServicio" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO solicitud_servicio 
-        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,folio,cliente,cliente_id,placas,contenedor,tara_de_contenedor,booking,operador,cliente_factura_id,cliente_factura,domicilio,ciudad,estado,rfc,cp,linea_transportista,aplico_top)
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,folio,cliente,cliente_id,placas,contenedor,tara_de_contenedor,booking,operador,cliente_factura_id,cliente_factura,domicilio,ciudad,estado,rfc,cp,linea_transportista,aplico_top,estado_doc,tipo_documento,serie)
         VALUES
-        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{folio},#{cliente},#{cliente_id},#{placas},#{contenedor},#{tara_de_contenedor},#{booking},#{operador},#{cliente_factura_id},#{cliente_factura},#{domicilio},#{ciudad},#{estado},#{rfc},#{cp},#{linea_transportista},#{aplico_top})
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{folio},#{cliente},#{cliente_id},#{placas},#{contenedor},#{tara_de_contenedor},#{booking},#{operador},#{cliente_factura_id},#{cliente_factura},#{domicilio},#{ciudad},#{estado},#{rfc},#{cp},#{linea_transportista},#{aplico_top},#{estado_doc},#{tipo_documento},#{serie})
        
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM solicitud_servicio 
@@ -60,7 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         UPDATE solicitud_servicio 
          SET fecha_elaboracion = #{fecha_elaboracion},fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad= #{unidad},
         usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},folio = #{folio},cliente= #{cliente},cliente_id = #{cliente_id},placas = #{placas},contenedor = #{contenedor},tara_de_contenedor = #{tara_de_contenedor},booking = #{booking},operador = #{operador},cliente_factura_id = #{cliente_factura_id},
-        cliente_factura = #{cliente_factura},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},rfc = #{rfc},cp = #{cp},linea_transportista = #{linea_transportista},aplico_top = #{aplico_top}
+        cliente_factura = #{cliente_factura},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},rfc = #{rfc},cp = #{cp},linea_transportista = #{linea_transportista},aplico_top = #{aplico_top},estado_doc = #{estado_doc},tipo_documento = #{tipo_documento},serie = #{serie}
         WHERE id = #{id}
     </update>
 

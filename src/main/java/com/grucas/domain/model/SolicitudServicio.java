@@ -11,14 +11,15 @@ import com.rubik.Base.DocumentObjectBase;
  *
  * @author User
  */
-public class SolicitudServicio extends DocumentObjectBase  {
+public class SolicitudServicio extends DocumentObjectBase {
+
     String folio;
     String cliente;
     Integer cliente_id;
     String placas;
     String contenedor;
     String tara_de_contenedor;
-    String booking;   
+    String booking;
     String operador;
     Integer cliente_factura_id;
     String cliente_factura;
@@ -167,5 +168,5 @@ public class SolicitudServicio extends DocumentObjectBase  {
         this.booking = booking;
     }
 
-       
+
 }
