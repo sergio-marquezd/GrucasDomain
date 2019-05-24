@@ -151,7 +151,10 @@ public class GrucasDomainConfig {
      // ------------------------------------------------------------------------
     // CLASIFICACION PROVEEDORES
     // -------------------------------------------------------------------------
+    public static final String TIPO_PROVEEDOR_ESTRATEGICO = "ESTRÁTEGICO";
+    public static final String TIPO_PROVEEDOR_GENERAL = "GENERAL";
     
+    public static final List<String> TIPOS_DE_PROVEEDORES = Arrays.asList(TIPO_PROVEEDOR_GENERAL,TIPO_PROVEEDOR_ESTRATEGICO);
     public static final List<String> CLASIFICACION_PROVEEDORES = Arrays.asList("Contrato","Cliente impone","Unico en zona","Cumple con los Requisitos legales y reglamentarios","Casos especiales","Afecta la operación");
  
     
