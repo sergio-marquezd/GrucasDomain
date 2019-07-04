@@ -29,6 +29,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="rol" column="rol"/>
         <result property="todas_unidades" column="todas_unidades"/>
     </resultMap>
+    
+    <resultMap id="ResultNIP" type="NipCode">
+        <result property="id" column="id"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="nip" column="nip"/>
+        <result property="fecha_actualizacion" column="fecha_actualizacion"/>
+        <result property="activo" column="activo"/>
+    </resultMap>
 
     <select id="UsuarioMaxID" resultMap="ResultUsuarioID">
         SELECT max(id)+1 as id
@@ -65,6 +74,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         ${where} 
         ${group} 
         ${order}
+    </select>
+    
+    <select id="UsuarioNIP" parameterType="map" resultMap="ResultNIP">
+        SELECT *
+        FROM usuario_nip 
+        WHERE usuario = #{usuario}
     </select>
 
 </mapper>

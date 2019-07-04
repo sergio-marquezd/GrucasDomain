@@ -10,6 +10,7 @@ package com.grucas.domain.dao;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
+import com.grucas.domain.model.NipCode;
 import com.grucas.domain.model.Usuario;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
@@ -153,6 +154,43 @@ public class UsuarioDAO {
             }
 
         }
+    }
+    
+    public NipCode getNIPCode(String usuario){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("usuario", usuario);
+            
+            session = sqlSessionFactory.openSession();
+            return session.selectOne("UsuarioNIP",map);
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+        
+        return null;
     }
     
     public void getUsuario(Integer id){
