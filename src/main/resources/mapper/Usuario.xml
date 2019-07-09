@@ -82,4 +82,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         WHERE usuario = #{usuario}
     </select>
 
+    <update id="UsuarioNIPUpdate" parameterType="NipCode">
+        UPDATE usuario_nip 
+        SET fecha_actualizacion = #{fecha_actualizacion}, nip = #{nip}
+        WHERE usuario = #{usuario}
+    </update>
+
 </mapper>

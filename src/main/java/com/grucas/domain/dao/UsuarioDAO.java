@@ -13,6 +13,7 @@ import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.model.NipCode;
 import com.grucas.domain.model.Usuario;
 import com.rubik.logger.LoggerImpl;
+import com.rubik.util.PasswordGenerator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -167,6 +168,40 @@ public class UsuarioDAO {
             
             session = sqlSessionFactory.openSession();
             return session.selectOne("UsuarioNIP",map);
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+        
+        return null;
+    }
+    
+    public NipCode generateNIPCode(NipCode nip){
+
+        SqlSession session = null;
+
+        try {
+            
+            session = sqlSessionFactory.openSession();
+            return session.selectOne("UsuarioNIPUpdate",nip);
             
         } catch (SqlSessionException ex) {
 

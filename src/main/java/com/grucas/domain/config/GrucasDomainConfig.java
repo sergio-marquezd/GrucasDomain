@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class GrucasDomainConfig {
 
-    public static final String URL_APP = "maritimo.grupo-castaneda.com/Grucas/";
-    public static final String URL_API = "maritimo.grupo-castaneda.com/GrucasAPI/v1/";
+    public static final String URL_APP = "https://web.grucas.com:8443/Grucas/";
+    public static final String URL_API = "https://web.grucas.com:8443/GrucasAPI/v1/";
     
     private static final String ENV_GRUCAS = "catalogos";
     public static final Boolean DEBUG_GRUCAS = true;

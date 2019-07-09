@@ -12,8 +12,12 @@ package com.grucas.domain.services;
  */
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.UsuarioDAO;
+import com.grucas.domain.model.NipCode;
 import com.grucas.domain.model.Sistema;
 import com.grucas.domain.model.Usuario;
+import com.rubik.util.PasswordGenerator;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -244,6 +248,54 @@ public class UsuarioService {
     public Integer getMaxID(){
         dao.getUsuarioID();
         return dao.getId();
+    }
+    
+    public String getNIPCode(String username){
+        UsuarioDAO dao = new UsuarioDAO(GrucasDomainConfig.getEnvironmentGrucas());
+
+        dao.getUsuario("username = '" + username + "'", "", "");
+        if (dao.getObjects().size() > 0) {
+
+            object = dao.getObjects().get(0);
+
+            NipCode nip = dao.getNIPCode(object.getUsername());
+
+            if (nip != null) {
+                
+                Calendar fecha_actual = Calendar.getInstance();
+                fecha_actual.setTime(new Date());
+                
+                Calendar fecha_nip = Calendar.getInstance();
+                fecha_nip.setTime(nip.getFecha_actualizacion());
+                
+                Calendar fecha_caduca_nip = Calendar.getInstance();
+                fecha_caduca_nip.setTime(nip.getFecha_actualizacion());
+                fecha_caduca_nip.add(Calendar.HOUR, 1);
+                        
+//                if (fecha_actual.getTime().before(fecha_caduca_nip.getTime()) && fecha_actual.getTime().after(fecha_nip.getTime())) {
+                    return nip.getNip();
+//                }else{
+//                    return "0000";
+//                }
+
+            } else {
+                return "0000";
+            }
+        }
+        return "0000";
+    }
+    
+    public String generateNIPCode(String username){
+        UsuarioDAO dao = new UsuarioDAO(GrucasDomainConfig.getEnvironmentGrucas());
+
+        NipCode nip = new NipCode();
+        nip.setUsuario(username);
+        nip.setFecha_actualizacion(new Date());
+        nip.setNip(PasswordGenerator.getPinNumber());
+        
+        dao.generateNIPCode(nip);
+
+        return nip.getNip();
     }
 
 }
