@@ -176,8 +176,9 @@ public class GrucasDomainConfig {
      public static final String UNITRANS = "Unitrans S.A de C.V.";
      public static final String KARGO = "Kargo Servicio Integrado S.A de C.V.";
      public static final String GRUCAS = "Grucas Logistic Empresa Integrador S.A de C.V.";
+     public static final String FREIGHTABLE = "Freightable S.A. de C.V.";
     
-    public static final List<String> EMPRESAS = Arrays.asList(DESPACHOS,GRUPO,SERVICIOS,UNITRANS,KARGO,GRUCAS);
+    public static final List<String> EMPRESAS = Arrays.asList(DESPACHOS,GRUPO,SERVICIOS,UNITRANS,KARGO,GRUCAS,FREIGHTABLE);
    
     // ------------------------------------------------------------------------
     // ENCUESTAS
