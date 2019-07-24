@@ -43,6 +43,9 @@ public class Empleado extends ObjectBase{
     Boolean requisitor;
     
     String nombre_completo;
+    
+    Integer puesto_id;
+    String puesto;
 
     public Empleado() {
         super();
@@ -226,6 +229,22 @@ public class Empleado extends ObjectBase{
 
     public void setNombre_completo(String nombre_completo) {
         this.nombre_completo = nombre_completo;
+    }
+
+    public Integer getPuesto_id() {
+        return puesto_id;
+    }
+
+    public void setPuesto_id(Integer puesto_id) {
+        this.puesto_id = puesto_id;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
     }
 
     @Override
