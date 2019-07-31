@@ -51,6 +51,10 @@ public class GrucasDomainConfig {
     public static final String ROL_COMPRAS = "COMPRAS";
     public static final String ROL_REQUISITOR = "REQUISITOR";
     public static final String ROL_AUTORIZADOR = "AUTORIZADOR";
+    public static final String ROL_ADMIN_SD = "ADMINISTRADOR SD";
+    public static final String ROL_TECNICO_SD = "TECNICO";
+    
+    public static final List<String> ROLES_SD = Arrays.asList(ROL_ADMIN_SD, ROL_TECNICO_SD) ;
     
      //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS EXTRANET [CODE APP: 1007]
     public static final String ROL_EJECUTIVO_ARCELOR = "EJECUTIVO ARCELOR";
