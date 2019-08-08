@@ -26,6 +26,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="tipo" column="tipo"/>
         <result property="empleado_id" column="empleado_id"/>
         <result property="permisos" column="permisos"/>
+        <result property="puesto_id" column="puesto_id"/>
+        <result property="puesto" column="puesto"/>
+        <result property="clasificacion_puesto" column="clasificacion_puesto"/>
+        <result property="departamento_id" column="departamento_id"/>
+        <result property="departamento" column="departamento"/>
         <result property="rol" column="rol"/>
         <result property="todas_unidades" column="todas_unidades"/>
     </resultMap>
@@ -69,8 +74,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     </delete>
 
     <select id="UsuarioWhere" parameterType="map" resultMap="ResultUsuario">
-        SELECT *
-        FROM usuario 
+        SELECT *, t2.puesto_id, t2.puesto, t2.clasificacion_puesto, t2.departamento_id, t2.departamento
+        FROM usuario  
+        LEFT JOIN empleado t2 on usuario.empleado_id = t2.id
         ${where} 
         ${group} 
         ${order}

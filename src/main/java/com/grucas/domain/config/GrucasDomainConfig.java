@@ -25,38 +25,6 @@ public class GrucasDomainConfig {
     public static String getEnvironmentGrucas() {
         return ENV_GRUCAS;
     }
-
-    // ------------------------------------------------------------------------- 
-    // Configuraciones y usuarios
-    // ------------------------------------------------------------------------- 
-    public static final String USUARIO_SUPER = "FULLACCESS";
-    public static final String USUARIO_EMPLEADO = "COLABORADOR";
-    public static final String USUARIO_CLIENTE = "CLIENTE";
-    public static final List<String> USUARIO_TIPOS = Arrays.asList(USUARIO_EMPLEADO,USUARIO_CLIENTE,USUARIO_SUPER);
-
-    // ------------------------------------------------------------------------- 
-    // ROLES DE USUARIO DEFINIDOS EN LA BASE DE DATOS ** ES DE SUMA IMPORTANCIA ESTAR ACTUALIZADO CONFORME A LA BASE DE DATOS**
-    // ------------------------------------------------------------------------- 
-    
-    //ROLES DE USUARIO PARA VARIOS SISTEMAS
-    public static final String ROL_ADMINISTRADOR = "ADMINISTRADOR";
-    public static final String ROL_INVENTARIOS = "INVENTARIOS";
-    
-    //ROLES DE USUARIO DEFINIDOS PARA SISTEMA DE KARGO - CHEMOURS [CODE APP: 1001]
-    public static final String ROL_EMBARQUES = "EMBARQUES";
-    public static final String ROL_DOCUMENTADOR = "DOCUMENTADOR";
-    public static final String ROL_SUPERVISOR = "SUPERVISOR";
-
-    //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS INTRANET [CODE APP: 1006]
-    public static final String ROL_COMPRAS = "COMPRAS";
-    public static final String ROL_REQUISITOR = "REQUISITOR";
-    public static final String ROL_AUTORIZADOR = "AUTORIZADOR";
-    
-     //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS EXTRANET [CODE APP: 1007]
-    public static final String ROL_EJECUTIVO_ARCELOR = "EJECUTIVO ARCELOR";
-    public static final String ROL_CLIETE_ARCELOR = "CLIENTE ARCELOR";
-    public static final String ROL_CLIENTE_KARGO = "CLIENTE KARGO";
-    public static final String ROL_EJECUTIVO_KARGO = "EJECUTIVO KARGO";
     
     // ------------------------------------------------------------------------- 
     // Estado de documentos

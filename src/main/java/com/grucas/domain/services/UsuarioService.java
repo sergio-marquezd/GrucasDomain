@@ -11,6 +11,8 @@ package com.grucas.domain.services;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
+import com.grucas.domain.config._RolesDeUsuario;
+import com.grucas.domain.config._TiposDeUsuario;
 import com.grucas.domain.dao.UsuarioDAO;
 import com.grucas.domain.model.NipCode;
 import com.grucas.domain.model.Sistema;
@@ -171,9 +173,9 @@ public class UsuarioService {
             
             object = dao.getObjects().get(0);
             
-            if (GrucasDomainConfig.USUARIO_SUPER.equals(object.getTipo())) {
+            if (_TiposDeUsuario.USUARIO_SUPER.equals(object.getTipo())) {
 
-                object.setRol(GrucasDomainConfig.ROL_ADMINISTRADOR);                
+                object.setRol(_RolesDeUsuario.ROL_ADMINISTRADOR);                
                 ok = true;
                 total_result = 1;
                 notification = "Bienvenido al sistema " + object.getNombre() + "!";

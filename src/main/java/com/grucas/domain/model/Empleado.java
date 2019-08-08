@@ -46,6 +46,11 @@ public class Empleado extends ObjectBase{
     
     Integer puesto_id;
     String puesto;
+    
+    String clasificacion_puesto;
+    
+    Integer departamento_id;
+    String departamento;
 
     public Empleado() {
         super();
@@ -76,6 +81,11 @@ public class Empleado extends ObjectBase{
         fecha_ingreso = null;
         autorizador = false;
         requisitor = false;
+        puesto_id = 0;
+        puesto = "";
+        clasificacion_puesto = "";
+        departamento_id = 0;
+        departamento = "";
         activo = false;
     }
 
@@ -245,6 +255,30 @@ public class Empleado extends ObjectBase{
 
     public void setPuesto(String puesto) {
         this.puesto = puesto;
+    }
+
+    public Integer getDepartamento_id() {
+        return departamento_id;
+    }
+
+    public void setDepartamento_id(Integer departamento_id) {
+        this.departamento_id = departamento_id;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public String getClasificacion_puesto() {
+        return clasificacion_puesto;
+    }
+
+    public void setClasificacion_puesto(String clasificacion_puesto) {
+        this.clasificacion_puesto = clasificacion_puesto;
     }
 
     @Override

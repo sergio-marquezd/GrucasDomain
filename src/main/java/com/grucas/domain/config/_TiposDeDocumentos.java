@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author GrucasDev
  */
-public class TiposDeDocumentos {
+public class _TiposDeDocumentos {
     
     public static final String DOCUMENTO_REQUISICION = "REQUISICION";
     public static final String DOCUMENTO_ORDEN_DE_COMPRA = "ORDEN DE COMPRA";
