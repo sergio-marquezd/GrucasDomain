@@ -154,6 +154,7 @@ public class GrucasDomainConfig {
     // -------------------------------------------------------------------------
     
     public static final String SATISFACCIÓN_DEL_CLIENTE = "ENCUESTA DE SATISFACCIÓN DEL CLIENTE";
+    public static final String CADENA_SUMINISTRO = "AUTOEVALUACION EN LA CADENA DE SIMINISTRO A SOCIOS COMERCIALES SG-SEG-FR-026";
     
     // ------------------------------------------------------------------------
     // SERVICIO BRINDADO
