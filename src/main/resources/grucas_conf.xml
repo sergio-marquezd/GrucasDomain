@@ -21,6 +21,8 @@
         <typeAlias alias="SolicitudServicio" type="com.grucas.domain.model.SolicitudServicio"/>
         <typeAlias alias="SolicitudServicioDet" type="com.grucas.domain.model.SolicitudServicioDet"/>
         <typeAlias alias="NipCode" type="com.grucas.domain.model.NipCode"/>
+        <typeAlias alias="ClasificacionDeDocumento" type="com.grucas.domain.model.ClasificacionDeDocumento"/>
+        <typeAlias alias="TipoDeDocumento" type="com.grucas.domain.model.TipoDeDocumento"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -56,6 +58,8 @@
         <mapper resource="mapper/ClientesKVV.xml"/>
         <mapper resource="mapper/SolicitudServicio.xml"/>
         <mapper resource="mapper/SolicitudServicioDet.xml"/>
+        <mapper resource="mapper/ClasificacionDeDocumento.xml"/>
+        <mapper resource="mapper/TipoDeDocumento.xml"/>
     </mappers>
   
 </configuration>

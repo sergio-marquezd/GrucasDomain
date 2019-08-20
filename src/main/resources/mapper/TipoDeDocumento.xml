@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="TipoDeDocumento">
+
+    <resultMap id="ResultTipoDeDocumentoID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultTipoDeDocumento" type="TipoDeDocumento">
+        <result property="id" column="id"/>
+        <result property="clasificacion_id" column="clasificacion_id"/>
+        <result property="tipo_documento" column="tipo_documento"/>
+        <result property="mimetypes" column="mimetypes"/>
+    </resultMap>
+
+    <select id="TipoDeDocumentoMaxID" resultMap="ResultTipoDeDocumentoID">
+        SELECT max(id)+1 as id
+        FROM tipo_de_documento 
+    </select>
+
+    <insert id="TipoDeDocumentoInsert" parameterType="TipoDeDocumento" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO tipo_de_documento 
+        (clasificacion_id,tipo_documento,mimetypes)
+        VALUES
+        (#{clasificacion_id},#{tipo_documento},#{mimetypes})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM tipo_de_documento 
+        </selectKey>
+
+    </insert>
+
+    <update id="TipoDeDocumentoUpdate" parameterType="TipoDeDocumento">
+        UPDATE tipo_de_documento 
+        SET clasificacion_id = #{clasificacion_id},tipo_documento = #{tipo_documento},mimetypes = #{mimetypes}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="TipoDeDocumentoDelete" parameterType="map">
+        DELETE FROM tipo_de_documento 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="TipoDeDocumentoWhere" parameterType="map" resultMap="ResultTipoDeDocumento">
+        SELECT *
+        FROM tipo_de_documento 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="TipoDeDocumentoOne" parameterType="map" resultMap="ResultTipoDeDocumento">
+        SELECT *
+        FROM tipo_de_documento 
+        ${where} 
+    </select>
+
+</mapper>
