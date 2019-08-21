@@ -26,6 +26,7 @@ public class UnidadNegocio extends ObjectBase {
     Integer folio_orden_compra;
     Integer folio_responsiva;
     Integer folio_vgm;
+    String email_dac_proveedores;
 
     public UnidadNegocio() {
         folio_requisicion = 0;
@@ -141,6 +142,14 @@ public class UnidadNegocio extends ObjectBase {
 
     public void setEmpresa_rfc(String empresa_rfc) {
         this.empresa_rfc = empresa_rfc;
+    }
+
+    public String getEmail_dac_proveedores() {
+        return email_dac_proveedores;
+}
+
+    public void setEmail_dac_proveedores(String email_dac_proveedores) {
+        this.email_dac_proveedores = email_dac_proveedores;
     }
 
 }

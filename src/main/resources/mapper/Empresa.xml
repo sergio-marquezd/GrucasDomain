@@ -29,6 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="cp" column="cp"/>
         <result property="telefono" column="telefono"/>
         <result property="pais" column="pais"/>
+        <result property="email_contabilidad" column="email_contabilidad"/>
     </resultMap>
 
     <select id="EmpresaMaxID" resultMap="ResultEmpresaID">
@@ -39,9 +40,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="EmpresaInsert" parameterType="Empresa" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO empresa 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,razon_social,abreviacion,contacto_email,contacto_nombre,contacto_tel,rfc,domicilio,ciudad,estado,cp,telefono,pais)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,razon_social,abreviacion,contacto_email,contacto_nombre,contacto_tel,rfc,domicilio,ciudad,estado,cp,telefono,pais,email_contabilidad)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{razon_social},#{abreviacion},#{contacto_email},#{contacto_nombre},#{contacto_tel},#{rfc},#{domicilio},#{ciudad},#{estado},#{cp},#{telefono},#{pais})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{razon_social},#{abreviacion},#{contacto_email},#{contacto_nombre},#{contacto_tel},#{rfc},#{domicilio},#{ciudad},#{estado},#{cp},#{telefono},#{pais},#{email_contabilidad})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
                 SELECT MAX(id) FROM empresa 
@@ -51,7 +52,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="EmpresaUpdate" parameterType="Empresa">
         UPDATE empresa 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},razon_social = #{razon_social},abreviacion = #{abreviacion},contacto_email = #{contacto_email},contacto_nombre = #{contacto_nombre},contacto_tel = #{contacto_tel},rfc = #{rfc},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},cp = #{cp},telefono = #{telefono},pais = #{pais}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},razon_social = #{razon_social},
+        abreviacion = #{abreviacion},contacto_email = #{contacto_email},contacto_nombre = #{contacto_nombre},contacto_tel = #{contacto_tel},rfc = #{rfc},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},cp = #{cp},telefono = #{telefono},pais = #{pais},email_contabilidad = #{email_contabilidad}
         WHERE id = #{id}
     </update>
 
