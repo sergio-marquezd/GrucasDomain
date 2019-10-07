@@ -34,5 +34,17 @@
             <version>1.0</version>
             <type>jar</type>
         </dependency> -->
+        <dependency>
+            <groupId>com.grucas.compras</groupId>
+            <artifactId>ComprasDomain</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.rubik.lucene</groupId>
+            <artifactId>RubikLucene</artifactId>
+            <version>1.0</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>
