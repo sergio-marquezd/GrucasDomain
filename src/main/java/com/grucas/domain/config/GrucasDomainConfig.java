@@ -16,7 +16,7 @@ public class GrucasDomainConfig {
 
     public static final String URL_APP = "https://web.grucas.com:8443/Grucas/";
     public static final String URL_API = "https://web.grucas.com:8443/GrucasAPI/v1/";
-    
+      
     private static final String ENV_GRUCAS = "catalogos";
     public static final Boolean DEBUG_GRUCAS = true;
 
@@ -216,5 +216,13 @@ public class GrucasDomainConfig {
     
     public static final List<String> LISTA_IVA_FRONTERA = Arrays.asList(IVA_FRONTERA,IVA_TASA_0);
     public static final List<String> LISTA_IVA_GENERAL = Arrays.asList(IVA_GENERAL,IVA_TASA_0);
+    
+    //--------------------------------------------------------------------------
+    // CORREOS
+    //--------------------------------------------------------------------------
+    public static final String CORREO_TESORERIA = "rlopez@grucas.com,dbalderas@grucas.com,lrodriguez@grucas.com";
+    public static final String CORREO_PRUEBA = "ltello@grucas.com";
+    
+    
     
 }
