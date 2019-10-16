@@ -165,7 +165,7 @@ public class ConfiguracionGrucasDAO {
             map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("ConfiguracionGrucasWhere",map);
+            object = session.selectOne("ConfiguracionGrucasOne",map);
 
             ok = true;
             

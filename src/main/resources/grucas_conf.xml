@@ -23,6 +23,7 @@
         <typeAlias alias="NipCode" type="com.grucas.domain.model.NipCode"/>
         <typeAlias alias="ClasificacionDeDocumento" type="com.grucas.domain.model.ClasificacionDeDocumento"/>
         <typeAlias alias="TipoDeDocumento" type="com.grucas.domain.model.TipoDeDocumento"/>
+        <typeAlias alias="ConfiguracionGrucas" type="com.grucas.domain.model.ConfiguracionGrucas"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -60,6 +61,7 @@
         <mapper resource="mapper/SolicitudServicioDet.xml"/>
         <mapper resource="mapper/ClasificacionDeDocumento.xml"/>
         <mapper resource="mapper/TipoDeDocumento.xml"/>
+        <mapper resource="mapper/ConfiguracionGrucas.xml"/>
     </mappers>
   
 </configuration>

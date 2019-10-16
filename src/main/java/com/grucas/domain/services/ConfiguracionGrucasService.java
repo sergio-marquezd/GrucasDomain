@@ -171,7 +171,7 @@ public class ConfiguracionGrucasService {
 
     public String getFolioServiceDesk(){
         
-        dao.getConfiguracionGrucas("id = 1", "", "");
+        getOneConfiguracionGrucas("id = 1");
         object = getObject();
         
         String month = "";
@@ -179,7 +179,7 @@ public class ConfiguracionGrucasService {
                 
         Calendar c =  new GregorianCalendar();
                 
-        if(object.getMes() == c.get(Calendar.MONTH)+""){
+        if(object.getMes().equals(c.get(Calendar.MONTH)+"")){
             month = object.getMes();
             anio = object.getAnio()+"";
         }else{
@@ -190,7 +190,9 @@ public class ConfiguracionGrucasService {
         
         object.setConsecutivo_sd(object.getConsecutivo_sd()+1);
         ConfiguracionGrucasUpdate(object);
-                
+        
+        System.out.println("FOLIO : " + month+anio+"_"+ManageString.fillWithZero(object.getConsecutivo_sd(), 4));
+        
         return month+anio+"_"+ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
     }
     
