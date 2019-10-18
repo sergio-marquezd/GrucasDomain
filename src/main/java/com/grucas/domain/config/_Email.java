@@ -11,11 +11,11 @@ package com.grucas.domain.config;
  */
 public class _Email {
     
-    public static String HOST = "mail.grucas.com";
-    public static String PORT = "10025";
+    public static String HOST = "email.grucas.com";
+    public static String PORT = "465";
     public static String USERNAME = "notificaciones@grucas.com";
     public static String PASSWORD = "noti_grucas$";
-    public static String SSL = "false";
+    public static String SSL = "true";
     public static String STARTTLS = "false";
     public static String SERVER_SSL = "";
     public static String FROM = "notificaciones@grucas.com";

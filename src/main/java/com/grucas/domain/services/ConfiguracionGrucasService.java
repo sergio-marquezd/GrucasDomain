@@ -8,6 +8,7 @@ package com.grucas.domain.services;
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.ConfiguracionGrucasDAO;
 import com.grucas.domain.model.ConfiguracionGrucas;
+import com.rubik.manage.ManageNumbers;
 import com.rubik.manage.ManageString;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -179,21 +180,24 @@ public class ConfiguracionGrucasService {
                 
         Calendar c =  new GregorianCalendar();
                 
-        if(object.getMes().equals(c.get(Calendar.MONTH)+"")){
+        if(object.getMes().equals((c.get(Calendar.MONTH)+1)+"")){
             month = object.getMes();
             anio = object.getAnio()+"";
         }else{
-            object.setAnio(c.get(Calendar.YEAR));
-            object.setMes(c.get(Calendar.MONTH)+"");
+            month = (c.get(Calendar.MONTH)+1)+"";
+            anio = c.get(Calendar.YEAR)+"";
+            
+            object.setAnio(ManageNumbers.ToInteger(anio));
+            object.setMes(month);
             object.setConsecutivo_sd(0);
         }
         
         object.setConsecutivo_sd(object.getConsecutivo_sd()+1);
         ConfiguracionGrucasUpdate(object);
         
-        System.out.println("FOLIO : " + month+anio+"_"+ManageString.fillWithZero(object.getConsecutivo_sd(), 4));
+        System.out.println("FOLIO : " + ManageString.fillWithZero(month, 2) + anio.replace("20", "") + "_" + ManageString.fillWithZero(object.getConsecutivo_sd(), 4));
         
-        return month+anio+"_"+ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
+        return ManageString.fillWithZero(month, 2) + anio.replace("20", "") + "_" + ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
     }
     
 }
