@@ -220,7 +220,7 @@ public class GrucasDomainConfig {
     //--------------------------------------------------------------------------
     // CORREOS
     //--------------------------------------------------------------------------
-    public static final String CORREO_TESORERIA = "rlopez@grucas.com,dbalderas@grucas.com,lrodriguez@grucas.com";
+    public static final String CORREO_TESORERIA = "rlopezm@grucas.com,dbalderas@grucas.com,lrodriguez@grucas.com";
     public static final String CORREO_PRUEBA = "ltello@grucas.com";
     
     
