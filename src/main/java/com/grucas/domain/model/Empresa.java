@@ -25,6 +25,7 @@ public class Empresa extends ObjectBase{
     String cp;
     String telefono;
     String pais;
+    String email_contabilidad;
 
     public Empresa() {
         id = 0;
@@ -145,6 +146,14 @@ public class Empresa extends ObjectBase{
 
     public void setPais(String pais) {
         this.pais = pais;
+    }
+
+    public String getEmail_contabilidad() {
+        return email_contabilidad;
+    }
+
+    public void setEmail_contabilidad(String email_contabilidad) {
+        this.email_contabilidad = email_contabilidad;
     }
 
     @Override

@@ -10,6 +10,7 @@ package com.grucas.domain.services;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
+import com.grucas.domain.config._TiposDeUsuario;
 import com.grucas.domain.model.Usuario;
 import com.grucas.domain.dao.UnidadNegocioDAO;
 import com.grucas.domain.model.UnidadNegocio;
@@ -275,7 +276,7 @@ public class UnidadNegocioService {
 
     public void getUnidadesPorUsuarioSistema(Usuario user, Integer clave_sistema){
 
-        if(user.getTodas_unidades() || user.getTipo().equals(GrucasDomainConfig.USUARIO_SUPER)){
+        if(user.getTodas_unidades() || user.getTipo().equals(_TiposDeUsuario.USUARIO_SUPER)){
             dao.getUnidadNegocio(" activo = 1 ", "", "");
         }else{
             dao.getUnidadNegocioPorUsuarioSistema(user.getId(), clave_sistema);

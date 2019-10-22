@@ -14,9 +14,9 @@ import java.util.List;
  */
 public class GrucasDomainConfig {
 
-    public static final String URL_APP = "maritimo.grupo-castaneda.com/Grucas/";
-    public static final String URL_API = "maritimo.grupo-castaneda.com/GrucasAPI/v1/";
-    
+    public static final String URL_APP = "https://web.grucas.com:8443/Grucas/";
+    public static final String URL_API = "https://web.grucas.com:8443/GrucasAPI/v1/";
+      
     private static final String ENV_GRUCAS = "catalogos";
     public static final Boolean DEBUG_GRUCAS = true;
 
@@ -51,6 +51,10 @@ public class GrucasDomainConfig {
     public static final String ROL_COMPRAS = "COMPRAS";
     public static final String ROL_REQUISITOR = "REQUISITOR";
     public static final String ROL_AUTORIZADOR = "AUTORIZADOR";
+    public static final String ROL_ADMIN_SD = "ADMINISTRADOR SD";
+    public static final String ROL_TECNICO_SD = "TECNICO";
+    
+    public static final List<String> ROLES_SD = Arrays.asList(ROL_ADMIN_SD, ROL_TECNICO_SD) ;
     
      //ROLES DE USUARIO DEFINIDOS PARA SISTEMA GRUCAS EXTRANET [CODE APP: 1007]
     public static final String ROL_EJECUTIVO_ARCELOR = "EJECUTIVO ARCELOR";
@@ -59,24 +63,13 @@ public class GrucasDomainConfig {
     public static final String ROL_EJECUTIVO_KARGO = "EJECUTIVO KARGO";
     
     // ------------------------------------------------------------------------- 
-    // Estado de documentos
-    // -------------------------------------------------------------------------    
-    public static final String ESTADO_TODOS = "TODOS";
-    public static final String ESTADO_DOCUMENTO_PRE_ELABORADO = "PRE ELABORADO";
-    public static final String ESTADO_DOCUMENTO_ENPROCESO = "EN PROCESO";
-    public static final String ESTADO_DOCUMENTO_PENDIENTE = "PENDIENTE";
-    public static final String ESTADO_DOCUMENTO_TERMINADO = "TERMINADO";
-    public static final String ESTADO_CANCELADO = "CANCELADO";
-    public static final String ESTADO_OC_TERMINADO = "OC";
+    // Documentos
+    // -------------------------------------------------------------------------        
     public static final String DOCUMENTO_REQUISICION = "REQUISICION";
     public static final String DOCUMENTO_ORDEN_DE_COMPRA = "ORDEN DE COMPRA";
-    public static final String ESTADO_AUTORIZADO = "AUTORIZADO";
-    public static final String ESTADO_COTIZACION_COMPRA = "COTIZACION COMPRA";
+    public static final String DOCUMENTO_COTIZACION_COMPRA = "COTIZACION COMPRA";
     public static final String DOCUMENTO_SOLICITUD_VGM = "SOLICITUD VGM";
     
-    public static final List<String> ESTADOS_REQUISICION = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_CANCELADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_OC_TERMINADO);
-    public static final List<String> ESTADOS_OC = Arrays.asList(ESTADO_TODOS, ESTADO_DOCUMENTO_PRE_ELABORADO, ESTADO_DOCUMENTO_TERMINADO, ESTADO_CANCELADO);
-    public static final List<String> ESTADO_MONITOREO = Arrays.asList(ESTADO_TODOS, ESTADO_OC_TERMINADO, ESTADO_AUTORIZADO);
     // ------------------------------------------------------------------------- 
     // Unidades de medida
     // -------------------------------------------------------------------------
@@ -171,14 +164,18 @@ public class GrucasDomainConfig {
      public static final String UNITRANS = "Unitrans S.A de C.V.";
      public static final String KARGO = "Kargo Servicio Integrado S.A de C.V.";
      public static final String GRUCAS = "Grucas Logistic Empresa Integrador S.A de C.V.";
+     public static final String FREIGHTABLE = "Freightable S.A. de C.V.";
     
-    public static final List<String> EMPRESAS = Arrays.asList(DESPACHOS,GRUPO,SERVICIOS,UNITRANS,KARGO,GRUCAS);
+    public static final List<String> EMPRESAS = Arrays.asList(DESPACHOS,GRUPO,SERVICIOS,UNITRANS,KARGO,GRUCAS,FREIGHTABLE);
    
     // ------------------------------------------------------------------------
     // ENCUESTAS
     // -------------------------------------------------------------------------
     
     public static final String SATISFACCIÓN_DEL_CLIENTE = "ENCUESTA DE SATISFACCIÓN DEL CLIENTE";
+    public static final String CADENA_SUMINISTRO = "AUTOEVALUACION EN LA CADENA DE SIMINISTRO A SOCIOS COMERCIALES SG-SEG-FR-026";
+    
+    public static final List<String> ENCUESTAS = Arrays.asList(SATISFACCIÓN_DEL_CLIENTE,CADENA_SUMINISTRO);
     
     // ------------------------------------------------------------------------
     // SERVICIO BRINDADO
@@ -201,5 +198,13 @@ public class GrucasDomainConfig {
     
     public static final List<String> LISTA_IVA_FRONTERA = Arrays.asList(IVA_FRONTERA,IVA_TASA_0);
     public static final List<String> LISTA_IVA_GENERAL = Arrays.asList(IVA_GENERAL,IVA_TASA_0);
+    
+    //--------------------------------------------------------------------------
+    // CORREOS
+    //--------------------------------------------------------------------------
+    public static final String CORREO_TESORERIA = "rlopezm@grucas.com,dbalderas@grucas.com,lrodriguez@grucas.com";
+    public static final String CORREO_PRUEBA = "ltello@grucas.com";
+    
+    
     
 }

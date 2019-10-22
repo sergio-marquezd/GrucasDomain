@@ -24,6 +24,11 @@ public class Usuario extends ObjectBase{
     String permisos;
     Integer rol_id;
     String rol;
+    Integer puesto_id;
+    String puesto;
+    String clasificacion_puesto;
+    Integer departamento_id;
+    String departamento;
     Boolean todas_unidades;
 
     public Usuario() {
@@ -39,6 +44,11 @@ public class Usuario extends ObjectBase{
         permisos = "";
         rol_id = 0;
         rol = "";
+        puesto_id = 0;
+        puesto = "";
+        clasificacion_puesto = "";
+        departamento_id = 0;
+        departamento = "";
         todas_unidades = false;
     }
         
@@ -145,6 +155,46 @@ public class Usuario extends ObjectBase{
     
     public String getFullName() {
         return getNombre() + " " + getApellido_paterno() + " " + getApellido_materno();
+    }
+
+    public Integer getPuesto_id() {
+        return puesto_id;
+    }
+
+    public void setPuesto_id(Integer puesto_id) {
+        this.puesto_id = puesto_id;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
+    public Integer getDepartamento_id() {
+        return departamento_id;
+    }
+
+    public void setDepartamento_id(Integer departamento_id) {
+        this.departamento_id = departamento_id;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public String getClasificacion_puesto() {
+        return clasificacion_puesto;
+    }
+
+    public void setClasificacion_puesto(String clasificacion_puesto) {
+        this.clasificacion_puesto = clasificacion_puesto;
     }
 
     @Override

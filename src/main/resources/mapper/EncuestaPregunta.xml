@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="respuesta" column="respuesta"/>
         <result property="opcion_multiple" column="opcion_multiple"/>
         <result property="valor" column="valor"/>
+        <result property="tipo_pregunta" column="tipo_pregunta"/>
     </resultMap>
 
     <select id="EncuestaPreguntaBaseMaxID" resultMap="ResultEncuestaPreguntaBaseID">
@@ -34,9 +35,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="EncuestaPreguntaBaseInsert" parameterType="EncuestaPreguntaBase" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO encuesta_pregunta 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,consecutivo,documento_id,pregunta,comentarios,respuesta,opcion_multiple,valor)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,consecutivo,documento_id,pregunta,comentarios,respuesta,opcion_multiple,valor,tipo_pregunta)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{consecutivo},#{documento_id},#{pregunta},#{comentarios},#{respuesta},#{opcion_multiple},#{valor})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{consecutivo},#{documento_id},#{pregunta},#{comentarios},#{respuesta},#{opcion_multiple},#{valor},#{tipo_pregunta})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM encuesta_pregunta 
@@ -46,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="EncuestaPreguntaBaseUpdate" parameterType="EncuestaPreguntaBase">
         UPDATE encuesta_pregunta 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},consecutivo = #{consecutivo},documento_id = #{documento_id},pregunta = #{pregunta},comentarios = #{comentarios},respuesta = #{respuesta},opcion_multiple = #{opcion_multiple},valor = #{valor}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},consecutivo = #{consecutivo},documento_id = #{documento_id},pregunta = #{pregunta},comentarios = #{comentarios},respuesta = #{respuesta},opcion_multiple = #{opcion_multiple},valor = #{valor}, tipo_pregunta = #{tipo_pregunta}
         WHERE id = #{id}
     </update>
 

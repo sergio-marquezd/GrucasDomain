@@ -34,6 +34,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="fecha_ingreso" column="fecha_ingreso"/>
         <result property="autorizador" column="autorizador"/>
         <result property="requisitor" column="requisitor"/>
+        <result property="puesto_id" column="puesto_id"/>
+        <result property="puesto" column="puesto"/>
+        <result property="clasificacion_puesto" column="clasificacion_puesto"/>
+        <result property="departamento_id" column="departamento_id"/>
+        <result property="departamento" column="departamento"/>
         <result property="activo" column="activo"/>
     </resultMap>
 
@@ -45,9 +50,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="EmpleadoInsert" parameterType="Empleado" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO empleado 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,clave_empleado,nombre,apellido_paterno,apellido_materno,nss,domicilio,colonia,cp,ciudad,estado,pais,telefono_empresa,telefono_personal,email_empresa,email_personal,fecha_ingreso,autorizador,requisitor,activo)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,clave_empleado,nombre,apellido_paterno,apellido_materno,nss,domicilio,colonia,cp,ciudad,estado,pais,telefono_empresa,telefono_personal,email_empresa,email_personal,fecha_ingreso,autorizador,requisitor,puesto_id,puesto,clasificacion_puesto,departamento_id,departamento,activo)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{clave_empleado},#{nombre},#{apellido_paterno},#{apellido_materno},#{nss},#{domicilio},#{colonia},#{cp},#{ciudad},#{estado},#{pais},#{telefono_empresa},#{telefono_personal},#{email_empresa},#{email_personal},#{fecha_ingreso},#{autorizador},#{requisitor},#{activo})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{clave_empleado},#{nombre},#{apellido_paterno},#{apellido_materno},#{nss},#{domicilio},#{colonia},#{cp},#{ciudad},#{estado},#{pais},#{telefono_empresa},#{telefono_personal},#{email_empresa},#{email_personal},#{fecha_ingreso},#{autorizador},#{requisitor},#{puesto_id},#{puesto},#{clasificacion_puesto},#{departamento_id},#{departamento},#{activo})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM empleado 
@@ -57,7 +62,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="EmpleadoUpdate" parameterType="Empleado">
         UPDATE empleado 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},clave_empleado = #{clave_empleado},nombre = #{nombre},apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},nss = #{nss},domicilio = #{domicilio},colonia = #{colonia},cp = #{cp},ciudad = #{ciudad},estado = #{estado},pais = #{pais},telefono_empresa = #{telefono_empresa},telefono_personal = #{telefono_personal},email_empresa = #{email_empresa},email_personal = #{email_personal},fecha_ingreso = #{fecha_ingreso},autorizador = #{autorizador},requisitor = #{requisitor},activo = #{activo}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},
+        unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},clave_empleado = #{clave_empleado},nombre = #{nombre},
+        apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},nss = #{nss},domicilio = #{domicilio},
+        colonia = #{colonia},cp = #{cp},ciudad = #{ciudad},estado = #{estado},pais = #{pais},telefono_empresa = #{telefono_empresa},
+        telefono_personal = #{telefono_personal},email_empresa = #{email_empresa},email_personal = #{email_personal},
+        fecha_ingreso = #{fecha_ingreso},autorizador = #{autorizador},requisitor = #{requisitor}, puesto_id = #{puesto_id},
+        puesto = #{puesto},clasificacion_puesto = #{clasificacion_puesto},departamento_id = #{departamento_id},
+        departamento = #{departamento},activo = #{activo}
         WHERE id = #{id}
     </update>
 

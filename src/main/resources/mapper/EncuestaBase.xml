@@ -31,6 +31,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="firma_electronica_entrevistador" column="firma_electronica_entrevistador"/>
         <result property="observaciones" column="observaciones"/>
         <result property="calificacion" column="calificacion"/>
+        <result property="fabricante" column="fabricante"/>
+        <result property="transporte_maritimo" column="transporte_maritimo"/>
+        <result property="transporte_ferreo" column="transporte_ferreo"/>
+        <result property="proveedor" column="proveedor"/>
+        <result property="forwander" column="forwander"/>
+        <result property="almacen" column="almacen"/>
+        <result property="agente_aduanal" column="agente_aduanal"/>
+        <result property="consolidador" column="consolidador"/>
+        <result property="transporte_terrestre" column="transporte_terrestre"/>
+        <result property="transporte_aero" column="transporte_aero"/>
+        <result property="otro_negocio" column="otro_negocio"/>
+        <result property="certificacion_oea" column="certificacion_oea"/>
+        <result property="certificacion_seguridad" column="certificacion_seguridad"/>
+        <result property="numero_autorizacion_certificado" column="numero_autorizacion_certificado"/>
     </resultMap>
 
     <select id="EncuestaBaseMaxID" resultMap="ResultEncuestaBaseID">
@@ -41,9 +55,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="EncuestaBaseInsert" parameterType="EncuestaBase" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO encuesta 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,cliente_id,cliente,documento_id,documento,nombre_encuesta,estado_doc,persona_contesta,puesto_persona_contesta,servicio_brindado,nombre_entrevistador,firma_electronica_cliente,firma_electronica_entrevistador,observaciones,calificacion)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,cliente_id,cliente,documento_id,documento,nombre_encuesta,estado_doc,persona_contesta,puesto_persona_contesta,servicio_brindado,
+        nombre_entrevistador,firma_electronica_cliente,firma_electronica_entrevistador,observaciones,calificacion,fabricante,transporte_maritimo,transporte_ferreo,proveedor,forwander,almacen,agente_aduanal,consolidador,
+        transporte_terrestre,transporte_aero,otro_negocio,certificacion_oea,certificacion_seguridad,numero_autorizacion_certificado)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{cliente_id},#{cliente},#{documento_id},#{documento},#{nombre_encuesta},#{estado_doc},#{persona_contesta},#{puesto_persona_contesta},#{servicio_brindado},#{nombre_entrevistador},#{firma_electronica_cliente},#{firma_electronica_entrevistador},#{observaciones},#{calificacion})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{cliente_id},#{cliente},#{documento_id},#{documento},#{nombre_encuesta},#{estado_doc},#{persona_contesta},
+        #{puesto_persona_contesta},#{servicio_brindado},#{nombre_entrevistador},#{firma_electronica_cliente},#{firma_electronica_entrevistador},#{observaciones},#{calificacion},#{fabricante},#{transporte_maritimo},
+        #{transporte_ferreo},#{proveedor},#{forwander},#{almacen},#{agente_aduanal},#{consolidador},#{transporte_terrestre},#{transporte_aero},#{otro_negocio},#{certificacion_oea},#{certificacion_seguridad},#{numero_autorizacion_certificado})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM encuesta 
@@ -53,7 +71,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="EncuestaBaseUpdate" parameterType="EncuestaBase">
         UPDATE encuesta 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},cliente_id = #{cliente_id},cliente = #{cliente},documento_id = #{documento_id},documento = #{documento},nombre_encuesta = #{nombre_encuesta},estado_doc = #{estado_doc},persona_contesta = #{persona_contesta},puesto_persona_contesta = #{puesto_persona_contesta},servicio_brindado = #{servicio_brindado},nombre_entrevistador = #{nombre_entrevistador},firma_electronica_cliente = #{firma_electronica_cliente},firma_electronica_entrevistador = #{firma_electronica_entrevistador},observaciones = #{observaciones},calificacion = #{calificacion}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},
+        cliente_id = #{cliente_id},cliente = #{cliente},documento_id = #{documento_id},documento = #{documento},nombre_encuesta = #{nombre_encuesta},estado_doc = #{estado_doc},persona_contesta = #{persona_contesta},
+        puesto_persona_contesta = #{puesto_persona_contesta},servicio_brindado = #{servicio_brindado},nombre_entrevistador = #{nombre_entrevistador},firma_electronica_cliente = #{firma_electronica_cliente},
+        firma_electronica_entrevistador = #{firma_electronica_entrevistador},observaciones = #{observaciones},calificacion = #{calificacion},fabricante = #{fabricante},transporte_maritimo = #{transporte_maritimo},
+        transporte_ferreo = #{transporte_ferreo},proveedor = #{proveedor},forwander = #{forwander},almacen = #{almacen},agente_aduanal = #{agente_aduanal},consolidador = #{consolidador},transporte_terrestre = #{transporte_terrestre},
+        transporte_aero = #{transporte_aero},otro_negocio = #{otro_negocio},certificacion_oea = #{certificacion_oea},certificacion_seguridad = #{certificacion_seguridad},numero_autorizacion_certificado = #{numero_autorizacion_certificado}
         WHERE id = #{id}
     </update>
 

@@ -6,6 +6,8 @@
 package com.grucas.domain.services;
 
 import com.grucas.domain.config.GrucasDomainConfig;
+import com.grucas.domain.config._RolesDeUsuario;
+import com.grucas.domain.config._TiposDeUsuario;
 import com.grucas.domain.dao.UsuarioDAO;
 import com.grucas.domain.model.Sistema;
 import com.grucas.domain.model.Usuario;
@@ -87,9 +89,9 @@ public class LoginService {
 
                 object = dao.getObjects().get(0);
 
-                if (GrucasDomainConfig.USUARIO_SUPER.equals(object.getTipo())) {
+                if (_TiposDeUsuario.USUARIO_SUPER.equals(object.getTipo())) {
 
-                    object.setRol(GrucasDomainConfig.ROL_ADMINISTRADOR); 
+                    object.setRol(_RolesDeUsuario.ROL_ADMINISTRADOR); 
                     ok = true;
                     total_result = 1;
                     notification = "Bienvenido al sistema " + object.getNombre() + "!";
@@ -103,21 +105,21 @@ public class LoginService {
                         for (Sistema sistemaTem : accesoSistemas) {
                             if (Objects.equals(sistemaTem.getClave_sistema(), code)) {
                                 
-                                if (code == 1001) {
-                                    // Especificamente para el proyecto Chemours, se ligó (malamente) el proyecto por ID de empresas. 
-                                    // Las unidades de Negocio para Chemours son los almacenes.
-                                    // Por eso se hace la reasignacion de valores SOLO para el SISTEMA con CLAVE = 1001
-                                    if (object.getUnidad_id() == 6) {
-                                        object.setEmpresa_id(1);
-                                        object.setEmpresa("KARGO CHEMOURS");
-                                    } else {
-                                        object.setEmpresa_id(2);
-                                        object.setEmpresa("KARGO VALLE VERDE");
-                                    }
-
-                                    object.setUnidad_id(0);
-                                    object.setUnidad("");
-                                }
+//                                if (code == 1001) {
+//                                    // Especificamente para el proyecto Chemours, se ligó (malamente) el proyecto por ID de empresas. 
+//                                    // Las unidades de Negocio para Chemours son los almacenes.
+//                                    // Por eso se hace la reasignacion de valores SOLO para el SISTEMA con CLAVE = 1001
+//                                    if (object.getUnidad_id() == 6) {
+//                                        object.setEmpresa_id(1);
+//                                        object.setEmpresa("KARGO CHEMOURS");
+//                                    } else {
+//                                        object.setEmpresa_id(2);
+//                                        object.setEmpresa("KARGO VALLE VERDE");
+//                                    }
+//
+//                                    object.setUnidad_id(0);
+//                                    object.setUnidad("");
+//                                }
                                 
                                 accesoSistema = true;
                                 object.setRol(sistemaTem.getRol());
@@ -132,6 +134,91 @@ public class LoginService {
                             ok = false;
                             total_result = 0;
                             notification = "El usuario no tiene permiso para accesar a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
+                        }
+
+                    } else {
+                        ok = false;
+                        total_result = 0;
+                        notification = "El usuario no tiene permiso para accesar a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
+                    }
+                }
+
+            } else {
+                ok = false;
+                total_result = 0;
+                notification = "Usuario no registardo en el Sistema.";
+            }
+        } else {
+            ok = false;
+            total_result = 0;
+            notification = "Key de acceso incorrecta. Favor de comunicarse con el departamento de TI";
+        }
+    }
+    
+    public void login(String key, String username, String password, Integer code, String twofactorCode){
+        
+        if (key.equals(getKeyAcces())) {
+            UsuarioDAO dao = new UsuarioDAO(GrucasDomainConfig.getEnvironmentGrucas());
+
+            dao.getUsuario("username = '" + username + "' and password = '" + password + "'", "", "");
+            if (dao.getObjects().size() > 0) {
+
+                object = dao.getObjects().get(0);
+
+                UsuarioService serviceUser = new UsuarioService();                
+                String code2factor = serviceUser.getNIPCode(username);
+                
+                if (_TiposDeUsuario.USUARIO_SUPER.equals(object.getTipo())) {
+
+                    object.setRol(_RolesDeUsuario.ROL_ADMINISTRADOR); 
+                    ok = true;
+                    total_result = 1;
+                    notification = "Bienvenido al sistema " + object.getNombre() + "!";
+
+                } else {
+                    List<Sistema> accesoSistemas = getSystemByUser(object.getId());
+                    if (accesoSistemas.size() > 0) {
+
+                        Boolean accesoSistema = false;
+
+                        for (Sistema sistemaTem : accesoSistemas) {
+                            if (Objects.equals(sistemaTem.getClave_sistema(), code)) {
+
+                                if(code2factor.equals(twofactorCode)){
+                                    if (code == 1001) {
+                                        // Especificamente para el proyecto Chemours, se ligó (malamente) el proyecto por ID de empresas. 
+                                        // Las unidades de Negocio para Chemours son los almacenes.
+                                        // Por eso se hace la reasignacion de valores SOLO para el SISTEMA con CLAVE = 1001
+                                        if (object.getUnidad_id() == 6) {
+                                            object.setEmpresa_id(1);
+                                            object.setEmpresa("KARGO CHEMOURS");
+                                        } else {
+                                            object.setEmpresa_id(2);
+                                            object.setEmpresa("KARGO VALLE VERDE");
+                                        }
+
+                                        object.setUnidad_id(0);
+                                        object.setUnidad("");
+                                    }
+
+                                    accesoSistema = true;
+
+                                    ok = true;
+                                    object.setRol(sistemaTem.getRol());
+                                    total_result = 1;
+                                    notification = "Bienvenido al sistema " + object.getNombre() + "!";
+                                } else {
+                                    accesoSistema = false;
+                                    ok = false;
+                                    total_result = 0;
+                                    notification = "Favor de verificar el NIP de acceso. Verifique que siga vigente o solicite uno nuevo via correo electronico.";
+                                }
+                            } else {
+                                accesoSistema = false;
+                                ok = false;
+                                total_result = 0;
+                                notification = "El usuario no tiene permiso para accesar a esta aplicacion. Favor de solicitar su acceso en soporte@grucas.com";
+                            }
                         }
 
                     } else {

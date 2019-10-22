@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClasificacionDeDocumento">
+
+    <resultMap id="ResultClasificacionDeDocumentoID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultClasificacionDeDocumento" type="ClasificacionDeDocumento">
+        <result property="id" column="id"/>
+        <result property="nombre" column="nombre"/>
+    </resultMap>
+
+    <select id="ClasificacionDeDocumentoMaxID" resultMap="ResultClasificacionDeDocumentoID">
+        SELECT max(id)+1 as id
+        FROM clasificacion_de_documento 
+    </select>
+
+    <insert id="ClasificacionDeDocumentoInsert" parameterType="ClasificacionDeDocumento" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO clasificacion_de_documento 
+        (nombre)
+        VALUES
+        (#{nombre})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM clasificacion_de_documento 
+        </selectKey>
+
+    </insert>
+
+    <update id="ClasificacionDeDocumentoUpdate" parameterType="ClasificacionDeDocumento">
+        UPDATE clasificacion_de_documento 
+        SET nombre = #{nombre}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="ClasificacionDeDocumentoDelete" parameterType="map">
+        DELETE FROM clasificacion_de_documento 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="ClasificacionDeDocumentoWhere" parameterType="map" resultMap="ResultClasificacionDeDocumento">
+        SELECT *
+        FROM clasificacion_de_documento 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="ClasificacionDeDocumentoOne" parameterType="map" resultMap="ResultClasificacionDeDocumento">
+        SELECT *
+        FROM clasificacion_de_documento 
+        ${where} 
+    </select>
+
+</mapper>

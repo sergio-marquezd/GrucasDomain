@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ConfiguracionGrucas">
+
+    <resultMap id="ResultConfiguracionGrucasID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultConfiguracionGrucas" type="ConfiguracionGrucas">
+        <result property="id" column="id"/>
+        <result property="mes" column="mes"/>
+        <result property="anio" column="anio"/>
+        <result property="consecutivo_sd" column="consecutivo_sd"/>
+    </resultMap>
+
+    <select id="ConfiguracionGrucasMaxID" resultMap="ResultConfiguracionGrucasID">
+        SELECT max(id)+1 as id
+        FROM configuracion_grucas 
+    </select>
+
+    <insert id="ConfiguracionGrucasInsert" parameterType="ConfiguracionGrucas" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO configuracion_grucas 
+        (mes,anio,consecutivo)
+        VALUES
+        (#{mes},#{anio},#{consecutivo})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM configuracion_grucas 
+        </selectKey>
+
+    </insert>
+
+    <update id="ConfiguracionGrucasUpdate" parameterType="ConfiguracionGrucas">
+        UPDATE configuracion_grucas 
+        SET mes = #{mes},anio = #{anio},consecutivo_sd = #{consecutivo_sd}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="ConfiguracionGrucasDelete" parameterType="map">
+        DELETE FROM configuracion_grucas 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="ConfiguracionGrucasWhere" parameterType="map" resultMap="ResultConfiguracionGrucas">
+        SELECT *
+        FROM configuracion_grucas 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="ConfiguracionGrucasOne" parameterType="map" resultMap="ResultConfiguracionGrucas">
+        SELECT *
+        FROM configuracion_grucas 
+        ${where} 
+    </select>
+
+</mapper>

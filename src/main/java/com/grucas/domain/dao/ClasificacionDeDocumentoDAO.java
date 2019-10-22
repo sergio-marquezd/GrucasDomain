@@ -10,10 +10,8 @@ package com.grucas.domain.dao;
  * @author GrucasDev
  */
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.model.NipCode;
-import com.grucas.domain.model.Usuario;
+import com.grucas.domain.model.ClasificacionDeDocumento;
 import com.rubik.logger.LoggerImpl;
-import com.rubik.util.PasswordGenerator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,16 +24,16 @@ import org.apache.ibatis.session.SqlSessionFactory;
  *
  * @author PabloBenavides
  */
-public class UsuarioDAO {
+public class ClasificacionDeDocumentoDAO {
 
-    private Usuario object;
     private Integer id = 0;
-    private List<Usuario> objects = null;
+    private List<ClasificacionDeDocumento> objects = null;
+    private ClasificacionDeDocumento object = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
 
-    public UsuarioDAO(String env) {
+    public ClasificacionDeDocumentoDAO(String env) {
         sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
 
@@ -47,19 +45,19 @@ public class UsuarioDAO {
         this.id = id;
     }
 
-    public List<Usuario> getObjects() {
+    public List<ClasificacionDeDocumento> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Usuario> objects) {
+    public void setObjects(List<ClasificacionDeDocumento> objects) {
         this.objects = objects;
     }
 
-    public Usuario getObject() {
+    public ClasificacionDeDocumento getObject() {
         return object;
     }
 
-    public void setObject(Usuario object) {
+    public void setObject(ClasificacionDeDocumento object) {
         this.object = object;
     }
 
@@ -79,14 +77,14 @@ public class UsuarioDAO {
         this.err_code = err_code;
     }
 
-    public void getUsuarioID(){
+    public void getClasificacionDeDocumentoID(){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            id = session.selectOne("UsuarioMaxID");
+            id = session.selectOne("ClasificacionDeDocumentoMaxID");
 
             if(id==null)
             {
@@ -99,13 +97,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -118,7 +116,7 @@ public class UsuarioDAO {
         }
     }
 
-    public void getUsuario(String strWhere, String strGroup, String strOrder){
+    public void getClasificacionDeDocumento(String strWhere, String strGroup, String strOrder){
 
         SqlSession session = null;
 
@@ -130,7 +128,7 @@ public class UsuarioDAO {
             map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
 
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("UsuarioWhere",map);
+            objects = session.selectList("ClasificacionDeDocumentoWhere",map);
 
             ok = true;
             
@@ -138,13 +136,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -156,91 +154,18 @@ public class UsuarioDAO {
 
         }
     }
-    
-    public NipCode getNIPCode(String usuario){
+
+    public void getOneClasificacionDeDocumento(String strWhere){
 
         SqlSession session = null;
 
         try {
 
             Map map = new HashMap();
-            map.put("usuario", usuario);
-            
-            session = sqlSessionFactory.openSession();
-            return session.selectOne("UsuarioNIP",map);
-            
-        } catch (SqlSessionException ex) {
-
-            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
-
-        } finally {
-
-            if(session != null){
-                session.close();
-            }
-
-        }
-        
-        return null;
-    }
-    
-    public NipCode generateNIPCode(NipCode nip){
-
-        SqlSession session = null;
-
-        try {
-            
-            session = sqlSessionFactory.openSession();
-            return session.selectOne("UsuarioNIPUpdate",nip);
-            
-        } catch (SqlSessionException ex) {
-
-            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
-                exception.printStackTrace();
-            }
-
-        } finally {
-
-            if(session != null){
-                session.close();
-            }
-
-        }
-        
-        return null;
-    }
-    
-    public void getUsuario(Integer id){
-
-        SqlSession session = null;
-
-        try {
-
-            Map map = new HashMap();
-            map.put("where", " WHERE id  = " + id);
-            map.put("group", "");
-            map.put("order", "");
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("UsuarioWhere",map);
+            object = session.selectOne("ClasificacionDeDocumentoWhere",map);
 
             ok = true;
             
@@ -248,13 +173,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -267,14 +192,14 @@ public class UsuarioDAO {
         }
     }
 
-    public void UsuarioInsert(Usuario object) {
+    public void ClasificacionDeDocumentoInsert(ClasificacionDeDocumento object) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.insert("UsuarioInsert", object);
+            session.insert("ClasificacionDeDocumentoInsert", object);
             session.commit();
             ok = true;
 
@@ -282,13 +207,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -301,14 +226,14 @@ public class UsuarioDAO {
         }
     }
 
-    public void UsuarioUpdate(Usuario object){
+    public void ClasificacionDeDocumentoUpdate(ClasificacionDeDocumento object){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.update("UsuarioUpdate",object);
+            session.update("ClasificacionDeDocumentoUpdate",object);
             session.commit();
 
             ok = true;
@@ -317,13 +242,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
@@ -336,14 +261,14 @@ public class UsuarioDAO {
         }
     }
 
-    public void UsuarioDelete(Integer id){
+    public void ClasificacionDeDocumentoDelete(Integer id){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.delete("UsuarioDelete",id);
+            session.delete("ClasificacionDeDocumentoDelete",id);
             session.commit();
 
             ok = true;
@@ -352,13 +277,13 @@ public class UsuarioDAO {
 
             LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 ex.printStackTrace();
             }
 
         }catch(Exception exception){
 
-            if(GrucasDomainConfig.DEBUG_GRUCAS){
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
