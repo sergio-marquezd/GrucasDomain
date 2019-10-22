@@ -195,9 +195,9 @@ public class ConfiguracionGrucasService {
         object.setConsecutivo_sd(object.getConsecutivo_sd()+1);
         ConfiguracionGrucasUpdate(object);
         
-        System.out.println("FOLIO : " + ManageString.fillWithZero(month, 2) + anio.replace("20", "") + "_" + ManageString.fillWithZero(object.getConsecutivo_sd(), 4));
+        System.out.println("FOLIO : " + ManageString.fillWithZero(month, 2) + anio.replace("20", "") + ManageString.fillWithZero(object.getConsecutivo_sd(), 4));
         
-        return ManageString.fillWithZero(month, 2) + anio.replace("20", "") + "_" + ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
+        return ManageString.fillWithZero(month, 2) + anio.replace("20", "") + ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
     }
     
 }

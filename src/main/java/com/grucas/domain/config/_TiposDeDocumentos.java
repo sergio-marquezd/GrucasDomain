@@ -19,7 +19,10 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_COTIZACION_COMPRA = "COTIZACION COMPRA";
     public static final String DOCUMENTO_SOLICITUD_VGM = "SOLICITUD VGM";
     public static final String DOCUMENTO_TICKET_DE_SOPORTE = "TICKET DE SOPORTE";
+    public static final String DOCUMENTO_ANEXO_DE_SOPORTE = "ANEXO DE SOPORTE";
     public static final String DOCUMENTO_RESPONSIVA_TI = "RESPONSIVA";
+    
+    public static final String DOCUMENTO_SOLICITUD_DE_PREVIO = "RESPONSIVA";
     
     public static final List<String> DOCUMENTOS = 
             Arrays.asList(
