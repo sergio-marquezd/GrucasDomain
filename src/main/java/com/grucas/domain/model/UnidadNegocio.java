@@ -27,12 +27,14 @@ public class UnidadNegocio extends ObjectBase {
     Integer folio_responsiva;
     Integer folio_vgm;
     String email_dac_proveedores;
+    Integer folio_previo;
 
     public UnidadNegocio() {
         folio_requisicion = 0;
         folio_orden_compra = 0;
         folio_responsiva = 0;
         folio_vgm = 0;
+        folio_previo = 0;
     }
 
     public String getNombre() {
@@ -151,5 +153,15 @@ public class UnidadNegocio extends ObjectBase {
     public void setEmail_dac_proveedores(String email_dac_proveedores) {
         this.email_dac_proveedores = email_dac_proveedores;
     }
+
+    public Integer getFolio_previo() {
+        return folio_previo;
+    }
+
+    public void setFolio_previo(Integer folio_previo) {
+        this.folio_previo = folio_previo;
+    }
+    
+    
 
 }
