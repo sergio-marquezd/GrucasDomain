@@ -21,8 +21,6 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_TICKET_DE_SOPORTE = "TICKET DE SOPORTE";
     public static final String DOCUMENTO_ANEXO_DE_SOPORTE = "ANEXO DE SOPORTE";
     public static final String DOCUMENTO_RESPONSIVA_TI = "RESPONSIVA";
-    public static final String DOCUMENTO_SOLICITUD_PREVIO = "SOLICITUD DE PREVIO";
-    public static final String DOCUMENTO_PREVIO_IMG = "PREVIO_IMAGEN";
     
     public static final String DOCUMENTO_PREVIO_SOLICITUD = "SOLICITUD DE PREVIO";
     public static final String DOCUMENTO_PREVIO_IMAGENES = "FOTOGRAFIAS DE PREVIO";

@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author User
  */
-public class _Previos {
+public class _Operaciones {
 
   
     
