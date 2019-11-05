@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CodigoBarras">
+
+    <resultMap id="ResultCodigoBarrasID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultCodigoBarras" type="CodigoBarras">
+        <result property="id" column="id"/>
+        <result property="folio" column="folio"/>
+        <result property="barcode" column="barcode"/>
+    </resultMap>
+
+    <select id="CodigoBarrasMaxID" resultMap="ResultCodigoBarrasID">
+        SELECT max(id)+1 as id
+        FROM previos_barcodes 
+    </select>
+
+    <insert id="CodigoBarrasInsert" parameterType="CodigoBarras" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO previos_barcodes 
+        (folio,barcode)
+        VALUES
+        (#{folio},#{barcode})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM previos_barcodes 
+        </selectKey>
+
+    </insert>
+
+    <update id="CodigoBarrasUpdate" parameterType="CodigoBarras">
+        UPDATE previos_barcodes 
+        SET folio = #{folio},barcode = #{barcode}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="CodigoBarrasDelete" parameterType="map">
+        DELETE FROM previos_barcodes 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="CodigoBarrasWhere" parameterType="map" resultMap="ResultCodigoBarras">
+        SELECT *
+        FROM previos_barcodes 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="CodigoBarrasOne" parameterType="map" resultMap="ResultCodigoBarras">
+        SELECT *
+        FROM previos_barcodes 
+        ${where} 
+    </select>
+
+</mapper>

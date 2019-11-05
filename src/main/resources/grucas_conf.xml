@@ -24,6 +24,7 @@
         <typeAlias alias="ClasificacionDeDocumento" type="com.grucas.domain.model.ClasificacionDeDocumento"/>
         <typeAlias alias="TipoDeDocumento" type="com.grucas.domain.model.TipoDeDocumento"/>
         <typeAlias alias="ConfiguracionGrucas" type="com.grucas.domain.model.ConfiguracionGrucas"/>
+        <typeAlias alias="CodigoBarras" type="com.grucas.domain.model.CodigoBarras"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -62,6 +63,7 @@
         <mapper resource="mapper/ClasificacionDeDocumento.xml"/>
         <mapper resource="mapper/TipoDeDocumento.xml"/>
         <mapper resource="mapper/ConfiguracionGrucas.xml"/>
+        <mapper resource="mapper/CodigoBarras.xml"/>
     </mappers>
   
 </configuration>
