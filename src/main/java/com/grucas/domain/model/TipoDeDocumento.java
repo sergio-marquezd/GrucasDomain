@@ -12,6 +12,7 @@ package com.grucas.domain.model;
 public class TipoDeDocumento {
     Integer id;
     Integer clasificacion_id;
+    String clasificacion;
     String tipo_documento;
     String mimetypes;
 
@@ -44,6 +45,14 @@ public class TipoDeDocumento {
 
     public void setTipo_documento(String tipo_documento) {
         this.tipo_documento = tipo_documento;
+    }
+
+    public String getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(String clasificacion) {
+        this.clasificacion = clasificacion;
     }
 
     public String getMimetypes() {

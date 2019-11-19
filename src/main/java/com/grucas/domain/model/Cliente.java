@@ -15,6 +15,9 @@ public class Cliente extends ObjectBase {
     
     String razon_social;
     String abreviacion;
+    String contacto_vendedor_nombre;
+    String contacto_vendedor_email;
+    
     String contacto_email;
     String contacto_nombre;
     String contacto_tel;
@@ -26,6 +29,11 @@ public class Cliente extends ObjectBase {
     String telefono;
     String pais;
     String no_contable;
+    String estado_cliente;
+    
+    String tipo_cambio;
+    
+    String UUID;
 
     public Cliente() {
     }
@@ -36,6 +44,38 @@ public class Cliente extends ObjectBase {
 
     public void setRazon_social(String razon_social) {
         this.razon_social = razon_social;
+    }
+
+    public String getContacto_vendedor_nombre() {
+        return contacto_vendedor_nombre;
+    }
+
+    public void setContacto_vendedor_nombre(String contacto_vendedor_nombre) {
+        this.contacto_vendedor_nombre = contacto_vendedor_nombre;
+    }
+
+    public String getContacto_vendedor_email() {
+        return contacto_vendedor_email;
+    }
+
+    public void setContacto_vendedor_email(String contacto_vendedor_email) {
+        this.contacto_vendedor_email = contacto_vendedor_email;
+    }
+
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
+    public String getEstado_cliente() {
+        return estado_cliente;
+    }
+
+    public void setEstado_cliente(String estado_cliente) {
+        this.estado_cliente = estado_cliente;
     }
 
     public String getAbreviacion() {

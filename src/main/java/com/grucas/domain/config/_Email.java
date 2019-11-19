@@ -83,7 +83,7 @@ public class _Email {
     public static String EMAIL_BODY_BUTTOM
             = "		<tr>\n"
             + "			<td class=\"footer\">\n"
-            + "				<p>www.grupo-castaneda.com</p>\n"
+            + "				<p>www.grucas.com</p>\n"
             + "			</td>\n"
             + "		</tr>\n"
             + "	</table>\n"
