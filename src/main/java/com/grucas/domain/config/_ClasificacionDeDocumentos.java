@@ -11,4 +11,5 @@ package com.grucas.domain.config;
  */
 public class _ClasificacionDeDocumentos {
     public static final String COMPRAS = "COMPRAS";
+    public static final String OPERACIONES = "OPERACIONES";
 }
