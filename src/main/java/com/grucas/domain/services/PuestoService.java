@@ -5,40 +5,49 @@
  */
 package com.grucas.domain.services;
 
+/**
+ *
+ * @author GrucasDev
+ */
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.dao.ClientesKVVDAO;
-import com.grucas.domain.model.ClientesKVV;
+import com.grucas.domain.dao.PuestoDAO;
+import com.grucas.domain.model.Puesto;
 import java.util.List;
 
 /**
  *
- * @author User
+ * @author PabloBenavides
  */
-public class ClientesKVVService {
-     private ClientesKVV object;
-    private List<ClientesKVV> objects;
-    private ClientesKVVDAO dao;
+public class PuestoService {
+    
+    private Puesto object;
+    private List<Puesto> objects;
+    private PuestoDAO dao;
     private String notification;
     private Boolean ok;
     private Integer total_result;
 
-    public ClientesKVVService() {
-        dao = new ClientesKVVDAO(GrucasDomainConfig.getEnvironmentGrucas());
+    public PuestoService() {
+        dao = new PuestoDAO(GrucasDomainConfig.getEnvironmentGrucas());
     }
 
-    public ClientesKVV getObject() {
+    public PuestoService(String env) {
+        dao = new PuestoDAO(env);
+    }
+
+    public Puesto getObject() {
         return object;
     }
 
-    public void setObject(ClientesKVV object) {
+    public void setObject(Puesto object) {
         this.object = object;
     }
 
-    public List<ClientesKVV> getObjects() {
+    public List<Puesto> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<ClientesKVV> objects) {
+    public void setObjects(List<Puesto> objects) {
         this.objects = objects;
     }
 
@@ -66,48 +75,48 @@ public class ClientesKVVService {
         this.total_result = total_result;
     }
 
-    public void ClientesKVVInsert(ClientesKVV clienteskvv) {
-        object = clienteskvv;
-        dao.ClientesKVVInsert(object);
+    public void PuestoInsert(Puesto puesto) {
+        object = puesto;
+        dao.PuestoInsert(object);
 
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "ClientesKVV " + clienteskvv.getId()+ " dado de alta correctamente.";
+            notification = "Puesto " + puesto.getId()+ " dado de alta correctamente.";
         } else {
-            notification = "Ha ocurrido un error al guardar. ClientesKVV " +clienteskvv.getId()+" no almacenado(a) en la base de datos.";
+            notification = "Ha ocurrido un error al guardar. Puesto " +puesto.getId()+" no almacenado(a) en la base de datos.";
         }
     }
 
-    public void ClientesKVVUpdate(ClientesKVV clienteskvv){
-        object = clienteskvv;
-        dao.ClientesKVVUpdate(object);
+    public void PuestoUpdate(Puesto puesto){
+        object = puesto;
+        dao.PuestoUpdate(object);
 
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "ClientesKVV " + clienteskvv.getId()+ " modificado(a) correctamente.";
+            notification = "Puesto " + puesto.getId()+ " modificado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al modificar. ClientesKVV " + clienteskvv.getId();
+            notification = "Ha ocurrido un error al modificar. Puesto " + puesto.getId();
         }
     }
 
-    public void ClientesKVVDelete(ClientesKVV clienteskvv){
-        object = clienteskvv;
-        dao.ClientesKVVDelete(object.getId());
+    public void PuestoDelete(Puesto puesto){
+        object = puesto;
+        dao.PuestoDelete(object.getId());
 
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "ClientesKVV "+ clienteskvv.getId()+ " fue eliminado(a) correctamente.";
+            notification = "Puesto "+ puesto.getId()+ " fue eliminado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al eliminar ClientesKVV " + clienteskvv.getId();
+            notification = "Ha ocurrido un error al eliminar Puesto " + puesto.getId();
         }
     }
 
-    public void getClientesKVV(String where, String group, String order){
+    public void getPuesto(String where, String group, String order){
 
-        dao.getClientesKVV(where, group, order);
+        dao.getPuesto(where, group, order);
 
         setOk(dao.getOk());
 
@@ -134,13 +143,13 @@ public class ClientesKVVService {
     }
 
     public Integer getMaxID(){
-        dao.getClientesKVVID();
+        dao.getPuestoID();
         return dao.getId();
     }
 
-    public void getOneClientesKVV(String where){
+    public void getOnePuesto(String where){
 
-        dao.getOneClientesKVV(where);
+        dao.getOnePuesto(where);
 
         setOk(dao.getOk());
 
@@ -160,5 +169,5 @@ public class ClientesKVVService {
         }
 
     }
-    
+
 }

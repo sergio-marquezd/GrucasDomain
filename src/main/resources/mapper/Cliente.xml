@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Cliente">
+
+    <resultMap id="ResultClienteID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultCliente" type="Cliente">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="razon_social" column="razon_social"/>
+        <result property="abreviacion" column="abreviacion"/>
+        <result property="contacto_vendedor_nombre" column="contacto_vendedor_nombre"/>
+        <result property="contacto_vendedor_email" column="contacto_vendedor_email"/>
+        <result property="contacto_email" column="contacto_email"/>
+        <result property="contacto_nombre" column="contacto_nombre"/>
+        <result property="contacto_tel" column="contacto_tel"/>
+        <result property="rfc" column="rfc"/>
+        <result property="domicilio" column="domicilio"/>
+        <result property="ciudad" column="ciudad"/>
+        <result property="estado" column="estado"/>
+        <result property="cp" column="cp"/>
+        <result property="telefono" column="telefono"/>
+        <result property="pais" column="pais"/>
+        <result property="no_contable" column="no_contable"/>
+        <result property="estado_cliente" column="estado_cliente"/>
+        <result property="tipo_cambio" column="tipo_cambio"/>
+        <result property="UUID" column="UUID"/>
+    </resultMap>
+
+    <select id="ClienteMaxID" resultMap="ResultClienteID">
+        SELECT max(id)+1 as id
+        FROM cliente 
+    </select>
+
+    <insert id="ClienteInsert" parameterType="Cliente" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO cliente 
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,razon_social,abreviacion,contacto_vendedor_nombre,contacto_vendedor_email,contacto_email,contacto_nombre,contacto_tel,rfc,domicilio,ciudad,estado,cp,telefono,pais,no_contable,estado_cliente,tipo_cambio,UUID)
+        VALUES
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{razon_social},#{abreviacion},#{contacto_vendedor_nombre},#{contacto_vendedor_email},#{contacto_email},#{contacto_nombre},#{contacto_tel},#{rfc},#{domicilio},#{ciudad},#{estado},#{cp},#{telefono},#{pais},#{no_contable},#{estado_cliente},#{tipo_cambio},#{UUID})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM cliente 
+        </selectKey>
+
+    </insert>
+
+    <update id="ClienteUpdate" parameterType="Cliente">
+        UPDATE cliente 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},razon_social = #{razon_social},abreviacion = #{abreviacion},contacto_vendedor_nombre = #{contacto_vendedor_nombre},contacto_vendedor_email = #{contacto_vendedor_email},contacto_email = #{contacto_email},contacto_nombre = #{contacto_nombre},contacto_tel = #{contacto_tel},rfc = #{rfc},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},cp = #{cp},telefono = #{telefono},pais = #{pais},no_contable = #{no_contable},estado_cliente = #{estado_cliente},tipo_cambio = #{tipo_cambio},UUID = #{UUID}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="ClienteDelete" parameterType="map">
+        DELETE FROM cliente 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="ClienteWhere" parameterType="map" resultMap="ResultCliente">
+        SELECT *
+        FROM cliente 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="ClienteOne" parameterType="map" resultMap="ResultCliente">
+        SELECT *
+        FROM cliente 
+        ${where} 
+    </select>
+
+</mapper>

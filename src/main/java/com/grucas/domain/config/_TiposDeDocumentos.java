@@ -22,7 +22,8 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_ANEXO_DE_SOPORTE = "ANEXO DE SOPORTE";
     public static final String DOCUMENTO_RESPONSIVA_TI = "RESPONSIVA";
     
-    public static final String DOCUMENTO_SOLICITUD_DE_PREVIO = "RESPONSIVA";
+    public static final String DOCUMENTO_PREVIO_SOLICITUD = "SOLICITUD DE PREVIO";
+    public static final String DOCUMENTO_PREVIO_IMAGENES = "FOTOGRAFIAS DE PREVIO";
     
     public static final List<String> DOCUMENTOS = 
             Arrays.asList(

@@ -35,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="empresa_rfc" column="empresa_rfc"/>
         <result property="folio_vgm" column="folio_vgm"/>
         <result property="email_dac_proveedores" column="email_dac_proveedores"/>
+        <result property="folio_previo" column="folio_previo"/>
         
     </resultMap>
 
@@ -51,10 +52,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
         INSERT INTO unidad_negocio 
         (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,
-        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc,folio_vgm,email_dac_proveedores)
+        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc,folio_vgm,email_dac_proveedores,folio_previo)
         VALUES
         (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},
-        #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva},#{empresa_rfc},#{folio_vgm},#{email_dac_proveedores})
+        #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva},#{empresa_rfc},#{folio_vgm},#{email_dac_proveedores},#{folio_previo})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM unidad_negocio 
@@ -67,7 +68,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},
         usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},domicilio = #{domicilio},
         pais = #{pais},estado = #{estado},ciudad = #{ciudad},codigo_postal = #{codigo_postal},telefono = #{telefono},
-        serie = #{serie},folio_vgm = #{folio_vgm},email_dac_proveedores = #{email_dac_proveedores}
+        serie = #{serie},email_dac_proveedores = #{email_dac_proveedores}
         WHERE id = #{id}
     </update>
 
