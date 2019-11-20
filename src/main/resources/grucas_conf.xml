@@ -17,7 +17,7 @@
         <typeAlias alias="TraceGrucas" type="com.grucas.domain.model.TraceGrucas"/>
         <typeAlias alias="EncuestaBase" type="com.rubik.Base.EncuestaBase"/>
         <typeAlias alias="EncuestaPreguntaBase" type="com.rubik.Base.EncuestaPreguntaBase"/>
-        <typeAlias alias="ClientesKVV" type="com.grucas.domain.model.ClientesKVV"/>
+        <typeAlias alias="Cliente" type="com.grucas.domain.model.Cliente"/>
         <typeAlias alias="SolicitudServicio" type="com.grucas.domain.model.SolicitudServicio"/>
         <typeAlias alias="SolicitudServicioDet" type="com.grucas.domain.model.SolicitudServicioDet"/>
         <typeAlias alias="NipCode" type="com.grucas.domain.model.NipCode"/>
@@ -58,7 +58,7 @@
         <mapper resource="mapper/UsuarioSistemaUNegocio.xml"/>
         <mapper resource="mapper/EncuestaBase.xml"/>
         <mapper resource="mapper/EncuestaPregunta.xml"/>
-        <mapper resource="mapper/ClientesKVV.xml"/>
+        <mapper resource="mapper/Cliente.xml"/>
         <mapper resource="mapper/SolicitudServicio.xml"/>
         <mapper resource="mapper/SolicitudServicioDet.xml"/>
         <mapper resource="mapper/ClasificacionDeDocumento.xml"/>

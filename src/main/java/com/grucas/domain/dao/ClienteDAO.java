@@ -6,7 +6,7 @@
 package com.grucas.domain.dao;
 
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.model.ClientesKVV;
+import com.grucas.domain.model.Cliente;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
 import java.util.List;
@@ -20,15 +20,15 @@ import org.apache.ibatis.session.SqlSessionFactory;
  *
  * @author User
  */
-public class ClientesKVVDAO {
+public class ClienteDAO {
     private Integer id = 0;
-    private ClientesKVV object = null;
-    private List<ClientesKVV> objects = null;
+    private Cliente object = null;
+    private List<Cliente> objects = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
 
-     public ClientesKVVDAO(String env) {
+     public ClienteDAO(String env) {
         sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
 
@@ -40,19 +40,19 @@ public class ClientesKVVDAO {
         this.id = id;
     }
 
-    public ClientesKVV getObject() {
+    public Cliente getObject() {
         return object;
     }
 
-    public void setObject(ClientesKVV object) {
+    public void setObject(Cliente object) {
         this.object = object;
     }
 
-    public List<ClientesKVV> getObjects() {
+    public List<Cliente> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<ClientesKVV> objects) {
+    public void setObjects(List<Cliente> objects) {
         this.objects = objects;
     }
 
@@ -72,14 +72,14 @@ public class ClientesKVVDAO {
         this.err_code = err_code;
     }
 
-    public void getClientesKVVID(){
+    public void getClienteID(){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            id = session.selectOne("ClientesKVVMaxID");
+            id = session.selectOne("ClienteMaxID");
 
             if(id==null)
             {
@@ -111,7 +111,7 @@ public class ClientesKVVDAO {
         }
     }
 
-    public void getClientesKVV(String strWhere, String strGroup, String strOrder){
+    public void getCliente(String strWhere, String strGroup, String strOrder){
 
         SqlSession session = null;
 
@@ -123,7 +123,7 @@ public class ClientesKVVDAO {
             map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
 
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("ClientesKVVWhere",map);
+            objects = session.selectList("ClienteWhere",map);
 
             ok = true;
             
@@ -150,7 +150,7 @@ public class ClientesKVVDAO {
         }
     }
 
-    public void getOneClientesKVV(String strWhere){
+    public void getOneCliente(String strWhere){
 
         SqlSession session = null;
 
@@ -160,7 +160,7 @@ public class ClientesKVVDAO {
             map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("ClientesKVVWhere",map);
+            object = session.selectOne("ClienteWhere",map);
 
             ok = true;
             
@@ -187,14 +187,14 @@ public class ClientesKVVDAO {
         }
     }
 
-    public void ClientesKVVInsert(ClientesKVV object) {
+    public void ClienteInsert(Cliente object) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.insert("ClientesKVVInsert", object);
+            session.insert("ClienteInsert", object);
             session.commit();
             ok = true;
 
@@ -221,14 +221,14 @@ public class ClientesKVVDAO {
         }
     }
 
-    public void ClientesKVVUpdate(ClientesKVV object){
+    public void ClienteUpdate(Cliente object){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.update("ClientesKVVUpdate",object);
+            session.update("ClienteUpdate",object);
             session.commit();
 
             ok = true;
@@ -256,14 +256,14 @@ public class ClientesKVVDAO {
         }
     }
 
-    public void ClientesKVVDelete(Integer id){
+    public void ClienteDelete(Integer id){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.delete("ClientesKVVDelete",id);
+            session.delete("ClienteDelete",id);
             session.commit();
 
             ok = true;
