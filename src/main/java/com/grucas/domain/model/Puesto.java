@@ -77,10 +77,7 @@ public class Puesto {
     
 
     @Override
-//    public String toString() {
-//        return "Puesto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", clasificacion_puesto=" + clasificacion_puesto + ", depende_de=" + depende_de + '}';
-//    }
-       public String toString() {
+    public String toString() {
         return nombre ;
     }
 
