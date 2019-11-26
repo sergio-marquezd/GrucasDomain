@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="AgenteAduanal">
+
+    <resultMap id="ResultAgenteAduanalID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultAgenteAduanal" type="AgenteAduanal">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="nombre" column="nombre"/>
+        <result property="patente" column="patente"/>
+    </resultMap>
+
+    <select id="AgenteAduanalMaxID" resultMap="ResultAgenteAduanalID">
+        SELECT max(id)+1 as id
+        FROM agente_aduanal 
+    </select>
+
+    <insert id="AgenteAduanalInsert" parameterType="AgenteAduanal" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO agente_aduanal 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,patente)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{patente})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM agente_aduanal 
+        </selectKey>
+
+    </insert>
+
+    <update id="AgenteAduanalUpdate" parameterType="AgenteAduanal">
+        UPDATE agente_aduanal 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},nombre = #{nombre},patente = #{patente}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="AgenteAduanalDelete" parameterType="map">
+        DELETE FROM agente_aduanal 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="AgenteAduanalWhere" parameterType="map" resultMap="ResultAgenteAduanal">
+        SELECT *
+        FROM agente_aduanal 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="AgenteAduanalOne" parameterType="map" resultMap="ResultAgenteAduanal">
+        SELECT *
+        FROM agente_aduanal 
+        ${where} 
+    </select>
+
+</mapper>

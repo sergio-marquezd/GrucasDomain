@@ -22,7 +22,7 @@ public class _Departamentos {
     public static final Departamento ADMINISTRATIVO = new Departamento(5, "ADMINISTRATIVO");
     public static final Departamento LIMPIEZA = new Departamento(6, "LIMPIEZA");
     public static final Departamento COBRANZA = new Departamento(7, "COBRANZA");
-    public static final Departamento ALTA_DE_CLIENTES = new Departamento(8, "ALTA DE CLIENTES");
+    public static final Departamento COMERCIAL = new Departamento(8, "COMERCIAL");
     
     public static final List<Departamento> DEPARTAMENTOS = 
             new ArrayList<Departamento>(){{
@@ -33,7 +33,7 @@ public class _Departamentos {
                 add(ADMINISTRATIVO);
                 add(LIMPIEZA);
                 add(COBRANZA);
-                add(ALTA_DE_CLIENTES);
+                add(COMERCIAL);
             }};
     
 }

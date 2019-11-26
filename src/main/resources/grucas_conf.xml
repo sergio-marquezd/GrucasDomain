@@ -26,6 +26,8 @@
         <typeAlias alias="ConfiguracionGrucas" type="com.grucas.domain.model.ConfiguracionGrucas"/>
         <typeAlias alias="CodigoBarras" type="com.grucas.domain.model.CodigoBarras"/>
         <typeAlias alias="Puesto" type="com.grucas.domain.model.Puesto"/>
+        <typeAlias alias="AgenteAduanal" type="com.grucas.domain.model.AgenteAduanal"/>
+        <typeAlias alias="Aduana" type="com.grucas.domain.model.Aduana"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -66,6 +68,8 @@
         <mapper resource="mapper/ConfiguracionGrucas.xml"/>
         <mapper resource="mapper/CodigoBarras.xml"/>
         <mapper resource="mapper/Puesto.xml"/>
+        <mapper resource="mapper/AgenteAduanal.xml"/>
+        <mapper resource="mapper/Aduana.xml"/>
     </mappers>
   
 </configuration>

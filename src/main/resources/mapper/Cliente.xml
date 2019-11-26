@@ -19,11 +19,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="activo" column="activo"/>
         <result property="razon_social" column="razon_social"/>
         <result property="abreviacion" column="abreviacion"/>
-        <result property="contacto_vendedor_nombre" column="contacto_vendedor_nombre"/>
-        <result property="contacto_vendedor_email" column="contacto_vendedor_email"/>
-        <result property="contacto_email" column="contacto_email"/>
-        <result property="contacto_nombre" column="contacto_nombre"/>
-        <result property="contacto_tel" column="contacto_tel"/>
         <result property="rfc" column="rfc"/>
         <result property="domicilio" column="domicilio"/>
         <result property="ciudad" column="ciudad"/>
@@ -35,6 +30,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="estado_cliente" column="estado_cliente"/>
         <result property="tipo_cambio" column="tipo_cambio"/>
         <result property="UUID" column="UUID"/>
+        <result property="contacto_vendedor_email" column="contacto_vendedor_email"/>
+        <result property="contacto_nombre" column="contacto_nombre"/>
+        <result property="contacto_email" column="contacto_email"/>
+        <result property="contacto_tel" column="contacto_tel"/>
+        <result property="contacto_representante_legal_nombre" column="contacto_representante_legal_nombre"/>
+        <result property="contacto_representante_legal_email" column="contacto_representante_legal_email"/>
+        <result property="email_eventos_patio" column="email_eventos_patio"/>
+        <result property="email_eventos_bodega" column="email_eventos_bodega"/>
+        <result property="email_cambios_estado_trafico" column="email_cambios_estado_trafico"/>
+        <result property="email_ficha_clasificacion" column="email_ficha_clasificacion"/>
+        <result property="email_cuenta_gastos" column="email_cuenta_gastos"/>
+        <result property="email_manifestacion_valor" column="email_manifestacion_valor"/>
     </resultMap>
 
     <select id="ClienteMaxID" resultMap="ResultClienteID">
@@ -45,9 +52,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="ClienteInsert" parameterType="Cliente" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO cliente 
-        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,razon_social,abreviacion,contacto_vendedor_nombre,contacto_vendedor_email,contacto_email,contacto_nombre,contacto_tel,rfc,domicilio,ciudad,estado,cp,telefono,pais,no_contable,estado_cliente,tipo_cambio,UUID)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,razon_social,abreviacion,rfc,domicilio,ciudad,estado,cp,telefono,pais,no_contable,estado_cliente,tipo_cambio,UUID,contacto_vendedor_email,contacto_nombre,contacto_email,contacto_tel,contacto_representante_legal_nombre,contacto_representante_legal_email,email_eventos_patio,email_eventos_bodega,email_cambios_estado_trafico,email_ficha_clasificacion,email_cuenta_gastos,email_manifestacion_valor)
         VALUES
-        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{razon_social},#{abreviacion},#{contacto_vendedor_nombre},#{contacto_vendedor_email},#{contacto_email},#{contacto_nombre},#{contacto_tel},#{rfc},#{domicilio},#{ciudad},#{estado},#{cp},#{telefono},#{pais},#{no_contable},#{estado_cliente},#{tipo_cambio},#{UUID})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{razon_social},#{abreviacion},#{rfc},#{domicilio},#{ciudad},#{estado},#{cp},#{telefono},#{pais},#{no_contable},#{estado_cliente},#{tipo_cambio},#{UUID},#{contacto_vendedor_email},#{contacto_nombre},#{contacto_email},#{contacto_tel},#{contacto_representante_legal_nombre},#{contacto_representante_legal_email},#{email_eventos_patio},#{email_eventos_bodega},#{email_cambios_estado_trafico},#{email_ficha_clasificacion},#{email_cuenta_gastos},#{email_manifestacion_valor})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM cliente 
@@ -57,7 +64,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="ClienteUpdate" parameterType="Cliente">
         UPDATE cliente 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},razon_social = #{razon_social},abreviacion = #{abreviacion},contacto_vendedor_nombre = #{contacto_vendedor_nombre},contacto_vendedor_email = #{contacto_vendedor_email},contacto_email = #{contacto_email},contacto_nombre = #{contacto_nombre},contacto_tel = #{contacto_tel},rfc = #{rfc},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},cp = #{cp},telefono = #{telefono},pais = #{pais},no_contable = #{no_contable},estado_cliente = #{estado_cliente},tipo_cambio = #{tipo_cambio},UUID = #{UUID}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},razon_social = #{razon_social},abreviacion = #{abreviacion},rfc = #{rfc},domicilio = #{domicilio},ciudad = #{ciudad},estado = #{estado},cp = #{cp},telefono = #{telefono},pais = #{pais},no_contable = #{no_contable},estado_cliente = #{estado_cliente},tipo_cambio = #{tipo_cambio},UUID = #{UUID},contacto_vendedor_email = #{contacto_vendedor_email},contacto_nombre = #{contacto_nombre},contacto_email = #{contacto_email},contacto_tel = #{contacto_tel},contacto_representante_legal_nombre = #{contacto_representante_legal_nombre},contacto_representante_legal_email = #{contacto_representante_legal_email},email_eventos_patio = #{email_eventos_patio},email_eventos_bodega = #{email_eventos_bodega},email_cambios_estado_trafico = #{email_cambios_estado_trafico},email_ficha_clasificacion = #{email_ficha_clasificacion},email_cuenta_gastos = #{email_cuenta_gastos},email_manifestacion_valor = #{email_manifestacion_valor}
         WHERE id = #{id}
     </update>
 
