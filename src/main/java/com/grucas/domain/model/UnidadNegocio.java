@@ -28,6 +28,11 @@ public class UnidadNegocio extends ObjectBase {
     Integer folio_vgm;
     String email_dac_proveedores;
     Integer folio_previo;
+    String tipo_operacion;
+    String aduana;
+    String patente;
+    String aduana2;
+    String patente2;
 
     public UnidadNegocio() {
         folio_requisicion = 0;
@@ -35,6 +40,10 @@ public class UnidadNegocio extends ObjectBase {
         folio_responsiva = 0;
         folio_vgm = 0;
         folio_previo = 0;
+        aduana = "";
+        patente = "";
+        aduana2 = "";
+        patente2 = "";
     }
 
     public String getNombre() {
@@ -161,7 +170,45 @@ public class UnidadNegocio extends ObjectBase {
     public void setFolio_previo(Integer folio_previo) {
         this.folio_previo = folio_previo;
     }
-    
-    
+
+    public String getTipo_operacion() {
+        return tipo_operacion;
+    }
+
+    public void setTipo_operacion(String tipo_operacion) {
+        this.tipo_operacion = tipo_operacion;
+    }
+
+    public String getAduana() {
+        return aduana;
+    }
+
+    public void setAduana(String aduana) {
+        this.aduana = aduana;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
+
+    public String getAduana2() {
+        return aduana2;
+    }
+
+    public void setAduana2(String aduana2) {
+        this.aduana2 = aduana2;
+    }
+
+    public String getPatente2() {
+        return patente2;
+    }
+
+    public void setPatente2(String patente2) {
+        this.patente2 = patente2;
+    }
 
 }
