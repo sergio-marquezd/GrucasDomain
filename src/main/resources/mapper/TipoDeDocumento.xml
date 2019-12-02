@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="clasificacion" column="clasificacion"/>
         <result property="tipo_documento" column="tipo_documento"/>
         <result property="mimetypes" column="mimetypes"/>
+        <result property="referencia_global" column="referencia_global"/>
     </resultMap>
 
     <select id="TipoDeDocumentoMaxID" resultMap="ResultTipoDeDocumentoID">
@@ -22,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="TipoDeDocumentoInsert" parameterType="TipoDeDocumento" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO tipo_de_documento 
-        (clasificacion_id,clasificacion,tipo_documento,mimetypes)
+        (clasificacion_id,clasificacion,tipo_documento,mimetypes,referencia_global)
         VALUES
-        (#{clasificacion_id},#{clasificacion},#{tipo_documento},#{mimetypes})
+        (#{clasificacion_id},#{clasificacion},#{tipo_documento},#{mimetypes},#{referencia_global})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM tipo_de_documento 
@@ -34,7 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="TipoDeDocumentoUpdate" parameterType="TipoDeDocumento">
         UPDATE tipo_de_documento 
-        SET clasificacion_id = #{clasificacion_id}, clasificacion = #{clasificacion}, tipo_documento = #{tipo_documento},mimetypes = #{mimetypes}
+        SET clasificacion_id = #{clasificacion_id}, clasificacion = #{clasificacion}, tipo_documento = #{tipo_documento}, mimetypes = #{mimetypes}, referencia_global = #{referencia_global}
         WHERE id = #{id}
     </update>
 

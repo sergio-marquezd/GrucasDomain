@@ -206,5 +206,12 @@ public class GrucasDomainConfig {
     public static final String CORREO_PRUEBA = "ltello@grucas.com";
     
     
+    public static final String TIPO_TEXT = "text";
+    public static final String TIPO_IMAGE = "image";
+    public static final String TIPO_PDF = "pdf";
+    public static final String TIPO_EXCEL = "xlsx";
+
+    
+    public static final List<String> LISTA_TIPO = Arrays.asList(TIPO_TEXT,TIPO_IMAGE,TIPO_PDF,TIPO_EXCEL);
     
 }

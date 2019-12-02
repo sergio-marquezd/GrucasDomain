@@ -10,17 +10,20 @@ package com.grucas.domain.model;
  * @author GrucasDev
  */
 public class TipoDeDocumento {
+
     Integer id;
     Integer clasificacion_id;
     String clasificacion;
     String tipo_documento;
     String mimetypes;
+    Boolean referencia_global;
 
-    public TipoDeDocumento() { 
+    public TipoDeDocumento() {
         id = 0;
         clasificacion_id = 0;
         tipo_documento = "";
         mimetypes = "";
+        referencia_global = false;
     }
 
     public Integer getId() {
@@ -61,6 +64,14 @@ public class TipoDeDocumento {
 
     public void setMimetypes(String mimetypes) {
         this.mimetypes = mimetypes;
+    }
+
+    public Boolean getReferencia_global() {
+        return referencia_global;
+    }
+
+    public void setReferencia_global(Boolean referencia_global) {
+        this.referencia_global = referencia_global;
     }
 
     @Override
