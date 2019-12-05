@@ -277,7 +277,7 @@ public class UnidadNegocioService {
     public void getUnidadesPorUsuarioSistema(Usuario user, Integer clave_sistema){
 
         if(user.getTodas_unidades() || user.getTipo().equals(_TiposDeUsuario.USUARIO_SUPER)){
-            dao.getUnidadNegocio(" activo = 1 ", "", "");
+            dao.getUnidadNegocio(" activo = 1 ", "", " nombre ASC");
         }else{
             dao.getUnidadNegocioPorUsuarioSistema(user.getId(), clave_sistema);
         }
