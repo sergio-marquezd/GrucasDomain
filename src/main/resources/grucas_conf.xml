@@ -28,6 +28,7 @@
         <typeAlias alias="Puesto" type="com.grucas.domain.model.Puesto"/>
         <typeAlias alias="AgenteAduanal" type="com.grucas.domain.model.AgenteAduanal"/>
         <typeAlias alias="Aduana" type="com.grucas.domain.model.Aduana"/>
+        <typeAlias alias="ProductoServicio" type="com.grucas.domain.model.ProductoServicio"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -70,6 +71,7 @@
         <mapper resource="mapper/Puesto.xml"/>
         <mapper resource="mapper/AgenteAduanal.xml"/>
         <mapper resource="mapper/Aduana.xml"/>
+        <mapper resource="mapper/ProductoServicio.xml"/>
     </mappers>
   
 </configuration>
