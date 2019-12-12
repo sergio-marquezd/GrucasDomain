@@ -6,6 +6,8 @@
 package com.grucas.domain.model;
 
 import com.rubik.Base.ObjectBase;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -13,8 +15,8 @@ import com.rubik.Base.ObjectBase;
  */
 public class ProductoServicio extends ObjectBase {
     
-    static final String[] CLASIFICACION_ADUANAL = {"MARITIMO", "AEREO", "FRONTERA"};
-    static final String[] TIPO_GIRO = {"ADUANAL MEXICANO", "ADUANAL AMERICANO", "ALMACENAMIENTO", "TRANSPORTE"};
+    public static final List<String> CLASIFICACION_ADUANAL = Arrays.asList("MARITIMO", "AEREO", "FRONTERA");
+    public static final List<String> TIPO_GIRO = Arrays.asList("ADUANAL MEXICANO", "ADUANAL AMERICANO", "ALMACENAMIENTO", "TRANSPORTE");
     static final String[] TIPO_PRODUCTO = {"SERVICIO", "PAQUETE"};
     static final String[] TIPO_ASIGNACION_PRECIO = {"%", "PRECIO FIJO"};
     static final String[] FRECUENCIA_COBRO = {"POR EVENTO OPERATIVO", "POR EVENTO A SOLICITUD DEL CLIENTE", "ELABORACION DE PEDIMENTO", "PERIOCIDAD DE TIEMPO"};

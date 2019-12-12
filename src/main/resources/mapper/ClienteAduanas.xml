@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ClienteAduanas">
+
+    <resultMap id="ResultClienteAduanasID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultClienteAduanas" type="ClienteAduanas">
+        <result property="id" column="id"/>
+        <result property="cliente_id" column="cliente_id"/>
+        <result property="unidad_id" column="unidad_id"/>
+
+
+    </resultMap>
+
+    <select id="ClienteAduanasMaxID" resultMap="ResultClienteAduanasID">
+        SELECT max(id)+1 as id
+        FROM cliente_aduanas
+    </select>
+
+    <insert id="ClienteAduanasInsert" parameterType="ClienteAduanas" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO cliente_aduanas
+        (cliente_id,unidad_id)
+        VALUES
+        (#{cliente_id},#{unidad_id})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM cliente_aduanas 
+        </selectKey>
+
+    </insert>
+
+    <update id="ClienteAduanasUpdate" parameterType="ClienteAduanas">
+        UPDATE cliente_aduanas 
+        SET cliente_id = #{cliente_id},unidad_id = #{unidad_id}}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="ClienteAduanasDelete" parameterType="map">
+        DELETE FROM cliente_aduanas 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="ClienteAduanasWhere" parameterType="map" resultMap="ResultClienteAduanas">
+        SELECT *
+        FROM cliente_aduanas 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="ClienteAduanasOne" parameterType="map" resultMap="ResultClienteAduanas">
+        SELECT *
+        FROM cliente_aduanas 
+        ${where} 
+    </select>
+    
+    <select id="ClienteAduanasByUsuarioID" parameterType="map" resultMap="ResultClienteAduanas">
+        SELECT t1.id,t1.cliente_id,t1.unidad_id
+        FROM cliente_aduanas t1
+        INNER JOIN unidad_negocio t2 ON t1.unidad_id = t2.id
+        WHERE t1.cliente_id = #{id}
+    </select>
+
+</mapper>

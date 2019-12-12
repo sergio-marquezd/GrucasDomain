@@ -33,6 +33,7 @@ public class UnidadNegocio extends ObjectBase {
     String patente;
     String aduana2;
     String patente2;
+    String aduana_activo;
 
     public UnidadNegocio() {
         folio_requisicion = 0;
@@ -210,5 +211,14 @@ public class UnidadNegocio extends ObjectBase {
     public void setPatente2(String patente2) {
         this.patente2 = patente2;
     }
+
+    public String getAduana_activo() {
+        return aduana_activo;
+    }
+
+    public void setAduana_activo(String aduana_activo) {
+        this.aduana_activo = aduana_activo;
+    }
+    
 
 }

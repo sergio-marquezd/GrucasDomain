@@ -12,7 +12,7 @@ import com.rubik.Base.ObjectBase;
  * @author GrucasDev
  */
 public class Cliente extends ObjectBase {
-    
+
     String razon_social;
     String abreviacion;
     String rfc;
@@ -31,21 +31,29 @@ public class Cliente extends ObjectBase {
     // Contactos & Emails
     String contacto_vendedor_nombre;
     String contacto_vendedor_email;
-    
+
     String contacto_nombre;
     String contacto_email;
     String contacto_tel;
-    
+
     String contacto_representante_legal_nombre;
     String contacto_representante_legal_email;
-    
+
     String email_eventos_patio;
     String email_eventos_bodega;
     String email_cambios_estado_trafico;
     String email_ficha_clasificacion;
     String email_cuenta_gastos;
     String email_manifestacion_valor;
-    
+
+    Boolean aereo;
+    Boolean maritimo;
+    Boolean frontera;
+    Boolean aduanal_mexicano;
+    Boolean aduanal_americano;
+    Boolean almacenamiento;
+    Boolean transporte;
+
     public Cliente() {
     }
 
@@ -256,5 +264,61 @@ public class Cliente extends ObjectBase {
     public void setEmail_manifestacion_valor(String email_manifestacion_valor) {
         this.email_manifestacion_valor = email_manifestacion_valor;
     }
-    
+
+    public Boolean getAereo() {
+        return aereo;
+    }
+
+    public void setAereo(Boolean aereo) {
+        this.aereo = aereo;
+    }
+
+    public Boolean getMaritimo() {
+        return maritimo;
+    }
+
+    public void setMaritimo(Boolean maritimo) {
+        this.maritimo = maritimo;
+    }
+
+    public Boolean getFrontera() {
+        return frontera;
+    }
+
+    public void setFrontera(Boolean frontera) {
+        this.frontera = frontera;
+    }
+
+    public Boolean getAduanal_mexicano() {
+        return aduanal_mexicano;
+    }
+
+    public void setAduanal_mexicano(Boolean aduanal_mexicano) {
+        this.aduanal_mexicano = aduanal_mexicano;
+    }
+
+    public Boolean getAduanal_americano() {
+        return aduanal_americano;
+    }
+
+    public void setAduanal_americano(Boolean aduanal_americano) {
+        this.aduanal_americano = aduanal_americano;
+    }
+
+    public Boolean getAlmacenamiento() {
+        return almacenamiento;
+    }
+
+    public void setAlmacenamiento(Boolean almacenamiento) {
+        this.almacenamiento = almacenamiento;
+    }
+
+    public Boolean getTransporte() {
+        return transporte;
+    }
+
+    public void setTransporte(Boolean transporte) {
+        this.transporte = transporte;
+    }
+
 }
