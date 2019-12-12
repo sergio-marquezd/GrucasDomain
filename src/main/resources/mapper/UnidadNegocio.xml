@@ -41,6 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="patente" column="patebte"/>
         <result property="aduana2" column="aduana2"/>
         <result property="patente2" column="patebte2"/>
+        <result property="aduana_activo" column="aduana_activo"/>
         
     </resultMap>
 
@@ -57,11 +58,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
         INSERT INTO unidad_negocio 
         (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,nombre,domicilio,pais,estado,ciudad,codigo_postal,
-        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc,folio_vgm,email_dac_proveedores,folio_previo,tipo_operacion,aduana,patente,aduana2,patente2)
+        telefono,serie,folio_requisicion,folio_orden_compra,folio_responsiva,empresa_rfc,folio_vgm,email_dac_proveedores,folio_previo,tipo_operacion,aduana,patente,aduana2,patente2,aduana_activo)
         VALUES
         (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{nombre},#{domicilio},#{pais},
         #{estado},#{ciudad},#{codigo_postal},#{telefono},#{serie},#{folio_requisicion},#{folio_orden_compra},#{folio_responsiva},#{empresa_rfc},#{folio_vgm},#{email_dac_proveedores},#{folio_previo},
-        #{tipo_operacion},#{aduana},#{patente},#{aduana2},#{patente2})
+        #{tipo_operacion},#{aduana},#{patente},#{aduana2},#{patente2},#{aduana_activo})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM unidad_negocio 
@@ -74,7 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},
         usuario = #{usuario},activo = #{activo},nombre = #{nombre},domicilio = #{domicilio},pais = #{pais},estado = #{estado},ciudad = #{ciudad},codigo_postal = #{codigo_postal},
         telefono = #{telefono},serie = #{serie},email_dac_proveedores = #{email_dac_proveedores},tipo_operacion = #{tipo_operacion},aduana = #{aduana},patente = #{patente},
-        aduana2 = #{aduana2},patente2 = #{patente2}
+        aduana2 = #{aduana2},patente2 = #{patente2},aduana_activo = #{aduana_activo}
         WHERE id = #{id}
     </update>
 
