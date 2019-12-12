@@ -21,6 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="clasificacion_aduanal" column="clasificacion_aduanal"/>
         <result property="tipo_giro" column="tipo_giro"/>
         <result property="tipo_producto" column="tipo_producto"/>
+        <result property="tipo_operacion" column="tipo_operacion"/>
         <result property="tipo_asignacion_precio" column="tipo_asignacion_precio"/>
         <result property="porcentaje" column="porcentaje"/>
         <result property="precio_sugerido" column="precio_sugerido"/>
@@ -45,9 +46,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="ProductoServicioInsert" parameterType="ProductoServicio" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO producto_servicio 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,codigo,clasificacion_aduanal,tipo_giro,tipo_producto,tipo_asignacion_precio,porcentaje,precio_sugerido,precio_minimo,precio,total_impuestos,frecuencia_cobro,tipo_freceuencia_por_evento,tipo_elaboracion_pedimento,tipo_periocidad,concepto,descripcion,comentarios,paquete)
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,codigo,clasificacion_aduanal,tipo_giro,tipo_producto,tipo_asignacion_precio,porcentaje,precio_sugerido,precio_minimo,precio,total_impuestos,frecuencia_cobro,tipo_freceuencia_por_evento,tipo_elaboracion_pedimento,tipo_periocidad,concepto,descripcion,comentarios,paquete,tipo_operacion)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{codigo},#{clasificacion_aduanal},#{tipo_giro},#{tipo_producto},#{tipo_asignacion_precio},#{porcentaje},#{precio_sugerido},#{precio_minimo},#{precio},#{total_impuestos},#{frecuencia_cobro},#{tipo_freceuencia_por_evento},#{tipo_elaboracion_pedimento},#{tipo_periocidad},#{concepto},#{descripcion},#{comentarios},#{paquete})
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{codigo},#{clasificacion_aduanal},#{tipo_giro},#{tipo_producto},#{tipo_asignacion_precio},#{porcentaje},#{precio_sugerido},#{precio_minimo},#{precio},#{total_impuestos},#{frecuencia_cobro},#{tipo_freceuencia_por_evento},#{tipo_elaboracion_pedimento},#{tipo_periocidad},#{concepto},#{descripcion},#{comentarios},#{paquete},#{tipo_operacion})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM producto_servicio 
@@ -57,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="ProductoServicioUpdate" parameterType="ProductoServicio">
         UPDATE producto_servicio 
-        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},codigo = #{codigo},clasificacion_aduanal = #{clasificacion_aduanal},tipo_giro = #{tipo_giro},tipo_producto = #{tipo_producto},tipo_asignacion_precio = #{tipo_asignacion_precio},porcentaje = #{porcentaje},precio_sugerido = #{precio_sugerido},precio_minimo = #{precio_minimo},precio = #{precio},total_impuestos = #{total_impuestos},frecuencia_cobro = #{frecuencia_cobro},tipo_freceuencia_por_evento = #{tipo_freceuencia_por_evento},tipo_elaboracion_pedimento = #{tipo_elaboracion_pedimento},tipo_periocidad = #{tipo_periocidad},concepto = #{concepto},descripcion = #{descripcion},comentarios = #{comentarios},paquete = #{paquete}
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},codigo = #{codigo},clasificacion_aduanal = #{clasificacion_aduanal},tipo_giro = #{tipo_giro},tipo_producto = #{tipo_producto},tipo_asignacion_precio = #{tipo_asignacion_precio},porcentaje = #{porcentaje},precio_sugerido = #{precio_sugerido},precio_minimo = #{precio_minimo},precio = #{precio},total_impuestos = #{total_impuestos},frecuencia_cobro = #{frecuencia_cobro},tipo_freceuencia_por_evento = #{tipo_freceuencia_por_evento},tipo_elaboracion_pedimento = #{tipo_elaboracion_pedimento},tipo_periocidad = #{tipo_periocidad},concepto = #{concepto},descripcion = #{descripcion},comentarios = #{comentarios},paquete = #{paquete}, tipo_operacion = #{tipo_operacion}
         WHERE id = #{id}
     </update>
 

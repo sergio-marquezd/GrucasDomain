@@ -12,6 +12,7 @@ import com.rubik.Base.PartidaObjectBase;
  * @author User
  */
 public class SolicitudServicioDet extends PartidaObjectBase {
+    
     Double primer_pesaje;
     Double segundo_pesaje;
     String masa_bruta_mba_vgm;
@@ -24,8 +25,7 @@ public class SolicitudServicioDet extends PartidaObjectBase {
     String linea_transportista;
     
     public SolicitudServicioDet(){
-    masa_bruta_mba_vgm = "";
-    
+        masa_bruta_mba_vgm = "";
     }
     
     public Double getPrimer_pesaje() {

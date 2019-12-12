@@ -6,6 +6,8 @@
 package com.grucas.domain.model;
 
 import com.rubik.Base.ObjectBase;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -13,20 +15,22 @@ import com.rubik.Base.ObjectBase;
  */
 public class ProductoServicio extends ObjectBase {
     
-    static final String[] CLASIFICACION_ADUANAL = {"MARITIMO", "AEREO", "FRONTERA"};
-    static final String[] TIPO_GIRO = {"ADUANAL MEXICANO", "ADUANAL AMERICANO", "ALMACENAMIENTO", "TRANSPORTE"};
-    static final String[] TIPO_PRODUCTO = {"SERVICIO", "PAQUETE"};
-    static final String[] TIPO_ASIGNACION_PRECIO = {"%", "PRECIO FIJO"};
-    static final String[] FRECUENCIA_COBRO = {"POR EVENTO OPERATIVO", "POR EVENTO A SOLICITUD DEL CLIENTE", "ELABORACION DE PEDIMENTO", "PERIOCIDAD DE TIEMPO"};
-    static final String[] TIPO_FRECUENCIA_POR_EVENTO = {"PEDIMENTO", "EMBARQUE", "OPERACION", "CONTENEDOR"};
-    static final String[] TIPO_ELABORACION_PEDIMENTO = {"PARTIDAS 1 A 5", "PARTIDAS 6 A 20", "PARTIDAS 21 A 50", "PARTIDAS MAYOR A 51"};
-    static final String[] TIPO_PERIOCIDAD = {"MENSUAL", "ANUAL"};
+    public static final List<String> CLASIFICACION_ADUANAL = Arrays.asList("MARITIMO", "AEREO", "FRONTERA");
+    public static final List<String> TIPO_GIRO = Arrays.asList("ADUANAL MEXICANO", "ADUANAL AMERICANO", "ALMACENAMIENTO", "TRANSPORTE");
+    public static final List<String> TIPO_OPERACION = Arrays.asList("IMPORTACION", "EXPORTACION");
+    public static final List<String> TIPO_PRODUCTO = Arrays.asList("SERVICIO", "PAQUETE");
+    public static final List<String> TIPO_ASIGNACION_PRECIO = Arrays.asList("%", "PRECIO FIJO");
+    public static final List<String> FRECUENCIA_COBRO = Arrays.asList("POR EVENTO OPERATIVO", "POR EVENTO A SOLICITUD DEL CLIENTE", "ELABORACION DE PEDIMENTO", "PERIOCIDAD DE TIEMPO");
+    public static final List<String> TIPO_FRECUENCIA_POR_EVENTO = Arrays.asList("PEDIMENTO", "EMBARQUE", "OPERACION", "CONTENEDOR");
+    public static final List<String> TIPO_ELABORACION_PEDIMENTO = Arrays.asList("PARTIDAS 1 A 5", "PARTIDAS 6 A 20", "PARTIDAS 21 A 50", "PARTIDAS MAYOR A 51");
+    public static final List<String> TIPO_PERIOCIDAD = Arrays.asList("MENSUAL", "ANUAL");
     
     String codigo;
     String clasificacion_aduanal; 
     String tipo_giro;
     String tipo_producto;
     String tipo_asignacion_precio;
+    String tipo_operacion;
     Double porcentaje;
     Double precio_sugerido;
     Double precio_minimo;
@@ -60,6 +64,7 @@ public class ProductoServicio extends ObjectBase {
         tipo_giro = "";
         tipo_producto = "";
         tipo_asignacion_precio = "";
+        tipo_operacion = "";
         porcentaje = 0.0;
         precio_sugerido = 0.0;
         precio_minimo = 0.0;
@@ -217,6 +222,14 @@ public class ProductoServicio extends ObjectBase {
 
     public void setComentarios(String comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public String getTipo_operacion() {
+        return tipo_operacion;
+    }
+
+    public void setTipo_operacion(String tipo_operacion) {
+        this.tipo_operacion = tipo_operacion;
     }
 
     @Override
