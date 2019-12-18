@@ -79,6 +79,11 @@ public class ProductoServicio extends ObjectBase {
         comentarios = "";
         paquete = false;
     }
+
+    public ProductoServicio(String codigo, String concepto) { 
+        this.codigo = codigo;
+        this.concepto = concepto;
+    }
     
     public String getCodigo() {
         return codigo;

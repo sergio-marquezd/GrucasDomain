@@ -291,5 +291,41 @@ public class AduanaDAO {
 
         }
     }
+    
+    public void getAduanaPorCliente(Integer cliente_id){
+        SqlSession session = null;
 
+        try {
+
+            Map map = new HashMap();
+            map.put("cliente_id", cliente_id);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("AduanaPorCliente",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
 }

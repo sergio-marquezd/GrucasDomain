@@ -118,23 +118,18 @@ public class ProductoServicioService {
         setOk(dao.getOk());
 
         if(getOk()){
-
+            
             objects = dao.getObjects();
-            total_result = objects.size();
-
             if(objects != null){
-                if(!objects.isEmpty()){
-
-                    if(objects.size()==1){
-                        object = objects.get(0);
-                    }
-                    notification = "Informacion cargada correctamente.";
-                } else {
-                    objects = new ArrayList<>();
-                    notification = "No se encontraron registros dados de alta.";
+                total_result = objects.size();
+                
+                if(objects.size()==1){
+                    object = objects.get(0);
                 }
+                notification = "Informacion cargada correctamente.";
             }else{
                 objects = new ArrayList<>();
+                notification = "No se encontraron registros dados de alta.";
             }
 
         }else{

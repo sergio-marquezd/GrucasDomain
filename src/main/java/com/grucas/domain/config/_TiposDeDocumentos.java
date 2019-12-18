@@ -27,6 +27,8 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_PREVIO_SOLICITUD = "SOLICITUD DE PREVIO";
     public static final String DOCUMENTO_PREVIO_IMAGENES = "FOTOGRAFIAS DE PREVIO";
     
+    public static final String DOCUMENTO_COMERCIAL_TARIFARIO = "TARIFARIO";
+    
     public static final List<String> DOCUMENTOS = 
             Arrays.asList(
                     DOCUMENTO_REQUISICION, 

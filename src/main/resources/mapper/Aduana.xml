@@ -73,5 +73,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         FROM aduana 
         ${where} 
     </select>
+    
+    <select id="AduanaPorCliente" parameterType="map" resultMap="ResultUnidadNegocio">
+        SELECT * FROM aduana
+        WHERE id IN (
+        SELECT t1.aduana_id FROM cliente_aduana t1 
+        WHERE t1.cliente_id = #{cliente_id}
+    </select>
 
 </mapper>

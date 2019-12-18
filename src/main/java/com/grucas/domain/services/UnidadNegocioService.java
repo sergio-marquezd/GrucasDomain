@@ -303,7 +303,6 @@ public class UnidadNegocioService {
         }else{
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
-
     }
     
 }
