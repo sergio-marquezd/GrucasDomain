@@ -54,7 +54,39 @@ public class Cliente extends ObjectBase {
     Boolean almacenamiento;
     Boolean transporte;
 
-    public Cliente() {
+    public Cliente() { 
+        razon_social = "";
+        abreviacion = "";
+        rfc = "";
+        domicilio = "";
+        ciudad = "";
+        estado = "";
+        cp = "";
+        telefono = "";
+        pais = "";
+        no_contable = "";
+        estado_cliente = "";
+        tipo_cambio = "";
+        UUID = "";
+        contacto_vendedor_email = "";
+        contacto_nombre = "";
+        contacto_email = "";
+        contacto_tel = "";
+        contacto_representante_legal_nombre = "";
+        contacto_representante_legal_email = "";
+        email_eventos_patio = "";
+        email_eventos_bodega = "";
+        email_cambios_estado_trafico = "";
+        email_ficha_clasificacion = "";
+        email_cuenta_gastos = "";
+        email_manifestacion_valor = "";
+        aereo = false;
+        maritimo = false;
+        frontera = false;
+        aduanal_mexicano = false;
+        aduanal_americano = false;
+        almacenamiento = false;
+        transporte = false;
     }
 
     public String getRazon_social() {
@@ -319,6 +351,32 @@ public class Cliente extends ObjectBase {
 
     public void setTransporte(Boolean transporte) {
         this.transporte = transporte;
+    }
+    
+    public Boolean informacionCompleta(){
+        boolean textOK = false;
+        boolean count = false;
+        
+        if(razon_social != null || rfc != null || domicilio != null || ciudad != null 
+                || estado != null || cp != null || telefono != null || pais != null 
+                || no_contable != null || contacto_vendedor_nombre != null 
+                || contacto_vendedor_email != null || contacto_nombre != null 
+                || contacto_email != null || contacto_tel != null || contacto_representante_legal_nombre != null 
+                || contacto_representante_legal_email != null || email_eventos_patio != null 
+                || email_eventos_bodega != null || email_cambios_estado_trafico != null || email_ficha_clasificacion != null 
+                || email_cuenta_gastos != null || email_manifestacion_valor != null){
+            textOK = false;
+        }
+
+        if(aereo || maritimo || frontera || aduanal_americano || aduanal_mexicano || almacenamiento || transporte ){
+            count = true;
+        }
+    
+        if(count && textOK){
+            return true;
+        }else{
+            return false;
+        }
     }
 
 }

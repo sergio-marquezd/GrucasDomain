@@ -8,6 +8,7 @@ package com.grucas.domain.services;
 import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.AduanaDAO;
 import com.grucas.domain.model.Aduana;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -171,18 +172,17 @@ public class AduanaService {
         setOk(dao.getOk());
 
         if(getOk()){
-
+            
             objects = dao.getObjects();
-            total_result = objects.size();
-
-            if(!objects.isEmpty()){
-
+            if(objects != null){
+                total_result = objects.size();
+                
                 if(objects.size()==1){
                     object = objects.get(0);
                 }
-
                 notification = "Informacion cargada correctamente.";
-            } else {
+            }else{
+                objects = new ArrayList<>();
                 notification = "No se encontraron registros dados de alta.";
             }
 
