@@ -16,6 +16,9 @@ public class ClienteAduanas {
     Integer unidad_id;
 
     public ClienteAduanas() {
+        id = 0;
+        cliente_id = 0;
+        unidad_id = 0;
 
     }
 
