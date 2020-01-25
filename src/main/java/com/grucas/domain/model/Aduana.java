@@ -15,6 +15,7 @@ public class Aduana extends ObjectBase {
 
     String no_aduana;
     String nombre;
+    String tipo_aduana;
     Integer agente_id;
     String agente;
     String patente;
@@ -26,15 +27,15 @@ public class Aduana extends ObjectBase {
     String patente3;
 
     public Aduana() {
-    agente_id = 0;
-    agente = "";
-    patente = "";
-    agente2_id = 0;
-    agente2 = "";
-    patente2 = "";
-    agente3_id = 0;
-    agente3 = "";
-    patente3 = "";
+        agente_id = 0;
+        agente = "";
+        patente = "";
+        agente2_id = 0;
+        agente2 = "";
+        patente2 = "";
+        agente3_id = 0;
+        agente3 = "";
+        patente3 = "";
     }
 
     public String getNo_aduana() {
@@ -123,6 +124,14 @@ public class Aduana extends ObjectBase {
 
     public void setPatente3(String patente3) {
         this.patente3 = patente3;
+    }
+
+    public String getTipo_aduana() {
+        return tipo_aduana;
+    }
+
+    public void setTipo_aduana(String tipo_aduana) {
+        this.tipo_aduana = tipo_aduana;
     }
     
     @Override
