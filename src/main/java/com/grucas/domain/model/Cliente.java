@@ -55,6 +55,7 @@ public class Cliente extends ObjectBase {
     Boolean transporte;
 
     public Cliente() { 
+        id = 0;
         razon_social = "";
         abreviacion = "";
         rfc = "";
