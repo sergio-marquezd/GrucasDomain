@@ -214,4 +214,7 @@ public class GrucasDomainConfig {
     
     public static final List<String> LISTA_TIPO = Arrays.asList(TIPO_TEXT,TIPO_IMAGE,TIPO_PDF,TIPO_EXCEL);
     
+    public static final Integer A2020 = 2020;
+    public static final List<Integer> YEAR = Arrays.asList(2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030);
+    
 }
