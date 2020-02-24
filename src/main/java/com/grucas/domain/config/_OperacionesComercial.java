@@ -23,9 +23,8 @@ public class _OperacionesComercial {
     public static final List<String> LISTA_TIPO_GIRO = 
             Arrays.asList(TIPO_GIRO_ADUANAL_MEXICANO, 
                     TIPO_GIRO_ADUANAL_AMERICANO, 
-                    TIPO_GIRO_ALMACENAJE_MEXICANO,
-                    TIPO_GIRO_ALMACENAJE_AMERICANO,
-                    TIPO_GIRO_TRANSPORTE);
+//                    TIPO_GIRO_ALMACENAJE_MEXICANO,
+                    TIPO_GIRO_ALMACENAJE_AMERICANO);
     
     public static final String OPERACION_TIPO_IMPORATACION = "IMPORTACION";
     public static final String OPERACION_TIPO_EXPORATACION = "EXPORTACION";
