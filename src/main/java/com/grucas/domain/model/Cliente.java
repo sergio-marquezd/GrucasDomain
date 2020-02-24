@@ -46,13 +46,28 @@ public class Cliente extends ObjectBase {
     String email_cuenta_gastos;
     String email_manifestacion_valor;
 
-    Boolean aereo;
+    Boolean aereo;  
     Boolean maritimo;
     Boolean frontera;
     Boolean aduanal_mexicano;
     Boolean aduanal_americano;
     Boolean almacenamiento;
     Boolean transporte;
+    
+    String Fisica_Moral;  
+    String AgenteAdunal;   
+    String Telefono;  
+    String Atencion;  
+    String Cobranza_Aut;  
+    String Dias_Credito;  
+    String Corresponsal;  
+    String Vendedor;  
+    String Compl;  
+    String Hon;  
+    String Facturar_a;  
+    String Cliente_Activo;  
+    String Cliente_Corporativo;  
+    String Correo;  
 
     public Cliente() { 
         id = 0;
@@ -353,6 +368,111 @@ public class Cliente extends ObjectBase {
     public void setTransporte(Boolean transporte) {
         this.transporte = transporte;
     }
+
+    public String getFisica_Moral() {
+        return Fisica_Moral;
+    }
+
+    public void setFisica_Moral(String Fisica_Moral) {
+        this.Fisica_Moral = Fisica_Moral;
+    }
+
+    public String getAgenteAdunal() {
+        return AgenteAdunal;
+    }
+
+    public void setAgenteAdunal(String AgenteAdunal) {
+        this.AgenteAdunal = AgenteAdunal;
+    }
+
+    public String getAtencion() {
+        return Atencion;
+    }
+
+    public void setAtencion(String Atencion) {
+        this.Atencion = Atencion;
+    }
+
+    public String getCobranza_Aut() {
+        return Cobranza_Aut;
+    }
+
+    public void setCobranza_Aut(String Cobranza_Aut) {
+        this.Cobranza_Aut = Cobranza_Aut;
+    }
+
+    public String getDias_Credito() {
+        return Dias_Credito;
+    }
+
+    public void setDias_Credito(String Dias_Credito) {
+        this.Dias_Credito = Dias_Credito;
+    }
+
+    public String getCorresponsal() {
+        return Corresponsal;
+    }
+
+    public void setCorresponsal(String Corresponsal) {
+        this.Corresponsal = Corresponsal;
+    }
+
+    public String getVendedor() {
+        return Vendedor;
+    }
+
+    public void setVendedor(String Vendedor) {
+        this.Vendedor = Vendedor;
+    }
+
+    public String getCompl() {
+        return Compl;
+    }
+
+    public void setCompl(String Compl) {
+        this.Compl = Compl;
+    }
+
+    public String getHon() {
+        return Hon;
+    }
+
+    public void setHon(String Hon) {
+        this.Hon = Hon;
+    }
+
+    public String getFacturar_a() {
+        return Facturar_a;
+    }
+
+    public void setFacturar_a(String Facturar_a) {
+        this.Facturar_a = Facturar_a;
+    }
+
+    public String getCliente_Activo() {
+        return Cliente_Activo;
+    }
+
+    public void setCliente_Activo(String Cliente_Activo) {
+        this.Cliente_Activo = Cliente_Activo;
+    }
+
+    public String getCliente_Corporativo() {
+        return Cliente_Corporativo;
+    }
+
+    public void setCliente_Corporativo(String Cliente_Corporativo) {
+        this.Cliente_Corporativo = Cliente_Corporativo;
+    }
+
+    public String getCorreo() {
+        return Correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.Correo = Correo;
+    }
+        
     
     public Boolean informacionCompleta(){
         boolean textOK = false;
