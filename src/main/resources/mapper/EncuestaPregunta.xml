@@ -25,6 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="opcion_multiple" column="opcion_multiple"/>
         <result property="valor" column="valor"/>
         <result property="tipo_pregunta" column="tipo_pregunta"/>
+        <result property="cliente_id" column="cliente_id"/>
+       
     </resultMap>
 
     <select id="EncuestaPreguntaBaseMaxID" resultMap="ResultEncuestaPreguntaBaseID">
@@ -35,9 +37,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="EncuestaPreguntaBaseInsert" parameterType="EncuestaPreguntaBase" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO encuesta_pregunta 
-        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,consecutivo,documento_id,pregunta,comentarios,respuesta,opcion_multiple,valor,tipo_pregunta)
+        (cliente_id,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,consecutivo,documento_id,pregunta,comentarios,respuesta,opcion_multiple,valor,tipo_pregunta)
         VALUES
-        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{consecutivo},#{documento_id},#{pregunta},#{comentarios},#{respuesta},#{opcion_multiple},#{valor},#{tipo_pregunta})
+        (#{cliente_id},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{consecutivo},#{documento_id},#{pregunta},#{comentarios},#{respuesta},#{opcion_multiple},#{valor},#{tipo_pregunta})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM encuesta_pregunta 
