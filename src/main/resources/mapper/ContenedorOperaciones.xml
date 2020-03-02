@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ContenedorOperaciones">
+
+    <resultMap id="ResultContenedorOperacionesID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+      <resultMap id="ResultContenedorOperaciones" type="ContenedorOperaciones">
+        <result property="id" column="id"/>
+        <result property="folio" column="folio"/>
+        <result property="hora_llegadaBuque" column="hora_llegadabuque"/>
+        <result property="hora_salidaBuque" column="hora_salidabuque"/>
+        <result property="modificacion_plan" column="modificacion_plan"/>
+        <result property="fecha_modificacionPlan" column="fecha_modificacionPlan"/>
+        <result property="numero_modificaciones" column="numero_modificaciones"/>
+    </resultMap>
+    
+      <select id="ContenedorOperacionesMaxID" resultMap="ResultContenedorOperacionesID">
+        SELECT max(id)+1 as id
+        FROM contenedor_operaciones
+    </select>
+    
+        <insert id="ContenedorOperacionesInsert" parameterType="ContenedorOperaciones" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO contenedor_operaciones
+        (folio,hora_llegadaBuque,hora_salidaBuque,fecha_modificacion,fecha_elaboracion,modificacion_plan,fecha_modificacionPlan,numero_modificaciones)
+        VALUES
+        (#{folio},#{hora_llegadaBuque},#{hora_salidaBuque},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{fecha_modificacionPlan},#{numero_modificaciones})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM contenedor_operaciones
+        </selectKey>
+
+    </insert>
+    
+      <delete id="ContenedorOperacionesDelete" parameterType="map">
+        DELETE FROM contenedor_operaciones 
+        WHERE id = #{id}
+    </delete>
+    
+     <update id="ContenedorOperacionesUpdate" parameterType="ContenedorOperaciones">
+        UPDATE contenedor_operaciones
+        SET folio = #{folio},hora_llegadaBuque = #{hora_llegadaBuque},hora_salidaBuque = #{hora_salidaBuque},fecha_modificacion = #{fecha_modificacion},
+        fecha_elaboracion = #{fecha_elaboracion},modificacion_plan = #{modificacion_plan},fecha_modificacionPlan=#{fecha_modificacionPlan},numero_modificaciones = #{numero_modificaciones}
+        WHERE id = #{id}
+    </update>
+    
+    <select id="ContenedorOperacionesWhere" parameterType="map" resultMap="ResultContenedorOperaciones">
+        SELECT *
+        FROM contenedor_operaciones
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+     <select id="ContenedorOperacionesOne" parameterType="map" resultMap="ResultContenedorOperaciones">
+        SELECT *
+        FROM contenedor_operaciones
+        ${where} 
+    </select>
+    
+    </mapper>

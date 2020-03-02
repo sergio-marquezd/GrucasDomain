@@ -74,9 +74,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     </delete>
 
     <select id="UsuarioWhere" parameterType="map" resultMap="ResultUsuario">
-        SELECT *, t2.puesto_id, t2.puesto, t2.clasificacion_puesto, t2.departamento_id, t2.departamento
-        FROM usuario  
-        LEFT JOIN empleado t2 on usuario.empleado_id = t2.id
+        SELECT *
+        FROM usuario t1
+        LEFT JOIN empleado t2 ON t1.empleado_id = t2.id
         ${where} 
         ${group} 
         ${order}

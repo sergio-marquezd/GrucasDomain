@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Contenedor">
+
+    <resultMap id="ResultContenedorID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+    <resultMap id="ResultContenedor" type="Contenedor">
+        <result property="id" column="id"/>
+        <result property="folio" column="folio"/>
+        <result property="horallegada_frontera" column="horallegada_frontera"/>
+        <result property="tiempo_cruce" column="tiempo_cruce"/>
+        <result property="tiempo_inspeccion" column="tiempo_inspeccion"/>     
+        <result property="nombreContenedor" column="nombreContenedor"/> 
+        <result property="fecha_envioDocumentos" column="fecha_envioDocumentos"/>
+        <result property="fecha_reservacionTransporte" column="fecha_reservacionTransporte"/>
+        <result property="fecha_confirmacionTransportista" column="fecha_confirmacionTransportista"/>
+        <result property="fecha_confirmacionGrucasCliente" column="fecha_confirmacionGrucasCliente"/>
+        <result property="fecha_envioDocumentosCabot" column="fecha_envioDocumentosCabot"/>
+        <result property="fecha_declaracionExpImp" column="fecha_declaracionExpImp"/>
+        <result property="fecha_envioDocumentosGrucas" column="fecha_envioDocumentosGrucas"/>
+        <result property="fecha_salidaMercancia" column="fecha_salidaMercancia"/>
+        <result property="fecha_llegadaBarco" column="fecha_llegadaBarco"/>
+        <result property="fecha_llegadaAPuertoDestino" column="fecha_llegadaAPuertoDestino"/>
+        <result property="fecha_transmision" column="fecha_transmision"/>
+        <result property="fecha_entradaMercancia" column="fecha_entradaMercancia"/>
+        <result property="fecha_ETA" column="fecha_ETA"/>
+        <result property="fecha_entradaAPuerto" column="fecha_entradaAPuerto"/>
+        <result property="fecha_recogidaTransporte" column="fecha_recogidaTransporte"/>
+        <result property="fecha_carga" column="fecha_carga"/>
+      
+    </resultMap>
+    
+     <select id="ContenedorMaxID" resultMap="ResultContenedorID">
+        SELECT max(id)+1 as id
+        FROM contenedor
+    </select>
+    
+      <insert id="ContenedorInsert" parameterType="Contenedor" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO contenedor
+        (fecha_envioDocumentos,fecha_reservacionTransporte,fecha_confirmacionTransportista,
+        fecha_confirmacionGrucasCliente,fecha_envioDocumentosCabot,fecha_declaracionExpImp,
+        fecha_envioDocumentosGrucas,fecha_salidaMercancia,fecha_llegadaBarco,fecha_llegadaAPuertoDestino,
+        fecha_transmision,fecha_entradaMercancia,fecha_ETA,fecha_entradaAPuerto,fecha_recogidaTransporte,
+        nombreContenedor,fecha_elaboracion,documento_id,folio,fecha_carga)
+        VALUES
+        (#{fecha_envioDocumentos},#{fecha_reservacionTransporte},#{fecha_confirmacionTransportista},
+        #{fecha_confirmacionGrucasCliente},#{fecha_envioDocumentosCabot},#{fecha_declaracionExpImp},
+        #{fecha_envioDocumentosGrucas},#{fecha_salidaMercancia},#{fecha_llegadaBarco},#{fecha_llegadaAPuertoDestino},
+        #{fecha_transmision},#{fecha_entradaMercancia},#{fecha_ETA},#{fecha_entradaAPuerto},#{fecha_recogidaTransporte},
+        #{nombreContenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM contenedor 
+        </selectKey>
+
+    </insert>
+    
+       <delete id="ContenedorDelete" parameterType="map">
+        DELETE FROM contenedor
+        WHERE id = #{id}
+    </delete>
+    
+      <update id="ContenedorUpdate" parameterType="Contenedor">
+        UPDATE contenedor 
+        SET fecha_envioDocumentos = #{fecha_envioDocumentos},fecha_reservacionTransporte = #{fecha_reservacionTransporte},
+            fecha_confirmacionTransportista = #{fecha_confirmacionTransportista},fecha_confirmacionGrucasCliente=#{fecha_confirmacionGrucasCliente},
+            fecha_envioDocumentosCabot = #{fecha_envioDocumentosCabot},fecha_declaracionExpImp = #{fecha_declaracionExpImp},
+            fecha_envioDocumentosGrucas = #{fecha_envioDocumentosGrucas},fecha_salidaMercancia= #{fecha_salidaMercancia},fecha_llegadaBarco=#{fecha_llegadaBarco},
+            fecha_llegadaAPuertoDestino = #{fecha_llegadaAPuertoDestino},fecha_transmision=#{fecha_transmision},fecha_entradaMercancia=#{fecha_entradaMercancia},
+            fecha_ETA = #{fecha_ETA},fecha_entradaAPuerto=#{fecha_entradaAPuerto},fecha_recogidaTransporte=#{fecha_recogidaTransporte},
+            folio = #{folio},nombreContenedor = #{nombreContenedor},fecha_modificacion = #{fecha_modificacion},fecha_carga=#{fecha_carga}
+        WHERE id = #{id}
+    </update>
+    
+      <select id="ContenedorWhere" parameterType="map" resultMap="ResultContenedor">
+        SELECT *
+        FROM contenedor
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+     <select id="ContenedorOne" parameterType="map" resultMap="ResultContenedor">
+        SELECT *
+        FROM contenedor 
+        ${where} 
+    </select>
+    
+    </mapper>
