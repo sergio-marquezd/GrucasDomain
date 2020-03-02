@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReportKPI">
+    
+     <resultMap id="ResultReportKPIID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+ <resultMap id="ResultReportKPI" type="ReportKPI">
+        <result property="id" column="id"/>
+        <result property="total" column="total"/>
+        <result property="cumplen" column="cumplen"/>
+        <result property="exitoso" column="exitoso"/>
+    </resultMap>
+    
+   <select id="KPI1" parameterType="map" resultMap="ResultReportKPI">
+        SELECT COUNT(id) AS total,
+        COUNT(IF(modificacion_plan=0,1,NULL)) AS cumplen,
+        COUNT(IF(modificacion_plan=0,1,NULL)) / COUNT(id) * 100 AS exitoso
+        FROM contenedor_operaciones
+    </select>
+    
+    <select id="KPI2" parameterType="map" resultMap="ResultReportKPI">  
+       SELECT COUNT(id) AS total,
+       COUNT(IF(IF(DATEDIFF(fecha_carga,fecha_envioDocumentos)<=5,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_carga,fecha_envioDocumentos)<=5,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+       FROM contenedor 
+    </select>
+    
+    <select id="KPI3" parameterType="map" resultMap="ResultReportKPI">
+       SELECT COUNT(id) AS total,
+       COUNT(IF(IF(DATEDIFF(fecha_reservacionTransporte,fecha_envioDocumentos)<=1,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_reservacionTransporte,fecha_envioDocumentos)<=1,'SI','NO')='SI',1,NULL)) /COUNT(id) *100 AS exitoso
+       FROM contenedor
+    </select>
+    
+    <select id="KPI3a" parameterType="map"  resultMap="ResultReportKPI">
+       SELECT COUNT(id) AS total,
+       COUNT(IF(IF(DATEDIFF(fecha_confirmacionTransportista,fecha_reservacionTransporte)<=1,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_confirmacionTransportista,fecha_reservacionTransporte)<=1,'SI','NO')='SI',1,NULL)) / COUNT(id) * 100 AS exitoso
+       FROM contenedor
+    </select>
+    
+    
+    <select id="KPI5" parameterType="map" resultMap="ResultReportKPI">
+       SELECT COUNT(id) AS total,
+       COUNT(IF(IF(DATEDIFF(fecha_carga,'2020-02-26 17:28:00')=0,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_carga,'2020-02-26 17:28:00')=0,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+       FROM contenedor 
+    </select>
+    
+    <select id="KPI6" parameterType="map" resultMap="ResultReportKPI">
+       SELECT COUNT(id) AS total,
+       COUNT(IF(IF(DATEDIFF(fecha_declaracionExpImp,fecha_envioDocumentosCabot)<=1,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_declaracionExpImp,fecha_envioDocumentosCabot)<=1,'SI','NO')='SI',1,NULL)) /COUNT(id) *100 AS exitoso
+       FROM contenedor
+    </select>
+    
+    <select id="KPI9a" parameterType="map" resultMap="ResultReportKPI">
+       SELECT COUNT(id) AS total, 
+       COUNT(IF(IF(DATEDIFF(fecha_salidaMercancia,'2020-02-26 17:28:00')=0,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_salidaMercancia,'2020-02-26 17:28:00')=0,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+       FROM contenedor
+    </select>
+    
+    <select id="KPI9b" parameterType="map" resultMap="ResultReportKPI">
+       SELECT COUNT(id) AS total, 
+       COUNT(IF(IF(DATEDIFF(fecha_llegadaBarco,fecha_ETA)<=3,'SI','NO')='SI',1,NULL)) AS cumplen,
+       COUNT(IF(IF(DATEDIFF(fecha_llegadaBarco,fecha_ETA)<=3,'SI','NO')='SI',1,NULL)) /COUNT(id) *100 AS exitoso
+       FROM contenedor 
+    </select>
+    
+    <select id="KPI10" parameterType="map" resultMap="ResultReportKPI">
+        SELECT COUNT(id) AS total,
+        COUNT(IF(IF((DATEDIFF(fecha_llegadaAPuertoDestino,fecha_declaracionExpImp)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(fecha_declaracionExpImp) + WEEKDAY(fecha_llegadaAPuertoDestino) + 1, 1)<=2,'SI','NO')='SI',1,NULL)) AS  cumplen,
+        COUNT(IF(IF((DATEDIFF(fecha_llegadaAPuertoDestino,fecha_declaracionExpImp)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(fecha_declaracionExpImp) + WEEKDAY(fecha_llegadaAPuertoDestino) + 1, 1)<=2,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+        FROM contenedor
+    </select>
+    
+    <select id="KPI11" parameterType="map" resultMap="ResultReportKPI">
+        SELECT COUNT(id) AS total,
+        COUNT(IF(IF(DATEDIFF(fecha_transmision,fecha_salidaMercancia)<=1,'SI','NO')='SI',1,NULL)) AS cumplen,
+        COUNT(IF(IF(DATEDIFF(fecha_transmision,fecha_salidaMercancia)<=1,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+        FROM contenedor
+    </select>
+    
+    <select id="KPI12" parameterType="map" resultMap="ResultReportKPI">
+        SELECT COUNT(id) AS total,
+        COUNT(IF(IF(DATEDIFF(fecha_entradaMercancia,fecha_carga)<=3,'SI','NO')='SI',1,NULL)) AS cumplen,
+        COUNT(IF(IF(DATEDIFF(fecha_entradaMercancia,fecha_carga)<=3,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+        FROM contenedor
+    </select>
+    
+    <select id="KPI13" parameterType="map" resultMap="ResultReportKPI">
+        SELECT  COUNT(id) AS total,
+        COUNT(IF(IF(DATEDIFF(fecha_salidaMercancia,fecha_ETA)<=6,'SI','NO')='SI',1,NULL)) AS cumplen,
+        COUNT(IF(IF(DATEDIFF(fecha_salidaMercancia,fecha_ETA)<=6,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+        FROM contenedor
+    </select>
+    
+    <select id="KPI14" parameterType="map" resultMap="ResultReportKPI">
+        SELECT COUNT(id) AS total,
+        COUNT(IF(IF(DATEDIFF(fecha_entradaAPuerto,fecha_envioDocumentosCabot)<=7,'SI','NO')='SI',1,NULL)) AS cumplen,
+        COUNT(IF(IF(DATEDIFF(fecha_entradaAPuerto,fecha_envioDocumentosCabot)<=7,'SI','NO')='SI',1,NULL)) / COUNT(id) *100 AS exitoso
+        FROM contenedor
+    </select>
+ </mapper>
