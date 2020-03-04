@@ -20,6 +20,7 @@ public class ContenedorOperaciones extends ObjectBase {
     Boolean modificacion_plan;
     Date fecha_modificacionPlan;
     Integer numero_modificaciones;
+    String tipo_exportacion;
     
     
     public ContenedorOperaciones(){
@@ -29,6 +30,7 @@ public class ContenedorOperaciones extends ObjectBase {
         modificacion_plan=false;
         fecha_modificacionPlan=null;
         numero_modificaciones =0;
+        tipo_exportacion="";
     }
 
     public String getFolio() {
@@ -77,6 +79,14 @@ public class ContenedorOperaciones extends ObjectBase {
 
     public void setNumero_modificaciones(Integer numero_modificaciones) {
         this.numero_modificaciones = numero_modificaciones;
+    }
+
+    public String getTipo_exportacion() {
+        return tipo_exportacion;
+    }
+
+    public void setTipo_exportacion(String tipo_exportacion) {
+        this.tipo_exportacion = tipo_exportacion;
     }
     
     
