@@ -38,6 +38,9 @@ public class Contenedor extends ObjectBase {
     LocalDateTime fecha_entradaAPuerto;
     LocalDateTime fecha_recogidaTransporte;
     LocalDateTime fecha_carga;
+    LocalDateTime fecha_entregaCajaPatio;
+    LocalDateTime fecha_tramiteManiobras;
+    LocalDateTime fecha_maniobras;
    
     
     
@@ -64,6 +67,9 @@ public class Contenedor extends ObjectBase {
         fecha_entradaAPuerto=null;
         fecha_recogidaTransporte=null;
         fecha_carga=null;
+        fecha_entregaCajaPatio=null;
+        fecha_tramiteManiobras=null;
+        fecha_maniobras=null;
    
     }
 
@@ -256,6 +262,30 @@ public class Contenedor extends ObjectBase {
 
     public void setFecha_carga(LocalDateTime fecha_carga) {
         this.fecha_carga = fecha_carga;
+    }
+
+    public LocalDateTime getFecha_entregaCajaPatio() {
+        return fecha_entregaCajaPatio;
+    }
+
+    public void setFecha_entregaCajaPatio(LocalDateTime fecha_entregaCajaPatio) {
+        this.fecha_entregaCajaPatio = fecha_entregaCajaPatio;
+    }
+
+    public LocalDateTime getFecha_tramiteManiobras() {
+        return fecha_tramiteManiobras;
+    }
+
+    public void setFecha_tramiteManiobras(LocalDateTime fecha_tramiteManiobras) {
+        this.fecha_tramiteManiobras = fecha_tramiteManiobras;
+    }
+
+    public LocalDateTime getFecha_maniobras() {
+        return fecha_maniobras;
+    }
+
+    public void setFecha_maniobras(LocalDateTime fecha_maniobras) {
+        this.fecha_maniobras = fecha_maniobras;
     }
     
     
