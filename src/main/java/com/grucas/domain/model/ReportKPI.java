@@ -11,12 +11,12 @@ import com.rubik.Base.ObjectBase;
  *
  * @author GrucasDev
  */
-public class KPI extends ObjectBase{
+public class ReportKPI extends ObjectBase{
     Integer total;
     Integer cumplen;
     Integer exitoso;
     
-    public KPI(){
+    public ReportKPI(){
         total =0;
         cumplen =0;
         exitoso=0;
