@@ -75,9 +75,9 @@ public class ContenedorOperacionesService {
         setOk(dao.getOk());
 
         if (getOk()) {
-            notification = "Buque " + contenedorOp.getId()+ " dado de alta correctamente.";
+            notification = "Embarque " + contenedorOp.getId()+ " dado de alta correctamente.";
         } else {
-            notification = "Ha ocurrido un error al guardar. Buque " +contenedorOp.getId()+" no almacenado(a) en la base de datos.";
+            notification = "Ha ocurrido un error al guardar. Embarque " +contenedorOp.getId()+" no almacenado(a) en la base de datos.";
         }
     }
     
@@ -141,9 +141,9 @@ public class ContenedorOperacionesService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Buque "+ contenedorop.getId()+ " fue eliminado(a) correctamente.";
+            notification = "Embarque "+ contenedorop.getId()+ " fue eliminado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al eliminar Buque " + contenedorop.getId();
+            notification = "Ha ocurrido un error al eliminar Embarque " + contenedorop.getId();
         }
     }
     
@@ -156,9 +156,9 @@ public class ContenedorOperacionesService {
         setOk(dao.getOk());
 
         if(getOk()){
-            notification = "Buque " +contenedorop.getId()+ " modificado(a) correctamente.";
+            notification = "Embarque " +contenedorop.getId()+ " modificado(a) correctamente.";
         }else{
-            notification = "Ha ocurrido un error al modificar. Buque " + contenedorop.getId();
+            notification = "Ha ocurrido un error al modificar. Embarque " + contenedorop.getId();
         }
     }
     

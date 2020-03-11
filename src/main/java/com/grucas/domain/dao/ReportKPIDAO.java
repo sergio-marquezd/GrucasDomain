@@ -6,9 +6,12 @@
 package com.grucas.domain.dao;
 
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.model.KPI;
+import com.grucas.domain.model.ReportKPI;
 import com.rubik.logger.LoggerImpl;
+import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionException;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,8 +22,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
  */
 public class ReportKPIDAO {
     private Integer id = 0;
-    private List<KPI> objects = null;
-    private KPI object = null;
+    private List<ReportKPI> objects = null;
+    private ReportKPI object = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
@@ -37,19 +40,19 @@ public class ReportKPIDAO {
         this.id = id;
     }
 
-    public List<KPI> getObjects() {
+    public List<ReportKPI> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<KPI> objects) {
+    public void setObjects(List<ReportKPI> objects) {
         this.objects = objects;
     }
 
-    public KPI getObject() {
+    public ReportKPI getObject() {
         return object;
     }
 
-    public void setObject(KPI object) {
+    public void setObject(ReportKPI object) {
         this.object = object;
     }
 
@@ -70,16 +73,18 @@ public class ReportKPIDAO {
     }
     
     
-        public void getKPI1() {
+        public void getKPI1(String strWhere) {
 
         SqlSession session = null;
 
         try {
 
-
-            object = session.selectOne("KPI1");
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            object = session.selectOne("KPI1",map);
             if (object == null) {
-                object = new KPI();
+                object = new ReportKPI();
                 object.setTotal(0);
                 object.setCumplen(0);
                 object.setExitoso(0);
@@ -111,126 +116,9 @@ public class ReportKPIDAO {
         }
     }
         
-     public void getKPI2() {
 
-        SqlSession session = null;
-
-        try {
-
-
-            object = session.selectOne("KPI2");
-            if (object == null) {
-                object = new KPI();
-                object.setTotal(0);
-                object.setCumplen(0);
-                object.setExitoso(0);
-            }
-
-            ok = true;
-
-        } 
-        catch (SqlSessionException ex) {
-
-            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG){
-                exception.printStackTrace();
-            }
-
-        } finally {
-
-            if(session != null){
-                session.close();
-            }
-
-        }
-    }
      
-      public void getKPI3() {
-
-        SqlSession session = null;
-
-        try {
-
-
-            object = session.selectOne("KPI3");
-            if (object == null) {
-                object = new KPI();
-                object.setTotal(0);
-                object.setCumplen(0);
-                object.setExitoso(0);
-            }
-
-            ok = true;
-
-        } 
-        catch (SqlSessionException ex) {
-
-            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG){
-                exception.printStackTrace();
-            }
-
-        } finally {
-
-            if(session != null){
-                session.close();
-            }
-
-        }
-    }
+ 
       
-     public void getKPI3a() {
 
-        SqlSession session = null;
-
-        try {
-
-
-            object = session.selectOne("KPI3a");
-            if (object == null) {
-                object = new KPI();
-                object.setTotal(0);
-                object.setCumplen(0);
-                object.setExitoso(0);
-            }
-
-            ok = true;
-
-        } 
-        catch (SqlSessionException ex) {
-
-            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
-
-            if(GrucasDomainConfig.DEBUG){
-                ex.printStackTrace();
-            }
-
-        }catch(Exception exception){
-
-            if(GrucasDomainConfig.DEBUG){
-                exception.printStackTrace();
-            }
-
-        } finally {
-
-            if(session != null){
-                session.close();
-            }
-
-        }
-    }
 }
