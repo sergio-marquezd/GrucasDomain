@@ -46,13 +46,17 @@ public class Cliente extends ObjectBase {
     String email_cuenta_gastos;
     String email_manifestacion_valor;
 
-    Boolean aereo;
+    Boolean aereo;  
     Boolean maritimo;
     Boolean frontera;
     Boolean aduanal_mexicano;
     Boolean aduanal_americano;
     Boolean almacenamiento;
     Boolean transporte;
+    
+    String fisica_moral;   
+    String Telefono;  
+    String correo;  
 
     public Cliente() { 
         id = 0;
@@ -353,6 +357,23 @@ public class Cliente extends ObjectBase {
     public void setTransporte(Boolean transporte) {
         this.transporte = transporte;
     }
+
+    public String getFisica_Moral() {
+        return fisica_moral;
+    }
+
+    public void setFisica_Moral(String Fisica_Moral) {
+        this.fisica_moral = Fisica_Moral;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String Correo) {
+        this.correo = Correo;
+    }
+        
     
     public Boolean informacionCompleta(){
         boolean textOK = false;
