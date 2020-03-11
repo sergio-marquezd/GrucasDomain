@@ -16,6 +16,7 @@ public class Puesto {
     String descripcion;
     String clasificacion_puesto;
     Integer depende_de;
+    Integer departamento_id;
 
     public Puesto() { 
         id = 0;
@@ -23,6 +24,7 @@ public class Puesto {
         descripcion = "";
         clasificacion_puesto = "";
         depende_de = 0;
+        departamento_id = 0;
     }
 
     public Integer getId() {
@@ -65,9 +67,18 @@ public class Puesto {
         this.depende_de = depende_de;
     }
 
+    public Integer getDepartamento_id() {
+        return departamento_id;
+    }
+
+    public void setDepartamento_id(Integer departamento_id) {
+        this.departamento_id = departamento_id;
+    }
+    
+
     @Override
     public String toString() {
-        return "Puesto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", clasificacion_puesto=" + clasificacion_puesto + ", depende_de=" + depende_de + '}';
+        return nombre ;
     }
 
 }

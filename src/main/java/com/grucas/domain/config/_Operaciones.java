@@ -14,8 +14,6 @@ import java.util.List;
  */
 public class _Operaciones {
 
-  
-    
     public static final String PREVIO_FISICO = "PREVIO FISICO";
     public static final String PREVIO_EXPRESS = "PREVIO EXPRESS";
     public static final String PREVIO_OCULAR = "PREVIO OCULAR";

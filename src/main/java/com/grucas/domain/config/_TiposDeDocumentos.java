@@ -21,9 +21,14 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_TICKET_DE_SOPORTE = "TICKET DE SOPORTE";
     public static final String DOCUMENTO_ANEXO_DE_SOPORTE = "ANEXO DE SOPORTE";
     public static final String DOCUMENTO_RESPONSIVA_TI = "RESPONSIVA";
-    
+    public static final String DOCUMENTO_FACTURA_XML = "FACTURA XML";
+    public static final String DOCUMENTO_OPERACION = "OPERACION";
     public static final String DOCUMENTO_PREVIO_SOLICITUD = "SOLICITUD DE PREVIO";
     public static final String DOCUMENTO_PREVIO_IMAGENES = "FOTOGRAFIAS DE PREVIO";
+    public static final String DOCUMENTO_CLIENTE_EXPEDIENTE = "EXPEDIENTE DE CLIENTE";
+    
+    public static final String DOCUMENTO_COMERCIAL_TARIFARIO = "TARIFARIO";
+    public static final String DOCUMENTO_SAC = "SAC";
     
     public static final List<String> DOCUMENTOS = 
             Arrays.asList(

@@ -171,13 +171,13 @@ public class ConfiguracionGrucasService {
     }
 
     public String getFolioServiceDesk(){
-        
         getOneConfiguracionGrucas("id = 1");
         object = getObject();
         
         String month = "";
         String anio = "";
-                
+        String folio = "";
+        
         Calendar c =  new GregorianCalendar();
                 
         if(object.getMes().equals((c.get(Calendar.MONTH)+1)+"")){
@@ -195,9 +195,10 @@ public class ConfiguracionGrucasService {
         object.setConsecutivo_sd(object.getConsecutivo_sd()+1);
         ConfiguracionGrucasUpdate(object);
         
-        System.out.println("FOLIO : " + ManageString.fillWithZero(month, 2) + anio.replace("20", "") + ManageString.fillWithZero(object.getConsecutivo_sd(), 4));
+        folio = ManageString.fillWithZero(month, 2) + anio.substring(2, 4) + ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
+        System.out.println("FOLIO: " + folio);
         
-        return ManageString.fillWithZero(month, 2) + anio.replace("20", "") + ManageString.fillWithZero(object.getConsecutivo_sd(), 4);
+        return folio;
     }
     
 }

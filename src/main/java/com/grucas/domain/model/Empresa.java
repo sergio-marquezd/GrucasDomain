@@ -51,6 +51,11 @@ public class Empresa extends ObjectBase{
         contacto_nombre = "";
         contacto_tel = "";
     }
+    
+    public Empresa(Integer id, String razonSocial) {
+        this.id = id;
+        razon_social = razonSocial;
+    }
 
     public String getContacto_email() {
         return contacto_email;

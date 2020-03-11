@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReportKPI">
+   
+     <resultMap id="ResultReportKPIID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+ <resultMap id="ResultReportKPI" type="ReportKPI">
+        <result property="id" column="id"/>
+        <result property="total" column="total"/>
+        <result property="cumplen" column="cumplen"/>
+        <result property="exitoso" column="exitoso"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        
+    </resultMap>
+    
+   <select id="KPI1" parameterType="map" resultMap="ResultReportKPI">
+        SELECT COUNT(id) AS 'total',
+        COUNT(IF(modificacion_plan=0,1,NULL)) AS 'cumplen',
+        COUNT(IF(modificacion_plan=0,1,NULL)) / COUNT(id) * 100 AS 'exitoso'
+        FROM contenedor_operaciones
+        ${where}
+    </select>
+ 
+ </mapper>

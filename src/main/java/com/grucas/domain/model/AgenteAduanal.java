@@ -34,5 +34,10 @@ public class AgenteAduanal extends ObjectBase {
     public void setPatente(String patente) {
         this.patente = patente;
     }
+    
+     @Override
+    public String toString() {
+        return patente + " " + nombre;
+    }
 
 }

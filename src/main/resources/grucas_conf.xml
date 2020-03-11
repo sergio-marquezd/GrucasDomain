@@ -26,6 +26,14 @@
         <typeAlias alias="ConfiguracionGrucas" type="com.grucas.domain.model.ConfiguracionGrucas"/>
         <typeAlias alias="CodigoBarras" type="com.grucas.domain.model.CodigoBarras"/>
         <typeAlias alias="Puesto" type="com.grucas.domain.model.Puesto"/>
+        <typeAlias alias="AgenteAduanal" type="com.grucas.domain.model.AgenteAduanal"/>
+        <typeAlias alias="Aduana" type="com.grucas.domain.model.Aduana"/>
+        <typeAlias alias="ProductoServicio" type="com.grucas.domain.model.ProductoServicio"/>
+        <typeAlias alias="ClienteAduanas" type="com.grucas.domain.model.ClienteAduanas"/>
+        <typeAlias alias="Contenedor" type="com.grucas.domain.model.Contenedor"/>
+        <typeAlias alias="ContenedorOperaciones" type="com.grucas.domain.model.ContenedorOperaciones"/>
+        <typeAlias alias="ReportKPI" type="com.grucas.domain.model.ReportKPI"/>
+           
     </typeAliases>
     
     <environments default="catalogos">  
@@ -34,12 +42,11 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/grucas?useLegacyDatetimeCode=false"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/grucas?useSSL=false"/>
                 <property name="username" value="root"/>
                 <property name="password" value="dac2001"/>
                 <property name="poolTimeToWait" value="20000"/>
                 <property name="poolPingEnabled" value="true"/>
-                <property name="poolPingQuery" value="SET GLOBAL time_zone = '-6:00'"/>
                 <property name="poolMaximumActiveConnections" value="5"/>
                 <property name="poolMaximumIdleConnections" value="5"/>
             </dataSource>
@@ -47,6 +54,7 @@
     </environments>
     
     <mappers>
+      
         <mapper resource="mapper/TraceGrucas.xml"/>
         <mapper resource="mapper/Usuario.xml"/>
         <mapper resource="mapper/Rol.xml"/>
@@ -66,6 +74,13 @@
         <mapper resource="mapper/ConfiguracionGrucas.xml"/>
         <mapper resource="mapper/CodigoBarras.xml"/>
         <mapper resource="mapper/Puesto.xml"/>
+        <mapper resource="mapper/AgenteAduanal.xml"/>
+        <mapper resource="mapper/Aduana.xml"/>
+        <mapper resource="mapper/ProductoServicio.xml"/>
+        <mapper resource="mapper/ClienteAduanas.xml"/>
+        <mapper resource="mapper/Contenedor.xml"/> 
+        <mapper resource="mapper/ContenedorOperaciones.xml"/>
+        <mapper resource="mapper/ReportKPI.xml"/>
     </mappers>
   
 </configuration>

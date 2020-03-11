@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ProductoServicio">
+
+    <resultMap id="ResultProductoServicioID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultProductoServicio" type="ProductoServicio">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="cliente_id" column="cliente_id"/>
+        <result property="codigo" column="codigo"/>
+        <result property="clasificacion_aduanal" column="clasificacion_aduanal"/>
+        <result property="tipo_giro" column="tipo_giro"/>
+        <result property="tipo_producto" column="tipo_producto"/>
+        <result property="tipo_asignacion_precio" column="tipo_asignacion_precio"/>
+        <result property="tipo_operacion" column="tipo_operacion"/>
+        <result property="porcentaje" column="porcentaje"/>
+        <result property="precio_sugerido_maritimo" column="precio_sugerido_maritimo"/>
+        <result property="precio_minimo_maritimo" column="precio_minimo_maritimo"/>
+        <result property="precio_maritimo" column="precio_maritimo"/>
+        <result property="precio_sugerido_frontera" column="precio_sugerido_frontera"/>
+        <result property="precio_minimo_frontera" column="precio_minimo_frontera"/>
+        <result property="precio_frontera" column="precio_frontera"/>
+        <result property="precio_sugerido_aereo" column="precio_sugerido_aereo"/>
+        <result property="precio_minimo_aereo" column="precio_minimo_aereo"/>
+        <result property="precio_aereo" column="precio_aereo"/>
+        <result property="total_impuestos" column="total_impuestos"/>
+        <result property="frecuencia_cobro" column="frecuencia_cobro"/>
+        <result property="tipo_freceuencia_por_evento" column="tipo_freceuencia_por_evento"/>
+        <result property="tipo_elaboracion_pedimento" column="tipo_elaboracion_pedimento"/>
+        <result property="tipo_periocidad" column="tipo_periocidad"/>
+        <result property="producto_aduanal_mexicano" column="producto_aduanal_mexicano"/>
+        <result property="producto_aduanal_americano" column="producto_aduanal_americano"/>
+        <result property="producto_almacenaje_mexicano" column="producto_almacenaje_mexicano"/>
+        <result property="producto_almacenaje_americano" column="producto_almacenaje_americano"/>
+        <result property="producto_transporte" column="producto_transporte"/>
+        <result property="producto_maritimo" column="producto_maritimo"/>
+        <result property="producto_aereo" column="producto_aereo"/>
+        <result property="producto_frontera" column="producto_frontera"/>
+        <result property="producto_importacion" column="producto_importacion"/>
+        <result property="producto_exportacion" column="producto_exportacion"/>
+        <result property="concepto" column="concepto"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="comentarios" column="comentarios"/>
+        <result property="paquete" column="paquete"/>
+    </resultMap>
+
+    <select id="ProductoServicioMaxID" resultMap="ResultProductoServicioID">
+        SELECT max(id)+1 as id
+        FROM producto_servicio 
+    </select>
+
+    <insert id="ProductoServicioInsert" parameterType="ProductoServicio" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO producto_servicio 
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,cliente_id,codigo,clasificacion_aduanal,tipo_giro,tipo_producto,tipo_asignacion_precio,tipo_operacion,porcentaje,precio_sugerido_maritimo,precio_minimo_maritimo,precio_maritimo,precio_sugerido_frontera,precio_minimo_frontera,precio_frontera,precio_sugerido_aereo,precio_minimo_aereo,precio_aereo,total_impuestos,frecuencia_cobro,tipo_freceuencia_por_evento,tipo_elaboracion_pedimento,tipo_periocidad,producto_aduanal_mexicano,producto_aduanal_americano,producto_almacenaje_mexicano,producto_almacenaje_americano,producto_transporte,producto_maritimo,producto_aereo,producto_frontera,producto_importacion,producto_exportacion,concepto,descripcion,comentarios,paquete)
+        VALUES
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{cliente_id},#{codigo},#{clasificacion_aduanal},#{tipo_giro},#{tipo_producto},#{tipo_asignacion_precio},#{tipo_operacion},#{porcentaje},#{precio_sugerido_maritimo},#{precio_minimo_maritimo},#{precio_maritimo},#{precio_sugerido_frontera},#{precio_minimo_frontera},#{precio_frontera},#{precio_sugerido_aereo},#{precio_minimo_aereo},#{precio_aereo},#{total_impuestos},#{frecuencia_cobro},#{tipo_freceuencia_por_evento},#{tipo_elaboracion_pedimento},#{tipo_periocidad},#{producto_aduanal_mexicano},#{producto_aduanal_americano},#{producto_almacenaje_mexicano},#{producto_almacenaje_americano},#{producto_transporte},#{producto_maritimo},#{producto_aereo},#{producto_frontera},#{producto_importacion},#{producto_exportacion},#{concepto},#{descripcion},#{comentarios},#{paquete})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM producto_servicio 
+        </selectKey>
+
+    </insert>
+
+    <update id="ProductoServicioUpdate" parameterType="ProductoServicio">
+        UPDATE producto_servicio 
+        SET fecha_elaboracion = #{fecha_elaboracion},fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},cliente_id = #{cliente_id},codigo = #{codigo},clasificacion_aduanal = #{clasificacion_aduanal},tipo_giro = #{tipo_giro},tipo_producto = #{tipo_producto},tipo_asignacion_precio = #{tipo_asignacion_precio},tipo_operacion = #{tipo_operacion},porcentaje = #{porcentaje},precio_sugerido_maritimo = #{precio_sugerido_maritimo},precio_minimo_maritimo = #{precio_minimo_maritimo},precio_maritimo = #{precio_maritimo},precio_sugerido_frontera = #{precio_sugerido_frontera},precio_minimo_frontera = #{precio_minimo_frontera},precio_frontera = #{precio_frontera},precio_sugerido_aereo = #{precio_sugerido_aereo},precio_minimo_aereo = #{precio_minimo_aereo},precio_aereo = #{precio_aereo},total_impuestos = #{total_impuestos},frecuencia_cobro = #{frecuencia_cobro},tipo_freceuencia_por_evento = #{tipo_freceuencia_por_evento},tipo_elaboracion_pedimento = #{tipo_elaboracion_pedimento},tipo_periocidad = #{tipo_periocidad},producto_aduanal_mexicano = #{producto_aduanal_mexicano},producto_aduanal_americano = #{producto_aduanal_americano},producto_almacenaje_mexicano = #{producto_almacenaje_mexicano},producto_almacenaje_americano = #{producto_almacenaje_americano},producto_transporte = #{producto_transporte},producto_maritimo = #{producto_maritimo},producto_aereo = #{producto_aereo},producto_frontera = #{producto_frontera},producto_importacion = #{producto_importacion},producto_exportacion = #{producto_exportacion},concepto = #{concepto},descripcion = #{descripcion},comentarios = #{comentarios},paquete = #{paquete}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="ProductoServicioDelete" parameterType="map">
+        DELETE FROM producto_servicio 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="ProductoServicioWhere" parameterType="map" resultMap="ResultProductoServicio">
+        SELECT *
+        FROM producto_servicio 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="ProductoServicioOne" parameterType="map" resultMap="ResultProductoServicio">
+        SELECT *
+        FROM producto_servicio 
+        ${where} 
+    </select>
+
+</mapper>

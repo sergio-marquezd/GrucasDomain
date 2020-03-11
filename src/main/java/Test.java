@@ -1,6 +1,6 @@
 
 import com.grucas.domain.model.Usuario;
-import com.grucas.domain.services.UnidadNegocioService;
+import com.grucas.domain.services.ProductoServicioService;
 import com.grucas.domain.services.UsuarioService;
 
 /*
@@ -20,15 +20,15 @@ public class Test {
      */
     public static void main(String[] args) {
         
-        UsuarioService service = new UsuarioService();
-        service.login("a", "a", 1001);
-        Usuario user = service.getObject();
-        
-        System.out.println(" ROL " + user.getRol());
-        System.out.println(" PERMISOS " + user.getPermisos());
-        System.out.println(" TIPO " + user.getTipo());
-        System.out.println(" PERMISOS " + user.getUnidad());
-        System.out.println(" EMPRESA " + user.getEmpresa());
+//        UsuarioService service = new UsuarioService();
+//        service.login("a", "a", 1001);
+//        Usuario user = service.getObject();
+//        
+//        System.out.println(" ROL " + user.getRol());
+//        System.out.println(" PERMISOS " + user.getPermisos());
+//        System.out.println(" TIPO " + user.getTipo());
+//        System.out.println(" PERMISOS " + user.getUnidad());
+//        System.out.println(" EMPRESA " + user.getEmpresa());
 //        
 //        System.out.println("RESPUESTA:   " + service.getNotification())
 //
@@ -39,6 +39,10 @@ public class Test {
 //        UnidadNegocioService service = new UnidadNegocioService();
 //        service.getUnidadesPorUsuarioSistema(user, 1001);
 //        System.out.println("Unidades:" + service.getObjects().toString());
+
+        ProductoServicioService service = new ProductoServicioService();
+        service.getProducto("", "", "");
+        System.out.println(service.getObjects());
 
     }
     

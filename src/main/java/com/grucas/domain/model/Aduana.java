@@ -11,15 +11,31 @@ import com.rubik.Base.ObjectBase;
  *
  * @author GrucasDev
  */
-public class Aduana extends ObjectBase{
-    
+public class Aduana extends ObjectBase {
+
     String no_aduana;
     String nombre;
+    String tipo_aduana;
     Integer agente_id;
     String agente;
     String patente;
+    Integer agente2_id;
+    String agente2;
+    String patente2;
+    Integer agente3_id;
+    String agente3;
+    String patente3;
 
     public Aduana() {
+        agente_id = 0;
+        agente = "";
+        patente = "";
+        agente2_id = 0;
+        agente2 = "";
+        patente2 = "";
+        agente3_id = 0;
+        agente3 = "";
+        patente3 = "";
     }
 
     public String getNo_aduana() {
@@ -62,9 +78,65 @@ public class Aduana extends ObjectBase{
         this.patente = patente;
     }
 
-    @Override
-    public String toString() {
-        return "Aduana: " + no_aduana;
+    public Integer getAgente2_id() {
+        return agente2_id;
+    }
+
+    public void setAgente2_id(Integer agente2_id) {
+        this.agente2_id = agente2_id;
+    }
+
+    public String getAgente2() {
+        return agente2;
+    }
+
+    public void setAgente2(String agente2) {
+        this.agente2 = agente2;
+    }
+
+    public String getPatente2() {
+        return patente2;
+    }
+
+    public void setPatente2(String patente2) {
+        this.patente2 = patente2;
+    }
+
+    public Integer getAgente3_id() {
+        return agente3_id;
+    }
+
+    public void setAgente3_id(Integer agente3_id) {
+        this.agente3_id = agente3_id;
+    }
+
+    public String getAgente3() {
+        return agente3;
+    }
+
+    public void setAgente3(String agente3) {
+        this.agente3 = agente3;
+    }
+
+    public String getPatente3() {
+        return patente3;
+    }
+
+    public void setPatente3(String patente3) {
+        this.patente3 = patente3;
+    }
+
+    public String getTipo_aduana() {
+        return tipo_aduana;
+    }
+
+    public void setTipo_aduana(String tipo_aduana) {
+        this.tipo_aduana = tipo_aduana;
     }
     
+    @Override
+    public String toString() {
+        return no_aduana + " " + nombre;
+    }
+
 }

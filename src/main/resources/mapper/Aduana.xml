@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Aduana">
+
+    <resultMap id="ResultAduanaID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultAduana" type="Aduana">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="no_aduana" column="no_aduana"/>
+        <result property="nombre" column="nombre"/>
+        <result property="tipo_aduana" column="tipo_aduana"/>
+        <result property="agente_id" column="agente_id"/>
+        <result property="agente" column="agente"/>
+        <result property="patente" column="patente"/>
+        <result property="agente2_id" column="agente2_id"/>
+        <result property="agente2" column="agente2"/>
+        <result property="patente2" column="patente2"/>  
+        <result property="agente3_id" column="agente3_id"/>
+        <result property="agente3" column="agente3"/>
+        <result property="patente3" column="patente3"/> 
+    </resultMap>
+
+    <select id="AduanaMaxID" resultMap="ResultAduanaID">
+        SELECT max(id)+1 as id
+        FROM aduana 
+    </select>
+
+    <insert id="AduanaInsert" parameterType="Aduana" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO aduana 
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,no_aduana,nombre,tipo_aduana,agente_id,agente,patente,agente2_id,agente2,patente2,agente3_id,agente3,patente3)
+        VALUES
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{no_aduana},#{nombre},tipo_aduana,#{agente_id},#{agente},#{patente},#{agente2_id},#{agente2},#{patente2},#{agente3_id},#{agente3},#{patente3})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM aduana 
+        </selectKey>
+
+    </insert>
+
+    <update id="AduanaUpdate" parameterType="Aduana">
+        UPDATE aduana 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},no_aduana = #{no_aduana},nombre = #{nombre},agente_id = #{agente_id},agente = #{agente},patente = #{patente},
+        agente2_id = #{agente2_id},agente2 = #{agente2},patente2 = #{patente2},agente3_id = #{agente3_id},agente3 = #{agente3},patente3 = #{patente3}, tipo_aduana = #{tipo_aduana}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="AduanaDelete" parameterType="map">
+        DELETE FROM aduana 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="AduanaWhere" parameterType="map" resultMap="ResultAduana">
+        SELECT *
+        FROM aduana 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="AduanaOne" parameterType="map" resultMap="ResultAduana">
+        SELECT *
+        FROM aduana 
+        ${where} 
+    </select>
+    
+    <select id="AduanaPorCliente" parameterType="map" resultMap="ResultAduana">
+        SELECT * FROM aduana
+        WHERE id IN (
+        SELECT t1.unidad_id FROM cliente_aduanas t1 
+        WHERE t1.cliente_id = #{cliente_id})
+    </select>
+
+</mapper>
