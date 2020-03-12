@@ -32,6 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="fecha_entregaCajaPatio" column="fecha_entregaCajaPatio"/>
         <result property="fecha_tramiteManiobras" column="fecha_tramiteManiobras"/>
         <result property="fecha_maniobras" column="fecha_maniobras"/>
+        <result property="fecha_salida" column="fecha_salida"/>
+        <result property="fecha_llegada" column="fecha_llegada"/>
       
     </resultMap>
     
@@ -47,13 +49,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         fecha_confirmacionGrucasCliente,fecha_envioDocumentosCabot,fecha_declaracionExpImp,
         fecha_envioDocumentosGrucas,fecha_salidaMercancia,fecha_llegadaBarco,fecha_llegadaAPuertoDestino,
         fecha_transmision,fecha_entradaMercancia,fecha_ETA,fecha_entradaAPuerto,fecha_recogidaTransporte,
-        nombreContenedor,fecha_elaboracion,documento_id,folio,fecha_carga,fecha_entregaCajaPatio,fecha_tramiteManiobras,fecha_maniobras)
+        nombreContenedor,fecha_elaboracion,documento_id,folio,fecha_carga,fecha_entregaCajaPatio,fecha_tramiteManiobras,fecha_maniobras,fecha_salida,fecha_llegada)
         VALUES
         (#{fecha_envioDocumentos},#{fecha_reservacionTransporte},#{fecha_confirmacionTransportista},
         #{fecha_confirmacionGrucasCliente},#{fecha_envioDocumentosCabot},#{fecha_declaracionExpImp},
         #{fecha_envioDocumentosGrucas},#{fecha_salidaMercancia},#{fecha_llegadaBarco},#{fecha_llegadaAPuertoDestino},
         #{fecha_transmision},#{fecha_entradaMercancia},#{fecha_ETA},#{fecha_entradaAPuerto},#{fecha_recogidaTransporte},
-        #{nombreContenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga},#{fecha_entregaCajaPatio},#{fecha_tramiteManiobras},#{fecha_maniobras})
+        #{nombreContenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga},#{fecha_entregaCajaPatio},#{fecha_tramiteManiobras},#{fecha_maniobras},#{fecha_salida},#{fecha_llegada})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM contenedor 
@@ -75,7 +77,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
             fecha_llegadaAPuertoDestino = #{fecha_llegadaAPuertoDestino},fecha_transmision=#{fecha_transmision},fecha_entradaMercancia=#{fecha_entradaMercancia},
             fecha_ETA = #{fecha_ETA},fecha_entradaAPuerto=#{fecha_entradaAPuerto},fecha_recogidaTransporte=#{fecha_recogidaTransporte},
             folio = #{folio},nombreContenedor = #{nombreContenedor},fecha_modificacion = #{fecha_modificacion},fecha_carga=#{fecha_carga},
-            fecha_entregaCajaPatio = #{fecha_entregaCajaPatio},fecha_tramiteManiobras=#{fecha_tramiteManiobras},fecha_maniobras=#{fecha_maniobras}
+            fecha_entregaCajaPatio = #{fecha_entregaCajaPatio},fecha_tramiteManiobras=#{fecha_tramiteManiobras},fecha_maniobras=#{fecha_maniobras},fecha_salida = #{fecha_salida},
+            fecha_llegada = #{fecha_llegada}
         WHERE id = #{id}
     </update>
     

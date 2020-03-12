@@ -15,11 +15,13 @@ public class ReportKPI extends ObjectBase{
     Integer total;
     Integer cumplen;
     Integer exitoso;
+    Integer id;
     
     public ReportKPI(){
         total =0;
         cumplen =0;
         exitoso=0;
+        id=0;
     }
 
     public Integer getTotal() {
@@ -44,6 +46,14 @@ public class ReportKPI extends ObjectBase{
 
     public void setExitoso(Integer exitoso) {
         this.exitoso = exitoso;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
     
     

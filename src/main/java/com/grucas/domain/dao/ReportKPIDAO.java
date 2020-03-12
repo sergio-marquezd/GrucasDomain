@@ -117,7 +117,43 @@ public class ReportKPIDAO {
     }
         
 
-     
+      public void getKPI9b(String strWhere) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("KPI9b",map);
+           
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
  
       
 

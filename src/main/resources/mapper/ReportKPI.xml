@@ -23,5 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         FROM contenedor_operaciones
         ${where}
     </select>
+    
+     <select id="KPI9b" parameterType="map" resultMap="ResultReportKPI">
+       SELECT t1.id,t2.tipo_exportacion,
+       DATEDIFF(t1.fecha_llegadaBarco,t1.fecha_ETA) AS 'cumplen'
+       FROM contenedor t1
+       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+      ${where}
+    </select>
  
  </mapper>
