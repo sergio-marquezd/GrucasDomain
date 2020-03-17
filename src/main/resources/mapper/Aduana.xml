@@ -30,6 +30,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="agente3" column="agente3"/>
         <result property="patente3" column="patente3"/> 
     </resultMap>
+    
+    <resultMap id="ResultAduanaCliente" type="Aduana">
+        <result property="id" column="id"/>
+        <result property="no_aduana" column="no_aduana"/>
+        <result property="nombre" column="nombre"/>
+        <result property="activo" column="activo"/>
+        <result property="cliente_id" column="cliente_id"/>
+        <result property="contacto_nombre" column="contacto_nombre"/>
+        <result property="contacto_email" column="contacto_email"/>
+        <result property="id_cliente_aduana" column="id_cliente_aduana"/>
+    </resultMap>
 
     <select id="AduanaMaxID" resultMap="ResultAduanaID">
         SELECT max(id)+1 as id
@@ -80,6 +91,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         WHERE id IN (
         SELECT t1.unidad_id FROM cliente_aduanas t1 
         WHERE t1.cliente_id = #{cliente_id})
+    </select>
+
+    <select id="AduanaPorClienteInfo" parameterType="map" resultMap="ResultAduanaCliente">
+        SELECT
+        t1.no_aduana,
+        t1.nombre,
+        t2.activo,
+        t2.cliente_id,
+        t2.contacto_nombre,
+        t2.contacto_email,
+        t2.id as id_cliente_aduana,
+        t2.unidad_id
+        FROM aduana t1 
+        LEFT JOIN cliente_aduanas t2
+        ON t1.id = t2.unidad_id AND t2.cliente_id = #{cliente_id}
     </select>
 
 </mapper>

@@ -126,10 +126,12 @@ public class ClienteAduanaService {
 
                 notification = "Informacion cargada correctamente.";
             } else {
+                total_result = 0;
                 notification = "No se encontraron registros dados de alta.";
             }
 
         } else {
+            total_result = 0;
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
 
