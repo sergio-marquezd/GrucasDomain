@@ -190,5 +190,30 @@ public class AduanaService {
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
     }
+    
+    public void getAduanaPorClienteInfor(Integer cliente_id){
+        dao.AduanaPorClienteInfo(cliente_id);
+
+        setOk(dao.getOk());
+
+        if(getOk()){
+            
+            objects = dao.getObjects();
+            if(objects != null){
+                total_result = objects.size();
+                
+                if(objects.size()==1){
+                    object = objects.get(0);
+                }
+                notification = "Informacion cargada correctamente.";
+            }else{
+                objects = new ArrayList<>();
+                notification = "No se encontraron registros dados de alta.";
+            }
+
+        }else{
+            notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
+        }
+    }
 
 }

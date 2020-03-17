@@ -301,7 +301,7 @@ public class AduanaDAO {
             map.put("cliente_id", cliente_id);
 
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("AduanaPorCliente",map);
+            objects = session.selectList("AduanaPorClienteInfo",map);
 
             ok = true;
             
@@ -316,6 +316,42 @@ public class AduanaDAO {
         }catch(Exception exception){
 
             if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
+    public void AduanaPorClienteInfo(Integer cliente_id) {
+        SqlSession session = null;
+
+        try {
+            
+            Map map = new HashMap();
+            map.put("cliente_id", cliente_id);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("AduanaPorClienteInfo", map);
+            
+            ok = true;
+
+        } catch (PersistenceException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
                 exception.printStackTrace();
             }
 
