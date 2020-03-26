@@ -9,8 +9,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
       <resultMap id="ResultContenedorOperaciones" type="ContenedorOperaciones">
         <result property="id" column="id"/>
         <result property="folio" column="folio"/>
-        <result property="hora_llegadaBuque" column="hora_llegadabuque"/>
-        <result property="hora_salidaBuque" column="hora_salidabuque"/>
         <result property="modificacion_plan" column="modificacion_plan"/>
         <result property="fecha_modificacionPlan" column="fecha_modificacionPlan"/>
         <result property="numero_modificaciones" column="numero_modificaciones"/>
@@ -25,9 +23,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <insert id="ContenedorOperacionesInsert" parameterType="ContenedorOperaciones" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO contenedor_operaciones
-        (folio,hora_llegadaBuque,hora_salidaBuque,fecha_modificacion,fecha_elaboracion,modificacion_plan,fecha_modificacionPlan,numero_modificaciones,tipo_exportacion)
+        (folio,fecha_modificacion,fecha_elaboracion,modificacion_plan,fecha_modificacionPlan,numero_modificaciones,tipo_exportacion)
         VALUES
-        (#{folio},#{hora_llegadaBuque},#{hora_salidaBuque},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{fecha_modificacionPlan},#{numero_modificaciones},#{tipo_exportacion})
+        (#{folio},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{fecha_modificacionPlan},#{numero_modificaciones},#{tipo_exportacion})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM contenedor_operaciones
@@ -42,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     
      <update id="ContenedorOperacionesUpdate" parameterType="ContenedorOperaciones">
         UPDATE contenedor_operaciones
-        SET folio = #{folio},hora_llegadaBuque = #{hora_llegadaBuque},hora_salidaBuque = #{hora_salidaBuque},fecha_modificacion = #{fecha_modificacion},
+        SET folio = #{folio},fecha_modificacion = #{fecha_modificacion},
         fecha_elaboracion = #{fecha_elaboracion},modificacion_plan = #{modificacion_plan},fecha_modificacionPlan=#{fecha_modificacionPlan},numero_modificaciones = #{numero_modificaciones}
         WHERE id = #{id}
     </update>

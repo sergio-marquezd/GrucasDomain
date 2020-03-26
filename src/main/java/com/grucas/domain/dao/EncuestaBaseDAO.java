@@ -150,6 +150,45 @@ public class EncuestaBaseDAO {
 
         }
     }
+    
+    public void getEncuestaBaseCliente(String strWhere, String strGroup, String strOrder){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            map.put("group", strGroup.length()==0?"":" GROUP BY " + strGroup);
+            map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("EncuestaBaseWhereCliente",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
 
     public void getOneEncuestaBase(String strWhere){
 

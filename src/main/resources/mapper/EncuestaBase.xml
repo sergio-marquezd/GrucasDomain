@@ -98,5 +98,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         FROM encuesta 
         ${where} 
     </select>
+    
+     <select id="EncuestaBaseWhereCliente" parameterType="map" resultMap="ResultEncuestaBase">
+        SELECT t1.razon_social AS cliente ,t1.telefono AS documento,t2.fecha_elaboracion,t1.id AS cliente_id,t2.id,
+        IFNULL(t2.nombre_encuesta,'NO HA REALIZADO LA ENCUESTA') AS nombre_encuesta,t2.calificacion
+        FROM cliente t1
+        LEFT JOIN encuesta t2 
+        ON t1.id= t2.cliente_id
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
 
 </mapper>

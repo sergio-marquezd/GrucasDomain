@@ -23,11 +23,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="fecha_salidaMercancia" column="fecha_salidaMercancia"/>
         <result property="fecha_llegadaBarco" column="fecha_llegadaBarco"/>
         <result property="fecha_llegadaAPuertoDestino" column="fecha_llegadaAPuertoDestino"/>
+        <result property="fecha_llegadaAPuertoDestinoConfirmacion" column="fecha_llegadaAPuertoDestinoConfirmacion"/>
         <result property="fecha_transmision" column="fecha_transmision"/>
         <result property="fecha_entradaMercancia" column="fecha_entradaMercancia"/>
         <result property="fecha_ETA" column="fecha_ETA"/>
         <result property="fecha_entradaAPuerto" column="fecha_entradaAPuerto"/>
         <result property="fecha_recogidaTransporte" column="fecha_recogidaTransporte"/>
+        <result property="fecha_recogidaTransporteConfirmacion" column="fecha_recogidaTransporteConfirmacion"/>
         <result property="fecha_carga" column="fecha_carga"/>
         <result property="fecha_entregaCajaPatio" column="fecha_entregaCajaPatio"/>
         <result property="fecha_tramiteManiobras" column="fecha_tramiteManiobras"/>
@@ -49,13 +51,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         fecha_confirmacionGrucasCliente,fecha_envioDocumentosCabot,fecha_declaracionExpImp,
         fecha_envioDocumentosGrucas,fecha_salidaMercancia,fecha_llegadaBarco,fecha_llegadaAPuertoDestino,
         fecha_transmision,fecha_entradaMercancia,fecha_ETA,fecha_entradaAPuerto,fecha_recogidaTransporte,
-        nombreContenedor,fecha_elaboracion,documento_id,folio,fecha_carga,fecha_entregaCajaPatio,fecha_tramiteManiobras,fecha_maniobras,fecha_salida,fecha_llegada)
+        nombreContenedor,fecha_elaboracion,documento_id,folio,fecha_carga,fecha_entregaCajaPatio,fecha_tramiteManiobras,fecha_maniobras,fecha_salida,fecha_llegada,
+         fecha_recogidaTransporteConfirmacion,fecha_llegadaAPuertoDestinoConfirmacion)
         VALUES
         (#{fecha_envioDocumentos},#{fecha_reservacionTransporte},#{fecha_confirmacionTransportista},
         #{fecha_confirmacionGrucasCliente},#{fecha_envioDocumentosCabot},#{fecha_declaracionExpImp},
         #{fecha_envioDocumentosGrucas},#{fecha_salidaMercancia},#{fecha_llegadaBarco},#{fecha_llegadaAPuertoDestino},
         #{fecha_transmision},#{fecha_entradaMercancia},#{fecha_ETA},#{fecha_entradaAPuerto},#{fecha_recogidaTransporte},
-        #{nombreContenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga},#{fecha_entregaCajaPatio},#{fecha_tramiteManiobras},#{fecha_maniobras},#{fecha_salida},#{fecha_llegada})
+        #{nombreContenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga},#{fecha_entregaCajaPatio},#{fecha_tramiteManiobras},#{fecha_maniobras},#{fecha_salida},#{fecha_llegada},
+        #{fecha_recogidaTransporteConfirmacion},#{fecha_llegadaAPuertoDestinoConfirmacion})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM contenedor 
@@ -78,7 +82,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
             fecha_ETA = #{fecha_ETA},fecha_entradaAPuerto=#{fecha_entradaAPuerto},fecha_recogidaTransporte=#{fecha_recogidaTransporte},
             folio = #{folio},nombreContenedor = #{nombreContenedor},fecha_modificacion = #{fecha_modificacion},fecha_carga=#{fecha_carga},
             fecha_entregaCajaPatio = #{fecha_entregaCajaPatio},fecha_tramiteManiobras=#{fecha_tramiteManiobras},fecha_maniobras=#{fecha_maniobras},fecha_salida = #{fecha_salida},
-            fecha_llegada = #{fecha_llegada}
+            fecha_llegada = #{fecha_llegada},fecha_recogidaTransporteConfirmacion = #{fecha_recogidaTransporteConfirmacion},
+            fecha_llegadaAPuertoDestinoConfirmacion = #{fecha_llegadaAPuertoDestinoConfirmacion}
         WHERE id = #{id}
     </update>
     

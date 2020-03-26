@@ -16,12 +16,14 @@ public class ReportKPI extends ObjectBase{
     Integer cumplen;
     Integer exitoso;
     Integer id;
+    Integer dias_diferencia;
     
     public ReportKPI(){
         total =0;
         cumplen =0;
         exitoso=0;
         id=0;
+        dias_diferencia=0;
     }
 
     public Integer getTotal() {
@@ -54,6 +56,14 @@ public class ReportKPI extends ObjectBase{
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getDias_diferencia() {
+        return dias_diferencia;
+    }
+
+    public void setDias_diferencia(Integer dias_diferencia) {
+        this.dias_diferencia = dias_diferencia;
     }
     
     

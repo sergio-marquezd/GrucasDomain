@@ -32,11 +32,13 @@ public class Contenedor extends ObjectBase {
     LocalDateTime fecha_salidaMercancia;
     LocalDateTime fecha_llegadaBarco;
     LocalDateTime fecha_llegadaAPuertoDestino;
+    LocalDateTime fecha_llegadaAPuertoDestinoConfirmacion;////
     LocalDateTime fecha_transmision;
     LocalDateTime fecha_entradaMercancia;
     LocalDateTime fecha_ETA;
     LocalDateTime fecha_entradaAPuerto;
     LocalDateTime fecha_recogidaTransporte;
+    LocalDateTime fecha_recogidaTransporteConfirmacion;////
     LocalDateTime fecha_carga;
     LocalDateTime fecha_entregaCajaPatio;
     LocalDateTime fecha_tramiteManiobras;
@@ -63,11 +65,13 @@ public class Contenedor extends ObjectBase {
         fecha_salidaMercancia=null;
         fecha_llegadaBarco=null;
         fecha_llegadaAPuertoDestino=null;
+        fecha_llegadaAPuertoDestinoConfirmacion=null;////
         fecha_transmision=null;
         fecha_entradaMercancia=null;
         fecha_ETA=null;
         fecha_entradaAPuerto=null;
         fecha_recogidaTransporte=null;
+        fecha_recogidaTransporteConfirmacion=null;////
         fecha_carga=null;
         fecha_entregaCajaPatio=null;
         fecha_tramiteManiobras=null;
@@ -306,6 +310,22 @@ public class Contenedor extends ObjectBase {
 
     public void setFecha_llegada(LocalDateTime fecha_llegada) {
         this.fecha_llegada = fecha_llegada;
+    }
+
+    public LocalDateTime getFecha_llegadaAPuertoDestinoConfirmacion() {
+        return fecha_llegadaAPuertoDestinoConfirmacion;
+    }
+
+    public void setFecha_llegadaAPuertoDestinoConfirmacion(LocalDateTime fecha_llegadaAPuertoDestinoConfirmacion) {
+        this.fecha_llegadaAPuertoDestinoConfirmacion = fecha_llegadaAPuertoDestinoConfirmacion;
+    }
+
+    public LocalDateTime getFecha_recogidaTransporteConfirmacion() {
+        return fecha_recogidaTransporteConfirmacion;
+    }
+
+    public void setFecha_recogidaTransporteConfirmacion(LocalDateTime fecha_recogidaTransporteConfirmacion) {
+        this.fecha_recogidaTransporteConfirmacion = fecha_recogidaTransporteConfirmacion;
     }
     
     
