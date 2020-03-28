@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="horallegada_frontera" column="horallegada_frontera"/>
         <result property="tiempo_cruce" column="tiempo_cruce"/>
         <result property="tiempo_inspeccion" column="tiempo_inspeccion"/>     
-        <result property="nombreContenedor" column="nombreContenedor"/> 
+        <result property="numero_contenedor" column="numero_contenedor"/> 
         <result property="fecha_envioDocumentos" column="fecha_envioDocumentos"/>
         <result property="fecha_reservacionTransporte" column="fecha_reservacionTransporte"/>
         <result property="fecha_confirmacionTransportista" column="fecha_confirmacionTransportista"/>
@@ -51,14 +51,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         fecha_confirmacionGrucasCliente,fecha_envioDocumentosCabot,fecha_declaracionExpImp,
         fecha_envioDocumentosGrucas,fecha_salidaMercancia,fecha_llegadaBarco,fecha_llegadaAPuertoDestino,
         fecha_transmision,fecha_entradaMercancia,fecha_ETA,fecha_entradaAPuerto,fecha_recogidaTransporte,
-        nombreContenedor,fecha_elaboracion,documento_id,folio,fecha_carga,fecha_entregaCajaPatio,fecha_tramiteManiobras,fecha_maniobras,fecha_salida,fecha_llegada,
+        numero_contenedor,fecha_elaboracion,documento_id,folio,fecha_carga,fecha_entregaCajaPatio,fecha_tramiteManiobras,fecha_maniobras,fecha_salida,fecha_llegada,
          fecha_recogidaTransporteConfirmacion,fecha_llegadaAPuertoDestinoConfirmacion)
         VALUES
         (#{fecha_envioDocumentos},#{fecha_reservacionTransporte},#{fecha_confirmacionTransportista},
         #{fecha_confirmacionGrucasCliente},#{fecha_envioDocumentosCabot},#{fecha_declaracionExpImp},
         #{fecha_envioDocumentosGrucas},#{fecha_salidaMercancia},#{fecha_llegadaBarco},#{fecha_llegadaAPuertoDestino},
         #{fecha_transmision},#{fecha_entradaMercancia},#{fecha_ETA},#{fecha_entradaAPuerto},#{fecha_recogidaTransporte},
-        #{nombreContenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga},#{fecha_entregaCajaPatio},#{fecha_tramiteManiobras},#{fecha_maniobras},#{fecha_salida},#{fecha_llegada},
+        #{numero_contenedor},#{fecha_elaboracion},#{documento_id},#{folio},#{fecha_carga},#{fecha_entregaCajaPatio},#{fecha_tramiteManiobras},#{fecha_maniobras},#{fecha_salida},#{fecha_llegada},
         #{fecha_recogidaTransporteConfirmacion},#{fecha_llegadaAPuertoDestinoConfirmacion})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
@@ -80,7 +80,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
             fecha_envioDocumentosGrucas = #{fecha_envioDocumentosGrucas},fecha_salidaMercancia= #{fecha_salidaMercancia},fecha_llegadaBarco=#{fecha_llegadaBarco},
             fecha_llegadaAPuertoDestino = #{fecha_llegadaAPuertoDestino},fecha_transmision=#{fecha_transmision},fecha_entradaMercancia=#{fecha_entradaMercancia},
             fecha_ETA = #{fecha_ETA},fecha_entradaAPuerto=#{fecha_entradaAPuerto},fecha_recogidaTransporte=#{fecha_recogidaTransporte},
-            folio = #{folio},nombreContenedor = #{nombreContenedor},fecha_modificacion = #{fecha_modificacion},fecha_carga=#{fecha_carga},
+            folio = #{folio},numero_contenedor = #{numero_contenedor},fecha_modificacion = #{fecha_modificacion},fecha_carga=#{fecha_carga},
             fecha_entregaCajaPatio = #{fecha_entregaCajaPatio},fecha_tramiteManiobras=#{fecha_tramiteManiobras},fecha_maniobras=#{fecha_maniobras},fecha_salida = #{fecha_salida},
             fecha_llegada = #{fecha_llegada},fecha_recogidaTransporteConfirmacion = #{fecha_recogidaTransporteConfirmacion},
             fecha_llegadaAPuertoDestinoConfirmacion = #{fecha_llegadaAPuertoDestinoConfirmacion}

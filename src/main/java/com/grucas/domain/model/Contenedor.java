@@ -18,7 +18,7 @@ public class Contenedor extends ObjectBase {
     LocalDateTime tiempo_cruce;
     LocalDateTime tiempo_inspeccion;
     String folio;
-    String nombreContenedor;
+    String numero_contenedor;
     Date fecha_modificacion;
     Date fecha_elaboracion;
     Integer documento_id;
@@ -53,7 +53,7 @@ public class Contenedor extends ObjectBase {
         tiempo_cruce= null;
         tiempo_inspeccion=null;
         folio = "";
-        nombreContenedor="";
+        numero_contenedor="";
         documento_id=0;
         fecha_envioDocumentos =null;
         fecha_reservacionTransporte=null;
@@ -97,12 +97,12 @@ public class Contenedor extends ObjectBase {
         this.fecha_elaboracion = fecha_elaboracion;
     }
 
-    public String getNombreContenedor() {
-        return nombreContenedor;
+    public String getNumero_contenedor() {
+        return numero_contenedor;
     }
 
-    public void setNombreContenedor(String nombreContenedor) {
-        this.nombreContenedor = nombreContenedor;
+    public void setNumero_contenedor(String numero_contenedor) {
+        this.numero_contenedor = numero_contenedor;
     }
     
      public LocalDateTime getHorallegada_frontera() {

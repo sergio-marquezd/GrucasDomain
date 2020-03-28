@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="fecha_modificacionPlan" column="fecha_modificacionPlan"/>
         <result property="numero_modificaciones" column="numero_modificaciones"/>
         <result property="tipo_exportacion" column="tipo_exportacion"/>
+        <result property="numero_referenciaCabot" column="numero_referenciaCabot"/>
     </resultMap>
     
       <select id="ContenedorOperacionesMaxID" resultMap="ResultContenedorOperacionesID">
@@ -23,9 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <insert id="ContenedorOperacionesInsert" parameterType="ContenedorOperaciones" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO contenedor_operaciones
-        (folio,fecha_modificacion,fecha_elaboracion,modificacion_plan,fecha_modificacionPlan,numero_modificaciones,tipo_exportacion)
+        (folio,fecha_modificacion,fecha_elaboracion,modificacion_plan,fecha_modificacionPlan,numero_modificaciones,tipo_exportacion,numero_referenciaCabot)
         VALUES
-        (#{folio},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{fecha_modificacionPlan},#{numero_modificaciones},#{tipo_exportacion})
+        (#{folio},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{fecha_modificacionPlan},#{numero_modificaciones},#{tipo_exportacion},#{numero_referenciaCabot})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM contenedor_operaciones
@@ -41,7 +42,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
      <update id="ContenedorOperacionesUpdate" parameterType="ContenedorOperaciones">
         UPDATE contenedor_operaciones
         SET folio = #{folio},fecha_modificacion = #{fecha_modificacion},
-        fecha_elaboracion = #{fecha_elaboracion},modificacion_plan = #{modificacion_plan},fecha_modificacionPlan=#{fecha_modificacionPlan},numero_modificaciones = #{numero_modificaciones}
+        fecha_elaboracion = #{fecha_elaboracion},modificacion_plan = #{modificacion_plan},fecha_modificacionPlan=#{fecha_modificacionPlan},
+        numero_modificaciones = #{numero_modificaciones},numero_referenciaCabot = #{numero_referenciaCabot}
         WHERE id = #{id}
     </update>
     

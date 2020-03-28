@@ -21,6 +21,7 @@ public class ContenedorOperaciones extends ObjectBase {
     Date fecha_modificacionPlan;
     Integer numero_modificaciones;
     String tipo_exportacion;
+    String numero_referenciaCabot;
     
     
     public ContenedorOperaciones(){
@@ -31,6 +32,7 @@ public class ContenedorOperaciones extends ObjectBase {
         fecha_modificacionPlan=null;
         numero_modificaciones =0;
         tipo_exportacion="";
+        numero_referenciaCabot ="";
     }
 
     public String getFolio() {
@@ -87,6 +89,14 @@ public class ContenedorOperaciones extends ObjectBase {
 
     public void setTipo_exportacion(String tipo_exportacion) {
         this.tipo_exportacion = tipo_exportacion;
+    }
+
+    public String getNumero_referenciaCabot() {
+        return numero_referenciaCabot;
+    }
+
+    public void setNumero_referenciaCabot(String numero_referenciaCabot) {
+        this.numero_referenciaCabot = numero_referenciaCabot;
     }
     
     
