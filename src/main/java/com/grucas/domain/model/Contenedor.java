@@ -14,6 +14,7 @@ import java.util.Date;
  * @author GrucasDev
  */
 public class Contenedor extends ObjectBase {
+    
     LocalDateTime horallegada_frontera;
     LocalDateTime tiempo_cruce;
     LocalDateTime tiempo_inspeccion;
