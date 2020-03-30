@@ -21,31 +21,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         SELECT COUNT(id) AS total,
         COUNT(IF(modificacion_plan=0,1,NULL)) AS cumplen,
         COUNT(IF(modificacion_plan=0,1,NULL)) / COUNT(id) * 100 AS exitoso
-        FROM contenedor_operaciones
+        FROM cabot_operacion
         ${where}
     </select>
     
-     <select id="KPI2" parameterType="map" resultMap="ResultReportKPI">
-       SELECT t2.tipo_exportacion,COUNT(t1.id) AS total,
-       DATEDIFF(t1.fecha_declaracionExpImp,t1.fecha_envioDocumentosCabot) AS dias_diferencia
-       FROM contenedor t1
-       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+     <select id="KPI2_t" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       (DATEDIFF(t_fecha_declaracion_expo,t_fecha_entrega_documentos_cabot)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(t_fecha_entrega_documentos_cabot) + WEEKDAY(t_fecha_declaracion_expo) + 1, 1) AS dias_diferencia
+       FROM cabot_operacion_det
        ${where}
     </select>
     
      <select id="KPI3a" parameterType="map" resultMap="ResultReportKPI">
-       SELECT t2.tipo_exportacion,COUNT(t1.id) AS total,
-       DATEDIFF(t1.fecha_confirmacionTransportista,t1.fecha_reservacionTransporte) AS dias_diferencia
-       FROM contenedor t1
-       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       DATEDIFF(m_fecha_confirmacion_transportista,m_fecha_reservacion_transporte) AS dias_diferencia
+       FROM cabot_operacion_det 
        ${where}
     </select>
     
-    <select id="KPI4" parameterType="map" resultMap="ResultReportKPI">
-       SELECT t2.tipo_exportacion,COUNT(t1.id) AS total,
-       DATEDIFF(t1.fecha_envioDocumentosCabot,t1.fecha_carga) AS dias_diferencia
-       FROM contenedor t1
-       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+     <select id="KPI4_t" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,t_fecha_asignacion_carga,t_fecha_entrega_documentos_cabot,COUNT(id) AS total,
+       DATEDIFF(t_fecha_entrega_documentos_cabot,t_fecha_asignacion_carga) AS dias_diferencia
+       FROM cabot_operacion_det
+       ${where}
+    </select>
+    
+    <select id="KPI4_m" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       DATEDIFF(m_fecha_entrega_documentos_cabot,m_fecha_carga_cabot) AS dias_diferencia
+       FROM cabot_operacion_det
        ${where}
     </select>
     
@@ -66,19 +70,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     </select>
     
      <select id="KPI9b" parameterType="map" resultMap="ResultReportKPI">
-       SELECT t2.tipo_exportacion,COUNT(t1.id) AS total,
-       DATEDIFF(t1.fecha_llegadaBarco,t1.fecha_ETA) AS dias_diferencia
-       FROM contenedor t1
-       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       DATEDIFF(m_fecha_llegada_destino_final,m_fecha_eta) AS dias_diferencia
+       FROM cabot_operacion_det
       ${where}
     </select>
     
      <select id="KPI10" parameterType="map" resultMap="ResultReportKPI">
-       SELECT t2.tipo_exportacion,
-       COUNT(t1.id) AS total,
-       (DATEDIFF(fecha_llegadaAPuertoDestino,fecha_declaracionExpImp)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(fecha_declaracionExpImp) + WEEKDAY(fecha_llegadaAPuertoDestino) + 1, 1) AS dias_diferencia
-       FROM contenedor t1
-       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+       SELECT tipo_exportacion,
+       t_fecha_declaracion_expo,
+       t_fecha_llegada_destino,
+       COUNT(id) AS total,
+       (DATEDIFF(t_fecha_llegada_destino,t_fecha_declaracion_expo)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(t_fecha_declaracion_expo) + WEEKDAY(t_fecha_llegada_destino) + 1, 1) AS dias_diferencia
+       FROM cabot_operacion_det
       ${where}
     </select>
  

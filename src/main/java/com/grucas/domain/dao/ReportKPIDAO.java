@@ -117,7 +117,7 @@ public class ReportKPIDAO {
     }
         
         
-       public void getKPI2(String strWhere) {
+       public void getKPI2(String strWhere,int var) {
 
         SqlSession session = null;
 
@@ -126,7 +126,12 @@ public class ReportKPIDAO {
             Map map = new HashMap();
             map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("KPI2",map);
+            if(var==1){
+            objects = session.selectList("KPI2_t",map);
+            }
+            else{
+                
+            }
 
             ok = true;
 
@@ -270,7 +275,7 @@ public class ReportKPIDAO {
     }
         
         
-        public void getKPI4(String strWhere) {
+        public void getKPI4(String strWhere,int var) {
 
         SqlSession session = null;
 
@@ -279,7 +284,11 @@ public class ReportKPIDAO {
             Map map = new HashMap();
             map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("KPI4",map);
+            if(var==1){
+            objects = session.selectList("KPI4_t",map);
+            }
+            else
+            objects = session.selectList("KPI4_m",map);
 
             ok = true;
 
