@@ -5,22 +5,24 @@
  */
 package com.grucas.domain.model;
 
+import com.rubik.Base.DocumentObjectBase;
 import java.time.LocalDateTime;
 
 /**
  *
  * @author GRUCAS
  */
-public class CabotOperacionDet {
+public class CabotOperacionDet extends DocumentObjectBase {
     
     // Generales
+    Integer id;
     Integer documento_id;
     String folio;
     String tipo_exportacion;
     String planeacion_cabot;
     
     // Terrestre
-    String t_nombre_caja;
+    String nombre_caja_contenedor;//para los dos casos
     LocalDateTime t_fecha_asignacion_carga;
     LocalDateTime t_fecha_reservacion_transporte;
     LocalDateTime t_fecha_entrega_documentos_cabot;
@@ -33,14 +35,14 @@ public class CabotOperacionDet {
     LocalDateTime t_fecha_envio_pod;
     
     // Maritimo
-    String contenedor;
+  
     String buque;
     String no_viaje;
     String bl;
     String booking;
     
     LocalDateTime m_fecha_eta;
-    LocalDateTime m_fecha_reservacion_transportista;
+    LocalDateTime m_fecha_reservacion_transporte;
     LocalDateTime m_fecha_confirmacion_transportista;
     LocalDateTime m_fecha_tramite_maniobras_vacios;
     LocalDateTime m_fecha_retiro_contenedores_vacios;
@@ -54,6 +56,16 @@ public class CabotOperacionDet {
 
     public CabotOperacionDet() {
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+    
+    
 
     public Integer getDocumento_id() {
         return documento_id;
@@ -87,13 +99,7 @@ public class CabotOperacionDet {
         this.planeacion_cabot = planeacion_cabot;
     }
 
-    public String getT_nombre_caja() {
-        return t_nombre_caja;
-    }
-
-    public void setT_nombre_caja(String t_nombre_caja) {
-        this.t_nombre_caja = t_nombre_caja;
-    }
+   
 
     public LocalDateTime getT_fecha_asignacion_carga() {
         return t_fecha_asignacion_carga;
@@ -167,13 +173,15 @@ public class CabotOperacionDet {
         this.t_fecha_envio_pod = t_fecha_envio_pod;
     }
 
-    public String getContenedor() {
-        return contenedor;
+    public String getNombre_caja_contenedor() {
+        return nombre_caja_contenedor;
     }
 
-    public void setContenedor(String contenedor) {
-        this.contenedor = contenedor;
+    public void setNombre_caja_contenedor(String nombre_caja_contenedor) {
+        this.nombre_caja_contenedor = nombre_caja_contenedor;
     }
+
+  
 
     public String getBuque() {
         return buque;
@@ -215,12 +223,12 @@ public class CabotOperacionDet {
         this.m_fecha_eta = m_fecha_eta;
     }
 
-    public LocalDateTime getM_fecha_reservacion_transportista() {
-        return m_fecha_reservacion_transportista;
+    public LocalDateTime getM_fecha_reservacion_transporte() {
+        return m_fecha_reservacion_transporte;
     }
 
-    public void setM_fecha_reservacion_transportista(LocalDateTime m_fecha_reservacion_transportista) {
-        this.m_fecha_reservacion_transportista = m_fecha_reservacion_transportista;
+    public void setM_fecha_reservacion_transporte(LocalDateTime m_fecha_reservacion_transporte) {
+        this.m_fecha_reservacion_transporte = m_fecha_reservacion_transporte;
     }
 
     public LocalDateTime getM_fecha_confirmacion_transportista() {

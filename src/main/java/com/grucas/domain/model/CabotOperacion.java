@@ -6,7 +6,6 @@
 package com.grucas.domain.model;
 
 import com.rubik.Base.DocumentObjectBase;
-
 /**
  *
  * @author GRUCAS

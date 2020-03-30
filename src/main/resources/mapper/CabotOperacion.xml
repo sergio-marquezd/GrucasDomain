@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CabotOperacion">
+
+    <resultMap id="ResultCabotOperacionID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+      <resultMap id="ResultCabotOperacion" type="CabotOperacion">
+        <result property="id" column="id"/>
+        <result property="folio" column="folio"/>
+        <result property="modificacion_plan" column="modificacion_plan"/>
+        <result property="tipo_exportacion" column="tipo_exportacion"/>
+        <result property="planeacion_cabot" column="planeacion_cabot"/>
+    </resultMap>
+    
+      <select id="CabotOperacionMaxID" resultMap="ResultCabotOperacionID">
+        SELECT max(id)+1 as id
+        FROM cabot_operacion
+    </select>
+    
+        <insert id="CabotOperacionInsert" parameterType="CabotOperacion" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO cabot_operacion
+        (folio,fecha_modificacion,fecha_elaboracion,modificacion_plan,tipo_exportacion,planeacion_cabot)
+        VALUES
+        (#{folio},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM cabot_operacion
+        </selectKey>
+
+    </insert>
+    
+      <delete id="CabotOperacionDelete" parameterType="map">
+        DELETE FROM cabot_operacion 
+        WHERE id = #{id}
+    </delete>
+    
+     <update id="CabotOperacionUpdate" parameterType="CabotOperacion">
+        UPDATE cabot_operacion
+        SET folio = #{folio},fecha_modificacion = #{fecha_modificacion},
+        fecha_elaboracion = #{fecha_elaboracion},modificacion_plan = #{modificacion_plan},
+        planeacion_cabot = #{planeacion_cabot}
+        WHERE id = #{id}
+    </update>
+    
+    <select id="CabotOperacionWhere" parameterType="map" resultMap="ResultCabotOperacion">
+        SELECT *
+        FROM cabot_operacion
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+     <select id="CabotOperacionOne" parameterType="map" resultMap="ResultCabotOperacion">
+        SELECT *
+        FROM cabot_operacion
+        ${where} 
+    </select>
+    
+    </mapper>
