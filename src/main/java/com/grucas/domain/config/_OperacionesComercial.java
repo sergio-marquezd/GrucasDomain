@@ -32,6 +32,7 @@ public class _OperacionesComercial {
     public static final String OPERACION_CLASIFICACION_AEROPUERTO = "AEREO";
     public static final String OPERACION_CLASIFICACION_MARITIMO = "MARITIMO";
     public static final String OPERACION_CLASIFICACION_FRONTERA = "FRONTERA";
+    public static final String OPERACION_CLASIFICACION_TERRESTRE = "TERRESTRE";
     
     public static final List<String> OPERACIONES = 
             Arrays.asList(OPERACION_CLASIFICACION_AEROPUERTO, 
