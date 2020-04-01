@@ -229,7 +229,7 @@ public class ClienteAduanasDAO {
         try {
 
             session = sqlSessionFactory.openSession();
-            session.update("ClienteAdunasUpdate",object);
+            session.update("ClienteAduanasUpdate",object);
             session.commit();
 
             ok = true;
@@ -303,6 +303,46 @@ public class ClienteAduanasDAO {
 
             session = sqlSessionFactory.openSession();
             objects = session.selectList("UsuarioSistemaUNegocioByUsuarioID",map);
+
+            ok = true;
+            
+        } catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
+    
+       public void getClienteAduanasByAduanaID(String strWhere, String strGroup, String strOrder){
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            map.put("group", strGroup.length()==0?"":" GROUP BY " + strGroup);
+            map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
+
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("ClienteAduanasByAduanaID",map);
 
             ok = true;
             

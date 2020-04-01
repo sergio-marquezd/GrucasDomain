@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="CabotOperacionDet">
+
+    <resultMap id="ResultCabotOperacionDetID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+    <resultMap id="ResultCabotOperacionDet" type="CabotOperacionDet">
+        <result property="id" column="id"/>
+        <result property="folio" column="folio"/>
+        <result property="tipo_exportacion" column="tipo_exportacion"/>
+        <result property="planeacion_cabot" column="planeacion_cabot"/>
+        <result property="nombre_caja_contenedor" column="nombre_caja_contenedor"/>
+        <result property="t_fecha_asignacion_carga" column="t_fecha_asignacion_carga"/>
+        <result property="t_fecha_reservacion_transporte" column="t_fecha_reservacion_transporte"/>
+        <result property="t_fecha_entrega_documentos_cabot" column="t_fecha_entrega_documentos_cabot"/>
+        <result property="t_fecha_arribo_frontera" column="t_fecha_arribo_frontera"/>
+        <result property="t_fecha_declaracion_expo" column="t_fecha_declaracion_expo"/>
+        <result property="t_fecha_cruce_frontera" column="t_fecha_cruce_frontera"/>
+        <result property="t_fecha_entrega_transportista_usa" column="t_fecha_entrega_transportista_usa"/>
+        <result property="t_fecha_llegada_destino" column="t_fecha_llegada_destino"/>
+        <result property="t_fecha_envio_pod" column="t_fecha_envio_pod"/>
+        
+     
+        <result property="buque" column="buque"/>
+        <result property="no_viaje" column="no_viaje"/>
+        <result property="bl" column="bl"/>
+        <result property="booking" column="booking"/>
+        <result property="m_fecha_eta" column="m_fecha_eta"/>
+        <result property="m_fecha_reservacion_transporte" column="m_fecha_reservacion_transporte"/>
+        <result property="m_fecha_confirmacion_transportista" column="m_fecha_confirmacion_transportista"/>
+        <result property="m_fecha_tramite_maniobras_vacios" column="m_fecha_tramite_maniobras_vacios"/>
+        <result property="m_fecha_retiro_contenedores_vacios" column="m_fecha_retiro_contenedores_vacios"/>
+        <result property="m_fecha_carga_cabot" column="m_fecha_carga_cabot"/>
+        <result property="m_fecha_entrega_documentos_cabot" column="m_fecha_entrega_documentos_cabot"/>
+        <result property="m_fecha_tramite_maniobras_llenos" column="m_fecha_tramite_maniobras_llenos"/>
+        <result property="m_fecha_modulacion_pedimento" column="m_fecha_modulacion_pedimento"/>
+        <result property="m_fecha_entrega_contenedor_puerto" column="m_fecha_entrega_contenedor_puerto"/>
+        <result property="m_fecha_salida_buque" column="m_fecha_salida_buque"/>
+        <result property="m_fecha_llegada_destino_final" column="m_fecha_llegada_destino_final"/>
+       
+    </resultMap>
+    
+     <select id="CabotOperacionDetMaxID" resultMap="ResultCabotOperacionDetID">
+        SELECT max(id)+1 as id
+        FROM cabot_operacion_det
+    </select>
+    
+      <insert id="CabotOperacionDetInsert" parameterType="CabotOperacionDet" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO cabot_operacion_det
+        (documento_id,folio,
+         tipo_exportacion,planeacion_cabot,
+         nombre_caja_contenedor,t_fecha_asignacion_carga,
+         t_fecha_reservacion_transporte,t_fecha_entrega_documentos_cabot,
+         t_fecha_arribo_frontera,t_fecha_declaracion_expo,
+         t_fecha_cruce_frontera,t_fecha_entrega_transportista_usa,
+         t_fecha_llegada_destino,t_fecha_envio_pod,
+         buque,no_viaje,bl,booking,
+         m_fecha_eta,m_fecha_reservacion_transporte,
+         m_fecha_confirmacion_transportista,m_fecha_tramite_maniobras_vacios,
+         m_fecha_retiro_contenedores_vacios,m_fecha_carga_cabot,
+         m_fecha_entrega_documentos_cabot,m_fecha_tramite_maniobras_llenos,
+         m_fecha_modulacion_pedimento,m_fecha_entrega_contenedor_puerto,
+         m_fecha_salida_buque,m_fecha_llegada_destino_final,
+         fecha_elaboracion,fecha_modificacion)
+        VALUES
+        (#{documento_id},#{folio},
+         #{tipo_exportacion},#{planeacion_cabot},
+         #{nombre_caja_contenedor},#{t_fecha_asignacion_carga},
+         #{t_fecha_reservacion_transporte},#{t_fecha_entrega_documentos_cabot},
+         #{t_fecha_arribo_frontera},#{t_fecha_declaracion_expo},
+         #{t_fecha_cruce_frontera},#{t_fecha_entrega_transportista_usa},
+         #{t_fecha_llegada_destino},#{t_fecha_envio_pod},
+         #{buque},#{no_viaje},#{bl},#{booking},
+         #{m_fecha_eta},#{m_fecha_reservacion_transporte},
+         #{m_fecha_confirmacion_transportista},#{m_fecha_tramite_maniobras_vacios},
+         #{m_fecha_retiro_contenedores_vacios},#{m_fecha_carga_cabot},
+         #{m_fecha_entrega_documentos_cabot},#{m_fecha_tramite_maniobras_llenos},
+         #{m_fecha_modulacion_pedimento},#{m_fecha_entrega_contenedor_puerto},
+         #{m_fecha_salida_buque},#{m_fecha_llegada_destino_final},
+         #{fecha_elaboracion},#{fecha_modificacion})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM cabot_operacion_det 
+        </selectKey>
+
+    </insert>
+    
+       <delete id="CabotOperacionDetDelete" parameterType="map">
+        DELETE FROM cabot_operacion_det
+        WHERE id = #{id}
+    </delete>
+    
+      <update id="CabotOperacionDetUpdate" parameterType="CabotOperacionDet">
+        UPDATE cabot_operacion_det 
+        SET documento_id =#{documento_id}, folio =#{folio}, tipo_exportacion =#{tipo_exportacion}, planeacion_cabot=#{planeacion_cabot},
+            nombre_caja_contenedor=#{nombre_caja_contenedor}, t_fecha_asignacion_carga=#{t_fecha_asignacion_carga}, t_fecha_reservacion_transporte = #{t_fecha_reservacion_transporte},
+            t_fecha_entrega_documentos_cabot=#{t_fecha_entrega_documentos_cabot}, t_fecha_arribo_frontera=#{t_fecha_arribo_frontera},
+            t_fecha_declaracion_expo=#{t_fecha_declaracion_expo},t_fecha_cruce_frontera=#{t_fecha_cruce_frontera},
+            t_fecha_entrega_transportista_usa=#{t_fecha_entrega_transportista_usa},t_fecha_llegada_destino=#{t_fecha_llegada_destino},t_fecha_envio_pod=#{t_fecha_envio_pod},
+            buque=#{buque},no_viaje=#{no_viaje},bl=#{bl},booking=#{booking},
+            m_fecha_eta=#{m_fecha_eta},m_fecha_reservacion_transporte=#{m_fecha_reservacion_transporte},m_fecha_confirmacion_transportista=#{m_fecha_confirmacion_transportista},
+            m_fecha_tramite_maniobras_vacios=#{m_fecha_tramite_maniobras_vacios},m_fecha_retiro_contenedores_vacios=#{m_fecha_retiro_contenedores_vacios},
+            m_fecha_carga_cabot=#{m_fecha_carga_cabot},m_fecha_entrega_documentos_cabot=#{m_fecha_entrega_documentos_cabot},m_fecha_tramite_maniobras_llenos=#{m_fecha_tramite_maniobras_llenos},
+            m_fecha_modulacion_pedimento = #{m_fecha_modulacion_pedimento},m_fecha_entrega_contenedor_puerto=#{m_fecha_entrega_contenedor_puerto},
+            m_fecha_salida_buque=#{m_fecha_salida_buque},m_fecha_llegada_destino_final=#{m_fecha_llegada_destino_final},
+            fecha_elaboracion = #{fecha_elaboracion}, fecha_modificacion=#{fecha_modificacion}
+        WHERE id = #{id}
+    </update>
+    
+      <select id="CabotOperacionDetWhere" parameterType="map" resultMap="ResultCabotOperacionDet">
+        SELECT *
+        FROM cabot_operacion_det
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+     <select id="CabotOperacionDetOne" parameterType="map" resultMap="ResultCabotOperacionDet">
+        SELECT *
+        FROM cabot_operacion_det 
+        ${where} 
+    </select>
+    
+    </mapper>

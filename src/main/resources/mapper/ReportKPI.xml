@@ -13,15 +13,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="exitoso" column="exitoso"/>
         <result property="fecha_elaboracion" column="fecha_elaboracion"/>
         <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="dias_diferencia" column="dias_diferencia"/>
         
     </resultMap>
     
    <select id="KPI1" parameterType="map" resultMap="ResultReportKPI">
-        SELECT COUNT(id) AS 'total',
-        COUNT(IF(modificacion_plan=0,1,NULL)) AS 'cumplen',
-        COUNT(IF(modificacion_plan=0,1,NULL)) / COUNT(id) * 100 AS 'exitoso'
-        FROM contenedor_operaciones
+        SELECT COUNT(id) AS total,
+        COUNT(IF(modificacion_plan=0,1,NULL)) AS cumplen,
+        COUNT(IF(modificacion_plan=0,1,NULL)) / COUNT(id) * 100 AS exitoso
+        FROM cabot_operacion
         ${where}
+    </select>
+    
+     <select id="KPI2_t" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       (DATEDIFF(t_fecha_declaracion_expo,t_fecha_entrega_documentos_cabot)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(t_fecha_entrega_documentos_cabot) + WEEKDAY(t_fecha_declaracion_expo) + 1, 1) AS dias_diferencia
+       FROM cabot_operacion_det
+       ${where}
+    </select>
+    
+     <select id="KPI3a" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       DATEDIFF(m_fecha_confirmacion_transportista,m_fecha_reservacion_transporte) AS dias_diferencia
+       FROM cabot_operacion_det 
+       ${where}
+    </select>
+    
+     <select id="KPI4_t" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,t_fecha_asignacion_carga,t_fecha_entrega_documentos_cabot,COUNT(id) AS total,
+       DATEDIFF(t_fecha_entrega_documentos_cabot,t_fecha_asignacion_carga) AS dias_diferencia
+       FROM cabot_operacion_det
+       ${where}
+    </select>
+    
+    <select id="KPI4_m" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       DATEDIFF(m_fecha_entrega_documentos_cabot,m_fecha_carga_cabot) AS dias_diferencia
+       FROM cabot_operacion_det
+       ${where}
+    </select>
+    
+     <select id="KPIllegadaDestino" parameterType="map" resultMap="ResultReportKPI">
+       SELECT t2.tipo_exportacion,COUNT(t1.id) AS total,
+       DATEDIFF(t1.fecha_llegadaAPuertoDestinoConfirmacion,t1.fecha_llegadaAPuertoDestino) AS dias_diferencia
+       FROM contenedor t1
+       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+       ${where}
+    </select>
+    
+     <select id="KPIcargaPatio" parameterType="map" resultMap="ResultReportKPI">
+       SELECT t2.tipo_exportacion,COUNT(t1.id) AS total,
+       DATEDIFF(t1.fecha_recogidaTransporteConfirmacion,t1.fecha_recogidaTransporte) AS dias_diferencia
+       FROM contenedor t1
+       INNER JOIN contenedor_operaciones t2 ON t1.documento_id = t2.id
+       ${where}
+    </select>
+    
+     <select id="KPI9b" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,COUNT(id) AS total,
+       DATEDIFF(m_fecha_llegada_destino_final,m_fecha_eta) AS dias_diferencia
+       FROM cabot_operacion_det
+      ${where}
+    </select>
+    
+     <select id="KPI10" parameterType="map" resultMap="ResultReportKPI">
+       SELECT tipo_exportacion,
+       t_fecha_declaracion_expo,
+       t_fecha_llegada_destino,
+       COUNT(id) AS total,
+       (DATEDIFF(t_fecha_llegada_destino,t_fecha_declaracion_expo)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(t_fecha_declaracion_expo) + WEEKDAY(t_fecha_llegada_destino) + 1, 1) AS dias_diferencia
+       FROM cabot_operacion_det
+      ${where}
     </select>
  
  </mapper>

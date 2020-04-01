@@ -5,10 +5,8 @@
  */
 package com.grucas.domain.dao;
 
-
 import com.grucas.domain.config.GrucasDomainConfig;
-import com.grucas.domain.model.Cliente;
-import com.grucas.domain.model.Contenedor;
+import com.grucas.domain.model.CabotOperacion;
 import com.rubik.logger.LoggerImpl;
 import java.util.HashMap;
 import java.util.List;
@@ -22,18 +20,18 @@ import org.apache.ibatis.session.SqlSessionFactory;
  *
  * @author GrucasDev
  */
-public class ContenedorDAO {
+public class CabotOperacionDAO { 
     private Integer id = 0;
-    private Contenedor object = null;
-    private List<Contenedor> objects = null;
+    private CabotOperacion object = null;
+    private List<CabotOperacion> objects = null;
     private Boolean ok = false;
     private Integer err_code = 0;
     private final SqlSessionFactory sqlSessionFactory;
     
-     public ContenedorDAO(String env) {
+      public CabotOperacionDAO(String env) {
         sqlSessionFactory = FactorySessionGrucas.getGrucasSqlSessionFactory(env);
     }
-     
+
     public Integer getId() {
         return id;
     }
@@ -42,19 +40,19 @@ public class ContenedorDAO {
         this.id = id;
     }
 
-    public Contenedor getObject() {
+    public CabotOperacion getObject() {
         return object;
     }
 
-    public void setObject(Contenedor object) {
+    public void setObject(CabotOperacion object) {
         this.object = object;
     }
 
-    public List<Contenedor> getObjects() {
+    public List<CabotOperacion> getObjects() {
         return objects;
     }
 
-    public void setObjects(List<Contenedor> objects) {
+    public void setObjects(List<CabotOperacion> objects) {
         this.objects = objects;
     }
 
@@ -74,14 +72,14 @@ public class ContenedorDAO {
         this.err_code = err_code;
     }
     
-     public void getContenedorID(){
+    public void getCabotOperacionID(){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            id = session.selectOne("ContenedorMaxID");
+            id = session.selectOne("CabotOperacionMaxID");
 
             if(id==null)
             {
@@ -112,16 +110,15 @@ public class ContenedorDAO {
 
         }
     }
-     
-     
-     public void ContenedorInsert(Contenedor object) {
+    
+    public void CabotOperacionInsert(CabotOperacion object) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.insert("ContenedorInsert", object);
+            session.insert("CabotOperacionInsert", object);
             session.commit();
             ok = true;
 
@@ -147,9 +144,9 @@ public class ContenedorDAO {
 
         }
     }
-     
-     
-     public void getContenedor(String strWhere, String strGroup, String strOrder){
+    
+    
+    public void getCabotOperacion(String strWhere, String strGroup, String strOrder){
 
         SqlSession session = null;
 
@@ -161,7 +158,7 @@ public class ContenedorDAO {
             map.put("order", strOrder.length()==0?"":" ORDER BY " + strOrder);
 
             session = sqlSessionFactory.openSession();
-            objects = session.selectList("ContenedorWhere",map);
+            objects = session.selectList("CabotOperacionWhere",map);
 
             ok = true;
             
@@ -187,16 +184,16 @@ public class ContenedorDAO {
 
         }
     }
-     
-     
-      public void ContenedorUpdate(Contenedor object){
+    
+    
+     public void CabotOperacionUpdate(CabotOperacion object){
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.update("ContenedorUpdate",object);
+            session.update("CabotOperacionUpdate",object);
             session.commit();
 
             ok = true;
@@ -224,7 +221,8 @@ public class ContenedorDAO {
         }
     }
      
-     public void getOneContenedor(String strWhere){
+     
+    public void getOneCabotOperacion(String strWhere){
 
         SqlSession session = null;
 
@@ -234,7 +232,7 @@ public class ContenedorDAO {
             map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("ContenedorOne",map);
+            object = session.selectOne("CabotOperacionOne",map);
 
             ok = true;
             
@@ -260,16 +258,17 @@ public class ContenedorDAO {
 
         }
     }
-     
-     
-      public void ContenedorDelete(Integer id) {
+    
+    
+    
+    public void CabotOperacionDelete(Integer id) {
 
         SqlSession session = null;
 
         try {
 
             session = sqlSessionFactory.openSession();
-            session.delete("ContenedorDelete", id);
+            session.delete("CabotOperacionDelete", id);
             session.commit();
 
             ok = true;
@@ -291,10 +290,10 @@ public class ContenedorDAO {
 
         }
     }
-     
-     
-     
-     
-     
     
+    
+    
+    
+      
+      
 }

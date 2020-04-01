@@ -25,6 +25,14 @@ public class Aduana extends ObjectBase {
     Integer agente3_id;
     String agente3;
     String patente3;
+    
+    Integer id_cliente_aduana;
+    String contacto_nombre;
+    String contacto_email;
+    
+    //unidad_id
+    //cliente_id
+    //activo
 
     public Aduana() {
         agente_id = 0;
@@ -132,6 +140,30 @@ public class Aduana extends ObjectBase {
 
     public void setTipo_aduana(String tipo_aduana) {
         this.tipo_aduana = tipo_aduana;
+    }
+
+    public Integer getId_cliente_aduana() {
+        return id_cliente_aduana;
+    }
+
+    public void setId_cliente_aduana(Integer id_cliente_aduana) {
+        this.id_cliente_aduana = id_cliente_aduana;
+    }
+
+    public String getContacto_nombre() {
+        return contacto_nombre;
+    }
+
+    public void setContacto_nombre(String contacto_nombre) {
+        this.contacto_nombre = contacto_nombre;
+    }
+
+    public String getContacto_email() {
+        return contacto_email;
+    }
+
+    public void setContacto_email(String contacto_email) {
+        this.contacto_email = contacto_email;
     }
     
     @Override

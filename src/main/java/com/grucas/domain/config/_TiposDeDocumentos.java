@@ -25,6 +25,7 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_OPERACION = "OPERACION";
     public static final String DOCUMENTO_PREVIO_SOLICITUD = "SOLICITUD DE PREVIO";
     public static final String DOCUMENTO_PREVIO_IMAGENES = "FOTOGRAFIAS DE PREVIO";
+    public static final String DOCUMENTO_ENCUESTA_IMAGENES = "FOTOGRAFIAS DE ENCUESTA SEGURIDAD";
     public static final String DOCUMENTO_CLIENTE_EXPEDIENTE = "EXPEDIENTE DE CLIENTE";
     
     public static final String DOCUMENTO_COMERCIAL_TARIFARIO = "TARIFARIO";

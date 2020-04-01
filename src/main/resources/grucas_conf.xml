@@ -30,8 +30,8 @@
         <typeAlias alias="Aduana" type="com.grucas.domain.model.Aduana"/>
         <typeAlias alias="ProductoServicio" type="com.grucas.domain.model.ProductoServicio"/>
         <typeAlias alias="ClienteAduanas" type="com.grucas.domain.model.ClienteAduanas"/>
-        <typeAlias alias="Contenedor" type="com.grucas.domain.model.Contenedor"/>
-        <typeAlias alias="ContenedorOperaciones" type="com.grucas.domain.model.ContenedorOperaciones"/>
+        <typeAlias alias="CabotOperacionDet" type="com.grucas.domain.model.CabotOperacionDet"/>
+        <typeAlias alias="CabotOperacion" type="com.grucas.domain.model.CabotOperacion"/>
         <typeAlias alias="ReportKPI" type="com.grucas.domain.model.ReportKPI"/>
            
     </typeAliases>
@@ -78,8 +78,8 @@
         <mapper resource="mapper/Aduana.xml"/>
         <mapper resource="mapper/ProductoServicio.xml"/>
         <mapper resource="mapper/ClienteAduanas.xml"/>
-        <mapper resource="mapper/Contenedor.xml"/> 
-        <mapper resource="mapper/ContenedorOperaciones.xml"/>
+        <mapper resource="mapper/CabotOperacionDet.xml"/> 
+        <mapper resource="mapper/CabotOperacion.xml"/>
         <mapper resource="mapper/ReportKPI.xml"/>
     </mappers>
   

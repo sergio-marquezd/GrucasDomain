@@ -116,8 +116,283 @@ public class ReportKPIDAO {
         }
     }
         
+        
+       public void getKPI2(String strWhere,int var) {
 
-     
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            if(var==1){
+            objects = session.selectList("KPI2_t",map);
+            }
+            else{
+                
+            }
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+       
+       
+        public void getKPI3a(String strWhere) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("KPI3a",map);
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+       
+      
+       
+        public void getKPIllegadaDestino(String strWhere) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("KPIllegadaDestino",map);
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+        
+        
+           public void getKPIcargaPatio(String strWhere) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("KPIcargaPatio",map);
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+        
+        
+        public void getKPI4(String strWhere,int var) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            if(var==1){
+            objects = session.selectList("KPI4_t",map);
+            }
+            else
+            objects = session.selectList("KPI4_m",map);
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+        
+
+      public void getKPI9b(String strWhere) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("KPI9b",map);
+           
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+      
+      
+       public void getKPI10(String strWhere) {
+
+        SqlSession session = null;
+
+        try {
+
+            Map map = new HashMap();
+            map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
+            session = sqlSessionFactory.openSession();
+            objects = session.selectList("KPI10",map);
+           
+
+            ok = true;
+
+        } 
+        catch (SqlSessionException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
  
       
 

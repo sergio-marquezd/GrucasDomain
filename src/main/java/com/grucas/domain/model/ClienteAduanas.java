@@ -17,11 +17,13 @@ public class ClienteAduanas{
     String contacto_nombre;
     String contacto_email;
     Boolean activo;
+    String no_aduana;
 
     public ClienteAduanas() {
         id = 0;
         cliente_id = 0;
         unidad_id = 0;
+        no_aduana ="";
     }
 
     public Integer getId() {
@@ -72,4 +74,13 @@ public class ClienteAduanas{
         this.activo = activo;
     }
 
+    public String getNo_aduana() {
+        return no_aduana;
+    }
+
+    public void setNo_aduana(String no_aduana) {
+        this.no_aduana = no_aduana;
+    }
+
+    
 }

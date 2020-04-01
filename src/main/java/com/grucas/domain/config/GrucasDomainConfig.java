@@ -173,7 +173,7 @@ public class GrucasDomainConfig {
     // -------------------------------------------------------------------------
     
     public static final String SATISFACCIÓN_DEL_CLIENTE = "ENCUESTA DE SATISFACCIÓN DEL CLIENTE";
-    public static final String CADENA_SUMINISTRO = "AUTOEVALUACION EN LA CADENA DE SIMINISTRO A SOCIOS COMERCIALES SG-SEG-FR-026";
+    public static final String CADENA_SUMINISTRO = "AUTOEVALUACION EN LA CADENA DE SIMINISTRO A SOCIOS COMERCIALES GN-OEA-FR-001";
     
     public static final List<String> ENCUESTAS = Arrays.asList(SATISFACCIÓN_DEL_CLIENTE,CADENA_SUMINISTRO);
     

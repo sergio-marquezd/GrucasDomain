@@ -13,40 +13,41 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="contacto_nombre" column="contacto_nombre"/>
         <result property="contacto_email" column="contacto_email"/>
         <result property="activo" column="activo"/>
+        <result property="no_aduana" column="no_aduana"/>
     </resultMap>
 
     <select id="ClienteAduanasMaxID" resultMap="ResultClienteAduanasID">
         SELECT max(id)+1 as id
-        FROM  
+        FROM cliente_aduanas
     </select>
 
     <insert id="ClienteAduanasInsert" parameterType="ClienteAduanas" useGeneratedKeys="true" keyProperty="id">
 
-        INSERT INTO  
-        (cliente_id,unidad_id,contacto_nombre,contacto_email,activo)
+        INSERT INTO cliente_aduanas
+        (cliente_id,unidad_id,contacto_nombre,contacto_email,activo,no_aduana)
         VALUES
-        (#{cliente_id},#{unidad_id},#{contacto_nombre},#{contacto_email},#{activo})
+        (#{cliente_id},#{unidad_id},#{contacto_nombre},#{contacto_email},#{activo},#{no_aduana})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
-              SELECT MAX(id) FROM  
+              SELECT MAX(id) FROM cliente_aduanas
         </selectKey>
 
     </insert>
 
     <update id="ClienteAduanasUpdate" parameterType="ClienteAduanas">
-        UPDATE  
-        SET cliente_id = #{cliente_id},unidad_id = #{unidad_id},contacto_nombre = #{contacto_nombre},contacto_email = #{contacto_email},activo = #{activo}
+        UPDATE cliente_aduanas 
+        SET cliente_id = #{cliente_id},unidad_id = #{unidad_id},contacto_nombre = #{contacto_nombre},contacto_email = #{contacto_email},activo = #{activo},no_aduana = #{no_aduana}
         WHERE id = #{id}
     </update>
 
     <delete id="ClienteAduanasDelete" parameterType="map">
-        DELETE FROM  
+        DELETE FROM  cliente_aduanas
         WHERE id = #{id}
     </delete>
 
     <select id="ClienteAduanasWhere" parameterType="map" resultMap="ResultClienteAduanas">
         SELECT *
-        FROM  
+        FROM cliente_aduanas
         ${where} 
         ${group} 
         ${order}
@@ -54,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <select id="ClienteAduanasOne" parameterType="map" resultMap="ResultClienteAduanas">
         SELECT *
-        FROM  
+        FROM cliente_aduanas
         ${where} 
     </select>
     
@@ -63,6 +64,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         FROM cliente_aduanas t1
         INNER JOIN unidad_negocio t2 ON t1.unidad_id = t2.id
         WHERE t1.cliente_id = #{id}
+    </select>
+    
+     <select id="ClienteAduanasByAduanaID" parameterType="map" resultMap="ResultClienteAduanas">
+       SELECT t1.id,t1.contacto_email,t1.contacto_nombre,t1.unidad_id,t2.usuario_id
+       FROM cliente_aduanas t1
+       INNER JOIN aduana t2 ON t1.no_aduana = t2.no_aduana
+       ${where}
+       ${group} 
+       ${order}
     </select>
 
 </mapper>
