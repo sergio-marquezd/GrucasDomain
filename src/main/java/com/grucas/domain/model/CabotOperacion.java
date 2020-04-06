@@ -16,6 +16,15 @@ public class CabotOperacion extends DocumentObjectBase {
     Boolean modificacion_plan;
     String tipo_exportacion;
     String planeacion_cabot;
+    
+    // Maritimo
+    String buque;
+    String no_viaje;
+    String bl;
+    String booking;
+    
+    String naviera;
+    String transportista;
 
     public CabotOperacion() {
     }
@@ -50,6 +59,54 @@ public class CabotOperacion extends DocumentObjectBase {
 
     public void setPlaneacion_cabot(String planeacion_cabot) {
         this.planeacion_cabot = planeacion_cabot;
+    }
+
+    public String getBuque() {
+        return buque;
+    }
+
+    public void setBuque(String buque) {
+        this.buque = buque;
+    }
+
+    public String getNo_viaje() {
+        return no_viaje;
+    }
+
+    public void setNo_viaje(String no_viaje) {
+        this.no_viaje = no_viaje;
+    }
+
+    public String getBl() {
+        return bl;
+    }
+
+    public void setBl(String bl) {
+        this.bl = bl;
+    }
+
+    public String getBooking() {
+        return booking;
+    }
+
+    public void setBooking(String booking) {
+        this.booking = booking;
+    }
+
+    public String getNaviera() {
+        return naviera;
+    }
+
+    public void setNaviera(String naviera) {
+        this.naviera = naviera;
+    }
+
+    public String getTransportista() {
+        return transportista;
+    }
+
+    public void setTransportista(String transportista) {
+        this.transportista = transportista;
     }
     
 }
