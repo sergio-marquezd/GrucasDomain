@@ -16,6 +16,8 @@ public class CabotOperacion extends DocumentObjectBase {
     Boolean modificacion_plan;
     String tipo_exportacion;
     String planeacion_cabot;
+    String origen;
+    String destino;
     
     // Maritimo
     String buque;
@@ -25,6 +27,8 @@ public class CabotOperacion extends DocumentObjectBase {
     
     String naviera;
     String transportista;
+    String numero_pedimento;
+   
 
     public CabotOperacion() {
     }
@@ -108,5 +112,31 @@ public class CabotOperacion extends DocumentObjectBase {
     public void setTransportista(String transportista) {
         this.transportista = transportista;
     }
+
+    public String getNumero_pedimento() {
+        return numero_pedimento;
+    }
+
+    public void setNumero_pedimento(String numero_pedimento) {
+        this.numero_pedimento = numero_pedimento;
+    }
+
+    public String getOrigen() {
+        return origen;
+    }
+
+    public void setOrigen(String origen) {
+        this.origen = origen;
+    }
+
+    public String getDestino() {
+        return destino;
+    }
+
+    public void setDestino(String destino) {
+        this.destino = destino;
+    }
+
+  
     
 }
