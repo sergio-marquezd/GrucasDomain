@@ -5,17 +5,19 @@
  */
 package com.grucas.domain.model;
 
-import com.rubik.Base.DocumentObjectBase;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  *
  * @author GRUCAS
  */
-public class CabotOperacionDet extends DocumentObjectBase {
+public class CabotOperacionDet {
     
     // Generales
     Integer id;
+    Date fecha_elaboracion;
+    Date fecha_modificacion;
     Integer documento_id;
     String folio;
     String tipo_exportacion;
@@ -33,13 +35,6 @@ public class CabotOperacionDet extends DocumentObjectBase {
     LocalDateTime t_fecha_entrega_transportista_usa;
     LocalDateTime t_fecha_llegada_destino;
     LocalDateTime t_fecha_envio_pod;
-    
-    // Maritimo
-  
-    String buque;
-    String no_viaje;
-    String bl;
-    String booking;
     
     LocalDateTime m_fecha_eta;
     LocalDateTime m_fecha_reservacion_transporte;
@@ -64,8 +59,6 @@ public class CabotOperacionDet extends DocumentObjectBase {
     public void setId(Integer id) {
         this.id = id;
     }
-    
-    
 
     public Integer getDocumento_id() {
         return documento_id;
@@ -98,8 +91,6 @@ public class CabotOperacionDet extends DocumentObjectBase {
     public void setPlaneacion_cabot(String planeacion_cabot) {
         this.planeacion_cabot = planeacion_cabot;
     }
-
-   
 
     public LocalDateTime getT_fecha_asignacion_carga() {
         return t_fecha_asignacion_carga;
@@ -179,40 +170,6 @@ public class CabotOperacionDet extends DocumentObjectBase {
 
     public void setNombre_caja_contenedor(String nombre_caja_contenedor) {
         this.nombre_caja_contenedor = nombre_caja_contenedor;
-    }
-
-  
-
-    public String getBuque() {
-        return buque;
-    }
-
-    public void setBuque(String buque) {
-        this.buque = buque;
-    }
-
-    public String getNo_viaje() {
-        return no_viaje;
-    }
-
-    public void setNo_viaje(String no_viaje) {
-        this.no_viaje = no_viaje;
-    }
-
-    public String getBl() {
-        return bl;
-    }
-
-    public void setBl(String bl) {
-        this.bl = bl;
-    }
-
-    public String getBooking() {
-        return booking;
-    }
-
-    public void setBooking(String booking) {
-        this.booking = booking;
     }
 
     public LocalDateTime getM_fecha_eta() {
@@ -309,6 +266,22 @@ public class CabotOperacionDet extends DocumentObjectBase {
 
     public void setM_fecha_llegada_destino_final(LocalDateTime m_fecha_llegada_destino_final) {
         this.m_fecha_llegada_destino_final = m_fecha_llegada_destino_final;
+    }
+
+    public Date getFecha_elaboracion() {
+        return fecha_elaboracion;
+    }
+
+    public void setFecha_elaboracion(Date fecha_elaboracion) {
+        this.fecha_elaboracion = fecha_elaboracion;
+    }
+
+    public Date getFecha_modificacion() {
+        return fecha_modificacion;
+    }
+
+    public void setFecha_modificacion(Date fecha_modificacion) {
+        this.fecha_modificacion = fecha_modificacion;
     }
 
 }

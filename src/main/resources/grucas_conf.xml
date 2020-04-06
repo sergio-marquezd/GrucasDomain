@@ -33,7 +33,8 @@
         <typeAlias alias="CabotOperacionDet" type="com.grucas.domain.model.CabotOperacionDet"/>
         <typeAlias alias="CabotOperacion" type="com.grucas.domain.model.CabotOperacion"/>
         <typeAlias alias="ReportKPI" type="com.grucas.domain.model.ReportKPI"/>
-           
+        <typeAlias alias="Naviera" type="com.grucas.domain.model.Naviera"/>
+        <typeAlias alias="Transportista" type="com.grucas.domain.model.Transportista"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -80,7 +81,8 @@
         <mapper resource="mapper/ClienteAduanas.xml"/>
         <mapper resource="mapper/CabotOperacionDet.xml"/> 
         <mapper resource="mapper/CabotOperacion.xml"/>
-        <mapper resource="mapper/ReportKPI.xml"/>
+        <mapper resource="mapper/Naviera.xml"/>
+        <mapper resource="mapper/Transportista.xml"/>
     </mappers>
   
 </configuration>
