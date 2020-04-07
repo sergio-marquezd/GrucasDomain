@@ -46,19 +46,23 @@ public class Cliente extends ObjectBase {
     String email_cuenta_gastos;
     String email_manifestacion_valor;
 
-    Boolean aereo;  
+    Boolean aereo;
     Boolean maritimo;
     Boolean frontera;
     Boolean aduanal_mexicano;
     Boolean aduanal_americano;
     Boolean almacenamiento;
     Boolean transporte;
-    
-    String fisica_moral;   
-    String Telefono;  
-    String correo;  
 
-    public Cliente() { 
+    String fisica_moral;
+    String Telefono;
+    String correo;
+
+    Boolean corresponsal;
+    Integer corresponsal_id;
+    String nombre_corresponsal;
+
+    public Cliente() {
         id = 0;
         razon_social = "";
         abreviacion = "";
@@ -92,6 +96,9 @@ public class Cliente extends ObjectBase {
         aduanal_americano = false;
         almacenamiento = false;
         transporte = false;
+        corresponsal = false;
+        corresponsal_id = 0;
+        nombre_corresponsal = "";
     }
 
     public String getRazon_social() {
@@ -373,32 +380,68 @@ public class Cliente extends ObjectBase {
     public void setCorreo(String Correo) {
         this.correo = Correo;
     }
-        
-    
-    public Boolean informacionCompleta(){
+
+    public String getFisica_moral() {
+        return fisica_moral;
+    }
+
+    public void setFisica_moral(String fisica_moral) {
+        this.fisica_moral = fisica_moral;
+    }
+
+    public Boolean getCorresponsal() {
+        return corresponsal;
+    }
+
+    public void setCorresponsal(Boolean corresponsal) {
+        this.corresponsal = corresponsal;
+    }
+
+    public Integer getCorresponsal_id() {
+        return corresponsal_id;
+    }
+
+    public void setCorresponsal_id(Integer corresponsal_id) {
+        this.corresponsal_id = corresponsal_id;
+    }
+
+    public String getNombre_corresponsal() {
+        return nombre_corresponsal;
+    }
+
+    public void setNombre_corresponsal(String nombre_corresponsal) {
+        this.nombre_corresponsal = nombre_corresponsal;
+    }
+
+    public Boolean informacionCompleta() {
         boolean textOK = false;
         boolean count = false;
-        
-        if(razon_social != null || rfc != null || domicilio != null || ciudad != null 
-                || estado != null || cp != null || telefono != null || pais != null 
-                || no_contable != null || contacto_vendedor_nombre != null 
-                || contacto_vendedor_email != null || contacto_nombre != null 
-                || contacto_email != null || contacto_tel != null || contacto_representante_legal_nombre != null 
-                || contacto_representante_legal_email != null || email_eventos_patio != null 
-                || email_eventos_bodega != null || email_cambios_estado_trafico != null || email_ficha_clasificacion != null 
-                || email_cuenta_gastos != null || email_manifestacion_valor != null){
+
+        if (razon_social != null || rfc != null || domicilio != null || ciudad != null
+                || estado != null || cp != null || telefono != null || pais != null
+                || no_contable != null || contacto_vendedor_nombre != null
+                || contacto_vendedor_email != null || contacto_nombre != null
+                || contacto_email != null || contacto_tel != null || contacto_representante_legal_nombre != null
+                || contacto_representante_legal_email != null || email_eventos_patio != null
+                || email_eventos_bodega != null || email_cambios_estado_trafico != null || email_ficha_clasificacion != null
+                || email_cuenta_gastos != null || email_manifestacion_valor != null) {
             textOK = false;
         }
 
-        if(aereo || maritimo || frontera || aduanal_americano || aduanal_mexicano || almacenamiento || transporte ){
+        if (aereo || maritimo || frontera || aduanal_americano || aduanal_mexicano || almacenamiento || transporte) {
             count = true;
         }
-    
-        if(count && textOK){
+
+        if (count && textOK) {
             return true;
-        }else{
+        } else {
             return false;
         }
+    }
+
+    @Override
+    public String toString() {
+        return razon_social;
     }
 
 }
