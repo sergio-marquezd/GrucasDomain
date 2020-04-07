@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="CabotOperacionInsert" parameterType="CabotOperacion" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO cabot_operacion 
-        (fecha_elaboracion,numero_pedimento,origen,destinofecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,estado_doc,estado,serie,observaciones,tipo_documento,tipo_archivo,razon_cancelar,cliente_id,cliente,cliente_rfc,metodo_pago,moneda,tipo_cambio,importe,descuento,subtotal,iva,total,porc_iva,importe_letra,activo,folio,modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista)
+        (fecha_elaboracion,numero_pedimento,origen,destino,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,estado_doc,estado,serie,observaciones,tipo_documento,tipo_archivo,razon_cancelar,cliente_id,cliente,cliente_rfc,metodo_pago,moneda,tipo_cambio,importe,descuento,subtotal,iva,total,porc_iva,importe_letra,activo,folio,modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista)
         VALUES
         (#{fecha_elaboracion},#{numero_pedimento},#{origen},#{destino},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{estado_doc},#{estado},#{serie},#{observaciones},#{tipo_documento},#{tipo_archivo},#{razon_cancelar},#{cliente_id},#{cliente},#{cliente_rfc},#{metodo_pago},#{moneda},#{tipo_cambio},#{importe},#{descuento},#{subtotal},#{iva},#{total},#{porc_iva},#{importe_letra},#{activo},#{folio},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot},#{buque},#{no_viaje},#{bl},#{booking},#{naviera},#{transportista})
         
