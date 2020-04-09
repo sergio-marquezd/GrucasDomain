@@ -9,6 +9,7 @@ import com.grucas.domain.config.GrucasDomainConfig;
 import com.grucas.domain.dao.ProductoServicioDAO;
 import com.grucas.domain.model.ProductoServicio;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -164,6 +165,24 @@ public class ProductoServicioService {
             notification = "Ha ocurrido un error al obtener la informacion de la base de datos.";
         }
 
+    }
+
+    public void observaciones(Integer id, String observaciones, Integer usuario_id, String usuario) {
+
+        getProducto("id = " + id, "", "");
+
+        if (object != null) {
+
+            object.setFecha_modificacion(new Date());
+            object.setUsuario(usuario);
+            object.setUsuario_id(usuario_id);
+            object.setDescripcion(observaciones);
+
+            ProductoUpdate(object);
+
+        } else {
+            notification = "El documento no existe en la base de datos.";
+        }
     }
 
 }
