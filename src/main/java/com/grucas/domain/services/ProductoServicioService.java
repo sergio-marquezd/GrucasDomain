@@ -181,7 +181,7 @@ public class ProductoServicioService {
             ProductoUpdate(object);
 
         } else {
-            notification = "El documento no existe en la base de datos.";
+            notification = "El documento no existe en la base de datos. ";
         }
     }
 
