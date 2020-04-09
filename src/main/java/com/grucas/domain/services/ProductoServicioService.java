@@ -169,7 +169,7 @@ public class ProductoServicioService {
 
     public void observaciones(Integer id, String observaciones, Integer usuario_id, String usuario) {
 
-        getProducto("id = " + id, "", ""); 
+        getProducto("id = " + id, "", "");
 
         if (object != null) {
 
