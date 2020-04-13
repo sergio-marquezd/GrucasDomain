@@ -26,8 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     </select>
     
      <select id="KPI2_t" parameterType="map" resultMap="ResultReportKPI">
-       SELECT tipo_exportacion,COUNT(id) AS total,
-       (DATEDIFF(t_fecha_declaracion_expo,t_fecha_entrega_documentos_cabot)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(t_fecha_entrega_documentos_cabot) + WEEKDAY(t_fecha_declaracion_expo) + 1, 1) AS dias_diferencia
+      SELECT tipo_exportacion,COUNT(id) AS total,
+       (DATEDIFF(t_fecha_asignacion_carga,t_fecha_entrega_documentos_cabot)DIV 7) + MID('0123444401233334012222340111123400001234000123440', 7 * WEEKDAY(t_fecha_entrega_documentos_cabot) + WEEKDAY(t_fecha_asignacion_carga) + 1, 1) AS dias_diferencia
        FROM cabot_operacion_det
        ${where}
     </select>
@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     </select>
     
      <select id="KPI4_t" parameterType="map" resultMap="ResultReportKPI">
-       SELECT tipo_exportacion,t_fecha_asignacion_carga,t_fecha_entrega_documentos_cabot,COUNT(id) AS total,
+       SELECT tipo_exportacion,COUNT(id) AS total,
        DATEDIFF(t_fecha_entrega_documentos_cabot,t_fecha_asignacion_carga) AS dias_diferencia
        FROM cabot_operacion_det
        ${where}

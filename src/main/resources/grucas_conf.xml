@@ -82,6 +82,7 @@
         <mapper resource="mapper/ClienteAduanas.xml"/>
         <mapper resource="mapper/CabotOperacionDet.xml"/> 
         <mapper resource="mapper/CabotOperacion.xml"/>
+        <mapper resource="mapper/ReportKPI.xml"/>
         <mapper resource="mapper/Naviera.xml"/>
         <mapper resource="mapper/Transportista.xml"/>
         <mapper resource="mapper/OrigenDestino.xml"/>
