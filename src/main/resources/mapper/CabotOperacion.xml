@@ -47,6 +47,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="booking" column="booking"/>
         <result property="naviera" column="naviera"/>
         <result property="transportista" column="transportista"/>
+        <result property="numero_pedimento" column="numero_pedimento"/>
+        <result property="origen" column="origen"/>
+        <result property="destino" column="destino"/>
+   
     </resultMap>
 
     <select id="CabotOperacionMaxID" resultMap="ResultCabotOperacionID">

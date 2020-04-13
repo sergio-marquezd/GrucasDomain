@@ -25,6 +25,7 @@ public class CabotOperacionDet {
     
     // Terrestre
     String nombre_caja_contenedor;//para los dos casos
+    String nombre_chofer;
     LocalDateTime t_fecha_asignacion_carga;
     LocalDateTime t_fecha_reservacion_transporte;
     LocalDateTime t_fecha_entrega_documentos_cabot;
@@ -91,6 +92,15 @@ public class CabotOperacionDet {
     public void setPlaneacion_cabot(String planeacion_cabot) {
         this.planeacion_cabot = planeacion_cabot;
     }
+
+    public String getNombre_chofer() {
+        return nombre_chofer;
+    }
+
+    public void setNombre_chofer(String nombre_chofer) {
+        this.nombre_chofer = nombre_chofer;
+    }
+    
 
     public LocalDateTime getT_fecha_asignacion_carga() {
         return t_fecha_asignacion_carga;
