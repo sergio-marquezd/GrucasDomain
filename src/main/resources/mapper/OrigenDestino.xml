@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="OrigenDestino">
+
+    <resultMap id="ResultOrigenDestinoID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultOrigenDestino" type="OrigenDestino">
+        <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="activo" column="activo"/>
+        <result property="ciudad" column="ciudad"/>
+        <result property="pais" column="pais"/>
+        <result property="region" column="region"/>
+        <result property="tipo" column="tipo"/>
+    </resultMap>
+
+    <select id="OrigenDestinoMaxID" resultMap="ResultOrigenDestinoID">
+        SELECT max(id)+1 as id
+        FROM origen_destino 
+    </select>
+
+    <insert id="OrigenDestinoInsert" parameterType="OrigenDestino" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO origen_destino 
+        (fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,activo,ciudad,pais,region,tipo)
+        VALUES
+        (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{ciudad},#{pais},#{region},#{tipo})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM origen_destino 
+        </selectKey>
+
+    </insert>
+
+    <update id="OrigenDestinoUpdate" parameterType="OrigenDestino">
+        UPDATE origen_destino 
+        SET fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},activo = #{activo},ciudad = #{ciudad},pais = #{pais},region = #{region},tipo = #{tipo}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="OrigenDestinoDelete" parameterType="map">
+        DELETE FROM origen_destino 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="OrigenDestinoWhere" parameterType="map" resultMap="ResultOrigenDestino">
+        SELECT *
+        FROM origen_destino 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+</mapper>

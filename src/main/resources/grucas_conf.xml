@@ -35,6 +35,7 @@
         <typeAlias alias="ReportKPI" type="com.grucas.domain.model.ReportKPI"/>
         <typeAlias alias="Naviera" type="com.grucas.domain.model.Naviera"/>
         <typeAlias alias="Transportista" type="com.grucas.domain.model.Transportista"/>
+        <typeAlias alias="OrigenDestino" type="com.grucas.domain.model.OrigenDestino"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -83,6 +84,7 @@
         <mapper resource="mapper/CabotOperacion.xml"/>
         <mapper resource="mapper/Naviera.xml"/>
         <mapper resource="mapper/Transportista.xml"/>
+        <mapper resource="mapper/OrigenDestino.xml"/>
     </mappers>
   
 </configuration>
