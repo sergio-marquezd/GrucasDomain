@@ -49,6 +49,10 @@ public class CabotOperacionDet {
     LocalDateTime m_fecha_entrega_contenedor_puerto;
     LocalDateTime m_fecha_salida_buque;
     LocalDateTime m_fecha_llegada_destino_final;
+    LocalDateTime m_fecha_confirmacion_naviera;
+    LocalDateTime m_fecha_confirmacion_naviera_a_grucas;
+    LocalDateTime m_fecha_emision_bl;
+    LocalDateTime m_fecha_envio_documentos_a_cliente;
 
     public CabotOperacionDet() {
     }
@@ -294,4 +298,38 @@ public class CabotOperacionDet {
         this.fecha_modificacion = fecha_modificacion;
     }
 
+    public LocalDateTime getM_fecha_confirmacion_naviera() {
+        return m_fecha_confirmacion_naviera;
+    }
+
+    public void setM_fecha_confirmacion_naviera(LocalDateTime m_fecha_confirmacion_naviera) {
+        this.m_fecha_confirmacion_naviera = m_fecha_confirmacion_naviera;
+    }
+
+    public LocalDateTime getM_fecha_confirmacion_naviera_a_grucas() {
+        return m_fecha_confirmacion_naviera_a_grucas;
+    }
+
+    public void setM_fecha_confirmacion_naviera_a_grucas(LocalDateTime m_fecha_confirmacion_naviera_a_grucas) {
+        this.m_fecha_confirmacion_naviera_a_grucas = m_fecha_confirmacion_naviera_a_grucas;
+    }
+
+    public LocalDateTime getM_fecha_emision_bl() {
+        return m_fecha_emision_bl;
+    }
+
+    public void setM_fecha_emision_bl(LocalDateTime m_fecha_emision_bl) {
+        this.m_fecha_emision_bl = m_fecha_emision_bl;
+    }
+
+    public LocalDateTime getM_fecha_envio_documentos_a_cliente() {
+        return m_fecha_envio_documentos_a_cliente;
+    }
+
+    public void setM_fecha_envio_documentos_a_cliente(LocalDateTime m_fecha_envio_documentos_a_cliente) {
+        this.m_fecha_envio_documentos_a_cliente = m_fecha_envio_documentos_a_cliente;
+    }
+
+    
+    
 }
