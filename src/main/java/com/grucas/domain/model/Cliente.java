@@ -58,6 +58,7 @@ public class Cliente extends ObjectBase {
     String Telefono;
     String correo;
 
+    Boolean es_corresponsal;
     Boolean corresponsal;
     Integer corresponsal_id;
     String nombre_corresponsal;
@@ -99,6 +100,7 @@ public class Cliente extends ObjectBase {
         corresponsal = false;
         corresponsal_id = 0;
         nombre_corresponsal = "";
+        es_corresponsal = false;
     }
 
     public String getRazon_social() {
@@ -412,6 +414,15 @@ public class Cliente extends ObjectBase {
     public void setNombre_corresponsal(String nombre_corresponsal) {
         this.nombre_corresponsal = nombre_corresponsal;
     }
+
+    public Boolean getEs_corresponsal() {
+        return es_corresponsal;
+    }
+
+    public void setEs_corresponsal(Boolean es_corresponsal) {
+        this.es_corresponsal = es_corresponsal;
+    }
+    
 
     public Boolean informacionCompleta() {
         boolean textOK = false;
