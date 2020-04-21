@@ -61,9 +61,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <insert id="CabotOperacionInsert" parameterType="CabotOperacion" useGeneratedKeys="true" keyProperty="id">
 
         INSERT INTO cabot_operacion 
-        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,usuario_id,usuario,estado_doc,estado,folio,serie,observaciones,tipo_documento,tipo_archivo,razon_cancelar,cliente_id,cliente,cliente_rfc,metodo_pago,moneda,tipo_cambio,importe,descuento,subtotal,iva,total,porc_iva,importe_letra,activo,modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista)
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,
+        usuario_id,usuario,estado_doc,estado,folio,serie,observaciones,tipo_documento,
+        tipo_archivo,razon_cancelar,cliente_id,cliente,cliente_rfc,metodo_pago,moneda,
+        tipo_cambio,importe,descuento,subtotal,iva,total,porc_iva,importe_letra,activo,
+        modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista,origen,destino)
         VALUES
-        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{estado_doc},#{estado},#{folio},#{serie},#{observaciones},#{tipo_documento},#{tipo_archivo},#{razon_cancelar},#{cliente_id},#{cliente},#{cliente_rfc},#{metodo_pago},#{moneda},#{tipo_cambio},#{importe},#{descuento},#{subtotal},#{iva},#{total},#{porc_iva},#{importe_letra},#{activo},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot},#{buque},#{no_viaje},#{bl},#{booking},#{naviera},#{transportista})
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},
+        #{usuario_id},#{usuario},#{estado_doc},#{estado},#{folio},#{serie},#{observaciones},#{tipo_documento},
+        #{tipo_archivo},#{razon_cancelar},#{cliente_id},#{cliente},#{cliente_rfc},#{metodo_pago},#{moneda},
+        #{tipo_cambio},#{importe},#{descuento},#{subtotal},#{iva},#{total},#{porc_iva},#{importe_letra},
+        #{activo},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot},#{buque},#{no_viaje},#{bl},#{booking},#{naviera},#{transportista},
+        #{origen},#{destino})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM cabot_operacion 
@@ -73,7 +82,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
     <update id="CabotOperacionUpdate" parameterType="CabotOperacion">
         UPDATE cabot_operacion 
-        SET fecha_elaboracion = #{fecha_elaboracion},fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},estado_doc = #{estado_doc},estado = #{estado},folio = #{folio},serie = #{serie},observaciones = #{observaciones},tipo_documento = #{tipo_documento},tipo_archivo = #{tipo_archivo},razon_cancelar = #{razon_cancelar},cliente_id = #{cliente_id},cliente = #{cliente},cliente_rfc = #{cliente_rfc},metodo_pago = #{metodo_pago},moneda = #{moneda},tipo_cambio = #{tipo_cambio},importe = #{importe},descuento = #{descuento},subtotal = #{subtotal},iva = #{iva},total = #{total},porc_iva = #{porc_iva},importe_letra = #{importe_letra},activo = #{activo},modificacion_plan = #{modificacion_plan},tipo_exportacion = #{tipo_exportacion},planeacion_cabot = #{planeacion_cabot},buque = #{buque},no_viaje = #{no_viaje},bl = #{bl},booking = #{booking},naviera = #{naviera},transportista = #{transportista}
+        SET fecha_elaboracion = #{fecha_elaboracion},fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},
+        empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},estado_doc = #{estado_doc},
+        estado = #{estado},folio = #{folio},serie = #{serie},observaciones = #{observaciones},tipo_documento = #{tipo_documento},
+        tipo_archivo = #{tipo_archivo},razon_cancelar = #{razon_cancelar},cliente_id = #{cliente_id},
+        cliente = #{cliente},cliente_rfc = #{cliente_rfc},metodo_pago = #{metodo_pago},moneda = #{moneda},
+        tipo_cambio = #{tipo_cambio},importe = #{importe},descuento = #{descuento},subtotal = #{subtotal},
+        iva = #{iva},total = #{total},porc_iva = #{porc_iva},importe_letra = #{importe_letra},
+        activo = #{activo},modificacion_plan = #{modificacion_plan},tipo_exportacion = #{tipo_exportacion},
+        planeacion_cabot = #{planeacion_cabot},buque = #{buque},no_viaje = #{no_viaje},bl = #{bl},booking = #{booking},
+        naviera = #{naviera},transportista = #{transportista},origen = #{origen},destino=#{destino}
         WHERE id = #{id}
     </update>
 
