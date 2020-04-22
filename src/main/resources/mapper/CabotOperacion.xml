@@ -65,14 +65,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         usuario_id,usuario,estado_doc,estado,folio,serie,observaciones,tipo_documento,
         tipo_archivo,razon_cancelar,cliente_id,cliente,cliente_rfc,metodo_pago,moneda,
         tipo_cambio,importe,descuento,subtotal,iva,total,porc_iva,importe_letra,activo,
-        modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista,origen,destino)
+        modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista,origen,destino,numero_pedimento)
         VALUES
         (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},
         #{usuario_id},#{usuario},#{estado_doc},#{estado},#{folio},#{serie},#{observaciones},#{tipo_documento},
         #{tipo_archivo},#{razon_cancelar},#{cliente_id},#{cliente},#{cliente_rfc},#{metodo_pago},#{moneda},
         #{tipo_cambio},#{importe},#{descuento},#{subtotal},#{iva},#{total},#{porc_iva},#{importe_letra},
         #{activo},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot},#{buque},#{no_viaje},#{bl},#{booking},#{naviera},#{transportista},
-        #{origen},#{destino})
+        #{origen},#{destino},#{numero_pedimento})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM cabot_operacion 
@@ -91,7 +91,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         iva = #{iva},total = #{total},porc_iva = #{porc_iva},importe_letra = #{importe_letra},
         activo = #{activo},modificacion_plan = #{modificacion_plan},tipo_exportacion = #{tipo_exportacion},
         planeacion_cabot = #{planeacion_cabot},buque = #{buque},no_viaje = #{no_viaje},bl = #{bl},booking = #{booking},
-        naviera = #{naviera},transportista = #{transportista},origen = #{origen},destino=#{destino}
+        naviera = #{naviera},transportista = #{transportista},origen = #{origen},destino=#{destino}, numero_pedimento = #{numero_pedimento}
         WHERE id = #{id}
     </update>
 

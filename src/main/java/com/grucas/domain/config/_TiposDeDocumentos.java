@@ -28,6 +28,10 @@ public class _TiposDeDocumentos {
     public static final String DOCUMENTO_ENCUESTA_IMAGENES = "FOTOGRAFIAS DE ENCUESTA SEGURIDAD";
     public static final String DOCUMENTO_CLIENTE_EXPEDIENTE = "EXPEDIENTE DE CLIENTE";
     
+    
+    public static final String DOCUMENTO_OPERACION_CABOT = "OPERACION CABOT";
+    
+    
     public static final String DOCUMENTO_COMERCIAL_TARIFARIO = "TARIFARIO";
     public static final String DOCUMENTO_SAC = "SAC";
     

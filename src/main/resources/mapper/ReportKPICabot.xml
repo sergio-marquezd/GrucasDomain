@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ReportCabotKPI">
+    
+    <resultMap id="ResultReportKPICABOT" type="ReportKPICABOT">
+        <result property="operaciones_totales" column="totales"/>
+        <result property="operaciones_ok" column="ok"/>
+        <result property="operaciones_fail" column="fail"/>
+    </resultMap>
+    
+    <select id="Enero" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 1 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Febrero" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 2 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Marzo" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 3 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Abril" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 4 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Mayo" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 5 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Junio" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 6 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Julio" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 7 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Agosto" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 8 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Septiembre" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 9 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Octubre" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 10 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Noviembre" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 11 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+    
+    <select id="Diciembre" parameterType="map" resultMap="ResultReportKPICABOT">
+        SELECT 
+        YEAR(t.${fecha1}) AS annio, 
+        MONTHNAME(t.${fecha1}) AS mes,
+        DATEDIFF(t.${fecha1}, t.${fecha2}) AS tiempo,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE MONTH(t.${fecha1}) = MONTH(t.${fecha1}))AS totales,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo = #{dias_ok} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS ok,
+        (SELECT COUNT(t2.id) FROM cabot_operacion_det t2 WHERE tiempo >= #{dias_fail} AND MONTH(t.${fecha1}) = MONTH(t.${fecha1})) AS fail
+        FROM cabot_operacion_det t
+        WHERE MONTH(t.${fecha1}) = 12 AND YEAR(t.${fecha1}) = #{year}
+        GROUP BY YEAR(t.${fecha1})
+    </select>
+
+</mapper>
