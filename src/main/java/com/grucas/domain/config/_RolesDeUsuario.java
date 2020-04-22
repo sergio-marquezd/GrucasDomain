@@ -18,6 +18,10 @@ public class _RolesDeUsuario {
     //ROLES DE USUARIO PARA VARIOS SISTEMAS
     public static final String ROL_ADMINISTRADOR = "ADMINISTRADOR";
     public static final String ROL_INVENTARIOS = "INVENTARIOS";
+    public static final String ROL_OPERATIVO = "OPERACIONES";
+    public static final String ROL_CONTABILIDAD = "CONTABILIDAD";
+    public static final String ROL_REPORTES = "REPORTES";
+    
     
     //ROLES DE USUARIO DEFINIDOS PARA SISTEMA DE KARGO - CHEMOURS [CODE APP: 1001]
     public static final String ROL_EMBARQUES = "EMBARQUES";
