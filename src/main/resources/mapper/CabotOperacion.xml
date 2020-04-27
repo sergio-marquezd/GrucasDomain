@@ -5,58 +5,113 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     <resultMap id="ResultCabotOperacionID" type="Integer">
         <result property="value" column="id"/>
     </resultMap>
-    
-      <resultMap id="ResultCabotOperacion" type="CabotOperacion">
+
+    <resultMap id="ResultCabotOperacion" type="CabotOperacion">
         <result property="id" column="id"/>
+        <result property="fecha_elaboracion" column="fecha_elaboracion"/>
+        <result property="fecha_modificacion" column="fecha_modificacion"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="usuario" column="usuario"/>
+        <result property="estado_doc" column="estado_doc"/>
+        <result property="estado" column="estado"/>
         <result property="folio" column="folio"/>
+        <result property="serie" column="serie"/>
+        <result property="observaciones" column="observaciones"/>
+        <result property="tipo_documento" column="tipo_documento"/>
+        <result property="tipo_archivo" column="tipo_archivo"/>
+        <result property="razon_cancelar" column="razon_cancelar"/>
+        <result property="cliente_id" column="cliente_id"/>
+        <result property="cliente" column="cliente"/>
+        <result property="cliente_rfc" column="cliente_rfc"/>
+        <result property="metodo_pago" column="metodo_pago"/>
+        <result property="moneda" column="moneda"/>
+        <result property="tipo_cambio" column="tipo_cambio"/>
+        <result property="importe" column="importe"/>
+        <result property="descuento" column="descuento"/>
+        <result property="subtotal" column="subtotal"/>
+        <result property="iva" column="iva"/>
+        <result property="total" column="total"/>
+        <result property="porc_iva" column="porc_iva"/>
+        <result property="importe_letra" column="importe_letra"/>
+        <result property="activo" column="activo"/>
         <result property="modificacion_plan" column="modificacion_plan"/>
         <result property="tipo_exportacion" column="tipo_exportacion"/>
         <result property="planeacion_cabot" column="planeacion_cabot"/>
+        <result property="buque" column="buque"/>
+        <result property="no_viaje" column="no_viaje"/>
+        <result property="bl" column="bl"/>
+        <result property="booking" column="booking"/>
+        <result property="naviera" column="naviera"/>
+        <result property="transportista" column="transportista"/>
+        <result property="numero_pedimento" column="numero_pedimento"/>
+        <result property="origen" column="origen"/>
+        <result property="destino" column="destino"/>
+   
     </resultMap>
-    
-      <select id="CabotOperacionMaxID" resultMap="ResultCabotOperacionID">
-        SELECT max(id)+1 as id
-        FROM cabot_operacion
-    </select>
-    
-        <insert id="CabotOperacionInsert" parameterType="CabotOperacion" useGeneratedKeys="true" keyProperty="id">
 
-        INSERT INTO cabot_operacion
-        (folio,fecha_modificacion,fecha_elaboracion,modificacion_plan,tipo_exportacion,planeacion_cabot)
+    <select id="CabotOperacionMaxID" resultMap="ResultCabotOperacionID">
+        SELECT max(id)+1 as id
+        FROM cabot_operacion 
+    </select>
+
+    <insert id="CabotOperacionInsert" parameterType="CabotOperacion" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO cabot_operacion 
+        (fecha_elaboracion,fecha_modificacion,empresa_id,empresa,unidad_id,unidad,
+        usuario_id,usuario,estado_doc,estado,folio,serie,observaciones,tipo_documento,
+        tipo_archivo,razon_cancelar,cliente_id,cliente,cliente_rfc,metodo_pago,moneda,
+        tipo_cambio,importe,descuento,subtotal,iva,total,porc_iva,importe_letra,activo,
+        modificacion_plan,tipo_exportacion,planeacion_cabot,buque,no_viaje,bl,booking,naviera,transportista,origen,destino,numero_pedimento)
         VALUES
-        (#{folio},#{fecha_modificacion},#{fecha_elaboracion},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot})
+        (#{fecha_elaboracion},#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},
+        #{usuario_id},#{usuario},#{estado_doc},#{estado},#{folio},#{serie},#{observaciones},#{tipo_documento},
+        #{tipo_archivo},#{razon_cancelar},#{cliente_id},#{cliente},#{cliente_rfc},#{metodo_pago},#{moneda},
+        #{tipo_cambio},#{importe},#{descuento},#{subtotal},#{iva},#{total},#{porc_iva},#{importe_letra},
+        #{activo},#{modificacion_plan},#{tipo_exportacion},#{planeacion_cabot},#{buque},#{no_viaje},#{bl},#{booking},#{naviera},#{transportista},
+        #{origen},#{destino},#{numero_pedimento})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
-              SELECT MAX(id) FROM cabot_operacion
+              SELECT MAX(id) FROM cabot_operacion 
         </selectKey>
 
     </insert>
-    
-      <delete id="CabotOperacionDelete" parameterType="map">
+
+    <update id="CabotOperacionUpdate" parameterType="CabotOperacion">
+        UPDATE cabot_operacion 
+        SET fecha_elaboracion = #{fecha_elaboracion},fecha_modificacion = #{fecha_modificacion},empresa_id = #{empresa_id},
+        empresa = #{empresa},unidad_id = #{unidad_id},unidad = #{unidad},usuario_id = #{usuario_id},usuario = #{usuario},estado_doc = #{estado_doc},
+        estado = #{estado},folio = #{folio},serie = #{serie},observaciones = #{observaciones},tipo_documento = #{tipo_documento},
+        tipo_archivo = #{tipo_archivo},razon_cancelar = #{razon_cancelar},cliente_id = #{cliente_id},
+        cliente = #{cliente},cliente_rfc = #{cliente_rfc},metodo_pago = #{metodo_pago},moneda = #{moneda},
+        tipo_cambio = #{tipo_cambio},importe = #{importe},descuento = #{descuento},subtotal = #{subtotal},
+        iva = #{iva},total = #{total},porc_iva = #{porc_iva},importe_letra = #{importe_letra},
+        activo = #{activo},modificacion_plan = #{modificacion_plan},tipo_exportacion = #{tipo_exportacion},
+        planeacion_cabot = #{planeacion_cabot},buque = #{buque},no_viaje = #{no_viaje},bl = #{bl},booking = #{booking},
+        naviera = #{naviera},transportista = #{transportista},origen = #{origen},destino=#{destino}, numero_pedimento = #{numero_pedimento}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="CabotOperacionDelete" parameterType="map">
         DELETE FROM cabot_operacion 
         WHERE id = #{id}
     </delete>
-    
-     <update id="CabotOperacionUpdate" parameterType="CabotOperacion">
-        UPDATE cabot_operacion
-        SET folio = #{folio},fecha_modificacion = #{fecha_modificacion},
-        fecha_elaboracion = #{fecha_elaboracion},modificacion_plan = #{modificacion_plan},
-        planeacion_cabot = #{planeacion_cabot}
-        WHERE id = #{id}
-    </update>
-    
+
     <select id="CabotOperacionWhere" parameterType="map" resultMap="ResultCabotOperacion">
         SELECT *
-        FROM cabot_operacion
+        FROM cabot_operacion 
         ${where} 
         ${group} 
         ${order}
     </select>
-    
-     <select id="CabotOperacionOne" parameterType="map" resultMap="ResultCabotOperacion">
+
+    <select id="CabotOperacionOne" parameterType="map" resultMap="ResultCabotOperacion">
         SELECT *
-        FROM cabot_operacion
+        FROM cabot_operacion 
         ${where} 
     </select>
-    
-    </mapper>
+
+</mapper>

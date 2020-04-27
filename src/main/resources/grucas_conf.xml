@@ -33,11 +33,13 @@
         <typeAlias alias="CabotOperacionDet" type="com.grucas.domain.model.CabotOperacionDet"/>
         <typeAlias alias="CabotOperacion" type="com.grucas.domain.model.CabotOperacion"/>
         <typeAlias alias="ReportKPI" type="com.grucas.domain.model.ReportKPI"/>
-           
+        <typeAlias alias="Naviera" type="com.grucas.domain.model.Naviera"/>
+        <typeAlias alias="Transportista" type="com.grucas.domain.model.Transportista"/>
+        <typeAlias alias="OrigenDestino" type="com.grucas.domain.model.OrigenDestino"/>
+        <typeAlias alias="ReportKPICABOT" type="com.grucas.domain.clientes.cabot.domain.ReportKPICABOT"/>
     </typeAliases>
     
     <environments default="catalogos">  
-        
         <environment id="catalogos">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
@@ -54,7 +56,6 @@
     </environments>
     
     <mappers>
-      
         <mapper resource="mapper/TraceGrucas.xml"/>
         <mapper resource="mapper/Usuario.xml"/>
         <mapper resource="mapper/Rol.xml"/>
@@ -81,6 +82,10 @@
         <mapper resource="mapper/CabotOperacionDet.xml"/> 
         <mapper resource="mapper/CabotOperacion.xml"/>
         <mapper resource="mapper/ReportKPI.xml"/>
+        <mapper resource="mapper/Naviera.xml"/>
+        <mapper resource="mapper/Transportista.xml"/>
+        <mapper resource="mapper/OrigenDestino.xml"/>
+        <mapper resource="mapper/ReportKPICabot.xml"/>
     </mappers>
   
 </configuration>
