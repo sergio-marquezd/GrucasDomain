@@ -27,6 +27,7 @@ public class CabotOperacionDet {
     String nombre_caja_contenedor;//para los dos casos
     String nombre_chofer;
     LocalDateTime t_fecha_asignacion_carga;
+    LocalDateTime t_fecha_asignacion_carga_real;
     LocalDateTime t_fecha_reservacion_transporte;
     LocalDateTime t_fecha_entrega_documentos_cabot;
     
@@ -53,6 +54,8 @@ public class CabotOperacionDet {
     LocalDateTime m_fecha_confirmacion_naviera_a_grucas;
     LocalDateTime m_fecha_emision_bl;
     LocalDateTime m_fecha_envio_documentos_a_cliente;
+    
+    String observaciones;
 
     public CabotOperacionDet() {
     }
@@ -328,6 +331,22 @@ public class CabotOperacionDet {
 
     public void setM_fecha_envio_documentos_a_cliente(LocalDateTime m_fecha_envio_documentos_a_cliente) {
         this.m_fecha_envio_documentos_a_cliente = m_fecha_envio_documentos_a_cliente;
+    }
+
+    public LocalDateTime getT_fecha_asignacion_carga_real() {
+        return t_fecha_asignacion_carga_real;
+    }
+
+    public void setT_fecha_asignacion_carga_real(LocalDateTime t_fecha_asignacion_carga_real) {
+        this.t_fecha_asignacion_carga_real = t_fecha_asignacion_carga_real;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
     }
 
     

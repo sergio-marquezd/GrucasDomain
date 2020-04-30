@@ -17,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="nombre_caja_contenedor" column="nombre_caja_contenedor"/>
         <result property="nombre_chofer" column="nombre_chofer"/>
         <result property="t_fecha_asignacion_carga" column="t_fecha_asignacion_carga"/>
+        <result property="t_fecha_asignacion_carga_real" column="t_fecha_asignacion_carga_real"/>
         <result property="t_fecha_reservacion_transporte" column="t_fecha_reservacion_transporte"/>
         <result property="t_fecha_entrega_documentos_cabot" column="t_fecha_entrega_documentos_cabot"/>
         <result property="t_fecha_arribo_frontera" column="t_fecha_arribo_frontera"/>
@@ -41,6 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="m_fecha_confirmacion_naviera_a_grucas" column="m_fecha_confirmacion_naviera_a_grucas"/>
         <result property="m_fecha_emision_bl" column="m_fecha_emision_bl"/>
         <result property="m_fecha_envio_documentos_a_cliente" column="m_fecha_envio_documentos_a_cliente"/>
+        <result property="observaciones" column="observaciones"/>    
     </resultMap>
 
     <select id="CabotOperacionDetMaxID" resultMap="ResultCabotOperacionDetID">
@@ -52,24 +54,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 
         INSERT INTO cabot_operacion_det 
         (fecha_elaboracion,nombre_chofer,fecha_modificacion,documento_id,
-        folio,tipo_exportacion,planeacion_cabot,nombre_caja_contenedor,t_fecha_asignacion_carga,
+        folio,tipo_exportacion,planeacion_cabot,nombre_caja_contenedor,t_fecha_asignacion_carga,t_fecha_asignacion_carga_real,
         t_fecha_reservacion_transporte,t_fecha_entrega_documentos_cabot,t_fecha_arribo_frontera,
         t_fecha_declaracion_expo,t_fecha_cruce_frontera,t_fecha_entrega_transportista_usa,
         t_fecha_llegada_destino,t_fecha_envio_pod,m_fecha_eta,m_fecha_reservacion_transporte,
         m_fecha_confirmacion_transportista,m_fecha_tramite_maniobras_vacios,m_fecha_retiro_contenedores_vacios,
         m_fecha_carga_cabot,m_fecha_entrega_documentos_cabot,m_fecha_tramite_maniobras_llenos,
         m_fecha_modulacion_pedimento,m_fecha_entrega_contenedor_puerto,m_fecha_salida_buque,m_fecha_llegada_destino_final,
-        m_fecha_confirmacion_naviera,m_fecha_confirmacion_naviera_a_grucas,m_fecha_emision_bl,m_fecha_envio_documentos_a_cliente)
+        m_fecha_confirmacion_naviera,m_fecha_confirmacion_naviera_a_grucas,m_fecha_emision_bl,m_fecha_envio_documentos_a_cliente,observaciones)
         VALUES
         (#{fecha_elaboracion},#{nombre_chofer},#{fecha_modificacion},#{documento_id},
-        #{folio},#{tipo_exportacion},#{planeacion_cabot},#{nombre_caja_contenedor},#{t_fecha_asignacion_carga},
+        #{folio},#{tipo_exportacion},#{planeacion_cabot},#{nombre_caja_contenedor},#{t_fecha_asignacion_carga},#{t_fecha_asignacion_carga_real},
         #{t_fecha_reservacion_transporte},#{t_fecha_entrega_documentos_cabot},#{t_fecha_arribo_frontera},
         #{t_fecha_declaracion_expo},#{t_fecha_cruce_frontera},#{t_fecha_entrega_transportista_usa},
         #{t_fecha_llegada_destino},#{t_fecha_envio_pod},#{m_fecha_eta},#{m_fecha_reservacion_transporte},
         #{m_fecha_confirmacion_transportista},#{m_fecha_tramite_maniobras_vacios},#{m_fecha_retiro_contenedores_vacios},
         #{m_fecha_carga_cabot},#{m_fecha_entrega_documentos_cabot},#{m_fecha_tramite_maniobras_llenos},
         #{m_fecha_modulacion_pedimento},#{m_fecha_entrega_contenedor_puerto},#{m_fecha_salida_buque},#{m_fecha_llegada_destino_final},
-        #{m_fecha_confirmacion_naviera},#{m_fecha_confirmacion_naviera_a_grucas},#{m_fecha_emision_bl},#{m_fecha_envio_documentos_a_cliente})
+        #{m_fecha_confirmacion_naviera},#{m_fecha_confirmacion_naviera_a_grucas},#{m_fecha_emision_bl},#{m_fecha_envio_documentos_a_cliente},#{observaciones})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM cabot_operacion_det 
@@ -81,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         UPDATE cabot_operacion_det 
         SET fecha_elaboracion = #{fecha_elaboracion},nombre_chofer=#{nombre_chofer},
         fecha_modificacion = #{fecha_modificacion},documento_id = #{documento_id},folio = #{folio},tipo_exportacion = #{tipo_exportacion},
-        planeacion_cabot = #{planeacion_cabot},nombre_caja_contenedor = #{nombre_caja_contenedor},t_fecha_asignacion_carga = #{t_fecha_asignacion_carga},
+        planeacion_cabot = #{planeacion_cabot},nombre_caja_contenedor = #{nombre_caja_contenedor},t_fecha_asignacion_carga = #{t_fecha_asignacion_carga},t_fecha_asignacion_carga_real = #{t_fecha_asignacion_carga_real},
         t_fecha_reservacion_transporte = #{t_fecha_reservacion_transporte},t_fecha_entrega_documentos_cabot = #{t_fecha_entrega_documentos_cabot},
         t_fecha_arribo_frontera = #{t_fecha_arribo_frontera},t_fecha_declaracion_expo = #{t_fecha_declaracion_expo},t_fecha_cruce_frontera = #{t_fecha_cruce_frontera},
         t_fecha_entrega_transportista_usa = #{t_fecha_entrega_transportista_usa},t_fecha_llegada_destino = #{t_fecha_llegada_destino},t_fecha_envio_pod = #{t_fecha_envio_pod},
@@ -92,7 +94,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         m_fecha_entrega_contenedor_puerto = #{m_fecha_entrega_contenedor_puerto},m_fecha_salida_buque = #{m_fecha_salida_buque},
         m_fecha_llegada_destino_final = #{m_fecha_llegada_destino_final},
         m_fecha_confirmacion_naviera=#{m_fecha_confirmacion_naviera},m_fecha_confirmacion_naviera_a_grucas=#{m_fecha_confirmacion_naviera_a_grucas},
-        m_fecha_emision_bl=#{m_fecha_emision_bl},m_fecha_envio_documentos_a_cliente=#{m_fecha_envio_documentos_a_cliente}
+        m_fecha_emision_bl=#{m_fecha_emision_bl},m_fecha_envio_documentos_a_cliente=#{m_fecha_envio_documentos_a_cliente},observaciones=#{observaciones}
         WHERE id = #{id}
     </update>
 
