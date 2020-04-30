@@ -5,11 +5,13 @@
  */
 package com.grucas.domain.clientes.cabot.domain;
 
+import java.io.Serializable;
+
 /**
  *
  * @author GRUCAS
  */
-public class ReportKPICABOT {
+public class ReportKPICABOT implements Serializable {
  
     private Integer operaciones_totales;
     private Integer operaciones_ok;
