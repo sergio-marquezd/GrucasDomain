@@ -29,6 +29,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="m_fecha_eta" column="m_fecha_eta"/>
         <result property="m_fecha_reservacion_transporte" column="m_fecha_reservacion_transporte"/>
         <result property="m_fecha_confirmacion_transportista" column="m_fecha_confirmacion_transportista"/>
+        <result property="m_fecha_reservacion_booking" column="m_fecha_reservacion_booking"/>
+        <result property="m_fecha_confirmacion_booking" column="m_fecha_confirmacion_booking"/>
         <result property="m_fecha_tramite_maniobras_vacios" column="m_fecha_tramite_maniobras_vacios"/>
         <result property="m_fecha_retiro_contenedores_vacios" column="m_fecha_retiro_contenedores_vacios"/>
         <result property="m_fecha_carga_cabot" column="m_fecha_carga_cabot"/>
@@ -37,6 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="m_fecha_modulacion_pedimento" column="m_fecha_modulacion_pedimento"/>
         <result property="m_fecha_entrega_contenedor_puerto" column="m_fecha_entrega_contenedor_puerto"/>
         <result property="m_fecha_salida_buque" column="m_fecha_salida_buque"/>
+        <result property="m_fecha_salida_buque_estimada" column="m_fecha_salida_buque_estimada"/>
         <result property="m_fecha_llegada_destino_final" column="m_fecha_llegada_destino_final"/>
         <result property="m_fecha_confirmacion_naviera" column="m_fecha_confirmacion_naviera"/>
         <result property="m_fecha_confirmacion_naviera_a_grucas" column="m_fecha_confirmacion_naviera_a_grucas"/>
@@ -61,7 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         m_fecha_confirmacion_transportista,m_fecha_tramite_maniobras_vacios,m_fecha_retiro_contenedores_vacios,
         m_fecha_carga_cabot,m_fecha_entrega_documentos_cabot,m_fecha_tramite_maniobras_llenos,
         m_fecha_modulacion_pedimento,m_fecha_entrega_contenedor_puerto,m_fecha_salida_buque,m_fecha_llegada_destino_final,
-        m_fecha_confirmacion_naviera,m_fecha_confirmacion_naviera_a_grucas,m_fecha_emision_bl,m_fecha_envio_documentos_a_cliente,observaciones)
+        m_fecha_confirmacion_naviera,m_fecha_confirmacion_naviera_a_grucas,m_fecha_emision_bl,m_fecha_envio_documentos_a_cliente,
+        m_fecha_reservacion_booking, m_fecha_confirmacion_booking, observaciones, m_fecha_salida_buque_estimada)
         VALUES
         (#{fecha_elaboracion},#{nombre_chofer},#{fecha_modificacion},#{documento_id},
         #{folio},#{tipo_exportacion},#{planeacion_cabot},#{nombre_caja_contenedor},#{t_fecha_asignacion_carga},#{t_fecha_asignacion_carga_real},
@@ -71,7 +75,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         #{m_fecha_confirmacion_transportista},#{m_fecha_tramite_maniobras_vacios},#{m_fecha_retiro_contenedores_vacios},
         #{m_fecha_carga_cabot},#{m_fecha_entrega_documentos_cabot},#{m_fecha_tramite_maniobras_llenos},
         #{m_fecha_modulacion_pedimento},#{m_fecha_entrega_contenedor_puerto},#{m_fecha_salida_buque},#{m_fecha_llegada_destino_final},
-        #{m_fecha_confirmacion_naviera},#{m_fecha_confirmacion_naviera_a_grucas},#{m_fecha_emision_bl},#{m_fecha_envio_documentos_a_cliente},#{observaciones})
+        #{m_fecha_confirmacion_naviera},#{m_fecha_confirmacion_naviera_a_grucas},#{m_fecha_emision_bl},#{m_fecha_envio_documentos_a_cliente},
+        #{m_fecha_reservacion_booking},#{m_fecha_confirmacion_booking},#{observaciones}, {#m_fecha_salida_buque_estimada})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM cabot_operacion_det 
@@ -94,7 +99,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         m_fecha_entrega_contenedor_puerto = #{m_fecha_entrega_contenedor_puerto},m_fecha_salida_buque = #{m_fecha_salida_buque},
         m_fecha_llegada_destino_final = #{m_fecha_llegada_destino_final},
         m_fecha_confirmacion_naviera=#{m_fecha_confirmacion_naviera},m_fecha_confirmacion_naviera_a_grucas=#{m_fecha_confirmacion_naviera_a_grucas},
-        m_fecha_emision_bl=#{m_fecha_emision_bl},m_fecha_envio_documentos_a_cliente=#{m_fecha_envio_documentos_a_cliente},observaciones=#{observaciones}
+        m_fecha_emision_bl=#{m_fecha_emision_bl},m_fecha_envio_documentos_a_cliente=#{m_fecha_envio_documentos_a_cliente},
+        m_fecha_reservacion_booking = #{m_fecha_reservacion_booking},m_fecha_reservacion_booking = #{m_fecha_confirmacion_booking},observaciones=#{observaciones},
+        m_fecha_salida_buque_estimada = {#m_fecha_salida_buque_estimada}
         WHERE id = #{id}
     </update>
 
