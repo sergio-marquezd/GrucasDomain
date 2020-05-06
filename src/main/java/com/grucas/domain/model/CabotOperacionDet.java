@@ -27,6 +27,7 @@ public class CabotOperacionDet {
     String nombre_caja_contenedor;//para los dos casos
     String nombre_chofer;
     LocalDateTime t_fecha_asignacion_carga;
+    LocalDateTime t_fecha_asignacion_carga_real;
     LocalDateTime t_fecha_reservacion_transporte;
     LocalDateTime t_fecha_entrega_documentos_cabot;
     
@@ -40,6 +41,8 @@ public class CabotOperacionDet {
     LocalDateTime m_fecha_eta;
     LocalDateTime m_fecha_reservacion_transporte;
     LocalDateTime m_fecha_confirmacion_transportista;
+    LocalDateTime m_fecha_reservacion_booking;
+    LocalDateTime m_fecha_confirmacion_booking;
     LocalDateTime m_fecha_tramite_maniobras_vacios;
     LocalDateTime m_fecha_retiro_contenedores_vacios;
     LocalDateTime m_fecha_carga_cabot;
@@ -47,12 +50,15 @@ public class CabotOperacionDet {
     LocalDateTime m_fecha_tramite_maniobras_llenos;
     LocalDateTime m_fecha_modulacion_pedimento;  // Pago Pedimento
     LocalDateTime m_fecha_entrega_contenedor_puerto;
+    LocalDateTime m_fecha_salida_buque_estimada;
     LocalDateTime m_fecha_salida_buque;
     LocalDateTime m_fecha_llegada_destino_final;
     LocalDateTime m_fecha_confirmacion_naviera;
     LocalDateTime m_fecha_confirmacion_naviera_a_grucas;
     LocalDateTime m_fecha_emision_bl;
     LocalDateTime m_fecha_envio_documentos_a_cliente;
+    
+    String observaciones;
 
     public CabotOperacionDet() {
     }
@@ -330,6 +336,44 @@ public class CabotOperacionDet {
         this.m_fecha_envio_documentos_a_cliente = m_fecha_envio_documentos_a_cliente;
     }
 
-    
-    
+    public LocalDateTime getT_fecha_asignacion_carga_real() {
+        return t_fecha_asignacion_carga_real;
+    }
+
+    public void setT_fecha_asignacion_carga_real(LocalDateTime t_fecha_asignacion_carga_real) {
+        this.t_fecha_asignacion_carga_real = t_fecha_asignacion_carga_real;
+    }
+
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
+    public LocalDateTime getM_fecha_reservacion_booking() {
+        return m_fecha_reservacion_booking;
+    }
+
+    public void setM_fecha_reservacion_booking(LocalDateTime m_fecha_reservacion_booking) {
+        this.m_fecha_reservacion_booking = m_fecha_reservacion_booking;
+    }
+
+    public LocalDateTime getM_fecha_confirmacion_booking() {
+        return m_fecha_confirmacion_booking;
+    }
+
+    public void setM_fecha_confirmacion_booking(LocalDateTime m_fecha_confirmacion_booking) {
+        this.m_fecha_confirmacion_booking = m_fecha_confirmacion_booking;
+    }
+
+    public LocalDateTime getM_fecha_salida_buque_estimada() {
+        return m_fecha_salida_buque_estimada;
+    }
+
+    public void setM_fecha_salida_buque_estimada(LocalDateTime m_fecha_salida_buque_estimada) {
+        this.m_fecha_salida_buque_estimada = m_fecha_salida_buque_estimada;
+    }
+   
 }
