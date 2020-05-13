@@ -76,7 +76,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         #{m_fecha_carga_cabot},#{m_fecha_entrega_documentos_cabot},#{m_fecha_tramite_maniobras_llenos},
         #{m_fecha_modulacion_pedimento},#{m_fecha_entrega_contenedor_puerto},#{m_fecha_salida_buque},#{m_fecha_llegada_destino_final},
         #{m_fecha_confirmacion_naviera},#{m_fecha_confirmacion_naviera_a_grucas},#{m_fecha_emision_bl},#{m_fecha_envio_documentos_a_cliente},
-        #{m_fecha_reservacion_booking},#{m_fecha_confirmacion_booking},#{observaciones}, {#m_fecha_salida_buque_estimada})
+        #{m_fecha_reservacion_booking},#{m_fecha_confirmacion_booking},#{observaciones}, #{m_fecha_salida_buque_estimada})
         
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
               SELECT MAX(id) FROM cabot_operacion_det 
@@ -101,7 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         m_fecha_confirmacion_naviera=#{m_fecha_confirmacion_naviera},m_fecha_confirmacion_naviera_a_grucas=#{m_fecha_confirmacion_naviera_a_grucas},
         m_fecha_emision_bl=#{m_fecha_emision_bl},m_fecha_envio_documentos_a_cliente=#{m_fecha_envio_documentos_a_cliente},
         m_fecha_reservacion_booking = #{m_fecha_reservacion_booking},m_fecha_reservacion_booking = #{m_fecha_confirmacion_booking},observaciones=#{observaciones},
-        m_fecha_salida_buque_estimada = {#m_fecha_salida_buque_estimada}
+        m_fecha_salida_buque_estimada = #{m_fecha_salida_buque_estimada}
         WHERE id = #{id}
     </update>
 
