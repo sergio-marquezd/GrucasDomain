@@ -57,6 +57,7 @@ public class Cliente extends ObjectBase {
     String fisica_moral;
     String Telefono;
     String correo;
+    String comentarios;
 
     Boolean es_corresponsal;
     Boolean corresponsal;
@@ -90,6 +91,7 @@ public class Cliente extends ObjectBase {
         email_ficha_clasificacion = "";
         email_cuenta_gastos = "";
         email_manifestacion_valor = "";
+        comentarios ="";
         aereo = false;
         maritimo = false;
         frontera = false;
@@ -421,6 +423,14 @@ public class Cliente extends ObjectBase {
 
     public void setEs_corresponsal(Boolean es_corresponsal) {
         this.es_corresponsal = es_corresponsal;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
     }
     
 
