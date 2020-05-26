@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Vendedor">
+
+    <resultMap id="ResultVendedorID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+
+    <resultMap id="ResultVendedor" type="Vendedor">
+        <result property="id" column="id"/>
+        <result property="empleado_id" column="empleado_id"/>
+        <result property="no_empleado" column="no_empleado"/>
+        <result property="usuario_id" column="usuario_id"/>
+        <result property="nombre" column="nombre"/>
+        <result property="apellido_paterno" column="apellido_paterno"/>
+        <result property="apellido_materno" column="apellido_materno"/>
+        <result property="email" column="email"/>
+        <result property="telefono" column="telefono"/>
+    </resultMap>
+
+    <select id="VendedorMaxID" resultMap="ResultVendedorID">
+        SELECT max(id)+1 as id
+        FROM vendedor 
+    </select>
+
+    <insert id="VendedorInsert" parameterType="Vendedor" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO vendedor 
+        (empleado_id,no_empleado,usuario_id,nombre,apellido_paterno,apellido_materno,email,telefono)
+        VALUES
+        (#{empleado_id},#{no_empleado},#{usuario_id},#{nombre},#{apellido_paterno},#{apellido_materno},#{email},#{telefono})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM vendedor 
+        </selectKey>
+
+    </insert>
+
+    <update id="VendedorUpdate" parameterType="Vendedor">
+        UPDATE vendedor 
+        SET empleado_id = #{empleado_id},no_empleado = #{no_empleado},usuario_id = #{usuario_id},nombre = #{nombre},apellido_paterno = #{apellido_paterno},apellido_materno = #{apellido_materno},email = #{email},telefono = #{telefono}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="VendedorDelete" parameterType="map">
+        DELETE FROM vendedor 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="VendedorWhere" parameterType="map" resultMap="ResultVendedor">
+        SELECT *
+        FROM vendedor 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+    <select id="VendedorOne" parameterType="map" resultMap="ResultVendedor">
+        SELECT *
+        FROM vendedor 
+        ${where} 
+    </select>
+
+</mapper>

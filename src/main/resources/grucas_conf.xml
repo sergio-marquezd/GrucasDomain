@@ -36,6 +36,7 @@
         <typeAlias alias="Naviera" type="com.grucas.domain.model.Naviera"/>
         <typeAlias alias="Transportista" type="com.grucas.domain.model.Transportista"/>
         <typeAlias alias="OrigenDestino" type="com.grucas.domain.model.OrigenDestino"/>
+        <typeAlias alias="Vendedor" type="com.grucas.domain.model.Vendedor"/>
         <typeAlias alias="ReportKPICABOT" type="com.grucas.domain.clientes.cabot.domain.ReportKPICABOT"/>
     </typeAliases>
     
@@ -85,6 +86,7 @@
         <mapper resource="mapper/Naviera.xml"/>
         <mapper resource="mapper/Transportista.xml"/>
         <mapper resource="mapper/OrigenDestino.xml"/>
+        <mapper resource="mapper/Vendedor.xml"/>
         <mapper resource="mapper/ReportKPICabot.xml"/>
     </mappers>
   
