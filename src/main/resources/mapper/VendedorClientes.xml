@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VendedorClientes">
+    
+    <resultMap id="ResultVendedorClientesID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+     <resultMap id="ResultVendedorClientes" type="VendedorClientes">
+        <result property="id" column="id"/>
+        <result property="vendedor_id" column="vendedor_id"/>
+        <result property="cliente_id" column="cliente_id"/>
+    </resultMap>
+    
+      <select id="VendedorClientesMaxID" resultMap="ResultVendedorClientesID">
+        SELECT max(id)+1 as id
+        FROM vendedor_clientes 
+    </select>
+    
+     <insert id="VendedorClientesInsert" parameterType="VendedorClientes" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO vendedor_clientes 
+        (vendedor_id,cliente_id)
+        VALUES
+        (#{vendedor_id},#{cliente_id})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM vendedor_clientes 
+        </selectKey>
+
+    </insert>
+    
+      <update id="VendedorClientesUpdate" parameterType="VendedorClientes">
+        UPDATE vendedor_clientes 
+        SET vendedor_id = #{vendedor_id},cliente_id = #{cliente_id}
+        WHERE id = #{id}
+    </update>
+    
+     <delete id="VendedorClientesDelete" parameterType="map">
+        DELETE FROM vendedor_clientes 
+        WHERE id = #{id}
+    </delete>
+    
+     <select id="VendedorClientesWhere" parameterType="map" resultMap="ResultVendedorClientes">
+        SELECT *
+        FROM vendedor_clientes 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+    <select id="VendedorClientesOne" parameterType="map" resultMap="ResultVendedorClientes">
+        SELECT *
+        FROM vendedor_clientes 
+        ${where} 
+    </select>
+    
+     <select id="ClientesByVendedorID" parameterType="map" resultMap="ResultVendedorClientes">
+       SELECT t1.id,t2.razon_social,t2.contacto_nombre,t2.id AS cliente_id
+       FROM vendedor_clientes t1
+       INNER JOIN cliente t2 ON t1.cliente_id = t2.id
+       WHERE t1.vendedor_id =#{id}
+    </select>
+    
+    </mapper>
+    
+    

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VendedorUnidadNegocio">
+    
+      <resultMap id="ResultVendedorUnidadNegocioID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+      <resultMap id="ResultVendedorUnidadNegocio" type="VendedorUnidadNegocio">
+        <result property="id" column="id"/>
+        <result property="vendedor_id" column="vendedor_id"/>
+        <result property="unidad_negocio_id" column="unidad_negocio_id"/>
+        <result property="unidad_negocio" column="unidad_negocio"/>
+    </resultMap>
+    
+     <select id="VendedorUnidadNegocioMaxID" resultMap="ResultVendedorUnidadNegocioID">
+        SELECT max(id)+1 as id
+        FROM vendedor_unidad_negocio
+    </select>
+    
+     <insert id="VendedorUnidadNegocioInsert" parameterType="VendedorUnidadNegocio" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO vendedor_unidad_negocio 
+        (vendedor_id,unidad_negocio_id)
+        VALUES
+        (#{vendedor_id},#{unidad_negocio_id})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM vendedor_unidad_negocio 
+        </selectKey>
+
+    </insert>
+    
+     <update id="VendedorUnidadNegocioUpdate" parameterType="VendedorUnidadNegocio">
+        UPDATE vendedor_unidad_negocio 
+        SET vendedor_id = #{vendedor_id},unidad_negocio_id = #{unidad_negocio_id}
+        WHERE id = #{id}
+    </update>
+    
+     <delete id="VendedorUnidadNegocioDelete" parameterType="map">
+        DELETE FROM vendedor_unidad_negocio 
+        WHERE id = #{id}
+    </delete>
+    
+    <select id="VendedorUnidadNegocioWhere" parameterType="map" resultMap="ResultVendedorUnidadNegocio">
+        SELECT *
+        FROM vendedor_unidad_negocio 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+     <select id="VendedorUnidadNegocioOne" parameterType="map" resultMap="ResultVendedorUnidadNegocio">
+        SELECT *
+        FROM vendedor_unidad_negocio 
+        ${where} 
+    </select>
+    
+    <select id="UnidadNegocioByVendedorID" parameterType="map" resultMap="ResultVendedorUnidadNegocio">
+       SELECT t2.nombre AS unidad_negocio,t2.id AS unidad_negocio_id,t1.id,t1.vendedor_id
+       FROM vendedor_unidad_negocio t1
+       INNER JOIN unidad_negocio t2 ON t1.unidad_negocio_id = t2.id
+       WHERE t1.vendedor_id =#{id}
+    </select>
+
+</mapper>
+    
+    

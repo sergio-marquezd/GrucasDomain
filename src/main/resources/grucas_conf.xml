@@ -38,6 +38,8 @@
         <typeAlias alias="OrigenDestino" type="com.grucas.domain.model.OrigenDestino"/>
         <typeAlias alias="Vendedor" type="com.grucas.domain.model.Vendedor"/>
         <typeAlias alias="ReportKPICABOT" type="com.grucas.domain.clientes.cabot.domain.ReportKPICABOT"/>
+        <typeAlias alias="VendedorUnidadNegocio" type="com.grucas.domain.relations.VendedorUnidadNegocio"/>
+        <typeAlias alias="VendedorClientes" type="com.grucas.domain.relations.VendedorClientes"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -87,7 +89,8 @@
         <mapper resource="mapper/Transportista.xml"/>
         <mapper resource="mapper/OrigenDestino.xml"/>
         <mapper resource="mapper/Vendedor.xml"/>
-        <mapper resource="mapper/ReportKPICabot.xml"/>
+        <mapper resource="mapper/VendedorUnidadNegocio.xml"/>
+        <mapper resource="mapper/VendedorClientes.xml"/>
     </mappers>
   
 </configuration>
