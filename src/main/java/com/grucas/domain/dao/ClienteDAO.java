@@ -160,7 +160,7 @@ public class ClienteDAO {
             map.put("where", strWhere.length()==0?"":" WHERE " + strWhere);
 
             session = sqlSessionFactory.openSession();
-            object = session.selectOne("ClienteWhere",map);
+            object = session.selectOne("ClienteOne",map);
 
             ok = true;
             
