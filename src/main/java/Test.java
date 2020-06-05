@@ -1,5 +1,7 @@
 
+import com.grucas.domain.model.Cliente;
 import com.grucas.domain.model.Usuario;
+import com.grucas.domain.services.ClienteService;
 import com.grucas.domain.services.ProductoServicioService;
 import com.grucas.domain.services.UsuarioService;
 
@@ -8,7 +10,6 @@ import com.grucas.domain.services.UsuarioService;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author GrucasDev
@@ -19,7 +20,7 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
 //        UsuarioService service = new UsuarioService();
 //        service.login("a", "a", 1001);
 //        Usuario user = service.getObject();
@@ -39,11 +40,20 @@ public class Test {
 //        UnidadNegocioService service = new UnidadNegocioService();
 //        service.getUnidadesPorUsuarioSistema(user, 1001);
 //        System.out.println("Unidades:" + service.getObjects().toString());
+//        ProductoServicioService service = new ProductoServicioService();
+//        service.getProducto("", "", "");
+//        System.out.println(service.getObjects());
 
-        ProductoServicioService service = new ProductoServicioService();
-        service.getProducto("", "", "");
-        System.out.println(service.getObjects());
+        ClienteService service = new ClienteService();
+        service.getOneCliente("no_contable = 14691");
+        Cliente cliente = service.getObject();
+
+        System.out.println("SERVICE     " + service.getObject());
+//
+//        System.out.println(cliente.getId());
+//        System.out.println(cliente.getRazon_social());
+//        System.out.println(cliente.getRfc());
 
     }
-    
+
 }
