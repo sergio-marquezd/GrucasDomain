@@ -12,7 +12,6 @@ import java.time.temporal.ChronoUnit;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author GrucasDev
@@ -23,7 +22,7 @@ public class Test {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
 //        UsuarioService service = new UsuarioService();
 //        service.login("a", "a", 1001);
 //        Usuario user = service.getObject();
@@ -43,6 +42,9 @@ public class Test {
 //        UnidadNegocioService service = new UnidadNegocioService();
 //        service.getUnidadesPorUsuarioSistema(user, 1001);
 //        System.out.println("Unidades:" + service.getObjects().toString());
+//        ProductoServicioService service = new ProductoServicioService();
+//        service.getProducto("", "", "");
+//        System.out.println(service.getObjects());
 
 //        ProductoServicioService service = new ProductoServicioService();
 //        service.getProducto("", "", "");
