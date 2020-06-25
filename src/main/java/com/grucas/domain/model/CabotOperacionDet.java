@@ -58,6 +58,15 @@ public class CabotOperacionDet {
     LocalDateTime m_fecha_emision_bl;
     LocalDateTime m_fecha_envio_documentos_a_cliente;
     
+    //aereo 
+    String a_guia;
+    String a_aeropuerto;
+    LocalDateTime a_fecha_llegada;
+    LocalDateTime a_fecha_llegada_aeropuerto;
+    LocalDateTime a_fecha_recoleccion_guia;
+    String a_material_importacion;
+    String a_peso_guia;
+    
     String observaciones;
 
     public CabotOperacionDet() {
@@ -375,5 +384,62 @@ public class CabotOperacionDet {
     public void setM_fecha_salida_buque_estimada(LocalDateTime m_fecha_salida_buque_estimada) {
         this.m_fecha_salida_buque_estimada = m_fecha_salida_buque_estimada;
     }
+
+    public String getA_guia() {
+        return a_guia;
+    }
+
+    public void setA_guia(String a_guia) {
+        this.a_guia = a_guia;
+    }
+
+    public String getA_aeropuerto() {
+        return a_aeropuerto;
+    }
+
+    public void setA_aeropuerto(String a_aeropuerto) {
+        this.a_aeropuerto = a_aeropuerto;
+    }
+
+    public LocalDateTime getA_fecha_llegada() {
+        return a_fecha_llegada;
+    }
+
+    public void setA_fecha_llegada(LocalDateTime a_fecha_llegada) {
+        this.a_fecha_llegada = a_fecha_llegada;
+    }
+
+    public LocalDateTime getA_fecha_llegada_aeropuerto() {
+        return a_fecha_llegada_aeropuerto;
+    }
+
+    public void setA_fecha_llegada_aeropuerto(LocalDateTime a_fecha_llegada_aeropuerto) {
+        this.a_fecha_llegada_aeropuerto = a_fecha_llegada_aeropuerto;
+    }
+
+    public LocalDateTime getA_fecha_recoleccion_guia() {
+        return a_fecha_recoleccion_guia;
+    }
+
+    public void setA_fecha_recoleccion_guia(LocalDateTime a_fecha_recoleccion_guia) {
+        this.a_fecha_recoleccion_guia = a_fecha_recoleccion_guia;
+    }
+
+    public String getA_material_importacion() {
+        return a_material_importacion;
+    }
+
+    public void setA_material_importacion(String a_material_importacion) {
+        this.a_material_importacion = a_material_importacion;
+    }
+
+    public String getA_peso_guia() {
+        return a_peso_guia;
+    }
+
+    public void setA_peso_guia(String a_peso_guia) {
+        this.a_peso_guia = a_peso_guia;
+    }
    
+    
 }
