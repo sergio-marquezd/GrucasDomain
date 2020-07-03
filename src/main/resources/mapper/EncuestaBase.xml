@@ -59,6 +59,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         <result property="contacto_email" column="contacto_email"/>
         <result property="contacto_telefono" column="contacto_telefono"/>
         <result property="contacto_puesto" column="contacto_puesto"/>
+        <result property="documento_id_base" column="documento_id_base"/>
+        <result property="principal_actividad" column="principal_actividad"/>
+        <result property="visita_realizada_por" column="visita_realizada_por"/>
+        <result property="lugar" column="lugar"/>
+        <result property="atendido_por" column="atendido_por"/>
+        <result property="años_en_negocio" column="años_en_negocio"/>
+        <result property="tipo_servicio" column="tipo_servicio"/>
+        <result property="cumplen_medidas_seguridad" column="cumplen_medidas_seguridad"/>
+        <result property="evaluaciones_a_proveedores" column="evaluaciones_a_proveedores"/>
+        <result property="cuenta_certificaciones_seguridad" column="cuenta_certificaciones_seguridad"/>
     </resultMap>
 
     <select id="EncuestaBaseMaxID" resultMap="ResultEncuestaBaseID">
@@ -77,12 +87,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         (#{fecha_modificacion},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{usuario_id},#{usuario},#{activo},#{cliente_id},#{cliente},#{documento_id},#{documento},#{nombre_encuesta},#{estado_doc},#{persona_contesta},
         #{puesto_persona_contesta},#{servicio_brindado},#{nombre_entrevistador},#{firma_electronica_cliente},#{firma_electronica_entrevistador},#{observaciones},#{calificacion},#{fabricante},#{transporte_maritimo},
         #{transporte_ferreo},#{proveedor},#{forwander},#{almacen},#{agente_aduanal},#{consolidador},#{transporte_terrestre},#{transporte_aero},#{otro_negocio},#{certificacion_oea},#{certificacion_seguridad},#{numero_autorizacion_certificado},#{vigente},
-        #{domicilio},#{rfc},#{ciudad},#{estado},#{cp},#{telefono},#{pais},#{correo},#{contacto_nombre},#{contacto_email},#{contacto_telefono},#{contacto_puesto})
-        
+        #{domicilio},#{rfc},#{ciudad},#{estado},#{cp},#{telefono},#{pais},#{correo},#{contacto_nombre},#{contacto_email},#{contacto_telefono},#{contacto_puesto});
+             
         <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
-              SELECT MAX(id) FROM encuesta 
-        </selectKey>
-
+              SELECT MAX(id) AS id FROM encuesta 
+        </selectKey>   
+    </insert>
+    
+    <insert id="EncuestaBaseComplementoInsert" parameterType="EncuestaBase" useGeneratedKeys="true" keyProperty="id">
+         INSERT INTO encuesta_complemento
+         (documento_id_base,principal_actividad,visita_realizada_por,lugar,atendido_por,años_en_negocio,tipo_servicio,comentarios,cumplen_medidas_seguridad,evaluaciones_a_proveedores,cuenta_certificaciones_seguridad)
+         VALUES  
+         (#{documento_id_base},#{principal_actividad},#{visita_realizada_por},#{lugar},#{atendido_por},#{años_en_negocio},#{tipo_servicio},#{observaciones},#{cumplen_medidas_seguridad},#{evaluaciones_a_proveedores},#{cuenta_certificaciones_seguridad});   
     </insert>
 
     <update id="EncuestaBaseUpdate" parameterType="EncuestaBase">
