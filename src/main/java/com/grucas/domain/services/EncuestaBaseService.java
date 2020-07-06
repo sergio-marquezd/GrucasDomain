@@ -83,6 +83,21 @@ public class EncuestaBaseService {
             notification = "Ha ocurrido un error al guardar. EncuestaBase " +encuestabase.getId()+" no almacenado(a) en la base de datos.";
         }
     }
+    
+     public void EncuestaBaseComplementoInsert(EncuestaBase encuestabase) {
+        object = encuestabase;
+        dao.EncuestaBaseComplementoInsert(object);
+
+        setOk(dao.getOk());
+
+        if (getOk()) {
+            notification = "EncuestaBase " + encuestabase.getId()+ " dado de alta correctamente.";
+        } else {
+            notification = "Ha ocurrido un error al guardar. EncuestaBase " +encuestabase.getId()+" no almacenado(a) en la base de datos.";
+        }
+    }
+    
+    
 
     public void EncuestaBaseUpdate(EncuestaBase encuestabase){
         object = encuestabase;

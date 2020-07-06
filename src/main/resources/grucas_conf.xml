@@ -47,7 +47,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/grucas?useSSL=false"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/grucas?useSSL=false&amp;allowMultiQueries=true"/>
                 <property name="username" value="root"/>
                 <property name="password" value="dac2001"/>
                 <property name="poolTimeToWait" value="20000"/>

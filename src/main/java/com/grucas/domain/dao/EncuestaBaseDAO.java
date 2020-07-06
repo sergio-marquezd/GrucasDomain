@@ -260,6 +260,42 @@ public class EncuestaBaseDAO {
 
         }
     }
+    
+    public void EncuestaBaseComplementoInsert(EncuestaBase object) {
+
+        SqlSession session = null;
+
+        try {
+
+            session = sqlSessionFactory.openSession();
+            session.insert("EncuestaBaseComplementoInsert", object);
+            session.commit();
+            ok = true;
+
+        } catch (PersistenceException ex) {
+
+            LoggerImpl.SEVERE(getClass().toString(), ex.toString() + "\n");
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                ex.printStackTrace();
+            }
+
+        }catch(Exception exception){
+
+            if(GrucasDomainConfig.DEBUG_GRUCAS){
+                exception.printStackTrace();
+            }
+
+        } finally {
+
+            if(session != null){
+                session.close();
+            }
+
+        }
+    }
+    
+    
 
     public void EncuestaBaseUpdate(EncuestaBase object){
 
