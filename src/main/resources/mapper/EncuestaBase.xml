@@ -165,5 +165,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
         ) AS t
         ORDER BY fecha_elaboracion
     </select>
+    
+    <select id="EncuestaComplementoWhereCliente" parameterType="map" resultMap="ResultEncuestaBase">
+       SELECT t1.cliente, t1.domicilio,t1.telefono,t1.correo,t2.principal_actividad,t2.visita_realizada_por,t1.fecha_elaboracion,t2.lugar,
+       t2.atendido_por,t2.años_en_negocio,t2.cumplen_medidas_seguridad,t2.tipo_servicio,t2.evaluaciones_a_proveedores,t2.cuenta_certificaciones_seguridad
+       FROM 
+       encuesta t1 
+       INNER JOIN encuesta_complemento t2 
+       ON t1.id = t2.documento_id_base
+       ${where} 
+       ${group} 
+       ${order}
+    </select>
 
 </mapper>
