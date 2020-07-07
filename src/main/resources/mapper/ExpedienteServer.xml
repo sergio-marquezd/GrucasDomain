@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ExpedienteServer">
+
+    <resultMap id="ResultExpedienteServer" type="LuceneServer">
+        <result property="id" column="id"/>
+        <result property="descripcion" column="descripcion"/>
+        <result property="ip" column="ip"/>
+        <result property="path_documents" column="path_documents"/>
+        <result property="server_type" column="server_type"/>
+        <result property="activo" column="activo"/>
+    </resultMap>
+
+    <select id="getServer" resultMap="ResultExpedienteServer">
+        SELECT *
+        FROM expediente_server 
+        LIMIT 1
+    </select>
+
+</mapper>

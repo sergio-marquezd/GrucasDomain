@@ -40,6 +40,9 @@
         <typeAlias alias="ReportKPICABOT" type="com.grucas.domain.clientes.cabot.domain.ReportKPICABOT"/>
         <typeAlias alias="VendedorUnidadNegocio" type="com.grucas.domain.relations.VendedorUnidadNegocio"/>
         <typeAlias alias="VendedorClientes" type="com.grucas.domain.relations.VendedorClientes"/>
+        
+        <typeAlias alias="ExpedienteGrucas" type="com.grucas.expediente.model.ExpedienteGrucas"/>
+        <typeAlias alias="ExpedienteServer" type="com.grucas.expediente.model.ExpedienteServer"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -91,6 +94,8 @@
         <mapper resource="mapper/Vendedor.xml"/>
         <mapper resource="mapper/VendedorUnidadNegocio.xml"/>
         <mapper resource="mapper/VendedorClientes.xml"/>
+        <mapper resource="mapper/ExpedienteGrucas.xml"/>
+        <mapper resource="mapper/ExpedienteServer.xml"/>
     </mappers>
   
 </configuration>

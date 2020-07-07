@@ -4,6 +4,8 @@ import com.grucas.domain.model.Usuario;
 import com.grucas.domain.services.ClienteService;
 import com.grucas.domain.services.ProductoServicioService;
 import com.grucas.domain.services.UsuarioService;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -21,7 +23,7 @@ public class Test {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
 
 //        UsuarioService service = new UsuarioService();
 //        service.login("a", "a", 1001);
@@ -54,7 +56,7 @@ public class Test {
 //         service.getOneCliente("no_contable = 14691");
 //         System.out.println(service.getObjects());
 
-         
+         System.out.println(" IP " + InetAddress.getLocalHost().getHostAddress());
 
 
     }
