@@ -15,6 +15,10 @@ import java.util.List;
  */
 public class _Departamentos {
     
+    
+    // Temporal EQDZ
+    public static final Departamento RECURSOS_EQDZ = new Departamento(1, "EQDZ TEMPORAL");
+    
     public static final Departamento RECURSOS_HUMANOS = new Departamento(1, "RECURSOS HUMANOS");
     public static final Departamento COMPRAS = new Departamento(2, "COMPRAS");
     public static final Departamento TECNOLOGIAS_DE_LA_INFORMACION = new Departamento(3, "TECNOLOGIAS DE LA INFORMACION");

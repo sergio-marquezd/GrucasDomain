@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ExpedienteGrucas">
+
+    <resultMap id="ResultExpedienteGrucas" type="ExpedienteGrucas">
+        <result property="id" column="id"/>
+        <result property="fecha_alta" column="fecha_alta"/>
+        <result property="uuid" column="uuid"/>
+        <result property="path" column="path"/>
+        <result property="filename" column="filename"/>
+        <result property="extension" column="extension"/>
+        <result property="type" column="type"/>
+        <result property="folio" column="folio"/>
+        <result property="folio_interno" column="folio_interno"/>
+        <result property="tipo_documento" column="tipo_documento"/>
+        <result property="usuario" column="usuario"/>
+        <result property="cliente_proveedor_id" column="cliente_proveedor_id"/>
+        <result property="cliente_proveedor" column="cliente_proveedor"/>
+        <result property="empresa_id" column="empresa_id"/>
+        <result property="empresa" column="empresa"/>
+        <result property="unidad_id" column="unidad_id"/>
+        <result property="unidad" column="unidad"/>
+        <result property="fecha_vigencia" column="fecha_vigencia"/>
+        <result property="firmado" column="firmado"/>
+        <result property="activo" column="activo"/>
+        <result property="subtipo_documento" column="subtipo_documento"/>
+        <result property="tipo_visualizacion" column="tipo_visualizacion"/>
+        <result property="folio_especial" column="folio_especial"/>
+    </resultMap>
+
+    <insert id="ExpedienteGrucasInsert" parameterType="ExpedienteGrucas" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO expediente_grucas 
+        (fecha_alta,uuid,path,filename,extension,type,folio,folio_interno,tipo_documento,usuario,cliente_proveedor_id,cliente_proveedor,empresa_id,empresa,unidad_id,unidad,fecha_vigencia,firmado,activo,subtipo_documento,tipo_visualizacion,folio_especial)
+        VALUES
+        (#{fecha_alta},#{uuid},#{path},#{filename},#{extension},#{type},#{folio},#{folio_interno},#{tipo_documento},#{usuario},#{cliente_proveedor_id},#{cliente_proveedor},#{empresa_id},#{empresa},#{unidad_id},#{unidad},#{fecha_vigencia},#{firmado},#{activo},#{subtipo_documento},#{tipo_visualizacion},#{folio_especial})
+        
+        <selectKey keyProperty="id" resultType="Integer" order="AFTER" > 
+              SELECT MAX(id) FROM expediente_grucas 
+        </selectKey>
+
+    </insert>
+
+    <delete id="ExpedienteGrucasDelete" parameterType="map">
+        DELETE FROM expediente_grucas 
+        WHERE id = #{id}
+    </delete>
+
+    <select id="ExpedienteGrucasWhere" parameterType="map" resultMap="ResultExpedienteGrucas">
+        SELECT *
+        FROM expediente_grucas 
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+
+</mapper>
