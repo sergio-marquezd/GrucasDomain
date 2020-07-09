@@ -24,10 +24,7 @@ public class Paths {
         ROOT_PATH = getRootPath();
         
         String path = 
-                ROOT_PATH + SEPARADOR
-                + rfc_cliente + SEPARADOR
-                + getYear() + SEPARADOR 
-                + folio_operacion + SEPARADOR + "Fotografias";
+                getPathOperaciones(rfc_cliente, folio_operacion) + SEPARADOR + "Fotografias";
 
         if(!createPath(new File(path))){
             System.out.println("ERROR .- No se pudo crear la ruta : " + path );
@@ -40,6 +37,7 @@ public class Paths {
         
         String path = 
                 ROOT_PATH + SEPARADOR
+                + "ED_Operaciones" + SEPARADOR
                 + rfc_cliente + SEPARADOR
                 + getYear() + SEPARADOR 
                 + folio_operacion;
