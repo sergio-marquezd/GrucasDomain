@@ -155,6 +155,9 @@ public class ExpedienteGrucas implements Comparable<ExpedienteGrucas> {
 
     public void setFolio(String folio) {
         this.folio = folio;
+        if(this.folio_especial){
+            setTransformFolio();
+        }
     }
 
     public Boolean getFolio_especial() {
@@ -293,6 +296,10 @@ public class ExpedienteGrucas implements Comparable<ExpedienteGrucas> {
     @Override
     public int compareTo(ExpedienteGrucas o) {
         return this.fecha_alta.compareTo(o.fecha_alta);
+    }
+    
+     public void setTransformFolio(){
+        folio = folio.replace("-", "").replace(".", "").replace("*", "").replace("_", "").replace(":", "");
     }
 
 }
