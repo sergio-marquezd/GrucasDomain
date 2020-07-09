@@ -92,6 +92,7 @@
         <mapper resource="mapper/Transportista.xml"/>
         <mapper resource="mapper/OrigenDestino.xml"/>
         <mapper resource="mapper/Vendedor.xml"/>
+        <mapper resource="mapper/ReportKPICabot.xml"/>
         <mapper resource="mapper/VendedorUnidadNegocio.xml"/>
         <mapper resource="mapper/VendedorClientes.xml"/>
         <mapper resource="mapper/ExpedienteGrucas.xml"/>
