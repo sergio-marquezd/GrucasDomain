@@ -5,6 +5,7 @@
  */
 package com.grucas.expediente;
 
+import static com.grucas.expediente.Paths.getYear;
 import com.grucas.expediente.model.ExpedienteGrucas;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,13 +19,16 @@ import java.io.OutputStream;
  */
 public class ExpedienteActions {
     
+    public static final String SEPARADOR = System.getProperty("file.separator");
+     
     public static Boolean saveDocument(InputStream input, ExpedienteGrucas ed_node) {
 
-        File archivoCopia = null;
+        File archivoCopia = null;    
 
-        try {
+      try {
             archivoCopia
-                    = new File(ed_node.getPath() + System.getProperty("file.separator") + ed_node.getFilename());
+                    = new File(ed_node.getPath() + SEPARADOR + ed_node.getFilename());
+            
 
             OutputStream output;
             output = new FileOutputStream(archivoCopia);
@@ -52,16 +56,22 @@ public class ExpedienteActions {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("[ERROR] " + e.getMessage());
+            
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("[ERROR] " + e.getMessage());
+            return false;
         }
 
         return true;
     }
 
-    public static Boolean deleteDocument(){
+    public static Boolean deleteDocument(String path){
+        File file = new File(path);
+        if(file.delete()){
+            return true;
+        }
         return false;
-    }    
+    } 
     
 }

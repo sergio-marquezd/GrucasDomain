@@ -18,11 +18,20 @@ import java.time.LocalDateTime;
 public class Paths {
     
     public static String ROOT_PATH = "";
+    public static final String SEPARADOR = System.getProperty("file.separator");
 
     public static String getPathFotografiaPrevios(String rfc_cliente, String folio_operacion){
+        ROOT_PATH = getRootPath();
+        
         String path = 
-                getPathOperaciones(rfc_cliente, folio_operacion) + System.getProperty("file.separator") 
-                + "Fotografias";
+                ROOT_PATH + SEPARADOR
+                + rfc_cliente + SEPARADOR
+                + getYear() + SEPARADOR 
+                + folio_operacion + SEPARADOR + "Fotografias";
+
+        if(!createPath(new File(path))){
+            System.out.println("ERROR .- No se pudo crear la ruta : " + path );
+        }
         return path;
     }
     
@@ -30,9 +39,9 @@ public class Paths {
         ROOT_PATH = getRootPath();
         
         String path = 
-                ROOT_PATH + System.getProperty("file.separator") 
-                + rfc_cliente + System.getProperty("file.separator") 
-                + getYear() + System.getProperty("file.separator") 
+                ROOT_PATH + SEPARADOR
+                + rfc_cliente + SEPARADOR
+                + getYear() + SEPARADOR 
                 + folio_operacion;
 
         if(!createPath(new File(path))){
@@ -68,9 +77,12 @@ public class Paths {
                 ExpedienteServerService domain = new ExpedienteServerService();
                 domain.getServer();
                 rootPath = domain.getObject().getPath_documents();
+            }else{
+                rootPath = System.getProperty("catalina.base");
             }
         } catch (UnknownHostException ex) {
-            rootPath = System.getProperty("catalina.base") + System.getProperty("file.separator");
+            //rootPath = System.getProperty("catalina.base") + SEPARADOR;
+            ex.printStackTrace();
         }
         
         return rootPath;

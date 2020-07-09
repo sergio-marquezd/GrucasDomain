@@ -39,8 +39,7 @@
         <typeAlias alias="Vendedor" type="com.grucas.domain.model.Vendedor"/>
         <typeAlias alias="ReportKPICABOT" type="com.grucas.domain.clientes.cabot.domain.ReportKPICABOT"/>
         <typeAlias alias="VendedorUnidadNegocio" type="com.grucas.domain.relations.VendedorUnidadNegocio"/>
-        <typeAlias alias="VendedorClientes" type="com.grucas.domain.relations.VendedorClientes"/>
-        
+        <typeAlias alias="VendedorClientes" type="com.grucas.domain.relations.VendedorClientes"/>     
         <typeAlias alias="ExpedienteGrucas" type="com.grucas.expediente.model.ExpedienteGrucas"/>
         <typeAlias alias="ExpedienteServer" type="com.grucas.expediente.model.ExpedienteServer"/>
     </typeAliases>
