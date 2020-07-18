@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?> <!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="RolDepartamento">
+    
+     <resultMap id="ResultRolDepartamentoID" type="Integer">
+        <result property="value" column="id"/>
+    </resultMap>
+    
+      <resultMap id="ResultRolDepartamento" type="RolDepartamento">
+        <result property="id" column="id"/>
+        <result property="rol_depto" column="rol_depto"/>
+        <result property="folder" column="folder"/>
+    </resultMap>
+    
+     <select id="RolDepartamentoMaxID" resultMap="ResultRolDepartamentoID">
+        SELECT max(id)+1 as id
+        FROM rol_depto
+    </select>
+    
+     <select id="RolDepartamentoWhere" parameterType="map" resultMap="ResultRolDepartamento">
+        SELECT *
+        FROM rol_depto
+        ${where} 
+        ${group} 
+        ${order}
+    </select>
+    
+</mapper>
+    
+    

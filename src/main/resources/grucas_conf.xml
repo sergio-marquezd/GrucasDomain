@@ -42,6 +42,7 @@
         <typeAlias alias="VendedorClientes" type="com.grucas.domain.relations.VendedorClientes"/>     
         <typeAlias alias="ExpedienteGrucas" type="com.grucas.expediente.model.ExpedienteGrucas"/>
         <typeAlias alias="ExpedienteServer" type="com.grucas.expediente.model.ExpedienteServer"/>
+        <typeAlias alias="RolDepartamento" type="com.grucas.domain.model.RolDepartamento"/>
     </typeAliases>
     
     <environments default="catalogos">  
@@ -49,7 +50,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/grucas?useSSL=false&amp;allowMultiQueries=true"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/grucas?useSSL=false"/>
                 <property name="username" value="root"/>
                 <property name="password" value="dac2001"/>
                 <property name="poolTimeToWait" value="20000"/>
@@ -96,6 +97,7 @@
         <mapper resource="mapper/VendedorClientes.xml"/>
         <mapper resource="mapper/ExpedienteGrucas.xml"/>
         <mapper resource="mapper/ExpedienteServer.xml"/>
+        <mapper resource="mapper/RolDepartamento.xml"/>
     </mappers>
   
 </configuration>

@@ -168,7 +168,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
     
     <select id="EncuestaComplementoWhereCliente" parameterType="map" resultMap="ResultEncuestaBase">
        SELECT t1.cliente, t1.domicilio,t1.telefono,t1.correo,t2.principal_actividad,t2.visita_realizada_por,t1.fecha_elaboracion,t2.lugar,
-       t2.atendido_por,t2.años_en_negocio,t2.cumplen_medidas_seguridad,t2.tipo_servicio,t2.evaluaciones_a_proveedores,t2.cuenta_certificaciones_seguridad
+       t2.atendido_por,t2.años_en_negocio,t2.cumplen_medidas_seguridad,t2.tipo_servicio,t2.evaluaciones_a_proveedores,t2.cuenta_certificaciones_seguridad,t1.rfc
        FROM 
        encuesta t1 
        INNER JOIN encuesta_complemento t2 
